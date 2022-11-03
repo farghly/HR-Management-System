@@ -6,12 +6,22 @@ function Register(){
         <form class="my-4 w-100 m-auto">
           <p class="heading">Sign up</p>
           <div class="box">
-            <p>User Name</p>
+            <p>First Name</p>
             <div>
               <input
                 type="text"
                 autocomplete="off"
-                placeholder="Enter your name"
+                placeholder="Enter your First Name"
+              />
+            </div>
+          </div>
+          <div class="box">
+            <p>Last Name</p>
+            <div>
+              <input
+                type="text"
+                autocomplete="off"
+                placeholder="Enter your Last Name"
               />
             </div>
           </div>
