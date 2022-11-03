@@ -1,20 +1,10 @@
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #cecbd9;
-    color: black;
-    font-family: "poppins", sans-serif;
-}
-
 :root {
     --main-clr: #2d5aa5;
     /* --main-clr: #2da55f; */
 }
 
-.container {
+.container.register{
     background: #ffffff;
     display: flex;
     justify-content: center;

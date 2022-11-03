@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import './register.css'
 function Register(){
     return(
-        <div class="container p-md-5 p-4">
+        <div class="container register p-md-5 p-4">
         <form class="my-4 w-100 m-auto">
           <p class="heading">Sign up</p>
           <div class="box">
