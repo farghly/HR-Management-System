@@ -1,7 +1,7 @@
 import './login.css'
 function Login(){
     return(
-        <div className="container p-md-5 p-4">
+        <div className="container login p-md-5 p-4">
         <form className="my-4 w-100 m-auto">
           <p className="heading">Sign in</p>
           <div className="box">
