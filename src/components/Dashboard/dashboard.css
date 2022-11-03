@@ -1,0 +1,53 @@
+
+.card-text a {
+    color: rgb(144, 144, 144);
+}
+
+.details-cards {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+svg {
+    padding: 15px;
+    background-color: rebeccapurple;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    width: 15px;
+}
+
+h4 {
+    margin: 0;
+}
+
+.second-card {
+    font-size: 20px;
+}
+
+.bglimegreen {
+    background-color: limegreen;
+}
+
+.bglightcoral {
+    background-color: rgb(232, 61, 61);
+}
+
+.bglightblue {
+    background-color: rgb(18, 84, 208);
+}
+
+.bgrebeccapurple {
+    background-color: rebeccapurple;
+}
+
+.details-table {
+    height: 200px;
+    overflow-y: scroll;
+}
+table th {
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;
+    z-index: 1; 
+    background: rgb(206, 51, 51); 
+}
