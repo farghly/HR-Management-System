@@ -9,7 +9,7 @@ function Department(){
               <label for="">Department Name</label>
               <input type="text" name="" id="" />
               <div class="btns">
-                <button class="save bg-success">Save</button>
+                <button class="save bg-success me-2">Save</button>
                 <button class="cancel bg-danger">Cancel</button>
               </div>
             </form>
