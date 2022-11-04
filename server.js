@@ -33,26 +33,3 @@ mongoose.connect(DB, {}).then((connect) => {
 app.listen(PORT, () => {
   console.log(`App running on port http://localhost:${PORT}`);
 });
-
-/**
-   * 
-   * 
-   * const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
-const PORT = process.env.PORT || 6060;
-
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(() => {
-    console.log(`DB Connected Successfully`);
-  });
-const server = app.listen(PORT, () =>
-  console.log(`server is running on port ${PORT}`)
-);
-   */
