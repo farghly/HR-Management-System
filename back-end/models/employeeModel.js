@@ -10,16 +10,16 @@ const employeeSchema = mongoose.Schema({
         type:String,
         required:true,
     },
-    Department:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Department",
-        required:true,
-    },
-    Designation:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Designation",
-        required:true,
-    },
+    // Department:{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:"Department",
+    //     required:true,
+    // },
+    // Designation:{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:"Designation",
+    //     required:true,
+    // },
     role:{
         type:String,
         required:true,
@@ -28,22 +28,22 @@ const employeeSchema = mongoose.Schema({
         type:String,
         required:true,
     },
-    NID:{
-        type:Number,
-        required:true,
-    },
-    DateOfBirth:{
-        type:Date,
-        required:true,
-    },
-    DateOfJoin:{
-      type:Date,
-      required:true,
-    },
-    DateOfLeave:{
-        type:Date,
-        required:true,
-    },
+    // NID:{
+    //     type:Number,
+    //     required:true,
+    // },
+    // DateOfBirth:{
+    //     type:Date,
+    //     required:true,
+    // },
+    // DateOfJoin:{
+    //   type:Date,
+    //   required:true,
+    // },
+    // DateOfLeave:{
+    //     type:Date,
+    //     required:true,
+    // },
     email:{
         type:String,
         required:true
