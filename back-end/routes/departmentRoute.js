@@ -1,19 +1,19 @@
 // Employee routes 
 const express = require("express")
-const employee = require("./../models/employeeModel")
+const department = require("./../models/departmentModel")
 
 const router = express.Router();
 
 // here we create our Route
-router.post("/employee", async (req, res) => {
+router.post("/department", async (req, res) => {
     console.log(req.body)
-    const data = new employee(req.body)
+    const data = new department(req.body)
     const result = await data.save()
 
     if (!result) {
         res.json({
             status: "FAILED",
-            message: "employee not register successfully...."
+            message: "department not register successfully...."
         })
     }
     else {
@@ -26,9 +26,9 @@ router.post("/employee", async (req, res) => {
 })
 
 //get records 
-router.get("/employee", async (req, res) => {
+router.get("/department", async (req, res) => {
     try {
-        const result = await employee.find()
+        const result = await department.find()
         if (!result) {
             res.json({
                 status: "FAILED",
@@ -49,10 +49,10 @@ router.get("/employee", async (req, res) => {
 })
 
 //get single record
-router.get("/employee/:id", async (req, res) => {
+router.get("/department/:id", async (req, res) => {
     try {
         const _id = req.params.id;
-        const result = await employee.findById(_id);
+        const result = await department.findById(_id);
         if (!result) {
             res.json({
                 status: "FAILED",
@@ -72,10 +72,10 @@ router.get("/employee/:id", async (req, res) => {
     }
 })
 // update records 
-router.put("/employee/:id", async (req, res) => {
+router.put("/department/:id", async (req, res) => {
     try {
         const _id = req.params.id;
-        const result = await employee.findByIdAndUpdate(_id,req.body,{new: true});
+        const result = await department.findByIdAndUpdate(_id,req.body,{new: true});
         console.log(result)
         if (!result) {
             res.json({

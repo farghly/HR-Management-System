@@ -1,34 +1,34 @@
-// Employee routes 
+// designation routes 
 const express = require("express")
-const employee = require("./../models/employeeModel")
+const designation = require("./../models/designationModel")
 
 const router = express.Router();
 
-// here we create our Route
-router.post("/employee", async (req, res) => {
+// Add new designation 
+router.post("/designation", async (req, res) => {
     console.log(req.body)
-    const data = new employee(req.body)
+    const data = new designation(req.body)
     const result = await data.save()
 
     if (!result) {
         res.json({
             status: "FAILED",
-            message: "employee not register successfully...."
+            message: "designation not added successfully...."
         })
     }
     else {
         res.json({
             status: "SUCCESS",
-            message: "employee register successfully....",
+            message: "designation added successfully....",
             data: result
         })
     }
 })
 
-//get records 
-router.get("/employee", async (req, res) => {
+//get designations 
+router.get("/designation", async (req, res) => {
     try {
-        const result = await employee.find()
+        const result = await designation.find()
         if (!result) {
             res.json({
                 status: "FAILED",
@@ -48,11 +48,11 @@ router.get("/employee", async (req, res) => {
     }
 })
 
-//get single record
-router.get("/employee/:id", async (req, res) => {
+//get single designation
+router.get("/designation/:id", async (req, res) => {
     try {
         const _id = req.params.id;
-        const result = await employee.findById(_id);
+        const result = await designation.findById(_id);
         if (!result) {
             res.json({
                 status: "FAILED",
@@ -71,11 +71,12 @@ router.get("/employee/:id", async (req, res) => {
         res.send(e)
     }
 })
+
 // update records 
-router.put("/employee/:id", async (req, res) => {
+router.put("/designation/:id", async (req, res) => {
     try {
         const _id = req.params.id;
-        const result = await employee.findByIdAndUpdate(_id,req.body,{new: true});
+        const result = await designation.findByIdAndUpdate(_id,req.body,{new: true});
         console.log(result)
         if (!result) {
             res.json({
@@ -96,11 +97,13 @@ router.put("/employee/:id", async (req, res) => {
         res.send(e)
     }
 })
-// Delete Records 
-router.delete("/employee/:id", async (req, res) => {
+
+
+// Delete designation 
+router.delete("/designation/:id", async (req, res) => {
     try {
         const _id = req.params.id;
-        const result = await employee.findByIdAndDelete(_id);
+        const result = await designation.findByIdAndDelete(_id);
         if (!result) {
             res.json({
                 status: "FAILED",
