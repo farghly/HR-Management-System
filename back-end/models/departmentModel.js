@@ -1,12 +1,27 @@
 // Department model
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const employeeSchema = mongoose.Schema({
-    DepName:{
-        type:String,
-        required:true,
-    }
-})
+const departmentSchema = new mongoose.Schema({
+  DepName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 
-module.exports = mongoose.model('department',employeeSchema)
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+
+  employee: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      res: "Employee",
+    },
+  ],
+});
+
+const Department = mongoose.model("Department", departmentSchema);
+
+module.exports = Department;

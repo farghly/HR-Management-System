@@ -1,8 +1,8 @@
 // Employee model
 const mongoose = require("mongoose");
 const validator = require("validator");
-const bcrypt = require("bcryptjs");
-const employeeSchema = mongoose.Schema({
+// const bcrypt = require("bcryptjs");
+const employeeSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -40,6 +40,13 @@ const employeeSchema = mongoose.Schema({
     min: 14,
     max: 14,
   },
+  contactNumber: [
+    {
+      type: Number,
+      min: 11,
+      max: 11,
+    },
+  ],
   DateOfBirth: {
     type: Date,
     required: true,

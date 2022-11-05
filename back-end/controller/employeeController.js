@@ -31,12 +31,13 @@ exports.getAllEmployee = catchAsync(async (req, res) => {
   if (!employees) {
     res.json({
       status: "FAILED",
-      results: employees.length,
+
       message: "Not found record",
     });
   } else {
     res.json({
       status: "SUCCESS",
+      results: employees.length,
       message: "Records found",
       data: employees,
     });
