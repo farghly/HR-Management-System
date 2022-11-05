@@ -1,3 +1,7 @@
+const dotenv = require("dotenv");
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
 const rateLimiter = require("express-rate-limit");
 
 const helmet = require("helmet");
@@ -9,15 +13,13 @@ const mongoSanitize = require("express-mongo-sanitize");
 const ErrorController = require("./back-end/controller/errorController");
 
 const AppError = require("./back-end/utils/appError");
-const dotenv = require("dotenv");
-const express = require("express");
-const app = express();
-const mongoose = require("mongoose");
 const employeeRouter = require("./back-end/routes/employeeRoutes");
 // const employee = require("./back-end/routes/employeeRoute");
 
 const department = require("./back-end/routes/departmentRoute");
 const designation = require("./back-end/routes/designationRoute");
+
+const taskRouter = require("./back-end/routes/tasksRoutes");
 
 const limiter = rateLimiter({
   max: 100,
@@ -33,6 +35,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
 // get configuration file
 dotenv.config({ path: "./back-end/config.env" });
 
@@ -44,6 +47,9 @@ const PORT = process.env.PORT;
 
 // register routes
 // app.use(employee);
+
+app.use("/api/v1/tasks", taskRouter);
+app.use("/api/v1/projects", taskRouter);
 app.use("/api/v1/employees", employeeRouter);
 app.use(department);
 app.use(designation);
@@ -53,10 +59,7 @@ app.get("/", (req, res) => {
 });
 
 app.all("*", (req, res, next) => {
-  //   res.status(404).json({
-  //     status: 'failed',
-  //     msg: `Error to reach ${req.originalUrl} on this server`,
-  //   });
+  //
 
   next(new AppError("Error", 404));
 });
