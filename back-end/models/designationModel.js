@@ -18,5 +18,12 @@ const designationSchema = mongoose.Schema({
     },
   ],
 });
+designationSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "employee",
+  });
 
-module.exports = mongoose.model("designation", designationSchema);
+  next();
+});
+const Designation = mongoose.model("Designation", designationSchema);
+module.exports = Designation;

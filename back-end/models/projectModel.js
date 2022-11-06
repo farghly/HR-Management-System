@@ -46,7 +46,15 @@ const projectSchema = new mongoose.Schema({
     enum: ["Normal ", "Very Important", "Urgent", "Can be done later"],
   },
 });
+projectSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "employee",
+  }).populate({
+    path: "tasks",
+  });
 
+  next();
+});
 const Project = mongoose.model("Project", projectSchema);
 
 module.exports = Project;

@@ -21,7 +21,13 @@ const departmentSchema = new mongoose.Schema({
     },
   ],
 });
+departmentSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "employee",
+  });
 
+  next();
+});
 const Department = mongoose.model("Department", departmentSchema);
 
 module.exports = Department;

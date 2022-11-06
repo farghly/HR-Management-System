@@ -49,6 +49,15 @@ const taskSchema = new mongoose.Schema({
   },
 });
 
+taskSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "employee",
+  }).populate({
+    path: "project",
+  });
+
+  next();
+});
 const Task = mongoose.model("Task", taskSchema);
 
 module.exports = Task;

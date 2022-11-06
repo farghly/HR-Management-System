@@ -78,11 +78,11 @@ exports.restrictTo =
     next();
   };
 
-exports.signUp = catchAsync(async (req, res, next) => {
-  const newEmployee = await Employee.create(req.body);
+// exports.signUp = catchAsync(async (req, res, next) => {
+//   const newEmployee = await Employee.create(req.body);
 
-  createSendToken(newEmployee, 201, res);
-});
+//   createSendToken(newEmployee, 201, res);
+// });
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
