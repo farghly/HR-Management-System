@@ -1,0 +1,46 @@
+aside {
+    width: 300px;
+    background-color: white;
+
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+svg{
+    background-color: inherit;
+    /* color:gray; */
+}
+aside svg {
+    font-size: 20px;
+    flex-basis: 20%;
+    color:black;
+}
+
+
+.links {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    font-size: 20px;
+}
+
+li {
+    transition: 0.2s all;
+    padding: 10px;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: blueviolet;
+    color: white;
+}
+
+li:hover a {
+    color: white;
+}
