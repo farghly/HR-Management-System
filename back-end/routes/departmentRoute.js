@@ -1,123 +1,16 @@
-// Employee routes 
-const express = require("express")
-const department = require("./../models/departmentModel")
-
+const express = require("express");
 const router = express.Router();
 
-// here we create our Route
-router.post("/department", async (req, res) => {
-    console.log(req.body)
-    const data = new department(req.body)
-    const result = await data.save()
+const departmentController = require("../controller/departmentController");
 
-    if (!result) {
-        res.json({
-            status: "FAILED",
-            message: "department not register successfully...."
-        })
-    }
-    else {
-        res.json({
-            status: "SUCCESS",
-            message: "employee register successfully....",
-            data: result
-        })
-    }
-})
+router
+  .route("/")
+  .get(departmentController.getDepartments)
+  .post(departmentController.createDepartment);
+router
+  .route("/:id")
+  .get(departmentController.getDepartmentById)
+  .patch(departmentController.updateDepartment)
+  .delete(departmentController.deleteDepartment);
 
-//get records 
-router.get("/department", async (req, res) => {
-    try {
-        const result = await department.find()
-        if (!result) {
-            res.json({
-                status: "FAILED",
-                message: "Not found record"
-            })
-        }
-        else {
-            res.json({
-                status: "SUCCESS",
-                message: "Records found",
-                data: result
-            })
-        }
-    }
-    catch (e) {
-        console.log(e)
-    }
-})
-
-//get single record
-router.get("/department/:id", async (req, res) => {
-    try {
-        const _id = req.params.id;
-        const result = await department.findById(_id);
-        if (!result) {
-            res.json({
-                status: "FAILED",
-                message: "Record not found on this ID"
-            })
-        }
-        else {
-            res.json({
-                status: "SUCCESS",
-                message: "Records found",
-                data: result
-            })
-        }
-    }
-    catch (e) {
-        res.send(e)
-    }
-})
-// update records 
-router.put("/department/:id", async (req, res) => {
-    try {
-        const _id = req.params.id;
-        const result = await department.findByIdAndUpdate(_id,req.body,{new: true});
-        console.log(result)
-        if (!result) {
-            res.json({
-                status: "FAILED",
-                message: "Records not Update....",
-                data: result
-            })
-        }
-        else {
-            res.json({
-                status: "SUCCESS",
-                message: "Record is Updated successfully...",
-                data: result
-            })
-        }
-    }
-    catch (e) {
-        res.send(e)
-    }
-})
-// Delete Records 
-router.delete("/employee/:id", async (req, res) => {
-    try {
-        const _id = req.params.id;
-        const result = await employee.findByIdAndDelete(_id);
-        if (!result) {
-            res.json({
-                status: "FAILED",
-                message: "Record not Delete..."
-            })
-        }
-        else {
-            res.json({
-                status: "SUCCESS",
-                message: "Record is Delete successfully..."
-            })
-        }
-    }
-    catch (e) {
-        res.send(e)
-    }
-})
-
-
-module.exports = router
+module.exports = router;

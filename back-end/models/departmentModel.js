@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 
 const departmentSchema = new mongoose.Schema({
-  DepName: {
+  name: {
     type: String,
     required: true,
     trim: true,
@@ -17,7 +17,7 @@ const departmentSchema = new mongoose.Schema({
   employee: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      res: "Employee",
+      ref: "Employee",
     },
   ],
 });
