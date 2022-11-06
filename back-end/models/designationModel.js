@@ -1,12 +1,22 @@
 // Department model
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const designationSchema = mongoose.Schema({
-    DesignationName:{
-        type:String,
-        required:true,
-    }
-})
+  name: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: String,
+    default: Date.now(),
+  },
+  employee: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Employee",
+    },
+  ],
+});
 
-module.exports = mongoose.model('designation',designationSchema)
+module.exports = mongoose.model("designation", designationSchema);
