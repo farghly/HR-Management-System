@@ -56,5 +56,5 @@ exports.deleteProject = catchAsync(async (req, res, next) => {
     next(new AppError("Didn't find the project "), 404);
   }
 
-  response("success", 204, null, res);
+  response("success", 204, project, res);
 });

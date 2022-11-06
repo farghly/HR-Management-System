@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema({
-  projectName: {
+  name: {
     type: String,
     required: true,
   },
@@ -11,7 +11,7 @@ const projectSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
-  EndDate: {
+  endDate: {
     type: Date,
     required: true,
   },
