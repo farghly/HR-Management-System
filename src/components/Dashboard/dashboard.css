@@ -64,12 +64,16 @@ table th {
 .child-1 {
     width: 20%;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 25px;
     background-color: white;
 }
 
 .child-2 {
     width: 80%;
+    backdrop-filter: blur(15px);
+    background-color: #ffffff6b;
+    border-radius: 25px;
+    padding: 25px;
 }
 
 
