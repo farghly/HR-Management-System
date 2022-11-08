@@ -1,7 +1,5 @@
 aside {
-    width: 300px;
     background-color: white;
-
 }
 
 .profile-img {
@@ -9,38 +7,84 @@ aside {
     height: 80px;
     border-radius: 50%;
 }
-svg{
-    background-color: inherit;
-    /* color:gray; */
-}
+
+
 aside svg {
     font-size: 20px;
-    flex-basis: 20%;
-    color:black;
+    height: 30px;
+    width: 30px;
+    color: white;
+
 }
 
+.sett {
+    background-color: black
+}
+
+.log-out {
+    background-color: red;
+}
+
+@media (max-width:990px) {
+    aside .btns {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 .links {
     margin: 0;
     padding: 0;
 }
 
-a {
+.nav-text {
     color: black;
     font-size: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+}
+
+.nav-text svg {
+    height: 30px;
+    width: 30px;
+    background: linear-gradient(106.37deg, #fdbe71 29.63%, #fd9397 51.55%, #f990f4 90.85%);
+}
+
+@media (max-width:500px) {
+    .nav-text svg {
+        height: 18px;
+        width: 18px;
+    }
+}
+
+.nav-text span {
+    flex-basis: 60%;
+    font-size: 18px;
 }
 
 li {
-    transition: 0.2s all;
+    transition: 0.3s all;
     padding: 10px;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 li:hover {
-    background-color: blueviolet;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
     color: white;
 }
 
 li:hover a {
     color: white;
+
+}
+
+@media (max-width:990px) {
+    a span {
+        display: none;
+    }
 }

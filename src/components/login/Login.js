@@ -1,7 +1,8 @@
-import './login.css'
-function Login(){
-    return(
-        <div className="container login p-md-5 p-4">
+import "./login.css";
+function Login() {
+  return (
+    <div className="parent-log">
+      <div className="container login px-4 px-md-5">
         <form className="my-4 w-100 m-auto">
           <p className="heading">Sign in</p>
           <div className="box">
@@ -26,16 +27,22 @@ function Login(){
           </div>
           <button className="signInBtn p-3 my-4 w-100">Sign in</button>
           <p className="text">
-            <a href="#" className="me-auto">Forgot Password</a>
+            <a href="#" className="me-auto forgotPass">
+              Forgot Password
+            </a>
           </p>
           <p className="signUp">
-            <span>Don't have an account?
-            <button class="signInBtn">Sign Up</button></span>
+            <span>
+              Don't have an account?
+              <button href="#" class="goToSignUpPage">
+                Sign Up
+              </button>
+            </span>
           </p>
         </form>
       </div>
-    
-    )
+    </div>
+  );
 }
 
-export default Login
+export default Login;

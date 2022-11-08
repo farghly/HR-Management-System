@@ -1,16 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-}
-
 body {
-  margin-top:30px;
-  background-color: #eef5f9;
-  color: black;
+  background: linear-gradient(106.37deg, #ffe1bc 29.63%, #ffcfd1 51.55%, #f3c6f1 90.85%);
   font-family: "poppins", sans-serif;
+  height: fit-content;
+  background-attachment: fixed;
 }

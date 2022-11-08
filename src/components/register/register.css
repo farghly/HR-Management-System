@@ -1,24 +1,28 @@
-
 :root {
     --main-clr: #2d5aa5;
     /* --main-clr: #2da55f; */
 }
 
-.container.register{
+.parent-reg {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+}
+
+.container.register {
     background: #ffffff;
     display: flex;
     justify-content: center;
     flex-direction: column;
     color: black;
     width: 500px;
-    padding: 20px;
     box-shadow: 0px 0px 15px rgb(0 0 0 / 30%);
     border-radius: 25px;
 }
 
 @media (max-width:500px) {
-    .container {
-        width: 100%;
+    .container.register {
+        width: 96vw;
     }
 }
 
@@ -33,19 +37,19 @@
     margin: 0.2em 0
 }
 
-.container .box p {
+.container.register .box p {
     color: rgba(30, 30, 30, 0.701);
     margin-top: 5px;
 }
 
-.container .box div {
+.container.register .box div {
     position: relative;
     width: 100%;
     height: 50px;
     margin: 0.2em 0
 }
 
-.container .box input {
+.container.register .box input {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -59,17 +63,17 @@
     transition: all 0.3s;
 }
 
-.container .box input:focus {
-    border: 1px solid var(--main-clr);
+.container.register .box input:focus {
+    border: 2px solid var(--main-clr);
     transition: all 0.1s;
 }
 
-.container .box input:focus::placeholder {
+.container.register .box input:focus::placeholder {
     color: rgb(0, 0, 0);
     transition: all 0.3s
 }
 
-.container .box div::before {
+.container.register .box div::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -109,10 +113,23 @@
     text-align: center;
 }
 
-.signInBtn {
-    color: white;
-    transition: 0.3s all;
+.goToSignInPage {
+    transition: 0.3s all ease-in;
+    background-color: white;
+    color: var(--main-clr);
+    border: 1px solid var(--main-clr);
+    display: inline-block;
+    margin-left: 10px;
+    border-radius: 10px;
 }
+
+.goToSignInPage:hover {
+    color: white;
+    background-color: var(--main-clr);
+    scale: 0.98;
+}
+
+
 
 a {
     text-decoration: none;
