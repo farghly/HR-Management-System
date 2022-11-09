@@ -4,10 +4,8 @@ function Dashboard() {
   return (
     <section>
       <div className="container-fluid dashboard">
-        <div class="parent d-flex">
-          <div className="child-1">
-            <Navbar />
-          </div>
+        
+         
           <div className="child-2">
             <div className="details-cards d-grid gap-4 pb-5">
               <div className="one d-flex gap-4 flex-column details-card">
@@ -117,7 +115,7 @@ function Dashboard() {
             {/* end of table */}
           </div>
         </div>
-      </div>
+      
     </section>
   );
 }

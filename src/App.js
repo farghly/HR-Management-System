@@ -11,12 +11,22 @@ import Login from './components/login/Login'
 import Department from './components/organization/department/Department'
 import Desgination from "./components/organization/designation/Desgination";
 import Register from "./components/register/register";
+
 import AddEmployee from "./components/Employee/Addemployee";
 import Employees from "./components/Employee/Employee";
+import Navbar from "./components/Navbar/Navbar";
+
 
 function App() {
   return (
-    <BrowserRouter>
+    
+   <>
+   <div class="parent d-flex">
+    <div className="child-1">
+            <Navbar />
+          </div>
+      <div class="child-2">
+      <BrowserRouter>
      <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/department" element={<Department />} />
@@ -26,7 +36,10 @@ function App() {
         <Route path="/employees/addemployee" element={<AddEmployee />} />
         <Route path="/designation/" element={<Desgination />} />
      </Routes>
-  </BrowserRouter>
+       </BrowserRouter>
+      </div>
+      </div>
+   </>
       
   );
 }
