@@ -1,0 +1,76 @@
+h3 {
+    border-bottom: 1px solid rgb(0, 153, 255);
+    position: relative;
+    padding: 20px;
+}
+
+h3::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border: 8px solid;
+    border-color: rgb(0, 153, 255) transparent transparent rgb(0, 153, 255);
+    top: 0;
+    left: 0;
+}
+
+form input:not([type="file"]) {
+    padding: 10px 15px;
+}
+
+form input[type="file"] {
+    padding: 8px 10px;
+    background-color: white;
+}
+
+form select {
+    padding: 14px 20px;
+}
+
+table {
+    border: 1px solid rgb(123, 123, 123);
+}
+
+form {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input {
+    border: none;
+    outline: none;
+    transition: 0.3s all;
+
+}
+
+input:focus {
+    box-shadow: 0 0 7px rgba(0 0 0 / 40%);
+    border: none;
+    outline: none;
+}
+
+.btn {
+    width: 46%;
+}
+
+.employee-list {
+    font-size: 20px;
+    width: fit-content;
+    padding: 12px 30px;
+}
+
+
+.addemployee {
+    max-width: 1550px;
+    padding: 10px;
+}
