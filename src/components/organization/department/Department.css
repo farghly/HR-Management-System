@@ -3,6 +3,10 @@
     position: relative;
 }
 
+.department {
+    justify-content: space-evenly;
+}
+
 .department h3::before {
     position: absolute;
     content: "";
@@ -15,17 +19,16 @@
 }
 
 .department>div {
-    background-color: white;
     box-shadow: 6px 8px 12px rgba(0 0 0 / 10%);
 }
 
 .department .left-side {
-    flex-basis: 40%;
+    /* flex-basis: 40%; */
     height: fit-content;
 }
 
 .department .right-side {
-    flex-basis: 60%;
+    /* flex-basis: 60%; */
 }
 
 button {

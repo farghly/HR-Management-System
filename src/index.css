@@ -5,8 +5,17 @@ body {
   background-attachment: fixed;
 }
 
-ul{
+ul {
   list-style: none;
+}
+
+.main {
+  max-width: 1550px;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 20px auto;
+  width: 98% !important;
+  background-color: #ffffff8a;
 }
 
 .parent {
@@ -16,19 +25,27 @@ ul{
 
 .parent>div {
   height: fit-content;
+  border-radius: 25px;
 }
 
 .child-1 {
   width: 20%;
+  min-width: 60px;
+  /* backdrop-filter: blur(15px);
+  background-color: #ffffff6b; */
   padding: 10px;
-  border-radius: 25px;
-  background-color: white;
+  background-color: #ffffff7a;
 }
 
 .child-2 {
   width: 80%;
-  backdrop-filter: blur(15px);
-  background-color: #ffffff6b;
-  border-radius: 25px;
+  /* backdrop-filter: blur(15px);
+  background-color: #ffffff6b; */
   padding: 25px;
+}
+
+@media (max-width:600px) {
+  .child-2 {
+    padding: 15px;
+  }
 }

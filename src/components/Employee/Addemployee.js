@@ -2,14 +2,10 @@ import "./styles.css";
 import Navbar from "../Navbar/Navbar";
 function AddEmployee() {
   return (
-    <section>
-    <div class="container-fluid addemployee">
-    <div className="parent d-flex">
-    <div className="child-1">
-            <Navbar />
-        </div>  
-      <div class="child-2">
-      <a href="/employees" class="btn btn-primary my-3 employee-list">Employee List</a>
+    <div class=" addemployee">
+      <a href="/employees" class="btn btn-primary my-3 employee-list">
+        Employee List
+      </a>
       <h3>Add New Employee</h3>
       <form action="" class="d-grid gap-4 my-5">
         <div class="data d-flex flex-column gap-2">
@@ -76,11 +72,8 @@ function AddEmployee() {
           <input class="btn btn-success me-3" type="submit" value="Save" />
           <input class="btn btn-danger" type="reset" value="Cancel" />
         </div>
-      </form>           
-      </div>
+      </form>
     </div>
-    </div>
-  </section>
   );
 }
 

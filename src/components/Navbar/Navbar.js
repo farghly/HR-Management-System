@@ -1,10 +1,11 @@
 import "./navbar.css";
-
 function Navbar() {
   return (
     <aside>
       <div class="up text-center pb-5">
-        <h1 class="logo mb-4">HR Project</h1>
+        <h1 class="logo mb-4 d-flex">
+          <img src="https://via.placeholder.com/150" alt="" class="logo-img " />
+        </h1>
         <div class="data">
           <img
             src="https://via.placeholder.com/150"
@@ -23,43 +24,36 @@ function Navbar() {
         </div>
       </div>
       <div class="down">
-        <ul class="links d-flex flex-column gap-lg-3 gap-2">
+        <ul class="links d-flex flex-column gap-lg-2 gap-1">
           <li class="d-flex gap-3 align-items-center">
             <a href="/" class="nav-text">
               <i class="fa-solid fa-gauge"></i>
               <span>Dashboard</span>
             </a>
           </li>
-          <li class="d-flex gap-3 align-items-center">
-            <a href="#" class="nav-text">
+          <li>
+            <button
+              class="btn btn-secondary dropdown-toggle drpdwn"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
               <i class="fa-solid fa-sitemap"></i>
               <span>Organization</span>
-            </a>
-          </li>
-          <li>
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown button
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <a class="dropdown-item" href="/department">
-                      Department
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/designation">
-                   Designation
-                  </a>
-                </li>
-              </ul>
-            </div>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item" href="/department">
+                  Department
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/designation">
+                  Designation
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="d-flex gap-3 align-items-center">
             <a href="/employees" class="nav-text">

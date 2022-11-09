@@ -59,7 +59,7 @@ input:focus {
     outline: none;
 }
 
-.btn {
+.addemployee .btns .btn {
     width: 46%;
 }
 
@@ -73,4 +73,14 @@ input:focus {
 .addemployee {
     max-width: 1550px;
     padding: 10px;
+}
+
+.ser {
+    justify-content: end;
+    padding: 10px;
+    align-items: center;
+}
+
+.ser [type="search"] {
+    padding: 8px 12px;
 }
