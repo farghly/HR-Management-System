@@ -2,13 +2,8 @@ import "./styles.css";
 import Navbar from "../Navbar/Navbar";
 function Employees() {
   return (
-    <section>
-    <div class="container-fluid employee">
-    <div className="parent d-flex">
-    <div className="child-1">
-            <Navbar />
-        </div>  
-      <div class="child-2">
+      
+    <>
       <div class="container bg-light">
         <h3 class="p-3 ps-4">Employee List</h3>
         <div class="ser d-flex gap-2">
@@ -56,11 +51,7 @@ function Employees() {
           </table>
         </div>
       </div>
-                
-      </div>
-    </div>
-    </div>
-  </section>
+      </>
   );
 }
 
