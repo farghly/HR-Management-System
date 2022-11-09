@@ -1,12 +1,8 @@
 import "./dashboard.css";
 import Navbar from "../Navbar/Navbar";
 function Dashboard() {
-  return (
-    <section>
-      <div className="container-fluid dashboard">
-        
-         
-          <div className="child-2">
+  return (    
+          <>
             <div className="details-cards d-grid gap-4 pb-5">
               <div className="one d-flex gap-4 flex-column details-card">
                 <div className="first-card bg-white d-flex align-items-center p-3">
@@ -113,10 +109,9 @@ function Dashboard() {
               </table>
             </div>
             {/* end of table */}
-          </div>
-        </div>
+          
+        </>
       
-    </section>
   );
 }
 
