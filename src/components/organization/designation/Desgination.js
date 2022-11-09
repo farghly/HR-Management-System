@@ -1,14 +1,9 @@
 import './../department/Department.css'
-import Navbar from "../../Navbar/Navbar";
 function Desgination(){
     return(
-        <section>
-        <div class="container d-flex gap-4 department">
-           <div class="parent d-flex">
-           <div class="child-1">
-             <Navbar />
-          </div>
-          <div class="child-2">
+        
+        // <div class="container d-flex gap-4 department">
+        <>
           <div class="left-side add-department">
             <h3 class="p-3 ps-4">Add Desgination</h3>
             <form action="" class="d-flex flex-column p-3 gap-3">
@@ -112,10 +107,9 @@ function Desgination(){
               </table>
             </div>
           </div>
-          </div>
-           </div>
-        </div>
-      </section>
+          
+      {/* </div> */}
+      </>        
     )
 }
 

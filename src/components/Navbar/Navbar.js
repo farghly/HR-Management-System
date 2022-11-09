@@ -1,4 +1,5 @@
 import "./navbar.css";
+
 function Navbar() {
   return (
     <aside>
@@ -10,7 +11,7 @@ function Navbar() {
             alt=""
             class="profile-img mb-3"
           />
-          <h3 class="mb-3">Thom Anderson</h3>
+          <h4 class="mb-3">Thom Anderson</h4>
           <div class="btns d-flex gap-lg-3 gap-2 justify-content-center">
             <a href="#" class="setting">
               <i class="fa-solid fa-gear sett"></i>
@@ -61,7 +62,7 @@ function Navbar() {
             </div>
           </li>
           <li class="d-flex gap-3 align-items-center">
-            <a href="#" class="nav-text">
+            <a href="/employees" class="nav-text">
               <i class="fa-solid fa-user-group"></i>
               <span>Employees</span>
             </a>

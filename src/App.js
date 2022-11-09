@@ -5,7 +5,6 @@ import {
   Link,
   Outlet
 } from "react-router-dom";
-import './App.css';
 import Dashboard from './components/Dashboard/Dashboard'
 import Login from './components/login/Login'
 import Department from './components/organization/department/Department'
@@ -21,6 +20,7 @@ function App() {
   return (
     
    <>
+   <div className="container-fluid dashboard">
    <div class="parent d-flex">
     <div className="child-1">
             <Navbar />
@@ -39,6 +39,7 @@ function App() {
        </BrowserRouter>
       </div>
       </div>
+    </div>
    </>
       
   );

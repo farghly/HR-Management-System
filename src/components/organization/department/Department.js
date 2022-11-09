@@ -1,12 +1,7 @@
 import './Department.css'
-import Navbar from "../../Navbar/Navbar";
 function Department(){
     return(
         <div class="container-fluid d-flex gap-4 department">
-          <div class="child-1">
-            <Navbar />
-          </div>
-          <div class="child-2">
           <div class="left-side add-department">
             <h3 class="p-3 ps-4">Add Department</h3>
             <form action="" class="d-flex flex-column p-3 gap-3">
@@ -111,7 +106,6 @@ function Department(){
             </div>
           </div>
         </div>
-      </div>
     )
 }
 
