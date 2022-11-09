@@ -4,3 +4,31 @@ body {
   height: fit-content;
   background-attachment: fixed;
 }
+
+ul{
+  list-style: none;
+}
+
+.parent {
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.parent>div {
+  height: fit-content;
+}
+
+.child-1 {
+  width: 20%;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.child-2 {
+  width: 80%;
+  backdrop-filter: blur(15px);
+  background-color: #ffffff6b;
+  border-radius: 25px;
+  padding: 25px;
+}

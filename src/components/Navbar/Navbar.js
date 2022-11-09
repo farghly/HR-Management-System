@@ -24,7 +24,7 @@ function Navbar() {
       <div class="down">
         <ul class="links d-flex flex-column gap-lg-3 gap-2">
           <li class="d-flex gap-3 align-items-center">
-            <a href="#" class="nav-text">
+            <a href="/" class="nav-text">
               <i class="fa-solid fa-gauge"></i>
               <span>Dashboard</span>
             </a>
@@ -48,18 +48,13 @@ function Navbar() {
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Action
+                  <a class="dropdown-item" href="/department">
+                      Department
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Something else here
+                  <a class="dropdown-item" href="/designation">
+                   Designation
                   </a>
                 </li>
               </ul>
