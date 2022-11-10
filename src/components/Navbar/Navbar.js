@@ -32,6 +32,39 @@ function Navbar() {
             </a>
           </li>
           <li>
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button
+                    class="accordion-button collapsed drpdwn"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseOne"
+                  >
+                    <i class="fa-solid fa-sitemap"></i>
+                    <span>Organization</span>
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseOne"
+                  class="accordion-collapse collapse "
+                  aria-labelledby="panelsStayOpen-headingOne"
+                >
+                  <div class="accordion-body d-flex flex-column gap-3">
+                    <a class="dropdown-item" href="/designation">
+                      Designation
+                    </a>
+                    <a class="dropdown-item" href="/department">
+                      Department
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
             <button
               class="btn btn-secondary dropdown-toggle drpdwn"
               type="button"

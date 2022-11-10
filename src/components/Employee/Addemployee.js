@@ -2,8 +2,8 @@ import "./styles.css";
 import Navbar from "../Navbar/Navbar";
 function AddEmployee() {
   return (
-    <div class=" addemployee">
-      <a href="/employees" class="btn btn-primary my-3 employee-list">
+    <>
+      <a href="/employees" class="btn btn-primary mb-3 employee-list">
         Employee List
       </a>
       <h3>Add New Employee</h3>
@@ -73,7 +73,7 @@ function AddEmployee() {
           <input class="btn btn-danger" type="reset" value="Cancel" />
         </div>
       </form>
-    </div>
+    </>
   );
 }
 

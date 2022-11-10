@@ -48,8 +48,8 @@ svg {
     color: white;
 }
 
-tr td:first-child {
-    line-height: 2;
+.department-list tr td:first-child {
+    line-height: 3;
 }
 
 tr {
