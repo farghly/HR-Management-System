@@ -1,3 +1,4 @@
+import Card from "../../components/Card/Card";
 import "./dashboard.css";
 function Dashboard() {
   return (
@@ -108,6 +109,13 @@ function Dashboard() {
         </table>
       </div>
       {/* end of table */}
+
+      <div className="details-cards d-grid gap-4 pb-5">
+        <Card title="10 Employees" details='View Details' former='Former Employees' />
+        <Card title="10 Employees" details='View Details' former='Former Employees' />
+        <Card title="10 Employees" details='View Details' former='Former Employees' />
+        <Card title="10 Employees" details='View Details' former='Former Employees' />
+      </div>
     </>
   );
 }
