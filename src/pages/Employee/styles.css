@@ -26,6 +26,7 @@ form input[type="file"] {
 
 form select {
     padding: 14px 20px;
+    border: none;
 }
 
 table {
@@ -66,7 +67,7 @@ input:focus {
 .employee-list {
     font-size: 20px;
     width: fit-content;
-    padding: 12px 30px;
+    padding: 12px 20px;
 }
 
 
