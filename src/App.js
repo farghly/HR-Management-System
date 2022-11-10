@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Login from "./components/login/Login";
-import Department from "./components/organization/department/Department";
-import Desgination from "./components/organization/designation/Desgination";
-import Register from "./components/register/register";
-import AddEmployee from "./components/Employee/Addemployee";
-import Employees from "./components/Employee/Employee";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Login from "./pages/login/Login";
+import Department from "./pages/organization/department/Department";
+import Desgination from "./pages/organization/designation/Desgination";
+import Register from "./pages/register/register";
+import AddEmployee from "./pages/Employee/Addemployee";
+import Employees from "./pages/Employee/Employee";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
