@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 function Employees() {
   return (
     <>
-      <a
-        href="/employees/addemployee"
+      <Link
+          to="/employees/addemployee"
         class="btn btn-primary mb-3 employee-list"
       >
         Add Employee
-      </a>
+      </Link>
       <h3 class="p-3 ps-4">Employee List</h3>
       <div class="ser d-flex gap-2">
         <h4>Search:</h4>

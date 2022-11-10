@@ -54,18 +54,18 @@ function Navbar() {
                   aria-labelledby="panelsStayOpen-headingOne"
                 >
                   <div class="accordion-body d-flex flex-column gap-3">
-                    <a class="dropdown-item" href="/designation">
+                    <Link class="dropdown-item ms-4" to="/designation">
                       Designation
-                    </a>
-                    <a class="dropdown-item" href="/department">
+                    </Link>
+                    <Link class="dropdown-item ms-4" to="/department">
                       Department
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </li>
-          <li>
+          {/* <li>
             <button
               class="btn btn-secondary dropdown-toggle drpdwn"
               type="button"
@@ -88,7 +88,7 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li class="d-flex gap-3 align-items-center">
             <Link to="/employees" class="nav-text">
               <i class="fa-solid fa-user-group"></i>
