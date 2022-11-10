@@ -1,5 +1,4 @@
 import "./dashboard.css";
-import Navbar from "../Navbar/Navbar";
 function Dashboard() {
   return (
     <>

@@ -1,11 +1,11 @@
 import "./styles.css";
-import Navbar from "../Navbar/Navbar";
+import { Link } from "react-router-dom";
 function AddEmployee() {
   return (
     <>
-      <a href="/employees" class="btn btn-primary mb-3 employee-list">
+      <Link to="/employees" class="btn btn-primary mb-3 employee-list">
         Employee List
-      </a>
+      </Link>
       <h3>Add New Employee</h3>
       <form action="" class="d-grid gap-4 my-5">
         <div class="data d-flex flex-column gap-2">

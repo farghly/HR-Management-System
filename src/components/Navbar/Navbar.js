@@ -1,4 +1,5 @@
 import "./navbar.css";
+import {Link} from 'react-router-dom'
 function Navbar() {
   return (
     <aside>
@@ -14,22 +15,22 @@ function Navbar() {
           />
           <h4 class="mb-3">Thom Anderson</h4>
           <div class="btns d-flex gap-lg-3 gap-2 justify-content-center">
-            <a href="#" class="setting">
+            <Link to="#" class="setting">
               <i class="fa-solid fa-gear sett"></i>
-            </a>
-            <a href="#" class="logOut">
+            </Link>
+            <Link to="#" class="logOut">
               <i class="fa-solid fa-power-off log-out"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
       <div class="down">
         <ul class="links d-flex flex-column gap-lg-2 gap-1">
           <li class="d-flex gap-3 align-items-center">
-            <a href="/" class="nav-text">
+            <Link to="/" class="nav-text">
               <i class="fa-solid fa-gauge"></i>
               <span>Dashboard</span>
-            </a>
+            </Link>
           </li>
           <li>
             <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -77,34 +78,29 @@ function Navbar() {
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li>
-                <a class="dropdown-item" href="/department">
+                <Link class="dropdown-item" to="/department">
                   Department
-                </a>
+                </Link>
               </li>
               <li>
-                <a class="dropdown-item" href="/designation">
+                <Link class="dropdown-item" to="/designation">
                   Designation
-                </a>
+                </Link>
               </li>
             </ul>
           </li>
           <li class="d-flex gap-3 align-items-center">
-            <a href="/employees" class="nav-text">
+            <Link to="/employees" class="nav-text">
               <i class="fa-solid fa-user-group"></i>
               <span>Employees</span>
-            </a>
+            </Link>
           </li>
           <li class="d-flex gap-3 align-items-center">
-            <a href="#" class="nav-text">
+            <Link to="#" class="nav-text">
               <i class="fa-solid fa-briefcase"></i> <span>Attendance</span>
-            </a>
+            </Link>
           </li>
-          <li class="d-flex gap-3 align-items-center">
-            <a href="#" class="nav-text">
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <span>Leave</span>
-            </a>
-          </li>
+       
           <li class="d-flex gap-3 align-items-center">
             <a href="#" class="nav-text">
               <i class="fa-solid fa-receipt"></i>
@@ -116,6 +112,12 @@ function Navbar() {
               <i class="fa-solid fa-hurricane"></i>
               <span>Loan</span>
             </a>
+          </li>
+          <li class="d-flex gap-3 align-items-center">
+            <Link to="/login" class="nav-text">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span>Leave</span>
+            </Link>
           </li>
         </ul>
       </div>
