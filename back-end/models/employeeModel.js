@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+
 const employeeSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -104,6 +105,7 @@ employeeSchema.methods.comparePassword = async function (
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };
+
 employeeSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
@@ -127,4 +129,5 @@ employeeSchema.pre(/^find/, function (next) {
 
   next();
 });
+
 module.exports = mongoose.model("Employee", employeeSchema);
