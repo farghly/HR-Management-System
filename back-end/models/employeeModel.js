@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+
 const employeeSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -97,6 +98,14 @@ const employeeSchema = new mongoose.Schema({
   passwordResetToken: String,
   passwordResetExpires: Date,
 });
+
+employeeSchema.methods.comparePassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
+
 employeeSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
@@ -120,4 +129,5 @@ employeeSchema.pre(/^find/, function (next) {
 
   next();
 });
+
 module.exports = mongoose.model("Employee", employeeSchema);
