@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const app = express();
+const CORS = require("cors");
 const mongoose = require("mongoose");
 const rateLimiter = require("express-rate-limit");
 const helmet = require("helmet");
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
+app.use(CORS());
 dotenv.config({ path: "./back-end/config.env" });
 const DB = process.env.DATABASE.replace(
   "<PASSWORD>",

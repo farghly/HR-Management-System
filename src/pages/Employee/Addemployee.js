@@ -103,6 +103,7 @@ function AddEmployee() {
             name="department"
             className="select"
             onChange={changeHandler}
+            value={department}
           >
             <option name="one" value="one">
               One
@@ -119,6 +120,7 @@ function AddEmployee() {
             name="designation"
             className="select"
             onChange={changeHandler}
+            value={designation}
           >
             <option name="one" value="one">
               One
@@ -136,6 +138,7 @@ function AddEmployee() {
             name="role"
             className="select"
             onChange={changeHandler}
+            value={role}
           >
             <option value="admin" name="admin">
               Admin
@@ -152,6 +155,7 @@ function AddEmployee() {
             name="gender"
             className="select"
             onChange={changeHandler}
+            value={gender}
           >
             <option name="male" value="male">
               Male
