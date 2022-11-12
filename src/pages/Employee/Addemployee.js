@@ -1,77 +1,222 @@
 import "./styles.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import FormInput from "./../../components/form-input/FormInput.component";
+
+const defaultFormFields = {
+  email: "",
+  password: "",
+  firstName: "",
+  lastName: "",
+  contactNumber: "",
+  department: "",
+  designation: "",
+  role: "",
+  gender: "",
+  birthday: "",
+  joiningday: "",
+  leavingday: "",
+};
 function AddEmployee() {
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const {
+    email,
+    password,
+    firstName,
+    lastName,
+    contactNumber,
+    department,
+    designation,
+    role,
+    gender,
+    birthday,
+    joiningday,
+    leavingday,
+  } = formFields;
+  const changeHandler = (event) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
+  console.log(formFields);
+
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
+
   return (
     <>
-      <Link to="/employees" class="btn btn-primary mb-3 employee-list">
+      <Link to="/employees" className="btn btn-primary mb-3 employee-list">
         Employee List
       </Link>
       <h3>Add New Employee</h3>
-      <form action="" class="d-grid gap-4 my-5">
-        <div class="data d-flex flex-column gap-2">
-          <label for="fName">First Name</label>
-          <input type="text" id="fName" autocomplete="off" />
+      <form action="" className="d-grid gap-4 my-5">
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="First Name"
+            type="text"
+            id="fName"
+            autocomplete="off"
+            required
+            name="firstName"
+            value={firstName}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="lName">Last Name</label>
-          <input type="text" id="lName" autocomplete="off" />
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="Last Name"
+            type="text"
+            id="lName"
+            autocomplete="off"
+            required
+            name="lastName"
+            value={lastName}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" autocomplete="off" />
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="Email"
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="off"
+            required
+            value={email}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="">Contact Number</label>
-          <input type="number" />
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="Contact Number"
+            type="number"
+            required
+            name="contactNumber"
+            value={contactNumber}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
+        <div className="data d-flex flex-column gap-2">
           <label for="department">Department </label>
-          <select id="department" name="department" class="select">
-            <option value="one">One</option>
-            <option value="two">Two</option>
+          <select
+            id="department"
+            name="department"
+            className="select"
+            onChange={changeHandler}
+          >
+            <option name="one" value="one">
+              One
+            </option>
+            <option name="two" value="two">
+              Two
+            </option>
           </select>
         </div>
-        <div class="data d-flex flex-column gap-2">
+        <div className="data d-flex flex-column gap-2">
           <label for="designation">Designation </label>
-          <select id="designation" name="designation" class="select">
-            <option value="one">One</option>
-            <option value="two">Two</option>
+          <select
+            id="designation"
+            name="designation"
+            className="select"
+            onChange={changeHandler}
+          >
+            <option name="one" value="one">
+              One
+            </option>
+            <option name="two" value="two">
+              Two
+            </option>
           </select>
         </div>
-        <div class="data d-flex flex-column gap-2">
+        <div className="data d-flex flex-column gap-2">
           <label for="role">Role</label>
-          <select id="role" name="role" class="select">
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
+
+          <select
+            id="role"
+            name="role"
+            className="select"
+            onChange={changeHandler}
+          >
+            <option value="admin" name="admin">
+              Admin
+            </option>
+            <option value="user" name="user">
+              User
+            </option>
           </select>
         </div>
-        <div class="data d-flex flex-column gap-2">
+        <div className="data d-flex flex-column gap-2">
           <label for="gender">Gender</label>
-          <select id="gender" name="gender" class="select">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+          <select
+            id="gender"
+            name="gender"
+            className="select"
+            onChange={changeHandler}
+          >
+            <option name="male" value="male">
+              Male
+            </option>
+            <option name="female" value="female">
+              Female
+            </option>
           </select>
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="birth-day">Date Of Birth</label>
-          <input type="date" id="birth-day" name="birthday" />
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="Date Of Birth"
+            type="date"
+            id="birth-day"
+            name="birthday"
+            required
+            value={birthday}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="joining-day">Date Of Joining</label>
-          <input type="date" id="joining-day" name="joiningday" />
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="Date Of Joining"
+            type="date"
+            id="joining-day"
+            name="joiningday"
+            required
+            value={joiningday}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="leaving-day">Date Of Leaving</label>
-          <input type="date" id="leaving-day" name="leavingday" />
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="Date Of Leaving"
+            type="date"
+            id="leaving-day"
+            name="leavingday"
+            required
+            value={leavingday}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="myimage">Image</label>
-          <input type="file" id="myimage" name="" />
+        <div className="data d-flex flex-column gap-2">
+          <FormInput label="Image" type="file" id="myimage" name="" />
         </div>
-        <div class="btns">
-          <input class="btn btn-success me-3" type="submit" value="Save" />
-          <input class="btn btn-danger" type="reset" value="Cancel" />
-        </div>
+        {/* <div className="btns">
+          <FormInput
+            label="Save"
+            className="btn btn-success me-3"
+            type="submit"
+            value="Save"
+            required
+            value={email}
+            onChange={changeHandler}
+          />
+          <FormInput
+            label="Cancel"
+            className="btn btn-danger"
+            type="reset"
+            value="Cancel"
+            required
+            value={email}
+            onChange={changeHandler}
+          />
+        </div> */}
       </form>
     </>
   );

@@ -11,31 +11,31 @@ import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
     <>
-      
-        <BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
         <div className="container-fluid main">
-        <div class="parent d-flex">
-             <div className="child-1">
-               <Navbar />
-             </div>
-             <div class="child-2">
+          <div class="parent d-flex">
+            <div className="child-1">
+              <Navbar />
+            </div>
+            <div class="child-2">
               <Routes>
-                   <Route path="/" element={<Dashboard />} />
-                   <Route path="/department" element={<Department />} />
-                   <Route path="/login" element={<Login />} />
-                   <Route path="/register" element={<Register />} />
-                   <Route path="/employees" element={<Employees />} />
-                   <Route
-                     path="/employees/addemployee"
-                     element={<AddEmployee />}
-                   />
-                   <Route path="/designation/" element={<Desgination />} />
-                   </Routes>
-             </div>
-           </div>
-      </div>
-    </BrowserRouter>
-       
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/department" element={<Department />} />
+                {/* <Route path="/register" element={<Register />} /> */}
+                <Route path="/employees" element={<Employees />} />
+                <Route
+                  path="/employees/addemployee"
+                  element={<AddEmployee />}
+                />
+                <Route path="/designation/" element={<Desgination />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      </BrowserRouter>
     </>
   );
 }
