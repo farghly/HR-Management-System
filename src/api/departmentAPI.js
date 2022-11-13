@@ -1,7 +1,9 @@
 import axios from "axios";
+import { API } from "../config";
+
 
 const departmentAPI = axios.create({
-  baseURL: "http://localhost:9090/api/v1/",
+  baseURL: API,
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
