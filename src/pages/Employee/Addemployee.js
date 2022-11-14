@@ -105,6 +105,9 @@ function AddEmployee() {
             onChange={changeHandler}
             value={department}
           >
+            {/* <option name="one" value="one" selected disabled>
+              select a dep
+            </option> */}
             <option name="one" value="one">
               One
             </option>
@@ -122,7 +125,7 @@ function AddEmployee() {
             onChange={changeHandler}
             value={designation}
           >
-            <option name="one" value="one">
+            <option name="one" value="one" selected>
               One
             </option>
             <option name="two" value="two">
@@ -132,7 +135,6 @@ function AddEmployee() {
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="role">Role</label>
-
           <select
             id="role"
             name="role"
@@ -143,7 +145,7 @@ function AddEmployee() {
             <option value="admin" name="admin">
               Admin
             </option>
-            <option value="user" name="user">
+            <option value="user" name="user" selected>
               User
             </option>
           </select>
@@ -157,7 +159,7 @@ function AddEmployee() {
             onChange={changeHandler}
             value={gender}
           >
-            <option name="male" value="male">
+            <option name="male" value="male" selected>
               Male
             </option>
             <option name="female" value="female">

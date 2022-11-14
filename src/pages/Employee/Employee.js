@@ -1,10 +1,17 @@
+import { connect } from "react-redux";
+import { useEffect } from "react";
+import { fetchEmployees } from "./../../redux";
+
 import "./styles.css";
 import { Link } from "react-router-dom";
-function Employees() {
+function Employees({ employeesData, fetchEmployees }) {
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
   return (
     <>
       <Link
-          to="/employees/addemployee"
+        to="/employees/addemployee"
         class="btn btn-primary mb-3 employee-list"
       >
         Add Employee
@@ -27,7 +34,25 @@ function Employees() {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {employeesData &&
+              employeesData.employees &&
+              employeesData.employees.map((employee) => (
+                <>
+                  <tr>
+                    <td class="employee-name">{`${employee.firstName} ${employee.lastName} `}</td>
+                    <td class="employee-pin">911</td>
+                    <td class="employee-email">{employee.email}</td>
+                    <td class="employee-contact">{`${employee.contactNumber[0]} `}</td>
+                    <td class="employee-type">{employee.role}</td>
+                    <td>
+                      <button class="edit">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </>
+              ))}
+            {/* <tr>
               <td class="employee-name">Mo</td>
               <td class="employee-pin">911</td>
               <td class="employee-email">mo911@mo.com</td>
@@ -38,8 +63,8 @@ function Employees() {
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
               </td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td class="employee-name">Am</td>
               <td class="employee-pin">121</td>
               <td class="employee-email">am121@am.com</td>
@@ -50,7 +75,7 @@ function Employees() {
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
@@ -58,4 +83,15 @@ function Employees() {
   );
 }
 
-export default Employees;
+const mapStateToProps = (state) => {
+  return {
+    employeesData: state.employee,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchEmployees: () => dispatch(fetchEmployees()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Employees);
