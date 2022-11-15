@@ -34,6 +34,9 @@ function Employees() {
   // }, []);
   const deleteEmp = (event) => {
     deleteEmployee(event.currentTarget.id);
+    getEmployees().then((response) => {
+      setEmployees(response.data.data.data);
+    });
   };
 
   return (
