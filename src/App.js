@@ -1,17 +1,21 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/login/Login";
 import Department from "./pages/organization/department/Department";
 import Desgination from "./pages/organization/designation/Desgination";
 import Register from "./pages/register/register";
 import AddEmployee from "./pages/Employee/Addemployee";
+import EditEmployee from "./pages/Employee/editEmployee";
 import Employees from "./pages/Employee/Employee";
 import Navbar from "./components/Navbar/Navbar";
+import store from "./redux/store";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        {/* <Provider store={store}> */}
         <Routes>
           <Route path="/login" element={<Login />} />
         </Routes>
@@ -30,11 +34,16 @@ function App() {
                   path="/employees/addemployee"
                   element={<AddEmployee />}
                 />
+                <Route
+                  path="/employees/editEmployee/:id"
+                  element={<EditEmployee />}
+                />
                 <Route path="/designation/" element={<Desgination />} />
               </Routes>
             </div>
           </div>
         </div>
+        {/* </Provider> */}
       </BrowserRouter>
     </>
   );

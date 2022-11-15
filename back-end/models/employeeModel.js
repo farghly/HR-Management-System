@@ -14,37 +14,46 @@ const employeeSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  department: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Department",
-    required: true,
-  },
-  designation: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Designation",
-    required: true,
-  },
+  // department: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Department",
+  //   required: true,
+  // },
+  // designation: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Designation",
+  //   required: true,
+  // },
   role: {
     type: String,
     required: true,
     default: "employee",
-    enum: ["admin", "manager", "HR", "employee", "Senior", "junior", "Trainee"],
+    enum: [
+      "admin",
+      "manager",
+      "HR",
+      "employee",
+      "Senior",
+      "junior",
+      "Trainee",
+      "user",
+    ],
   },
-  tasks: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Task",
-      required: true,
-    },
-  ],
-  project: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Project",
-      required: true,
-    },
-  ],
-  Gender: {
+  // tasks: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Task",
+  //     required: true,
+  //   },
+  // ],
+  // project: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Project",
+  //     required: true,
+  //   },
+  // ],
+  gender: {
     type: String,
     required: true,
     enum: ["male", "female"],
@@ -62,16 +71,16 @@ const employeeSchema = new mongoose.Schema({
       max: 11,
     },
   ],
-  DateOfBirth: {
+  birthday: {
     type: Date,
     required: true,
   },
-  DateOfJoin: {
+  joiningday: {
     type: Date,
     required: true,
     default: Date.now(),
   },
-  DateOfLeave: {
+  leavingday: {
     type: Date,
   },
   email: {
@@ -113,21 +122,21 @@ employeeSchema.pre("save", async function (next) {
   next();
 });
 
-employeeSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: "tasks",
-  })
-    .populate({
-      path: "project",
-    })
-    .populate({
-      path: "department",
-    })
-    .populate({
-      path: "designation",
-    });
+// employeeSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: "tasks",
+//   })
+//     .populate({
+//       path: "project",
+//     })
+//     .populate({
+//       path: "department",
+//     })
+//     .populate({
+//       path: "designation",
+//     });
 
-  next();
-});
+//   next();
+// });
 
 module.exports = mongoose.model("Employee", employeeSchema);

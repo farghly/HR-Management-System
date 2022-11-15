@@ -41,7 +41,7 @@ exports.getEmployeeById = catchAsync(async (req, res, next) => {
 exports.updateEmployee = catchAsync(async (req, res, next) => {
   const employee = await Employee.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
-    runValidators: true,
+    runValidators: false,
   });
 
   if (!employee) {

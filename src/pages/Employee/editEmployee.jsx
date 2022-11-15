@@ -1,62 +1,60 @@
 import "./styles.css";
-import { Link, Form } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import FormInput from "./../../components/form-input/FormInput.component";
-import Button from "../../components/button/Button.component";
-import { createEmployee } from "./../../api/employeeAPI";
 
-const defaultFormFields = {
-  email: "",
-  password: "",
-  confirmPassword: "",
-  firstName: "",
-  lastName: "",
-  contactNumber: "",
-  department: "web development",
-  designation: "senior",
-  role: "employee",
-  gender: "male",
-  birthday: "",
-  joiningday: "",
-  leavingday: "",
-};
+import { editEmployee, getEmployeeById } from "./../../api/employeeAPI";
 function AddEmployee() {
+  const [employee, setEmployee] = useState({});
+  useEffect(() => {
+    getEmployeeById(params.id).then((res) => {
+      console.log(res.data.data.data);
+      setEmployee(res.data.data.data);
+    });
+  }, {});
+  const defaultFormFields = {
+    firstName: employee.firstName,
+    lastName: employee.lastName,
+    contactNumber: employee.contactNumber,
+    department: employee.department,
+    designation: employee.designation,
+    role: employee.role,
+    leavingday: employee.leavingday,
+  };
   const [formFields, setFormFields] = useState(defaultFormFields);
+  const navigate = useNavigate();
+  const params = useParams();
   const {
-    email,
-    password,
-    confirmPassword,
     firstName,
     lastName,
     contactNumber,
     department,
     designation,
     role,
-    gender,
-    birthday,
     joiningday,
     leavingday,
-    NID,
+    birthday,
   } = formFields;
   const changeHandler = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
-  console.log(formFields);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    createEmployee(formFields);
-    resetFormFields();
+    try {
+      editEmployee(params.id, formFields);
+      navigate("/employees");
+      resetFormFields();
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
-      <Link to="/employees" className="btn btn-primary mb-3 employee-list">
-        Employee List
-      </Link>
       <h3>Add New Employee</h3>
       <form onSubmit={submitHandler} className="d-grid gap-4 my-5">
         <div className="data d-flex flex-column gap-2">
@@ -65,7 +63,6 @@ function AddEmployee() {
             type="text"
             id="fName"
             autocomplete="off"
-            required
             name="firstName"
             value={firstName}
             onChange={changeHandler}
@@ -77,65 +74,16 @@ function AddEmployee() {
             type="text"
             id="lName"
             autocomplete="off"
-            required
             name="lastName"
             value={lastName}
             onChange={changeHandler}
           />
         </div>
-        <div className="data d-flex flex-column gap-2">
-          <FormInput
-            label="Email"
-            type="email"
-            id="email"
-            name="email"
-            autocomplete="off"
-            required
-            value={email}
-            onChange={changeHandler}
-          />
-        </div>
-        <div className="data d-flex flex-column gap-2">
-          <FormInput
-            label="Password"
-            type="password"
-            id="password"
-            name="password"
-            autocomplete="off"
-            required
-            value={password}
-            onChange={changeHandler}
-          />
-        </div>
-        <div className="data d-flex flex-column gap-2">
-          <FormInput
-            label="confirm Password"
-            type="password"
-            id="password"
-            name="confirmPassword"
-            autocomplete="off"
-            required
-            value={confirmPassword}
-            onChange={changeHandler}
-          />
-        </div>
-        <div className="data d-flex flex-column gap-2">
-          <FormInput
-            label="NID"
-            type="text"
-            id="NID"
-            name="NID"
-            autocomplete="off"
-            required
-            value={NID}
-            onChange={changeHandler}
-          />
-        </div>
+
         <div className="data d-flex flex-column gap-2">
           <FormInput
             label="Contact Number"
             type="number"
-            required
             name="contactNumber"
             value={contactNumber}
             onChange={changeHandler}
@@ -195,30 +143,13 @@ function AddEmployee() {
             </option>
           </select>
         </div>
-        <div className="data d-flex flex-column gap-2">
-          <label for="gender">Gender</label>
-          <select
-            id="gender"
-            name="gender"
-            className="select"
-            onChange={changeHandler}
-            value={gender}
-          >
-            <option name="male" value="male">
-              Male
-            </option>
-            <option name="female" value="female">
-              Female
-            </option>
-          </select>
-        </div>
+
         <div className="data d-flex flex-column gap-2">
           <FormInput
             label="Date Of Birth"
             type="date"
             id="birth-day"
             name="birthday"
-            required
             value={birthday}
             onChange={changeHandler}
           />
@@ -229,7 +160,6 @@ function AddEmployee() {
             type="date"
             id="joining-day"
             name="joiningday"
-            required
             value={joiningday}
             onChange={changeHandler}
           />
@@ -240,7 +170,6 @@ function AddEmployee() {
             type="date"
             id="leaving-day"
             name="leavingday"
-            required
             value={leavingday}
             onChange={changeHandler}
           />

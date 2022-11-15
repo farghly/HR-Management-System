@@ -1,15 +1,34 @@
+// import { connect } from "react-redux";
+import { useEffect, useState } from "react";
+// import { fetchEmployees } from "./../../redux";
+import { getEmployees } from "../../api/employeeAPI";
+
 import "./styles.css";
 import { Link } from "react-router-dom";
-
-
-
+// import { getEmployees } from "./../../api/index";
+// import { response } from "express";
+import { useNavigate } from "react-router-dom";
 
 
 function Employees() {
+  const [employees, setEmployees] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    getEmployees().then((response) => {
+      setEmployees(response.data.data.data);
+    });
+  }, []);
+
+  const navigateToEditEmployee = (event) => {
+    // console.log(event.currentTarget.id);
+
+    navigate(`/employees/editEmployee/${event.currentTarget.id}`);
+  };
+
   return (
     <>
       <Link
-          to="/employees/addemployee"
+        to="/employees/addemployee"
         class="btn btn-primary mb-3 employee-list"
       >
         Add Employee
@@ -32,7 +51,28 @@ function Employees() {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {employees &&
+              employees.map((employee) => (
+                <>
+                  <tr>
+                    <td class="employee-name">{`${employee.firstName} ${employee.lastName} `}</td>
+                    <td class="employee-pin">911</td>
+                    <td class="employee-email">{employee.email}</td>
+                    <td class="employee-contact">{`${employee.contactNumber[0]} `}</td>
+                    <td class="employee-type">{employee.role}</td>
+                    <td>
+                      <button
+                        class="edit"
+                        id={employee._id}
+                        onClick={navigateToEditEmployee}
+                      >
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </>
+              ))}
+            {/* <tr>
               <td class="employee-name">Mo</td>
               <td class="employee-pin">911</td>
               <td class="employee-email">mo911@mo.com</td>
@@ -43,8 +83,8 @@ function Employees() {
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
               </td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td class="employee-name">Am</td>
               <td class="employee-pin">121</td>
               <td class="employee-email">am121@am.com</td>
@@ -55,7 +95,7 @@ function Employees() {
                   <i class="fa-regular fa-pen-to-square"></i>
                 </button>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
@@ -63,4 +103,15 @@ function Employees() {
   );
 }
 
+// const mapStateToProps = (state) => {
+//   return {
+//     employeesData: state.employee,
+//   };
+// };
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     fetchEmployees: () => dispatch(fetchEmployees()),
+//   };
+// };
 export default Employees;
