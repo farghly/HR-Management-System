@@ -14,16 +14,16 @@ const employeeSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  // department: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Department",
-  //   required: true,
-  // },
-  // designation: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Designation",
-  //   required: true,
-  // },
+  department: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Department",
+    required: true,
+  },
+  designation: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Designation",
+    required: true,
+  },
   role: {
     type: String,
     required: true,
@@ -122,21 +122,14 @@ employeeSchema.pre("save", async function (next) {
   next();
 });
 
-// employeeSchema.pre(/^find/, function (next) {
-//   this.populate({
-//     path: "tasks",
-//   })
-//     .populate({
-//       path: "project",
-//     })
-//     .populate({
-//       path: "department",
-//     })
-//     .populate({
-//       path: "designation",
-//     });
+employeeSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "department",
+  }).populate({
+    path: "designation",
+  });
 
-//   next();
-// });
+  next();
+});
 
 module.exports = mongoose.model("Employee", employeeSchema);

@@ -1,9 +1,11 @@
 import "./styles.css";
 import { Link, Form } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FormInput from "./../../components/form-input/FormInput.component";
 import Button from "../../components/button/Button.component";
 import { createEmployee } from "./../../api/employeeAPI";
+import { getDepartments } from "./../../api/departmentAPI";
+import { getDesignations } from "./../../api/designationAPI";
 
 const defaultFormFields = {
   email: "",
@@ -21,6 +23,16 @@ const defaultFormFields = {
   leavingday: "",
 };
 function AddEmployee() {
+  const [departments, setDepartments] = useState([]);
+  const [designations, setDesignations] = useState([]);
+  useEffect(() => {
+    getDepartments().then((res) => {
+      setDepartments(res.data.data.data);
+    });
+    getDesignations().then((res) => {
+      setDesignations(res.data.data.data);
+    });
+  }, {});
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {
     email,
@@ -153,12 +165,11 @@ function AddEmployee() {
             {/* <option name="one" value="one"  disabled>
               select a dep
             </option> */}
-            <option name="one" value="one">
-              One
-            </option>
-            <option name="two" value="two">
-              Two
-            </option>
+            {departments.map((department) => (
+              <option id={department._id} value={department._id}>
+                {department.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -170,12 +181,11 @@ function AddEmployee() {
             onChange={changeHandler}
             value={designation}
           >
-            <option name="one" value="one">
-              One
-            </option>
-            <option name="two" value="two">
-              Two
-            </option>
+            {designations.map((designation) => (
+              <option id={designation._id} value={designation._id}>
+                {designation.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -240,7 +250,7 @@ function AddEmployee() {
             type="date"
             id="leaving-day"
             name="leavingday"
-            required
+            
             value={leavingday}
             onChange={changeHandler}
           />

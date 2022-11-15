@@ -8,20 +8,32 @@ import { Link } from "react-router-dom";
 // import { getEmployees } from "./../../api/index";
 // import { response } from "express";
 import { useNavigate } from "react-router-dom";
+import { deleteEmployee } from "./../../api/employeeAPI";
 
 function Employees() {
   const [employees, setEmployees] = useState([]);
+
   const navigate = useNavigate();
   useEffect(() => {
     getEmployees().then((response) => {
       setEmployees(response.data.data.data);
     });
   }, []);
-
+  employees.map((employee) => {
+    employee && console.log(employee);
+  });
   const navigateToEditEmployee = (event) => {
     // console.log(event.currentTarget.id);
 
     navigate(`/employees/editEmployee/${event.currentTarget.id}`);
+  };
+  // const refreshData = useEffect(() => {
+  //   getEmployees().then((response) => {
+  //     setEmployees(response.data.data.data);
+  //   });
+  // }, []);
+  const deleteEmp = (event) => {
+    deleteEmployee(event.currentTarget.id);
   };
 
   return (
@@ -42,7 +54,9 @@ function Employees() {
           <thead>
             <tr>
               <th scope="col">Employee Name</th>
-              <th scope="col">PIN</th>
+              <th scope="col"> Department</th>
+              <th scope="col"> Designation</th>
+
               <th scope="col">Email</th>
               <th scope="col">Contact</th>
               <th scope="col">User Type</th>
@@ -55,7 +69,15 @@ function Employees() {
                 <>
                   <tr>
                     <td class="employee-name">{`${employee.firstName} ${employee.lastName} `}</td>
-                    <td class="employee-pin">911</td>
+
+                    {employee.department && (
+                      <td class="employee-email">{employee.department.name}</td>
+                    )}
+                    {employee.designation && (
+                      <td class="employee-email">
+                        {employee.designation.name}
+                      </td>
+                    )}
                     <td class="employee-email">{employee.email}</td>
                     <td class="employee-contact">{`${employee.contactNumber[0]} `}</td>
                     <td class="employee-type">{employee.role}</td>
@@ -66,6 +88,13 @@ function Employees() {
                         onClick={navigateToEditEmployee}
                       >
                         <i class="fa-regular fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        class="edit"
+                        id={employee._id}
+                        onClick={deleteEmp}
+                      >
+                        <i class="fa-solid fa-trash"></i>
                       </button>
                     </td>
                   </tr>
