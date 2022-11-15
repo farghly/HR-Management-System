@@ -1,18 +1,21 @@
 import "./styles.css";
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 import { useState } from "react";
 import FormInput from "./../../components/form-input/FormInput.component";
+import Button from "../../components/button/Button.component";
+import { createEmployee } from "./../../api/employeeAPI";
 
 const defaultFormFields = {
   email: "",
   password: "",
+  confirmPassword: "",
   firstName: "",
   lastName: "",
   contactNumber: "",
-  department: "",
-  designation: "",
-  role: "",
-  gender: "",
+  department: "web development",
+  designation: "senior",
+  role: "employee",
+  gender: "male",
   birthday: "",
   joiningday: "",
   leavingday: "",
@@ -22,6 +25,7 @@ function AddEmployee() {
   const {
     email,
     password,
+    confirmPassword,
     firstName,
     lastName,
     contactNumber,
@@ -32,6 +36,7 @@ function AddEmployee() {
     birthday,
     joiningday,
     leavingday,
+    NID,
   } = formFields;
   const changeHandler = (event) => {
     const { name, value } = event.target;
@@ -42,14 +47,18 @@ function AddEmployee() {
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    createEmployee(formFields);
+    resetFormFields();
+  };
   return (
     <>
       <Link to="/employees" className="btn btn-primary mb-3 employee-list">
         Employee List
       </Link>
       <h3>Add New Employee</h3>
-      <form action="" className="d-grid gap-4 my-5">
+      <form onSubmit={submitHandler} className="d-grid gap-4 my-5">
         <div className="data d-flex flex-column gap-2">
           <FormInput
             label="First Name"
@@ -88,6 +97,42 @@ function AddEmployee() {
         </div>
         <div className="data d-flex flex-column gap-2">
           <FormInput
+            label="Password"
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="off"
+            required
+            value={password}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="confirm Password"
+            type="password"
+            id="password"
+            name="confirmPassword"
+            autocomplete="off"
+            required
+            value={confirmPassword}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="NID"
+            type="text"
+            id="NID"
+            name="NID"
+            autocomplete="off"
+            required
+            value={NID}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
             label="Contact Number"
             type="number"
             required
@@ -105,7 +150,7 @@ function AddEmployee() {
             onChange={changeHandler}
             value={department}
           >
-            {/* <option name="one" value="one" selected disabled>
+            {/* <option name="one" value="one"  disabled>
               select a dep
             </option> */}
             <option name="one" value="one">
@@ -125,7 +170,7 @@ function AddEmployee() {
             onChange={changeHandler}
             value={designation}
           >
-            <option name="one" value="one" selected>
+            <option name="one" value="one">
               One
             </option>
             <option name="two" value="two">
@@ -145,7 +190,7 @@ function AddEmployee() {
             <option value="admin" name="admin">
               Admin
             </option>
-            <option value="user" name="user" selected>
+            <option value="user" name="user">
               User
             </option>
           </select>
@@ -159,7 +204,7 @@ function AddEmployee() {
             onChange={changeHandler}
             value={gender}
           >
-            <option name="male" value="male" selected>
+            <option name="male" value="male">
               Male
             </option>
             <option name="female" value="female">
@@ -203,26 +248,10 @@ function AddEmployee() {
         <div className="data d-flex flex-column gap-2">
           <FormInput label="Image" type="file" id="myimage" name="" />
         </div>
-        {/* <div className="btns">
-          <FormInput
-            label="Save"
-            className="btn btn-success me-3"
-            type="submit"
-            value="Save"
-            required
-            value={email}
-            onChange={changeHandler}
-          />
-          <FormInput
-            label="Cancel"
-            className="btn btn-danger"
-            type="reset"
-            value="Cancel"
-            required
-            value={email}
-            onChange={changeHandler}
-          />
-        </div> */}
+        <button type="submit" style={{ color: "black" }}>
+          Save
+        </button>
+        {/* <div className="btns"></div> */}
       </form>
     </>
   );
