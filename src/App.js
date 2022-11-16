@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/login/Login";
 import Department from "./pages/organization/department/Department";
@@ -9,7 +9,10 @@ import AddEmployee from "./pages/Employee/Addemployee";
 import EditEmployee from "./pages/Employee/editEmployee";
 import Employees from "./pages/Employee/Employee";
 import Navbar from "./components/Navbar/Navbar";
-import store from "./redux/store";
+// import store from "./redux/store";
+import Task from "./pages/tasks/task";
+import AddTask from "./pages/tasks/addtask";
+
 
 function App() {
   return (
@@ -39,6 +42,8 @@ function App() {
                   element={<EditEmployee />}
                 />
                 <Route path="/designation/" element={<Desgination />} />
+                <Route path="/tasks" element={<Task />} />
+                <Route path="/tasks/addtask" element={<AddTask />} />
               </Routes>
             </div>
           </div>

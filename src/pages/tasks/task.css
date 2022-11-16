@@ -1,0 +1,77 @@
+
+form input:not([type="file"]) {
+    padding: 10px 15px;
+}
+
+form input[type="file"] {
+    padding: 8px 10px;
+    background-color: white;
+}
+
+form select {
+    padding: 14px 20px;
+}
+
+form {
+    flex-direction: column;
+    width: 50%;
+}
+
+form input[type="submit"] {
+    width: 50%;
+    align-self: center;
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 100%;
+    }
+
+    form input[type="submit"] {
+        width: 100%;
+    }
+}
+
+input {
+    border: none;
+    outline: none;
+    transition: 0.3s all;
+
+}
+
+input:focus {
+    box-shadow: 0 0 7px rgba(0 0 0 / 40%);
+    border: none;
+    outline: none;
+}
+
+.task-list {
+    font-size: 20px;
+    width: fit-content;
+    padding: 12px 30px;
+}
+
+/* show all tasks css */
+.tasks {
+    /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.task-content {
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    background-color: #ffffff54 !important;
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, 20%);
+}
+
+.task-list {
+    font-size: 20px;
+    width: fit-content;
+    padding: 12px 30px;
+}
+
+.task-status {
+    background-color: rgba(128, 0, 128, 0.32);
+    color: purple;
+    border-radius: 10px;
+}
