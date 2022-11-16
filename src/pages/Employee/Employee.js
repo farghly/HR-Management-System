@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { deleteEmployee } from "./../../api/employeeAPI";
 
+
 function Employees() {
   const [employees, setEmployees] = useState([]);
 

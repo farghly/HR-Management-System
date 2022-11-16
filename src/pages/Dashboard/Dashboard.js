@@ -34,7 +34,7 @@ function Dashboard() {
           <div className="first-card bg-white d-flex align-items-center p-3">
             <i className="fa-regular fa-calendar bglightcoral"></i>
             <div className="card-text ms-2">
-              <h4>10 Employes</h4>
+              <h4>10 Employees</h4>
               <a to="/">View Details</a>
             </div>
           </div>
@@ -47,7 +47,7 @@ function Dashboard() {
           <div className="first-card bg-white d-flex align-items-center p-3">
             <i className="fa-solid fa-dollar-sign bglimegreen"></i>
             <div className="card-text ms-2">
-              <h4>10 Employes</h4>
+              <h4>10 Employees</h4>
               <a to="/">View Details</a>
             </div>
           </div>
