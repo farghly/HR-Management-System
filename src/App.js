@@ -10,8 +10,8 @@ import EditEmployee from "./pages/Employee/editEmployee";
 import Employees from "./pages/Employee/Employee";
 import Navbar from "./components/Navbar/Navbar";
 // import store from "./redux/store";
-import Task from "./pages/tasks/task";
-import AddTask from "./pages/tasks/addtask";
+import Task from "./pages/tasks/Task";
+import AddTask from "./pages/tasks/AddTask";
 
 
 function App() {

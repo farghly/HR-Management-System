@@ -63,6 +63,7 @@ function Desgination(){
                   return(
                     <tr>
                     <td>{data.DesignationName}</td>
+
                     <td class="d-flex gap-2">
                       <button class="edit">
                         <i class="fa-regular fa-pen-to-square"></i>
@@ -78,6 +79,8 @@ function Desgination(){
             
                
                 
+=======
+>>>>>>> Sedky
                 </tbody>
               </table>
             

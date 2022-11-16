@@ -1,5 +1,23 @@
+import { useState } from "react";
 import "./register.css";
+import FormInput from '../../components/form-input/FormInput.component';
+
+
+const defaultFormFields = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: ""
+
+}
 function Register() {
+  const [formRegister, setFormRegister] = useState(defaultFormFields);
+  const { firstName, lastName, email, password } = formRegister;
+  const changeHandler = (event) => {
+    const { name, value } = event.target;
+    setFormRegister({ ...formRegister, [name]: value });
+
+  };
   return (
     <div className="parent-reg">
       <div class="container register px-4 px-md-5">
@@ -8,40 +26,52 @@ function Register() {
           <div class="box">
             <p>First Name</p>
             <div>
-              <input
+              <FormInput
                 type="text"
                 autocomplete="off"
                 placeholder="Enter your First Name"
+                name='firstName'
+                value={firstName}
+                onChange={changeHandler}
               />
             </div>
           </div>
           <div class="box">
             <p>Last Name</p>
             <div>
-              <input
+              <FormInput
                 type="text"
                 autocomplete="off"
                 placeholder="Enter your Last Name"
+                name='lastName'
+                value={lastName}
+                onChange={changeHandler}
               />
             </div>
           </div>
           <div class="box">
             <p>Email</p>
             <div>
-              <input
+              <FormInput
                 type="email"
                 autocomplete="off"
                 placeholder="Enter your email"
+                name='email'
+                value={email}
+                onChange={changeHandler}
               />
             </div>
           </div>
           <div class="box">
             <p>Password</p>
             <div>
-              <input
+              <FormInput
                 type="Password"
                 autocomplete="off"
                 placeholder="Enter your password"
+                name="password"
+                value={password}
+                onChange={changeHandler}
               />
             </div>
           </div>

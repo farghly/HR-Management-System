@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import './task.css'
 function AddTask() {
     return ( 
       <>
-      <a href="#" class="btn btn-primary my-3 task-list">Tasks List</a>
+      <Link to="../tasks" class="btn btn-primary my-3 task-list">Tasks List</Link>
    <h3>Add New Task</h3>
    <form action="" class="d-flex gap-4 my-5">
      <div class="data d-flex flex-column gap-2">

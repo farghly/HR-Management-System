@@ -1,18 +1,12 @@
+import AddDepartment from "./AddDepartment";
 import "./Department.css";
 function Department() {
   return (
     <div class="gap-4 row department">
-      <div class="left-side add-department col-lg-5 col-12">
-        <h3 class="p-3 ps-4">Add Department</h3>
-        <form action="" class="d-flex flex-column p-3 gap-3">
-          <label for="">Department Name</label>
-          <input type="text" name="" id="" />
-          <div class="btns">
-            <button class="save bg-success me-2">Save</button>
-            <button class="cancel bg-danger">Cancel</button>
-          </div>
-        </form>
-      </div>
+
+      <AddDepartment/>
+
+
       <div class="right-side department-list col-lg-6 col-12">
         <h3 class="p-3 ps-4">Department List</h3>
         <div class="tab p-3">
