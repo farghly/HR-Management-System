@@ -11,7 +11,8 @@ import Employees from "./pages/Employee/Employee";
 import Navbar from "./components/Navbar/Navbar";
 // import store from "./redux/store";
 import Task from "./pages/tasks/Task";
-import AddTask from "./pages/tasks/AddTask";
+import AddTask from './pages/tasks/AddTask'
+
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
                 />
                 <Route path="/designation/" element={<Desgination />} />
                 <Route path="/tasks" element={<Task />} />
-                <Route path="/tasks/addtask" element={<AddTask />} />
+                  <Route path="/tasks/addtask" element={<AddTask />} />
               </Routes>
             </div>
           </div>
