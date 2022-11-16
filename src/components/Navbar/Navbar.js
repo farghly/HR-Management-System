@@ -1,6 +1,14 @@
 import "./navbar.css";
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/auth/authActions.action";
 function Navbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
   return (
     <aside>
       <div class="up text-center pb-5">
@@ -16,10 +24,14 @@ function Navbar() {
           <h4 class="mb-3">Thom Anderson</h4>
           <div class="btns d-flex gap-lg-3 gap-2 justify-content-center">
             <Link to="#" class="setting">
-              <i class="fa-solid fa-gear sett"></i>
+              <button onClick={handleLogout}>
+                <i class="fa-solid fa-gear sett"></i>
+              </button>
             </Link>
             <Link to="#" class="logOut">
-              <i class="fa-solid fa-power-off log-out"></i>
+              <button onClick={handleLogout}>
+                <i class="fa-solid fa-power-off log-out"></i>
+              </button>
             </Link>
           </div>
         </div>
@@ -100,7 +112,7 @@ function Navbar() {
               <i class="fa-solid fa-briefcase"></i> <span>Attendance</span>
             </Link>
           </li>
-       
+
           <li class="d-flex gap-3 align-items-center">
             <a href="#" class="nav-text">
               <i class="fa-solid fa-receipt"></i>
