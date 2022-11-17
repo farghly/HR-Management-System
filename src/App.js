@@ -63,14 +63,7 @@ function App() {
                       <Route path="/tasks/" element={<Task />} />
                       <Route path="/tasks/addtask" element={<AddTask />} />
                       <Route path="/projects/" element={<Project />} />
-<<<<<<< HEAD
                       <Route path="/projects/addproject" element={<AddProject />} />
-=======
-                      <Route
-                        path="/projects/addproject"
-                        element={<AddProject />}
-                      />
->>>>>>> amr
                     </Routes>
                   )}
                 </div>
