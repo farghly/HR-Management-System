@@ -116,12 +116,12 @@ function Navbar() {
 
           <li class="d-flex gap-3 align-items-center">
             <Link to="/projects" class="nav-text">
-              <i class="fa-solid fa-briefcase"></i> <span>projects</span>
+              <i class="fa-solid fa-briefcase"></i> <span>Projects</span>
             </Link>
           </li>
           <li class="d-flex gap-3 align-items-center">
             <Link to="/tasks" class="nav-text">
-              <i class="fa-solid fa-briefcase"></i> <span>tasks</span>
+              <i class="fa-solid fa-briefcase"></i> <span>Tasks</span>
             </Link>
           </li>
 

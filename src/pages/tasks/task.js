@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './task.css'
-import TasksCard from '../../components/Card/TasksCard';
+import TasksCard from '../../components/Cards/TasksCard';
 function Task() {
   return (
     <>
