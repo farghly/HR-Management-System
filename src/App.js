@@ -16,6 +16,8 @@ import { setCurrentUser, logout } from "./redux/auth/authActions.action";
 import Task from "./pages/tasks/Task";
 import AddTask from "./pages/tasks/AddTask";
 import Project from "./pages/projects/Project";
+import AddProject from './pages/projects/AddProject'
+
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -62,7 +64,8 @@ function App() {
                       <Route path="/designation/" element={<Desgination />} />
                       <Route path="/tasks/" element={<Task />} />
                       <Route path="/tasks/addtask" element={<AddTask />} />
-                      <Route path="/projects" element={<Project />} />
+                      <Route path="/projects/" element={<Project />} />
+                      <Route path="/projects/addproject" element={<AddProject />} />
                     </Routes>
                   )}
                 </div>
