@@ -59,10 +59,12 @@ function App() {
                   {auth.isAuthenticated && (
                     <Routes>
                       <Route path="/" element={<Dashboard />} />
-                      {!user.role === "admin" && (
+                      {user.role === "admin" ? (
+                        <Route path="/department" element={<Department />} />
+                      ) : (
                         <Route
                           path="/department"
-                          element={<Navigate to="/" />}
+                          element={<Navigate replace to="/" />}
                         />
                       )}
                       <Route path="/employees" element={<Employees />} />

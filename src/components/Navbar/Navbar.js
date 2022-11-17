@@ -33,7 +33,9 @@ function Navbar() {
             alt=""
             class="profile-img mb-3"
           />
-          <h4 class="mb-3">Thom Anderson</h4>
+          <h4 class="mb-3">
+            {user.firstName} {user.lastName}
+          </h4>
           <div class="btns d-flex gap-lg-3 gap-2 justify-content-center">
             <Link to="#" class="setting">
               <button>
@@ -50,47 +52,49 @@ function Navbar() {
       </div>
       <div class="down">
         <ul class="links d-flex flex-column gap-lg-2 gap-1">
-          <li class="d-flex gap-3 align-items-center">
-            <Link to="/" class="nav-text">
-              <i class="fa-solid fa-gauge"></i>
-              <span>Dashboard</span>
-            </Link>
-          </li>
-          <li>
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                  <button
-                    class="accordion-button collapsed drpdwn"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#panelsStayOpen-collapseOne"
-                    aria-expanded="false"
-                    aria-controls="panelsStayOpen-collapseOne"
+          {(user.role === "admin" || user.role === "hr") && (
+            <li class="d-flex gap-3 align-items-center">
+              <Link to="/" class="nav-text">
+                <i class="fa-solid fa-gauge"></i>
+                <span>Dashboard</span>
+              </Link>
+            </li>
+          )}
+          {(user.role === "admin" || user.role === "hr") && (
+            <li>
+              <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button
+                      class="accordion-button collapsed drpdwn"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#panelsStayOpen-collapseOne"
+                      aria-expanded="false"
+                      aria-controls="panelsStayOpen-collapseOne"
+                    >
+                      <i class="fa-solid fa-sitemap"></i>
+                      <span>Organization</span>
+                    </button>
+                  </h2>
+                  <div
+                    id="panelsStayOpen-collapseOne"
+                    class="accordion-collapse collapse "
+                    aria-labelledby="panelsStayOpen-headingOne"
                   >
-                    <i class="fa-solid fa-sitemap"></i>
-                    <span>Organization</span>
-                  </button>
-                </h2>
-                <div
-                  id="panelsStayOpen-collapseOne"
-                  class="accordion-collapse collapse "
-                  aria-labelledby="panelsStayOpen-headingOne"
-                >
-                  <div class="accordion-body d-flex flex-column gap-3">
-                    <Link class="dropdown-item ms-4" to="/designation">
-                      Designation
-                    </Link>
-                    {user.role === "admin" && (
+                    <div class="accordion-body d-flex flex-column gap-3">
+                      <Link class="dropdown-item ms-4" to="/designation">
+                        Designation
+                      </Link>
                       <Link class="dropdown-item ms-4" to="/department">
                         Department
                       </Link>
-                    )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
+            </li>
+          )}
           {/* <li>
             <button
               class="btn btn-secondary dropdown-toggle drpdwn"
@@ -115,12 +119,14 @@ function Navbar() {
               </li>
             </ul>
           </li> */}
-          <li class="d-flex gap-3 align-items-center">
-            <Link to="/employees" class="nav-text">
-              <i class="fa-solid fa-user-group"></i>
-              <span>Employees</span>
-            </Link>
-          </li>
+          {(user.role === "admin" || user.role === "hr") && (
+            <li class="d-flex gap-3 align-items-center">
+              <Link to="/employees" class="nav-text">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Employees</span>
+              </Link>
+            </li>
+          )}
 
           {/* <li class="d-flex gap-3 align-items-center">
             <Link to="#" class="nav-text">
