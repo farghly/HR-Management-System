@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Task.css";
-import TasksCard from "./TasksCard";
+import TasksCard from "../../components/Cards/TasksCard";
 function Task() {
   return (
     <>
@@ -19,38 +19,47 @@ function Task() {
         />
 
         <TasksCard
-          taskName="Final Project "
-          taskDetails="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          taskNotes="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
+          name="Final Project "
+          summary="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          description="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
         delectus?Fuga, hic pariatur asperiores at laboriosam error soluta reiciendis sapiente reprehenderit nesciunt!"
-          taskCase="To Do"
-          timeRequired="6"
-        />
-        <TasksCard
-          taskName="Final Project "
-          taskDetails="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          taskNotes="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
-        delectus?Fuga, hic pariatur asperiores at laboriosam error soluta reiciendis sapiente reprehenderit nesciunt!"
-          taskCase="To Do"
-          timeRequired="6"
+          status="To Do"
+          createdAt="6"
         />
 
         <TasksCard
-          taskName="Final Project "
-          taskDetails="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          taskNotes="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
+          name="Final Project "
+          summary="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          description="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
         delectus?Fuga, hic pariatur asperiores at laboriosam error soluta reiciendis sapiente reprehenderit nesciunt!"
-          taskCase="To Do"
-          timeRequired="6"
+          status="To Do"
+          createdAt="6"
+        />
+        <TasksCard
+          name="Final Project "
+          summary="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          description="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
+        delectus?Fuga, hic pariatur asperiores at laboriosam error soluta reiciendis sapiente reprehenderit nesciunt!"
+          status="To Do"
+          createdAt="6"
         />
 
         <TasksCard
-          taskName="Final Project "
-          taskDetails="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          taskNotes="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
+          name="Final Project "
+          summary="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          description="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
         delectus?Fuga, hic pariatur asperiores at laboriosam error soluta reiciendis sapiente reprehenderit nesciunt!"
-          taskCase="To Do"
-          timeRequired="6"
+          status="To Do"
+          createdAt="6"
+        />
+
+        <TasksCard
+          name="Final Project "
+          summary="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          description="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
+        delectus?Fuga, hic pariatur asperiores at laboriosam error soluta reiciendis sapiente reprehenderit nesciunt!"
+          status="To Do"
+          createdAt="6"
         />
       </div>
     </>
