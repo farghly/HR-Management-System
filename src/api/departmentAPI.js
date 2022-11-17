@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API } from "../config";
 
 const departmentAPI = axios.create({
   baseURL: "http://localhost:9090/api/v1/",
