@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { getDesignations } from '../../../api/designationAPI';
+import { deleteDesignation, getDesignations } from '../../../api/designationAPI';
 import axios from 'axios';
 import './../department/Department.css'
 function Desgination(){
@@ -10,14 +10,6 @@ function Desgination(){
       e.target.reset();
   }
 
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   axios.get('https://6374f17708104a9c5f8dfd21.mockapi.io/designation').then((getData) => {
-  //     console.log(getData.data);
-  //     setApiData(getData.data);
-  //   });
-  // }, []);
 
   useEffect(() => {
    getDesignations().then((getData) => {
@@ -26,10 +18,6 @@ function Desgination(){
     });
   }, []);
 
-
-  // designations.map((designation) => {
-  //   console.log(designation.DesignationName);
-  // });
 
   
     return(
@@ -62,13 +50,13 @@ function Desgination(){
                 {apiData.map((data)=>{
                   return(
                     <tr>
-                    <td>{data.DesignationName}</td>
+                    <td>{data.name}</td>
 
                     <td class="d-flex gap-2">
                       <button class="edit">
                         <i class="fa-regular fa-pen-to-square"></i>
                       </button>
-                      <button class="delete">
+                      <button class="delete" onClick={()=>deleteDesignation(data._id)}>
                         <i class="fa-solid fa-trash"></i>
                       </button>
                     </td>
