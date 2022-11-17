@@ -15,6 +15,8 @@ import jwtDecode from "jwt-decode";
 import { setCurrentUser, logout } from "./redux/auth/authActions.action";
 import Task from "./pages/tasks/task";
 import AddTask from "./pages/tasks/addtask";
+import Project from "./pages/projects/project";
+import AddProject from "./pages/projects/addproject";
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -61,6 +63,8 @@ function App() {
                       <Route path="/designation/" element={<Desgination />} />
                       <Route path="/tasks/" element={<Task />} />
                       <Route path="/tasks/addtask" element={<AddTask />} />
+                      <Route path="/projects/" element={<Project />} />
+                      <Route path="/projects/addproject" element={<AddProject />} />
                     </Routes>
                   )}
                 </div>
