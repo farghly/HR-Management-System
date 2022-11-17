@@ -13,8 +13,8 @@ import store from "./redux/store";
 import { setAuthToken } from "./utils/setAuthToken";
 import jwtDecode from "jwt-decode";
 import { setCurrentUser, logout } from "./redux/auth/authActions.action";
-import Task from "./pages/tasks/task";
-import AddTask from "./pages/tasks/addtask";
+import Task from "./pages/tasks/Task";
+import AddTask from "./pages/tasks/Addtask";
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
