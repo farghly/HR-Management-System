@@ -32,6 +32,7 @@ if (localStorage.jwtToken) {
 function App() {
   const auth = useSelector((state) => state.auth);
   console.log(auth);
+  
   return (
     <>
       <BrowserRouter>
