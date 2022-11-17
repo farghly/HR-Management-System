@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { createDepartment, getDepartments } from "../../../api/departmentAPI";
 import FormInput from "../../../components/form-input/FormInput.component";
 
+// import { useEffect,useState } from "react";
+import { deleteDepartment } from "../../../api/departmentAPI";
+import AddDepartment from "./AddDepartment";
 import "./Department.css";
-import { deleteDepartment } from "./../../../api/departmentAPI";
+// import { deleteDepartment } from "./../../../api/departmentAPI";
 import { useNavigate } from "react-router-dom";
 
 const defaultFormData = {

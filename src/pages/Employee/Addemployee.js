@@ -2,7 +2,7 @@ import "./styles.css";
 import { Link, Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 import FormInput from "./../../components/form-input/FormInput.component";
-import Button from "../../components/button/Button.component";
+// import Button from "../../components/button/Button.component";
 import { createEmployee } from "./../../api/employeeAPI";
 import { getDepartments } from "./../../api/departmentAPI";
 import { getDesignations } from "./../../api/designationAPI";

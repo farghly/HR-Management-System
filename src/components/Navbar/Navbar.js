@@ -1,7 +1,10 @@
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/auth/authActions.action";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getEmployeeById } from "../../api/employeeAPI";
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -9,6 +12,15 @@ function Navbar() {
     dispatch(logout());
     navigate("/login");
   };
+
+  const auth = useSelector((state) => state.auth);
+  const [user, setUser] = useState({});
+  console.log(auth);
+  useEffect(() => {
+    getEmployeeById(auth.user.id).then((res) => {
+      setUser(res.data.data.data);
+    });
+  }, []);
   return (
     <aside>
       <div class="up text-center pb-5">
@@ -24,7 +36,7 @@ function Navbar() {
           <h4 class="mb-3">Thom Anderson</h4>
           <div class="btns d-flex gap-lg-3 gap-2 justify-content-center">
             <Link to="#" class="setting">
-              <button onClick={handleLogout}>
+              <button>
                 <i class="fa-solid fa-gear sett"></i>
               </button>
             </Link>
@@ -69,9 +81,11 @@ function Navbar() {
                     <Link class="dropdown-item ms-4" to="/designation">
                       Designation
                     </Link>
-                    <Link class="dropdown-item ms-4" to="/department">
-                      Department
-                    </Link>
+                    {user.role === "admin" && (
+                      <Link class="dropdown-item ms-4" to="/department">
+                        Department
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -107,36 +121,42 @@ function Navbar() {
               <span>Employees</span>
             </Link>
           </li>
-          <li class="d-flex gap-3 align-items-center">
+
+          {/* <li class="d-flex gap-3 align-items-center">
             <Link to="#" class="nav-text">
               <i class="fa-solid fa-briefcase"></i> <span>Attendance</span>
             </Link>
-          </li>
+          </li> */}
 
+          <li class="d-flex gap-3 align-items-center">
+            <Link to="/projects" class="nav-text">
+              <i class="fa-solid fa-briefcase"></i> <span>projects</span>
+            </Link>
+          </li>
           <li class="d-flex gap-3 align-items-center">
             <Link to="/tasks" class="nav-text">
               <i class="fa-solid fa-briefcase"></i> <span>tasks</span>
             </Link>
           </li>
 
-          <li class="d-flex gap-3 align-items-center">
+          {/* <li class="d-flex gap-3 align-items-center">
             <a href="#" class="nav-text">
               <i class="fa-solid fa-receipt"></i>
               <span>Payroll</span>
             </a>
-          </li>
-          <li class="d-flex gap-3 align-items-center">
+          </li> */}
+          {/* <li class="d-flex gap-3 align-items-center">
             <a href="#" class="nav-text">
               <i class="fa-solid fa-hurricane"></i>
               <span>Loan</span>
             </a>
-          </li>
-          <li class="d-flex gap-3 align-items-center">
+          </li> */}
+          {/* <li class="d-flex gap-3 align-items-center">
             <Link to="/login" class="nav-text">
               <i class="fa-solid fa-right-from-bracket"></i>
               <span>Leave</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </aside>

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Provider, useSelector } from "react-redux";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/login/Login";
@@ -15,6 +15,10 @@ import jwtDecode from "jwt-decode";
 import { setCurrentUser, logout } from "./redux/auth/authActions.action";
 import Task from "./pages/tasks/task";
 import AddTask from "./pages/tasks/addtask";
+import Project from "./pages/projects/project";
+import AddProject from "./pages/projects/addproject";
+import { getEmployeeById } from "./api/employeeAPI";
+import { useState, useEffect } from "react";
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -31,8 +35,15 @@ if (localStorage.jwtToken) {
 
 function App() {
   const auth = useSelector((state) => state.auth);
+  const [user, setUser] = useState({});
   console.log(auth);
-  
+  useEffect(() => {
+    getEmployeeById(auth.user.id).then((res) => {
+      setUser(res.data.data.data);
+    });
+  }, []);
+  console.log(user);
+
   return (
     <>
       <BrowserRouter>
@@ -48,7 +59,12 @@ function App() {
                   {auth.isAuthenticated && (
                     <Routes>
                       <Route path="/" element={<Dashboard />} />
-                      <Route path="/department" element={<Department />} />
+                      {!user.role === "admin" && (
+                        <Route
+                          path="/department"
+                          element={<Navigate to="/" />}
+                        />
+                      )}
                       <Route path="/employees" element={<Employees />} />
                       <Route
                         path="/employees/addemployee"
@@ -61,6 +77,12 @@ function App() {
                       <Route path="/designation/" element={<Desgination />} />
                       <Route path="/tasks/" element={<Task />} />
                       <Route path="/tasks/addtask" element={<AddTask />} />
+
+                      <Route path="/projects/" element={<Project />} />
+                      <Route
+                        path="/projects/addproject"
+                        element={<AddProject />}
+                      />
                     </Routes>
                   )}
                 </div>

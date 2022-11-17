@@ -1,0 +1,123 @@
+
+.add-new-project {
+    font-size: 20px;
+    width: fit-content;
+    padding: 12px 30px;
+}
+
+
+
+.ser {
+    align-items: center;
+    justify-content: end;
+}
+
+.ser h4 {
+    margin: 0;
+}
+
+.ser input {
+    padding: 8px 12px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(0, 153, 255);
+    font-size: 20px;
+}
+
+button {
+    border: none;
+    padding: 6px 10px;
+}
+
+.delete {
+    background-color: #ef5350;
+}
+
+.edit {
+    background-color: #5c4ac7;
+}
+
+svg {
+    color: white;
+}
+
+tr td:not(:last-child) {
+    line-height: 2;
+}
+
+tr {
+    font-size: 20px;
+}
+
+.btns button {
+    color: white;
+    padding: 8px 15px;
+}
+
+form input {
+    padding: 10px 15px;
+}
+
+table {
+    border: 1px solid rgb(123, 123, 123);
+}
+
+/* * Add project style
+*/
+form input:not([type="file"]) {
+    padding: 10px 15px;
+}
+
+form input[type="file"] {
+    padding: 8px 10px;
+    background-color: white;
+}
+
+form select {
+    padding: 14px 20px;
+}
+
+table {
+    border: 1px solid rgb(123, 123, 123);
+}
+
+.addproject-form {
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .addproject-form {
+        width: 100%;
+    }
+}
+
+/* form {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+} */
+
+input {
+    border: none;
+    outline: none;
+    transition: 0.3s all;
+
+}
+
+input:focus {
+    box-shadow: 0 0 7px rgba(0 0 0 / 40%);
+    border: none;
+    outline: none;
+}
+
+textarea {
+    padding: 8px 12px;
+}
+
+.btn {
+    width: 46%;
+}
+
+.employee-list {
+    font-size: 20px;
+    width: fit-content;
+    padding: 12px 30px;
+}
