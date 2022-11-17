@@ -20,9 +20,7 @@ function Employees() {
       setEmployees(response.data.data.data);
     });
   }, []);
-  employees.map((employee) => {
-    employee && console.log(employee);
-  });
+  // employees.map((employee) => employee && console.log(employee));
   const navigateToEditEmployee = (event) => {
     // console.log(event.currentTarget.id);
 
