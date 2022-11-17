@@ -107,36 +107,42 @@ function Navbar() {
               <span>Employees</span>
             </Link>
           </li>
-          <li class="d-flex gap-3 align-items-center">
+
+          {/* <li class="d-flex gap-3 align-items-center">
             <Link to="#" class="nav-text">
               <i class="fa-solid fa-briefcase"></i> <span>Attendance</span>
             </Link>
-          </li>
+          </li> */}
 
+          <li class="d-flex gap-3 align-items-center">
+            <Link to="/projects" class="nav-text">
+              <i class="fa-solid fa-briefcase"></i> <span>projects</span>
+            </Link>
+          </li>
           <li class="d-flex gap-3 align-items-center">
             <Link to="/tasks" class="nav-text">
               <i class="fa-solid fa-briefcase"></i> <span>tasks</span>
             </Link>
           </li>
 
-          <li class="d-flex gap-3 align-items-center">
+          {/* <li class="d-flex gap-3 align-items-center">
             <a href="#" class="nav-text">
               <i class="fa-solid fa-receipt"></i>
               <span>Payroll</span>
             </a>
-          </li>
-          <li class="d-flex gap-3 align-items-center">
+          </li> */}
+          {/* <li class="d-flex gap-3 align-items-center">
             <a href="#" class="nav-text">
               <i class="fa-solid fa-hurricane"></i>
               <span>Loan</span>
             </a>
-          </li>
-          <li class="d-flex gap-3 align-items-center">
+          </li> */}
+          {/* <li class="d-flex gap-3 align-items-center">
             <Link to="/login" class="nav-text">
               <i class="fa-solid fa-right-from-bracket"></i>
               <span>Leave</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </aside>
