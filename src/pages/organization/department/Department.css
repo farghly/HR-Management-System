@@ -26,10 +26,10 @@
     /* flex-basis: 40%; */
     height: fit-content;
 }
-
+/* 
 .department .right-side {
-    /* flex-basis: 60%; */
-}
+    flex-basis: 60%; 
+} */
 
 button {
     border: none;

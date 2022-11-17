@@ -1,163 +1,169 @@
 .logo {
-    gap: 10px;
-    justify-content: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .logo-img {
-    width: 120px;
-    height: 60px;
-
+  width: 120px;
+  height: 60px;
+}
+.main-btn button {
+  padding: 0px;
+  background-color: inherit;
 }
 
 .profile-img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
 }
 
-aside .btns svg {
-    font-size: 20px;
-    height: 26px;
-    width: 26px;
-    color: white;
-    transition: 0.3s all;
+aside .main-btn svg {
+  font-size: 20px;
+  height: 26px;
+  width: 26px;
+  color: white;
+  transition: 0.3s all;
 }
 
-aside .btns .setting svg:hover {
-    background-color: white;
-    color: black;
+aside .main-btn .setting svg:hover {
+  background-color: white;
+  color: black;
 }
 
-aside .btns .logOut svg:hover {
-    background-color: white;
-    color: red;
+aside .main-btn .logOut svg:hover {
+  background-color: white;
+  color: red;
 }
-
 
 .sett {
-    background-color: rgb(0, 0, 0);
-    border: 1px solid black;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid black;
 }
 
 .log-out {
-    background-color: rgb(239, 51, 51);
-    border: 1px solid red;
+  background-color: rgb(239, 51, 51);
+  border: 1px solid red;
 }
 
-@media (max-width:990px) {
-    aside .btns {
-        flex-direction: column;
-        align-items: center;
-    }
+@media (max-width: 990px) {
+  aside .main-btn {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .links {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-text {
-    color: black;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 15px;
-    justify-content: center;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  justify-content: center;
 }
 
 .nav-text svg,
 .drpdwn svg {
-    height: 28px;
-    width: 28px;
-    background: linear-gradient(106.37deg, #fdbe71 29.63%, #fd9397 51.55%, #f990f4 90.85%);
-    color: black;
+  height: 28px;
+  width: 28px;
+  background: linear-gradient(
+    106.37deg,
+    #fdbe71 29.63%,
+    #fd9397 51.55%,
+    #f990f4 90.85%
+  );
+  color: black;
 }
 
 .nav-text span {
-    flex-basis: 60%;
-    font-size: 17px;
+  flex-basis: 60%;
+  font-size: 17px;
 }
 
-@media (max-width:600px) {
-    aside :is(h4, .logo) {
-        font-size: 18px;
-    }
+@media (max-width: 600px) {
+  aside :is(h4, .logo) {
+    font-size: 18px;
+  }
 
-    .profile-img {
-        width: 50px;
-        height: 50px;
-    }
+  .profile-img {
+    width: 50px;
+    height: 50px;
+  }
 
-    aside .btns svg {
-        height: 20px;
-        width: 20px;
-    }
+  aside .main-btn svg {
+    height: 20px;
+    width: 20px;
+  }
 
-    .nav-text svg,
-    .drpdwn svg {
-        height: 18px;
-        width: 18px;
-    }
+  .nav-text svg,
+  .drpdwn svg {
+    height: 18px;
+    width: 18px;
+  }
 }
 
 li {
-    transition: 0.3s all;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 6px;
+  transition: 0.3s all;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
 }
 
 li:hover {
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    background-color: #f799a354;
-    /* backdrop-filter: blur(15px); */
-    color: black;
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  background-color: #f799a354;
+  /* backdrop-filter: blur(15px); */
+  color: black;
 }
 
 li:hover .nav-text {
-    color: black;
+  color: black;
 }
 
-@media (max-width:990px) {
-
-    .nav-text span,
-    .drpdwn span {
-        display: none;
-    }
-}
-
-.accordion-item {
-    background-color: inherit;
+@media (max-width: 990px) {
+  .nav-text span,
+  .drpdwn span {
+    display: none;
+  }
 }
 
 .accordion-item {
-    border: none;
+  background-color: inherit;
+}
+
+.accordion-item {
+  border: none;
 }
 
 button:after {
-    margin-left: -10px !important;
+  margin-left: -10px !important;
 }
 
 .drpdwn {
-    width: 100%;
-    height: 100%;
-    background-color: inherit;
-    color: black;
-    border: none;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    justify-content: center;
-    padding: 0;
-    border: none;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  color: black;
+  border: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  padding: 0;
+  border: none;
 }
 
 .drpdwn:hover {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 .accordion-body a {
-    font-size: 18px;
+  font-size: 18px;
 }
