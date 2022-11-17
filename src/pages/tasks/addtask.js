@@ -86,7 +86,7 @@ function AddTask() {
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="employee">Employee</label>
-          <select id="employee" name="employee" className="select" onChange={changeHandler}>
+          <select id="employee" name="employee" className="select w-50" onChange={changeHandler}>
             <option value="one">One</option>
             <option value="two">Two</option>
           </select>
