@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import FormInput from '../../components/form-input/FormInput.component';
 import './task.css'
 function AddTask() {
     return ( 
@@ -18,6 +19,24 @@ function AddTask() {
        <label for="summary">Summary</label>
        <textarea name="" id="summary" rows="4"></textarea>
      </div>
+     <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="start Date"
+            type="date"
+            id="birth-day"
+            name="birthday"
+            required
+          />
+        </div>
+        <div className="data d-flex flex-column gap-2">
+          <FormInput
+            label="end Date"
+            type="date"
+            id="birth-day"
+            name="birthday"
+            required
+          />
+        </div>
      <div class="data d-flex flex-column gap-2">
        <label for="employee">Employee</label>
        <select id="employee" name="employee" class="select">
