@@ -15,8 +15,8 @@ import jwtDecode from "jwt-decode";
 import { setCurrentUser, logout } from "./redux/auth/authActions.action";
 import Task from "./pages/tasks/task";
 import AddTask from "./pages/tasks/addtask";
-import Project from "./pages/projects/project";
-import AddProject from "./pages/projects/addproject";
+import Project from './pages/projects/project'
+import AddProject from './pages/projects/addproject'
 import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
 
