@@ -13,8 +13,8 @@ import store from "./redux/store";
 import { setAuthToken } from "./utils/setAuthToken";
 import jwtDecode from "jwt-decode";
 import { setCurrentUser, logout } from "./redux/auth/authActions.action";
-import Task from "./pages/tasks/Task";
-import AddTask from "./pages/tasks/AddTask";
+import Task from "./pages/tasks/task";
+import AddTask from "./pages/tasks/addtask";
 import Project from "./pages/projects/project";
 import AddProject from "./pages/projects/addproject";
 
