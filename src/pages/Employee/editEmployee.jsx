@@ -10,6 +10,7 @@ import { getDesignations } from "./../../api/designationAPI";
 function AddEmployee() {
   const [departments, setDepartments] = useState([]);
   const [designations, setDesignations] = useState([]);
+  const params = useParams();
   useEffect(() => {
     getDepartments().then((res) => {
       setDepartments(res.data.data.data);
@@ -36,7 +37,6 @@ function AddEmployee() {
   };
   const [formFields, setFormFields] = useState(defaultFormFields);
   const navigate = useNavigate();
-  const params = useParams();
   const {
     firstName,
     lastName,

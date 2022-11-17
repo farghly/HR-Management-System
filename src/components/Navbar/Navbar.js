@@ -114,6 +114,12 @@ function Navbar() {
           </li>
 
           <li class="d-flex gap-3 align-items-center">
+            <Link to="/tasks" class="nav-text">
+              <i class="fa-solid fa-briefcase"></i> <span>tasks</span>
+            </Link>
+          </li>
+
+          <li class="d-flex gap-3 align-items-center">
             <a href="#" class="nav-text">
               <i class="fa-solid fa-receipt"></i>
               <span>Payroll</span>

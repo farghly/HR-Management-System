@@ -13,6 +13,8 @@ import store from "./redux/store";
 import { setAuthToken } from "./utils/setAuthToken";
 import jwtDecode from "jwt-decode";
 import { setCurrentUser, logout } from "./redux/auth/authActions.action";
+import Task from "./pages/tasks/task";
+import AddTask from "./pages/tasks/addtask";
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -57,6 +59,8 @@ function App() {
                         element={<EditEmployee />}
                       />
                       <Route path="/designation/" element={<Desgination />} />
+                      <Route path="/tasks/" element={<Task />} />
+                      <Route path="/tasks/addtask" element={<AddTask />} />
                     </Routes>
                   )}
                 </div>
