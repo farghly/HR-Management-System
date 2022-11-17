@@ -62,8 +62,7 @@ function Desgination(){
                 {apiData.map((data)=>{
                   return(
                     <tr>
-                    <td>{data.DesignationName}</td>
-
+                    <td>{data.name}</td>
                     <td class="d-flex gap-2">
                       <button class="edit">
                         <i class="fa-regular fa-pen-to-square"></i>
