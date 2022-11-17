@@ -10,7 +10,7 @@ const taskSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
-  summery: {
+  summary: {
     type: String,
     trim: true,
   },
