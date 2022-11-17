@@ -1,5 +1,5 @@
 # HR management System
-
+-Project URL: https://github.com/farghly/HR-Management-System
 ## Team members
 - [Ahmed Shawareb](https://github.com/Ahmed-Shawareb-Full-Stack)
 - [Farghly Ahmed](https://github.com/farghly)
@@ -14,9 +14,7 @@
 <br/>
 <br/>
 
-# Project Name
 
-- [HR management system](https://github.com/farghly/HR-Management-System)
 
 <br/>
 
