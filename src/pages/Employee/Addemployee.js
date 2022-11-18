@@ -257,7 +257,7 @@ function AddEmployee() {
         <div className="data d-flex flex-column gap-2">
           <FormInput label="Image" type="file" id="myimage" name="" />
         </div>
-        <button type="submit" style={{ color: "black" }}>
+        <button type="submit" className="save">
           Save
         </button>
         {/* <div className="btns"></div> */}

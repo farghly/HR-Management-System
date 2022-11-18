@@ -4,8 +4,9 @@
 }
 
 .logo-img {
-  width: 200px;
-  height: 105px;
+  min-width: 80px;
+  max-width: 200px;
+  min-height: 50px;
 }
 
 .main-btn button {
@@ -13,38 +14,31 @@
   background-color: inherit;
 }
 
-.profile-img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-}
-
 aside .main-btn svg {
   font-size: 20px;
   height: 26px;
   width: 26px;
-  color: white;
   transition: 0.3s all;
 }
 
 aside .main-btn .setting svg:hover {
-  background-color: white;
-  color: black;
+  color: var(--wit-clr);
+  background-color: var(--blk-clr);
 }
 
 aside .main-btn .logOut svg:hover {
-  background-color: white;
-  color: red;
+  color: var(--wit-clr);
+  background-color: rgb(239, 51, 51);
 }
 
 .sett {
-  background-color: rgb(0, 0, 0);
-  border: 1px solid black;
+  border: 1px solid var(--blk-clr);
+  color: var(--blk-clr);
 }
 
 .log-out {
-  background-color: rgb(239, 51, 51);
-  border: 1px solid red;
+  border: 1px solid rgb(220, 53, 69);
+  color: rgb(220, 53, 69);
 }
 
 @media (max-width: 990px) {
@@ -60,7 +54,7 @@ aside .main-btn .logOut svg:hover {
 }
 
 .nav-text {
-  color: black;
+  color: var(--blk-clr);
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -77,7 +71,7 @@ aside .main-btn .logOut svg:hover {
       #fdbe71 29.63%,
       #fd9397 51.55%,
       #f990f4 90.85%);
-  color: black;
+  color: var(--blk-clr);
 }
 
 .nav-text span {
@@ -116,14 +110,12 @@ li {
 }
 
 li:hover {
-  /* background-color: rgba(0, 0, 0, 0.6); */
   background-color: #f799a354;
-  /* backdrop-filter: blur(15px); */
-  color: black;
+  color: var(--blk-clr);
 }
 
 li:hover .nav-text {
-  color: black;
+  color: var(--blk-clr);
 }
 
 @media (max-width: 990px) {
@@ -135,39 +127,4 @@ li:hover .nav-text {
   .nav-text span {
     font-size: 13px;
   }
-}
-
-.accordion-item {
-  background-color: inherit;
-}
-
-.accordion-item {
-  border: none;
-}
-
-button:after {
-  margin-left: -10px !important;
-}
-
-.drpdwn {
-  width: 100%;
-  height: 100%;
-  background-color: inherit;
-  color: black;
-  border: none;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  justify-content: center;
-  padding: 0;
-  border: none;
-}
-
-.drpdwn:hover {
-  background-color: inherit;
-}
-
-.accordion-body a {
-  font-size: 18px;
 }

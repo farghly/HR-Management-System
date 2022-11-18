@@ -62,3 +62,7 @@ input:focus {
     color: purple;
     border-radius: 10px;
 }
+
+.task-btns {
+    justify-content: space-evenly;
+}

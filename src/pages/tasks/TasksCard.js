@@ -26,7 +26,7 @@ const TasksCard = (props) => {
         </div>
         {/* <div class="task-member">{props.taskStartDate} </div>
         <div class="task-member">{props.taskEndDate} </div> */}
-        <div class="task-btns gap-2 d-flex">
+        <div class="task-btns gap-2 d-flex justify-content-evenly">
           {props.user.role === "admin" && (
             <div class="delete-task btn btn-danger">Delete</div>
           )}
