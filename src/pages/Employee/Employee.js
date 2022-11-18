@@ -31,7 +31,9 @@ function Employees() {
   //   });
   // }, []);
   const deleteEmp = (event) => {
-    deleteEmployee(event.currentTarget.id);
+    deleteEmployee(event.currentTarget.id).then(() => {
+      alert("Successfully Deleted");
+    });
     getEmployees().then((response) => {
       setEmployees(response.data.data.data);
     });
@@ -48,18 +50,19 @@ function Employees() {
             Add Employee
           </Link>
           <h3 class="p-3 ps-4">Employee List</h3>
+
           <div class="ser d-flex gap-2">
             <h5>Search:</h5>
             <input type="search" />
           </div>
           <div class="tab  table-scrl employee-tab">
+
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
                   <th scope="col">Employee Name</th>
                   <th scope="col"> Department</th>
                   <th scope="col"> Designation</th>
-
                   <th scope="col">Email</th>
                   <th scope="col">Contact</th>
                   <th scope="col">User Type</th>
