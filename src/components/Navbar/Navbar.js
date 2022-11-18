@@ -5,6 +5,7 @@ import { logout } from "../../redux/auth/authActions.action";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
+import logo from './../../imgs/01.png'
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,9 +25,10 @@ function Navbar() {
   return (
     <aside>
       <div className="up text-center pb-5">
-        <div className="logo-img mb-4 d-flex">
-          {/* <img src={logo} alt="" className="logo-img " /> */}
-        </div>
+
+        <h1 className="logo mb-4 d-flex">
+          <img src={logo} alt="" className="logo-img" />
+        </h1>
         <div className="data">
           <h4 class="mb-3">
             {user.firstName} {user.lastName}
@@ -57,6 +59,7 @@ function Navbar() {
           )}
           {(user.role === "admin" || user.role === "hr") && (
             <>
+
               <li className="d-flex gap-3 align-items-center">
                 <Link
                   className="nav-text"
@@ -73,6 +76,53 @@ function Navbar() {
                   <span>Department</span>
                 </Link>
               </li>
+{/* =======
+              <li className="d-flex d-lg-none gap-3 align-items-center">
+                <Link className="nav-text" title="Designation" to="/designation">
+                  <i className="fa-solid fa-gauge"></i>
+                </Link>
+              </li>
+              <li className="d-flex d-lg-none gap-3 align-items-center">
+                <Link className="nav-text" title="Department" to="/department">
+                  <i className="fa-solid fa-gauge"></i>
+                </Link>
+              </li>
+
+              <li className="d-lg-block d-none">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                      <button
+                        class="accordion-button collapsed drpdwn"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne"
+                        aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseOne"
+                      >
+                        <i class="fa-solid fa-sitemap"></i>
+                        <span>Organization</span>
+                      </button>
+                    </h2>
+                    <div
+                      id="panelsStayOpen-collapseOne"
+                      class="accordion-collapse collapse "
+                      aria-labelledby="panelsStayOpen-headingOne"
+                    >
+                      <div class="accordion-body d-flex flex-column gap-3">
+                        <Link class="dropdown-item ms-4" to="/designation">
+                          Designation
+                        </Link>
+                        <Link class="dropdown-item ms-4" to="/department">
+                          Department
+                        </Link>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </li>
+>>>>>>> Sedky */}
             </>
           )}
           {/* <li>

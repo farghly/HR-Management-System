@@ -62,19 +62,6 @@ function Dashboard() {
             <div className="second-card-text">Former designations</div>
           </div>
         </div>
-        <div className="one d-flex gap-3 flex-column details-card">
-          <div className="first-card gap-3 bg-white d-flex align-items-center p-3">
-            <i className="fa-regular fa-calendar bglightcoral"></i>
-            <div className="card-text ms-2">
-              <h5>{getCountDesgination} designations</h5>
-              <Link to="/designation">View Details</Link>
-            </div>
-          </div>
-          <div className="second-card bglightcoral text-center p-3 text-light">
-            <div className="num">{getCountDesgination}</div>
-            <div className="second-card-text">Former designations</div>
-          </div>
-        </div>
         {/* <div className="one d-flex gap-4 flex-column details-card">
           <div className="first-card bg-white d-flex align-items-center p-3">
             <i className="fa-solid fa-dollar-sign bglimegreen"></i>
