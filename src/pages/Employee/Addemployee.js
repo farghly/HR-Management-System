@@ -250,7 +250,6 @@ function AddEmployee() {
             type="date"
             id="leaving-day"
             name="leavingday"
-            
             value={leavingday}
             onChange={changeHandler}
           />

@@ -3,16 +3,38 @@ import {
   deleteDesignation,
   getDesignations,
 } from "../../../api/designationAPI";
-import axios from "axios";
 import "./../department/Department.css";
+import FormInput from "../../../components/form-input/FormInput.component";
+import { createDesignation } from "./../../../api/designationAPI";
+
+const defaultFormData = {
+  name: "",
+};
+
 function Desgination() {
+  const [formData, setFormData] = useState(defaultFormData);
+  const { name } = formData;
   const [apiData, setApiData] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
+  const changeHandler = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+    console.log(formData);
   };
 
+  const resetFormData = () => {
+    setFormData(defaultFormData);
+  };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    createDesignation(formData);
+    getDesignations().then((getData) => {
+      console.log(getData.data.data.data);
+      setApiData(getData.data.data.data);
+    });
+    resetFormData();
+  };
   useEffect(() => {
     getDesignations().then((getData) => {
       console.log(getData.data.data.data);
@@ -20,17 +42,45 @@ function Desgination() {
     });
   }, []);
 
+  const deleteDesign = (event) => {
+    deleteDesignation(event.currentTarget.id).then(() => {
+      alert("Successfully Deleted");
+    });
+    getDesignations().then((getData) => {
+      console.log(getData.data.data.data);
+      setApiData(getData.data.data.data);
+    });
+    // console.log(event.currentTarget.id);
+  };
+
   return (
     // <div class="container d-flex gap-4 department">
     <>
       <div class="left-side add-department">
         <h3 class="p-3 ps-4">Add Desgination</h3>
-        <form action="" class="d-flex flex-column p-3 gap-3">
-          <label for="">Desgination Name</label>
-          <input type="text" name="" id="" />
+        <form
+          action=""
+          class="d-flex flex-column p-3 gap-3"
+          onSubmit={submitHandler}
+          method="post"
+        >
+          {/* <label for="">Desgination Name</label>
+          <input type="text" name="" id="" /> */}
+          <label for="">Department Name</label>
+          <FormInput
+            type="text"
+            name="name"
+            id="dName"
+            value={name}
+            onChange={changeHandler}
+          />
           <div class="btns">
-            <button class="save bg-success me-2">Save</button>
-            <button class="cancel bg-danger">Cancel</button>
+            <button class="save bg-success me-2" type="submit">
+              Save
+            </button>
+            <button class="cancel bg-danger" onClick={resetFormData}>
+              Cancel
+            </button>
           </div>
         </form>
       </div>
@@ -55,7 +105,8 @@ function Desgination() {
                       </button>
                       <button
                         class="delete"
-                        onClick={() => deleteDesignation(data._id)}
+                        id={data._id}
+                        onClick={deleteDesign}
                       >
                         <i class="fa-solid fa-trash"></i>
                       </button>

@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { deleteEmployee } from "./../../api/employeeAPI";
 
-
 function Employees() {
   const [employees, setEmployees] = useState([]);
 
@@ -32,7 +31,9 @@ function Employees() {
   //   });
   // }, []);
   const deleteEmp = (event) => {
-    deleteEmployee(event.currentTarget.id);
+    deleteEmployee(event.currentTarget.id).then(() => {
+      alert("Successfully Deleted");
+    });
     getEmployees().then((response) => {
       setEmployees(response.data.data.data);
     });
@@ -42,7 +43,6 @@ function Employees() {
     <>
       <div className="container">
         <div className="row">
-
           <Link
             to="/employees/addemployee"
             class="btn btn-primary mb-3 employee-list"
@@ -50,10 +50,10 @@ function Employees() {
             Add Employee
           </Link>
           <h3 class="p-3 ps-4">Employee List</h3>
-          <div class="ser d-flex gap-2">
+          {/* <div class="ser d-flex gap-2">
             <h4>Search:</h4>
             <input type="search" />
-          </div>
+          </div> */}
           <div class="tab p-3">
             <table class="table table-striped table-hover">
               <thead>
@@ -76,7 +76,9 @@ function Employees() {
                         <td class="employee-name">{`${employee.firstName} ${employee.lastName} `}</td>
 
                         {employee.department && (
-                          <td class="employee-email">{employee.department.name}</td>
+                          <td class="employee-email">
+                            {employee.department.name}
+                          </td>
                         )}
                         {employee.designation && (
                           <td class="employee-email">

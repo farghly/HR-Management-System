@@ -14,7 +14,7 @@ const defaultFormData = {
 };
 function Department() {
   const [formData, setFormData] = useState(defaultFormData);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
   const { name } = formData;
   useEffect(() => {
@@ -27,6 +27,7 @@ function Department() {
     setFormData({ ...formData, [name]: value });
     console.log(formData);
   };
+
   const resetFormData = () => {
     setFormData(defaultFormData);
   };
