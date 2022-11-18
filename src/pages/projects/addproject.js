@@ -40,8 +40,8 @@ function AddProject() {
           <textarea name="description" id="" rows="4"></textarea>
         </div>
         <div class="btns">
-          <input class="btn btn-success me-3" type="submit" value="Save" />
-          <input class="btn btn-danger" type="reset" value="Cancel" />
+          <input class="btn save me-3" type="submit" value="Save" />
+          <input class="btn cancel" type="reset" value="Cancel" />
         </div>
       </form>
     </>

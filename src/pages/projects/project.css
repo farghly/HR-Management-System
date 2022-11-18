@@ -28,7 +28,7 @@
 }
 
 .project-tab {
-    height: 500px;
+    max-height: 550px;
 }
 
 .project-tab table {
@@ -53,7 +53,7 @@ svg {
 }
 
 tr td:not(:last-child) {
-    line-height: 2;
+    line-height: 3;
     font-size: 15px;
 
 }
@@ -104,10 +104,6 @@ table {
         width: 100%;
     }
 }
-
-/* form {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-} */
 
 input {
     border: none;

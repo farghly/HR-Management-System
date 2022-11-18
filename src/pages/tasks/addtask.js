@@ -78,6 +78,7 @@ function AddTask() {
             id="tName"
             autocomplete="off"
             name={name}
+
             value={name}
             onChange={changeHandler}
           />
@@ -147,7 +148,7 @@ function AddTask() {
           />
         </div>
 
-        <input className="btn btn-success" type="submit" />
+        <input className="btn btn-success save" type="submit" value="Save" />
       </form>
     </>
   );

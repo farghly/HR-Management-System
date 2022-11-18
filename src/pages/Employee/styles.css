@@ -39,7 +39,6 @@ form select {
     width: 40%;
     padding: 10px;
     margin: auto auto 0;
-    background-color: green;
     color: white !important;
 }
 
@@ -49,11 +48,11 @@ table {
 }
 
 .employee-tab {
-    height: 400px;
+    max-height: 550px;
 }
 
 .employee-tab table {
-    min-width: 1055px;
+    min-width: 1072px;
 }
 
 .for-btns {}
