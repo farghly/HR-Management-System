@@ -5,6 +5,7 @@ import { logout } from "../../redux/auth/authActions.action";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
+import logo from './work5.jpg'
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Navbar() {
     <aside>
       <div className="up text-center pb-5">
         <h1 className="logo mb-4 d-flex">
-          <img src="https://via.placeholder.com/150" alt="" className="logo-img " />
+          <img src={logo} alt="" className="logo-img" />
         </h1>
         <div className="data">
           <img
@@ -63,52 +64,52 @@ function Navbar() {
             </li>
           )}
           {(user.role === "admin" || user.role === "hr") && (
-          <>
-               <li className="d-flex d-lg-none gap-3 align-items-center">
-            <Link className="nav-text" title="Designation" to="/designation">
-              <i className="fa-solid fa-gauge"></i>
-            </Link>
-          </li>
-          <li className="d-flex d-lg-none gap-3 align-items-center">
-            <Link className="nav-text" title="Department" to="/department">
-              <i className="fa-solid fa-gauge"></i>
-            </Link>
-          </li>
-         
-            <li className="d-lg-block d-none">
-              <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                    <button
-                      class="accordion-button collapsed drpdwn"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#panelsStayOpen-collapseOne"
-                      aria-expanded="false"
-                      aria-controls="panelsStayOpen-collapseOne"
-                    >
-                      <i class="fa-solid fa-sitemap"></i>
-                      <span>Organization</span>
-                    </button>
-                  </h2>
-                  <div
-                    id="panelsStayOpen-collapseOne"
-                    class="accordion-collapse collapse "
-                    aria-labelledby="panelsStayOpen-headingOne"
-                  >
-                    <div class="accordion-body d-flex flex-column gap-3">
-                      <Link class="dropdown-item ms-4" to="/designation">
-                        Designation
-                      </Link>
-                      <Link class="dropdown-item ms-4" to="/department">
-                        Department
-                      </Link>
-                    </div>
+            <>
+              <li className="d-flex d-lg-none gap-3 align-items-center">
+                <Link className="nav-text" title="Designation" to="/designation">
+                  <i className="fa-solid fa-gauge"></i>
+                </Link>
+              </li>
+              <li className="d-flex d-lg-none gap-3 align-items-center">
+                <Link className="nav-text" title="Department" to="/department">
+                  <i className="fa-solid fa-gauge"></i>
+                </Link>
+              </li>
 
+              <li className="d-lg-block d-none">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                      <button
+                        class="accordion-button collapsed drpdwn"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne"
+                        aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseOne"
+                      >
+                        <i class="fa-solid fa-sitemap"></i>
+                        <span>Organization</span>
+                      </button>
+                    </h2>
+                    <div
+                      id="panelsStayOpen-collapseOne"
+                      class="accordion-collapse collapse "
+                      aria-labelledby="panelsStayOpen-headingOne"
+                    >
+                      <div class="accordion-body d-flex flex-column gap-3">
+                        <Link class="dropdown-item ms-4" to="/designation">
+                          Designation
+                        </Link>
+                        <Link class="dropdown-item ms-4" to="/department">
+                          Department
+                        </Link>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
             </>
           )}
           {/* <li>

@@ -4,8 +4,9 @@
 }
 
 .logo-img {
-  width: 120px;
-  height: 60px;
+  width: 300px;
+  height: 110px;
+  border-radius: 15px;
 }
 .main-btn button {
   padding: 0px;

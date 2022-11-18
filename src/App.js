@@ -20,6 +20,7 @@ import AddProject from './pages/projects/addproject'
 import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
 
+// document.title = 'HR System'
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
