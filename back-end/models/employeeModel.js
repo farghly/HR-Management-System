@@ -131,6 +131,9 @@ employeeSchema.pre(/^find/, function (next) {
     })
     .populate({
       path: "tasks",
+    })
+    .populate({
+      path: "project",
     });
 
   next();

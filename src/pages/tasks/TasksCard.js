@@ -5,14 +5,15 @@ import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
 
 const TasksCard = (props) => {
-  const auth = useSelector((state) => state.auth);
-  const [user, setUser] = useState({});
-  console.log(auth);
-  useEffect(() => {
-    getEmployeeById(auth.user.id).then((res) => {
-      setUser(res.data.data.data);
-    });
-  }, []);
+  // const auth = useSelector((state) => state.auth);
+  // const [user, setUser] = useState({});
+  // console.log(auth);
+  // useEffect(() => {
+  //   getEmployeeById(auth.user.id).then((res) => {
+  //     setUser(res.data.data.data);
+  //   });
+  // }, []);
+  console.log(props);
   return (
     <>
       <div class="task-content p-3 d-flex gap-3 flex-column">
@@ -23,11 +24,13 @@ const TasksCard = (props) => {
           <div class="task-status p-2">{props.taskCase}</div>
           <div class="task-member">{props.timeRequired} Hr</div>
         </div>
+        {/* <div class="task-member">{props.taskStartDate} </div>
+        <div class="task-member">{props.taskEndDate} </div> */}
         <div class="task-btns gap-2 d-flex">
-          {user.role === "admin" && (
+          {props.user.role === "admin" && (
             <div class="delete-task btn btn-danger">Delete</div>
           )}
-          {(user.role === "hr" || user.role === "employee") && (
+          {(props.user.role === "hr" || props.user.role === "employee") && (
             <div class="delete-task btn btn-danger">Done</div>
           )}
           <div class="update-task btn btn-success">Update</div>

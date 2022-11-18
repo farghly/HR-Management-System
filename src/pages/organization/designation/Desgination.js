@@ -47,7 +47,7 @@ function Designation() {
       alert("Successfully Deleted");
     });
     getDesignations().then((getData) => {
-      console.log(getData.data.data.data);
+      // console.log(getData.data.data.data);
       setApiData(getData.data.data.data);
     });
     // console.log(event.currentTarget.id);
@@ -61,32 +61,30 @@ function Designation() {
 
           {/*  */}
           <form
-          action=""
-          class="d-flex flex-column py-3 gap-3"
-          onSubmit={submitHandler}
-        >
-          <label for="">Designation Name</label>
-          <FormInput
-            type="text"
-            name="name"
-            id="dName"
-            value={name}
-            onChange={changeHandler}
-          />
-             
-          <div class="btns">
-            <button class="save bg-success me-2" type="submit">
-              Save
-            </button>
-            <button class="cancel bg-danger" onClick={resetFormData}>
-              Cancel
-            </button>
-          </div>
-       </form>
-      </div>
-    
-        
-        
+            action=""
+            class="d-flex flex-column py-3 gap-3"
+            onSubmit={submitHandler}
+          >
+            <label for="">Designation Name</label>
+            <FormInput
+              type="text"
+              name="name"
+              id="dName"
+              value={name}
+              onChange={changeHandler}
+            />
+
+            <div class="btns">
+              <button class="save bg-success me-2" type="submit">
+                Save
+              </button>
+              <button class="cancel bg-danger" onClick={resetFormData}>
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+
         <div class="right-side department-list col-lg-6 col-12">
           <h3 class="p-3 ps-4">Designation List</h3>
           <div class="tab table-scrl">
@@ -107,8 +105,9 @@ function Designation() {
                           <i class="fa-regular fa-pen-to-square"></i>
                         </button>
                         <button
+                          id={data._id}
                           class="delete"
-                          onClick={() => deleteDesignation(data._id)}
+                          onClick={deleteDesign}
                         >
                           <i class="fa-solid fa-trash"></i>
                         </button>
@@ -121,7 +120,6 @@ function Designation() {
           </div>
         </div>
       </div>
-   
     </>
   );
 }

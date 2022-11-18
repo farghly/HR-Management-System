@@ -42,7 +42,9 @@ function Department() {
   };
 
   const deleteDepart = (event) => {
-    deleteDepartment(event.currentTarget.id);
+    deleteDepartment(event.currentTarget.id).then((res) => {
+      alert("Successfully Deleted");
+    });
     getDepartments().then((res) => {
       setDepartments(res.data.data.data);
     });
