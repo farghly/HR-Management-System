@@ -23,42 +23,44 @@ function Task() {
   console.log(userTasks);
   return (
     <>
-      {user.role === "admin" && (
-        <Link to="addtask" class="btn btn-primary mb-3 task-list">
-          Add New Task
-        </Link>
-      )}
-      <h3>Tasks List</h3>
-      <div class="tasks d-grid my-5 gap-3">
-        {user.role === "admin" &&
-          tasks &&
-          tasks.map((task) => (
-            <TasksCard
-              taskName={task.name}
-              taskDetails={task.summery}
-              taskNotes={task.description}
-              taskCase={task.status}
-              taskStartDate={task.startDate}
-              taskEndDate={task.endDate}
-              timeRequired="6"
-              user={user}
-            />
-          ))}
-        {(user.role === "hr" || user.role === "employee") &&
-          userTasks &&
-          userTasks.map((userTask) => (
-            <TasksCard
-              taskName={userTask.name}
-              taskDetails={userTask.summery}
-              taskNotes={userTask.description}
-              taskCase={userTask.status}
-              taskStartDate={userTask.startDate}
-              taskEndDate={userTask.endDate}
-              timeRequired="6"
-              user={user}
-            />
-          ))}
-        {/* <TasksCard
+      {(tasks || userTasks) && (
+        <>
+          {user.role === "admin" && (
+            <Link to="addtask" class="btn btn-primary mb-3 task-list">
+              Add New Task
+            </Link>
+          )}
+          <h3>Tasks List</h3>
+          <div class="tasks d-grid my-5 gap-3">
+            {user.role === "admin" &&
+              tasks &&
+              tasks.map((task) => (
+                <TasksCard
+                  taskName={task.name}
+                  taskDetails={task.summery}
+                  taskNotes={task.description}
+                  taskCase={task.status}
+                  taskStartDate={task.startDate}
+                  taskEndDate={task.endDate}
+                  timeRequired="6"
+                  user={user}
+                />
+              ))}
+            {(user.role === "hr" || user.role === "employee") &&
+              userTasks &&
+              userTasks.map((userTask) => (
+                <TasksCard
+                  taskName={userTask.name}
+                  taskDetails={userTask.summery}
+                  taskNotes={userTask.description}
+                  taskCase={userTask.status}
+                  taskStartDate={userTask.startDate}
+                  taskEndDate={userTask.endDate}
+                  timeRequired="6"
+                  user={user}
+                />
+              ))}
+            {/* <TasksCard
           taskName="Final Project "
           taskDetails="Lorem ipsum dolor sit amet consectetur adipisicing elit."
           taskNotes="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
@@ -67,7 +69,7 @@ function Task() {
           timeRequired="6"
           user={user}
         /> */}
-        {/* <TasksCard
+            {/* <TasksCard
           name="Final Project "
           summary="Lorem ipsum dolor sit amet consectetur adipisicing elit."
           description="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
@@ -142,7 +144,9 @@ function Task() {
           taskCase="To Do"
           timeRequired="6"
         /> */}
-      </div>
+          </div>
+        </>
+      )}
     </>
   );
 }

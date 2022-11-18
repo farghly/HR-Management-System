@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createTask } from "../../api/tasksAPI";
 import FormInput from "../../components/form-input/FormInput.component";
+import { getEmployeeById, getEmployees } from "./../../api/employeeAPI";
 
 const defaultFormData = {
   name: "",
@@ -18,6 +19,8 @@ const defaultFormData = {
 
 function AddTask() {
   const [formData, setFormData] = useState(defaultFormData);
+  const [employees, setEmployees] = useState([]);
+  const [selectedEmployee, setSelectedEmployee] = useState([]);
 
   const {
     name,
@@ -32,6 +35,12 @@ function AddTask() {
     importance,
   } = formData;
 
+  useEffect(() => {
+    getEmployees().then((res) => {
+      setEmployees(res.data.data.data);
+    });
+  }, []);
+  // console.log(employees);
   const changeHandler = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
@@ -44,8 +53,11 @@ function AddTask() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+
     createTask(formData);
+
     resetFormData();
+    console.log(formData);
   };
 
   return (
@@ -97,10 +109,18 @@ function AddTask() {
             id="employee"
             name="employee"
             className="select"
+            value={employee}
             onChange={changeHandler}
           >
-            <option value="one">One</option>
-            <option value="two">Two</option>
+            {/* <option value="one">One</option>
+            <option value="two">Two</option> */}
+
+            {employees &&
+              employees.map((employee) => (
+                <option value={employee._id} id={employee._id}>
+                  {employee.firstName} {employee.lastName}
+                </option>
+              ))}
           </select>
         </div>
         <div className="d-flex flex-column gap-2">
