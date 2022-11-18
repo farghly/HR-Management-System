@@ -73,16 +73,23 @@ function AddTask() {
       >
         <div className="data d-flex flex-column gap-2">
           <label for="tName">Task Name</label>
-          <FormInput type="text" id="tName" autocomplete="off" value={name} onChange={changeHandler} />
+          <FormInput
+            type="text"
+            id="tName"
+            autocomplete="off"
+            name={name}
+            value={name}
+            onChange={changeHandler}
+          />
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="description">Description</label>
           <textarea
             className="border border-0 form-control"
-            name=""
+            name="description"
             id="description"
             rows="4"
-            vlaue={description}
+            value={description}
             onChange={changeHandler}
           ></textarea>
         </div>
@@ -90,7 +97,7 @@ function AddTask() {
           <label for="summary">Summary</label>
           <textarea
             className="border border-0 form-control"
-            name=""
+            name="summary"
             id="summary"
             rows="4"
             value={summary}
@@ -119,28 +126,28 @@ function AddTask() {
           </select>
         </div>
         <div className="d-flex flex-column gap-2">
-
           <FormInput
             label="start Date"
             type="date"
-            id="birth-day"
-            name="birthday"
+            id="startDay"
+            name="startDay"
+            value={startDate}
             required
           />
         </div>
 
         <div className="d-flex flex-column gap-2 ">
-
           <FormInput
             label="end Date"
             type="date"
             id="birth-day"
-            name="birthday"
+            name="endDate"
+            value={endDate}
             required
           />
         </div>
 
-        <input className="btn btn-success" type="submit" value="Save" />
+        <input className="btn btn-success" type="submit" />
       </form>
     </>
   );

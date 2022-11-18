@@ -2,6 +2,7 @@ const { promisify } = require("util");
 
 // const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 const catchAsync = require("../utils/catchAsync");
 
@@ -92,7 +93,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   const employee = await Employee.findOne({ email }).select("+password");
 
-  if (!employee || !employee.comparePassword(password, employee.password)) {
+  if (!employee || !(await bcrypt.compare(password, employee.password))) {
     return next(new AppError("Invalid Email or Password", 400));
   }
   createSendToken(employee, 200, res);

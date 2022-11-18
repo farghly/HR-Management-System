@@ -200,8 +200,11 @@ function AddEmployee() {
             <option value="admin" name="admin">
               Admin
             </option>
-            <option value="user" name="user">
-              User
+            <option value="hr" name="hr">
+              HR
+            </option>
+            <option value="employee" name="employee">
+              Employee
             </option>
           </select>
         </div>
@@ -254,9 +257,7 @@ function AddEmployee() {
             onChange={changeHandler}
           />
         </div>
-        <div className="data d-flex flex-column gap-2">
-          <FormInput label="Image" type="file" id="myimage" name="" />
-        </div>
+
         <button type="submit" style={{ color: "black" }}>
           Save
         </button>

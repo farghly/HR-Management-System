@@ -108,19 +108,19 @@ const employeeSchema = new mongoose.Schema({
   passwordResetExpires: Date,
 });
 
-employeeSchema.methods.comparePassword = async function (
-  candidatePassword,
-  userPassword
-) {
-  return await bcrypt.compare(candidatePassword, userPassword);
-};
+// employeeSchema.methods.comparePassword = async function (
+//   candidatePassword,
+//   userPassword
+// ) {
+//   return await bcrypt.compare(candidatePassword, userPassword);
+// };
 
-employeeSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
-  this.password = await bcrypt.hash(this.password, 12);
-  this.confirmPassword = undefined;
-  next();
-});
+// employeeSchema.pre("save", async function (next) {
+//   if (!this.isModified("password")) return next();
+//   this.password = await bcrypt.hash(this.password, 12);
+//   this.confirmPassword = undefined;
+//   next();
+// });
 
 employeeSchema.pre(/^find/, function (next) {
   this.populate({
