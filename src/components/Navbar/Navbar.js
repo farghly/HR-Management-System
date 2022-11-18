@@ -5,7 +5,7 @@ import { logout } from "../../redux/auth/authActions.action";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
-import logo from './work5.jpg'
+import logo from './../../imgs/01.png'
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
