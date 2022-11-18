@@ -53,12 +53,12 @@ function Department() {
   const navigateToEditDepart = (event) => {};
 
   return (
-    <div class="gap-4 row department">
-      <div class="left-side add-department col-lg-5 col-12">
+    <div class="gap-4 d-flex flex-column department ">
+      <div class="left-side add-department ">
         <h3 class="p-3 ps-4">Add Department</h3>
         <form
           action=""
-          class="d-flex flex-column py-3 gap-3"
+          class="d-flex flex-column p-3 gap-3"
           onSubmit={submitHandler}
         >
           <label for="">Department Name</label>
@@ -69,7 +69,7 @@ function Department() {
             value={name}
             onChange={changeHandler}
           />
-          <div class="btns">
+          <div class="btns depart d-flex justify-content-between justify-content-md-start">
             <button type="submit" class="save bg-success me-2">
               Save
             </button>
@@ -80,7 +80,7 @@ function Department() {
         </form>
       </div>
 
-      <div class="right-side department-list col-lg-6 col-12">
+      <div class="right-side department-list">
         <h3 class="p-3 ps-4">Department List</h3>
         <div class="tab table-scrl">
           <table class="table table-striped table-hover">

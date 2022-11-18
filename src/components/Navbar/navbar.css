@@ -4,8 +4,8 @@
 }
 
 .logo-img {
-  width: 100%;
-  height: 60px;
+  width: 200px;
+  height: 105px;
 }
 
 .main-btn button {
@@ -83,6 +83,7 @@ aside .main-btn .logOut svg:hover {
 .nav-text span {
   flex-basis: 60%;
   font-size: 17px;
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {
@@ -91,8 +92,8 @@ aside .main-btn .logOut svg:hover {
   }
 
   .profile-img {
-    width: 42px;
-    height: 42px;
+    width: 55px;
+    height: 55px;
   }
 
   aside .main-btn svg {
@@ -126,10 +127,13 @@ li:hover .nav-text {
 }
 
 @media (max-width: 990px) {
+  .nav-text {
+    flex-direction: column;
+    gap: 5px;
+  }
 
-  .nav-text span,
-  .drpdwn span {
-    display: none;
+  .nav-text span {
+    font-size: 13px;
   }
 }
 

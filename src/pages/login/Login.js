@@ -97,7 +97,7 @@ function Login() {
             >
               <p className="heading">Sign in</p>
               <div className="box">
-                {/* <p>Email</p> */}
+                <p>Email</p>
                 <div>
                   {/* <input
                 type="text"
@@ -117,7 +117,7 @@ function Login() {
                 </div>
               </div>
               <div className="box">
-                {/* <p>Password</p> */}
+                <p>Password</p>
                 <div>
                   {/* <input
                 type="Password"

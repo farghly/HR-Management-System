@@ -5,6 +5,7 @@ import { logout } from "../../redux/auth/authActions.action";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
+import logo from './../../imgs/01.png'
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,20 +25,11 @@ function Navbar() {
   return (
     <aside>
       <div className="up text-center pb-5">
+
         <h1 className="logo mb-4 d-flex">
-          <img
-            src="https://via.placeholder.com/150"
-            alt=""
-            className="logo-img "
-          />
+          <img src={logo} alt="" className="logo-img" />
         </h1>
         <div className="data">
-          <img
-            src="https://via.placeholder.com/150"
-            alt=""
-            className="profile-img mb-3"
-          />
-
           <h4 class="mb-3">
             {user.firstName} {user.lastName}
           </h4>
@@ -67,12 +59,26 @@ function Navbar() {
           )}
           {(user.role === "admin" || user.role === "hr") && (
             <>
-              <li className="d-flex d-lg-none gap-3 align-items-center">
+
+              <li className="d-flex gap-3 align-items-center">
                 <Link
                   className="nav-text"
                   title="Designation"
                   to="/designation"
                 >
+                  <i class="fa-brands fa-creative-commons-nd"></i>
+                  <span>Desgination</span>
+                </Link>
+              </li>
+              <li className="d-flex  gap-3 align-items-center">
+                <Link className="nav-text" title="Department" to="/department">
+                  <i className="fa-solid fa-building"></i>
+                  <span>Department</span>
+                </Link>
+              </li>
+{/* =======
+              <li className="d-flex d-lg-none gap-3 align-items-center">
+                <Link className="nav-text" title="Designation" to="/designation">
                   <i className="fa-solid fa-gauge"></i>
                 </Link>
               </li>
@@ -111,10 +117,12 @@ function Navbar() {
                           Department
                         </Link>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </li>
+>>>>>>> Sedky */}
             </>
           )}
           {/* <li>

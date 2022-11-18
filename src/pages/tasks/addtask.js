@@ -73,13 +73,7 @@ function AddTask() {
       >
         <div className="data d-flex flex-column gap-2">
           <label for="tName">Task Name</label>
-          <FormInput
-            type="text"
-            id="tName"
-            autocomplete="off"
-            value={name}
-            onChange={changeHandler}
-          />
+          <FormInput type="text" id="tName" autocomplete="off" value={name} onChange={changeHandler} />
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="description">Description</label>
@@ -103,6 +97,7 @@ function AddTask() {
             onChange={changeHandler}
           ></textarea>
         </div>
+
         <div className="data d-flex flex-column gap-2">
           <label for="employee">Employee</label>
           <select
@@ -124,6 +119,7 @@ function AddTask() {
           </select>
         </div>
         <div className="d-flex flex-column gap-2">
+
           <FormInput
             label="start Date"
             type="date"
@@ -132,7 +128,9 @@ function AddTask() {
             required
           />
         </div>
+
         <div className="d-flex flex-column gap-2 ">
+
           <FormInput
             label="end Date"
             type="date"
