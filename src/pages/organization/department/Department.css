@@ -61,9 +61,16 @@ tr {
     font-size: 20px;
 }
 
-.btns button {
+.btns.depart button {
     color: white;
     padding: 8px 15px;
+    width: 20%;
+}
+
+@media (max-width:767px) {
+    .btns.depart button {
+        width: 50%;
+    }
 }
 
 form input {
