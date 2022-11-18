@@ -47,6 +47,7 @@ table button {
 
 input {
   border: 1px solid #ddd !important;
+  border-radius: 5px;
 }
 
 ::selection {
@@ -75,14 +76,15 @@ ul {
   max-width: 1550px;
   padding: 10px;
   border-radius: 25px;
-  margin: 20px auto;
+  margin: 15px auto;
   width: 98% !important;
   background-color: var(--parent-clr);
 }
 
+/* height: 380px;
+for dash height: height: 410px desig height: 550px; employee & proj */
 .table-scrl {
-  height: 285px;
-  overflow-y: scroll;
+  overflow: auto;
 }
 
 .parent>div {
@@ -125,7 +127,7 @@ ul {
 @media (max-width: 500px) {
 
   .child-1 {
-    padding: 0;
+    padding: 10px 0;
   }
 
   .child-2 {
@@ -153,7 +155,6 @@ ul {
 
 .table-scrl::-webkit-scrollbar-thumb:hover {
   background: #3c3a44;
-  /* background: gray;  */
 }
 
 .table-scrl::-webkit-scrollbar-thumb {
