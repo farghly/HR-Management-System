@@ -55,11 +55,7 @@ function Designation() {
 
   return (
     <>
-
-
-    <div class="right-side department-list col-lg-6 col-12">
-          <h3 class="p-3 ps-4">Designation List</h3>
-
+      <h3 class="p-3 ps-4">Designation List</h3>
       <div class=" gap-4 d-flex flex-column department">
         <div class="left-side add-department ">
           <h3 class="p-3 ps-4">Add Desgination</h3>
@@ -119,7 +115,6 @@ function Designation() {
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
