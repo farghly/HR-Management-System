@@ -1,7 +1,10 @@
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/auth/authActions.action";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getEmployeeById } from "../../api/employeeAPI";
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -9,6 +12,15 @@ function Navbar() {
     dispatch(logout());
     navigate("/login");
   };
+
+  const auth = useSelector((state) => state.auth);
+  const [user, setUser] = useState({});
+  console.log(auth);
+  useEffect(() => {
+    getEmployeeById(auth.user.id).then((res) => {
+      setUser(res.data.data.data);
+    });
+  }, []);
   return (
     <aside>
       <div className="up text-center pb-5">
@@ -21,11 +33,15 @@ function Navbar() {
             alt=""
             className="profile-img mb-3"
           />
-          <h4 className="mb-3">Thom Anderson</h4>
-          <div className="main-btn d-flex gap-lg-2 gap-1 justify-content-center">
-            <Link to="#" className="setting">
-              <button onClick={handleLogout}>
-                <i className="fa-solid fa-gear sett"></i>
+
+          <h4 class="mb-3">
+            {user.firstName} {user.lastName}
+          </h4>
+          <div class="main-btn d-flex gap-lg-2 gap-1 justify-content-center">
+            <Link to="#" class="setting">
+              <button>
+                <i class="fa-solid fa-gear sett"></i>
+
               </button>
             </Link>
             <Link to="#" className="logOut">
@@ -36,15 +52,19 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="down">
-        <ul className="links d-flex flex-column gap-lg-2 gap-1">
-          <li className="d-flex gap-3 align-items-center">
-            <Link to="/" className="nav-text">
-              <i className="fa-solid fa-gauge"></i>
-              <span>Dashboard</span>
-            </Link>
-          </li>
-          <li className="d-flex d-lg-none gap-3 align-items-center">
+      <div class="down">
+        <ul class="links d-flex flex-column gap-lg-2 gap-1">
+          {(user.role === "admin" || user.role === "hr") && (
+            <li class="d-flex gap-3 align-items-center">
+              <Link to="/" class="nav-text">
+                <i class="fa-solid fa-gauge"></i>
+                <span>Dashboard</span>
+              </Link>
+            </li>
+          )}
+          {(user.role === "admin" || user.role === "hr") && (
+          <>
+               <li className="d-flex d-lg-none gap-3 align-items-center">
             <Link className="nav-text" title="Designation" to="/designation">
               <i className="fa-solid fa-gauge"></i>
             </Link>
@@ -54,39 +74,43 @@ function Navbar() {
               <i className="fa-solid fa-gauge"></i>
             </Link>
           </li>
-          <li className="d-lg-block d-none">
-            <div className="accordion" id="accordionPanelsStayOpenExample">
-              <div className="accordion-item">
-                <h2 className="accordion-header" id="panelsStayOpen-headingOne">
-                  <button
-                    className="accordion-button collapsed drpdwn"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#panelsStayOpen-collapseOne"
-                    aria-expanded="false"
-                    aria-controls="panelsStayOpen-collapseOne"
+         
+            <li className="d-lg-block d-none">
+              <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button
+                      class="accordion-button collapsed drpdwn"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#panelsStayOpen-collapseOne"
+                      aria-expanded="false"
+                      aria-controls="panelsStayOpen-collapseOne"
+                    >
+                      <i class="fa-solid fa-sitemap"></i>
+                      <span>Organization</span>
+                    </button>
+                  </h2>
+                  <div
+                    id="panelsStayOpen-collapseOne"
+                    class="accordion-collapse collapse "
+                    aria-labelledby="panelsStayOpen-headingOne"
                   >
-                    <i className="fa-solid fa-sitemap"></i>
-                    <span>Organization</span>
-                  </button>
-                </h2>
-                <div
-                  id="panelsStayOpen-collapseOne"
-                  className="accordion-collapse collapse "
-                  aria-labelledby="panelsStayOpen-headingOne"
-                >
-                  <div className="accordion-body d-flex flex-column gap-3">
-                    <Link className="dropdown-item ms-4" title="Designation" to="/designation">
-                      Designation
-                    </Link>
-                    <Link className="dropdown-item ms-4" to="/department">
-                      Department
-                    </Link>
+                    <div class="accordion-body d-flex flex-column gap-3">
+                      <Link class="dropdown-item ms-4" to="/designation">
+                        Designation
+                      </Link>
+                      <Link class="dropdown-item ms-4" to="/department">
+                        Department
+                      </Link>
+                    </div>
+
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
+            </li>
+            </>
+          )}
           {/* <li>
             <button
               className="btn btn-secondary dropdown-toggle drpdwn"
@@ -111,12 +135,16 @@ function Navbar() {
               </li>
             </ul>
           </li> */}
-          <li className="d-flex gap-3 align-items-center">
-            <Link to="/employees" className="nav-text" title="Employees">
-              <i className="fa-solid fa-user-group"></i>
-              <span>Employees</span>
-            </Link>
-          </li>
+
+          {(user.role === "admin" || user.role === "hr") && (
+            <li class="d-flex gap-3 align-items-center">
+              <Link to="/employees" class="nav-text">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Employees</span>
+              </Link>
+            </li>
+          )}
+
 
           {/* <li className="d-flex gap-3 align-items-center">
             <Link to="#" className="nav-text">

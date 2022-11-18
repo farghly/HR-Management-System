@@ -3,8 +3,8 @@ import './project.css';
 function AddProject() {
     return ( 
         <>
-     <Link to="/projects" class="btn btn-primary my-3 employee-list">Employee List</Link>
-      <h3>Add New Employee</h3>
+     <Link to="/projects" class="btn btn-primary my-3 employee-list">Project List</Link>
+      <h3>Add New Project</h3>
       <form action="" class="d-flex flex-column gap-4 my-5 addproject-form">
         <div class="data d-flex flex-column gap-2">
           <label for="project-Name">Project Name</label>

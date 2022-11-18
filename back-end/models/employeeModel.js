@@ -39,20 +39,20 @@ const employeeSchema = new mongoose.Schema({
       "user",
     ],
   },
-  // tasks: [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Task",
-  //     required: true,
-  //   },
-  // ],
-  // project: [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Project",
-  //     required: true,
-  //   },
-  // ],
+  tasks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Task",
+      required: true,
+    },
+  ],
+  project: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Project",
+      required: true,
+    },
+  ],
   gender: {
     type: String,
     required: true,
@@ -125,9 +125,13 @@ employeeSchema.pre("save", async function (next) {
 employeeSchema.pre(/^find/, function (next) {
   this.populate({
     path: "department",
-  }).populate({
-    path: "designation",
-  });
+  })
+    .populate({
+      path: "designation",
+    })
+    .populate({
+      path: "tasks",
+    });
 
   next();
 });
