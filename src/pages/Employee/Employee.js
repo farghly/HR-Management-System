@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { deleteEmployee } from "./../../api/employeeAPI";
 
-
 function Employees() {
   const [employees, setEmployees] = useState([]);
 
@@ -42,7 +41,6 @@ function Employees() {
     <>
       <div className="container">
         <div className="row">
-
           <Link
             to="/employees/addemployee"
             class="btn btn-primary mb-3 employee-list"
@@ -51,10 +49,10 @@ function Employees() {
           </Link>
           <h3 class="p-3 ps-4">Employee List</h3>
           <div class="ser d-flex gap-2">
-            <h4>Search:</h4>
+            <h5>Search:</h5>
             <input type="search" />
           </div>
-          <div class="tab p-3">
+          <div class="tab  table-scrl employee-tab">
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
@@ -76,7 +74,9 @@ function Employees() {
                         <td class="employee-name">{`${employee.firstName} ${employee.lastName} `}</td>
 
                         {employee.department && (
-                          <td class="employee-email">{employee.department.name}</td>
+                          <td class="employee-email">
+                            {employee.department.name}
+                          </td>
                         )}
                         {employee.designation && (
                           <td class="employee-email">
@@ -86,7 +86,7 @@ function Employees() {
                         <td class="employee-email">{employee.email}</td>
                         <td class="employee-contact">{`${employee.contactNumber[0]} `}</td>
                         <td class="employee-type">{employee.role}</td>
-                        <td>
+                        <td class="d-flex gap-2">
                           <button
                             class="edit"
                             id={employee._id}
@@ -95,7 +95,7 @@ function Employees() {
                             <i class="fa-regular fa-pen-to-square"></i>
                           </button>
                           <button
-                            class="edit"
+                            class="delete"
                             id={employee._id}
                             onClick={deleteEmp}
                           >

@@ -55,7 +55,7 @@ function Department() {
         <h3 class="p-3 ps-4">Add Department</h3>
         <form
           action=""
-          class="d-flex flex-column p-3 gap-3"
+          class="d-flex flex-column py-3 gap-3"
           onSubmit={submitHandler}
         >
           <label for="">Department Name</label>
@@ -79,7 +79,7 @@ function Department() {
 
       <div class="right-side department-list col-lg-6 col-12">
         <h3 class="p-3 ps-4">Department List</h3>
-        <div class="tab p-3">
+        <div class="tab table-scrl">
           <table class="table table-striped table-hover">
             <thead>
               <tr>

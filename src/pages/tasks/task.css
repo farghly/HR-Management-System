@@ -11,25 +11,35 @@ form select {
     padding: 14px 20px;
 }
 
-form.task {
+/* form.task {
     flex-direction: column;
     width: 50%;
+} */
+form.task {
+    grid-template-columns: repeat(auto-fit, minmax(301px, 1fr));
 }
 
-form input[type="submit"] {
-    width: 50%;
-    align-self: center;
+form.task .group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-@media (max-width: 768px) {
-    form {
+/* 
+form.task input[type="submit"] {
+    width: 100%;
+} */
+
+/* @media (max-width: 768px) {
+    form.task {
         width: 100%;
     }
 
-    form input[type="submit"] {
+    form.task input[type="submit"],
+    form.task select {
         width: 100%;
     }
-}
+} */
 
 input {
     border: none;

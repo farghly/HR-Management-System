@@ -4,9 +4,10 @@
 }
 
 .logo-img {
-  width: 120px;
+  width: 100%;
   height: 60px;
 }
+
 .main-btn button {
   padding: 0px;
   background-color: inherit;
@@ -72,12 +73,10 @@ aside .main-btn .logOut svg:hover {
 .drpdwn svg {
   height: 28px;
   width: 28px;
-  background: linear-gradient(
-    106.37deg,
-    #fdbe71 29.63%,
-    #fd9397 51.55%,
-    #f990f4 90.85%
-  );
+  background: linear-gradient(106.37deg,
+      #fdbe71 29.63%,
+      #fd9397 51.55%,
+      #f990f4 90.85%);
   color: black;
 }
 
@@ -88,23 +87,23 @@ aside .main-btn .logOut svg:hover {
 
 @media (max-width: 600px) {
   aside :is(h4, .logo) {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .profile-img {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
   }
 
   aside .main-btn svg {
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
   }
 
   .nav-text svg,
   .drpdwn svg {
-    height: 18px;
-    width: 18px;
+    height: 15px;
+    width: 15px;
   }
 }
 
@@ -127,6 +126,7 @@ li:hover .nav-text {
 }
 
 @media (max-width: 990px) {
+
   .nav-text span,
   .drpdwn span {
     display: none;

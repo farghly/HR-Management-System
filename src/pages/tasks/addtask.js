@@ -50,11 +50,15 @@ function AddTask() {
 
   return (
     <>
-      <Link to="/tasks" className="btn btn-primary my-3 task-list">
+      <Link to="/tasks" className="btn btn-primary mb-3 task-list">
         Tasks List
       </Link>
       <h3>Add New Task</h3>
-      <form action="" className="d-flex gap-4 my-5" onSubmit={submitHandler}>
+      <form
+        action=""
+        className="d-grid gap-4 my-5 task"
+        onSubmit={submitHandler}
+      >
         <div className="data d-flex flex-column gap-2">
           <label for="tName">Task Name</label>
           <FormInput
@@ -88,6 +92,18 @@ function AddTask() {
           ></textarea>
         </div>
         <div className="data d-flex flex-column gap-2">
+          <label for="employee">Employee</label>
+          <select
+            id="employee"
+            name="employee"
+            className="select"
+            onChange={changeHandler}
+          >
+            <option value="one">One</option>
+            <option value="two">Two</option>
+          </select>
+        </div>
+        <div className="d-flex flex-column gap-2">
           <FormInput
             label="start Date"
             type="date"
@@ -96,7 +112,7 @@ function AddTask() {
             required
           />
         </div>
-        <div className="data d-flex flex-column gap-2 ">
+        <div className="d-flex flex-column gap-2 ">
           <FormInput
             label="end Date"
             type="date"
@@ -105,18 +121,7 @@ function AddTask() {
             required
           />
         </div>
-        <div className="data d-flex flex-column gap-2">
-          <label for="employee">Employee</label>
-          <select
-            id="employee"
-            name="employee"
-            className="select w-50"
-            onChange={changeHandler}
-          >
-            <option value="one">One</option>
-            <option value="two">Two</option>
-          </select>
-        </div>
+
         <input className="btn btn-success" type="submit" value="Save" />
       </form>
     </>

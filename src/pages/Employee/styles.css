@@ -29,8 +29,26 @@ form select {
     border: none;
 }
 
+.add-employee .group {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.add-employee button {
+    width: 40%;
+    padding: 10px;
+    margin: auto auto 0;
+    background-color: green;
+    color: white !important;
+}
+
 table {
     border: 1px solid rgb(123, 123, 123);
+}
+
+.employee-tab {
+    height: 500px;
 }
 
 form {

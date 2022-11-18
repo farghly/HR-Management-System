@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import ProjecstCard from './../../components/Cards/ProjecstCard'
+import ProjecstCard from "./../../components/Cards/ProjecstCard";
 import { getEmployeeById } from "../../api/employeeAPI";
 function Project() {
   const auth = useSelector((state) => state.auth);
@@ -20,7 +20,7 @@ function Project() {
       {(user.role === "admin" || user.role === "hr") && (
         <Link
           to="/projects/addproject"
-          class="btn btn-primary my-3 add-new-project"
+          class="btn btn-primary mb-3 add-new-project"
         >
           Add New Project
         </Link>
@@ -28,10 +28,10 @@ function Project() {
 
       <h3 class="p-3 ps-4">Project List</h3>
       <div class="ser d-flex gap-2">
-        <h4>Search:</h4>
+        <h5>Search:</h5>
         <input type="search" />
       </div>
-      <div class="tab p-3">
+      <div class="tab table-scrl project-tab">
         <table class="table table-striped table-hover">
           <thead>
             <tr>
@@ -44,14 +44,41 @@ function Project() {
             </tr>
           </thead>
           <tbody>
-
-
-            <ProjecstCard name='Final Project' status='Doing' employee='Students' startDate='01-11-2022' endDate='19-11-2022' />
-            <ProjecstCard name='Final Project' status='Doing' employee='Students' startDate='01-11-2022' endDate='19-11-2022' />
-            <ProjecstCard name='Final Project' status='Doing' employee='Students' startDate='01-11-2022' endDate='19-11-2022' />
-            <ProjecstCard name='Final Project' status='Doing' employee='Students' startDate='01-11-2022' endDate='19-11-2022' />
-            <ProjecstCard name='Final Project' status='Doing' employee='Students' startDate='01-11-2022' endDate='19-11-2022' />
-
+            <ProjecstCard
+              name="Final Project"
+              status="Doing"
+              employee="Students"
+              startDate="01-11-2022"
+              endDate="19-11-2022"
+            />
+            <ProjecstCard
+              name="Final Project"
+              status="Doing"
+              employee="Students"
+              startDate="01-11-2022"
+              endDate="19-11-2022"
+            />
+            <ProjecstCard
+              name="Final Project"
+              status="Doing"
+              employee="Students"
+              startDate="01-11-2022"
+              endDate="19-11-2022"
+            />
+            <ProjecstCard
+              name="Final Project"
+              status="Doing"
+              employee="Students"
+              startDate="01-11-2022"
+              endDate="19-11-2022"
+            />
+            <ProjecstCard
+              name="Final Project"
+              status="Doing"
+              employee="Students"
+              startDate="01-11-2022"
+              endDate="19-11-2022"
+            />
 
             <tr>
               <td class="project-name">Final Project</td>
@@ -65,7 +92,6 @@ function Project() {
                 </button>
               </td>
             </tr>
-
           </tbody>
         </table>
       </div>

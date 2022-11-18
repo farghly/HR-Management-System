@@ -1,18 +1,15 @@
-
 .add-new-project {
     font-size: 20px;
     width: fit-content;
     padding: 12px 30px;
 }
 
-
-
 .ser {
     align-items: center;
     justify-content: end;
 }
 
-.ser h4 {
+.ser h5 {
     margin: 0;
 }
 
@@ -22,6 +19,20 @@
     border: none;
     border-bottom: 1px solid rgb(0, 153, 255);
     font-size: 20px;
+}
+
+@media (max-width: 500px) {
+    .ser input {
+        width: 70%;
+    }
+}
+
+.project-tab {
+    height: 500px;
+}
+
+.project-tab table {
+    min-width: 700px;
 }
 
 button {
@@ -43,15 +54,18 @@ svg {
 
 tr td:not(:last-child) {
     line-height: 2;
+    font-size: 15px;
+
 }
 
 tr {
     font-size: 20px;
 }
 
-.btns button {
+.btns .btn {
     color: white;
     padding: 8px 15px;
+    width: 46%;
 }
 
 form input {
@@ -82,7 +96,7 @@ table {
 }
 
 .addproject-form {
-    width: 50%;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
 }
 
 @media (max-width: 768px) {
@@ -112,7 +126,7 @@ textarea {
     padding: 8px 12px;
 }
 
-.btn {
+.task-content .btn {
     width: 46%;
 }
 

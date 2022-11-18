@@ -92,7 +92,7 @@ function Dashboard() {
 
       {/* start of table */}
       <h3>Running Project/s</h3>
-      <div className="details-table">
+      <div className="details-table table-scrl">
         <table className="table">
           <thead>
             <tr>

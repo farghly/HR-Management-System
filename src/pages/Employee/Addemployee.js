@@ -70,7 +70,7 @@ function AddEmployee() {
         Employee List
       </Link>
       <h3>Add New Employee</h3>
-      <form onSubmit={submitHandler} className="d-grid gap-4 my-5">
+      <form onSubmit={submitHandler} className="d-grid gap-4 my-5 add-employee">
         <div className="data d-flex flex-column gap-2">
           <FormInput
             label="First Name"
@@ -250,7 +250,6 @@ function AddEmployee() {
             type="date"
             id="leaving-day"
             name="leavingday"
-            
             value={leavingday}
             onChange={changeHandler}
           />

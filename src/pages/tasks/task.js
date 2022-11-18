@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
 import { Link } from "react-router-dom";
-import "./task.css";
+import "./Task.css";
 import TasksCard from "./TasksCard";
 function Task() {
   const auth = useSelector((state) => state.auth);
@@ -16,9 +16,8 @@ function Task() {
   }, []);
   return (
     <>
-
       {user.role === "admin" && (
-        <Link to="addtask" class="btn btn-primary my-3 task-list">
+        <Link to="addtask" class="btn btn-primary mb-3 task-list">
           Add New Task
         </Link>
       )}
@@ -76,7 +75,6 @@ function Task() {
         delectus?Fuga, hic pariatur asperiores at laboriosam error soluta reiciendis sapiente reprehenderit nesciunt!"
           status="To Do"
           createdAt="6"
-
           taskName="Final Project "
           taskDetails="Lorem ipsum dolor sit amet consectetur adipisicing elit."
           taskNotes="Itaque, doloribus debitis minima adipisci assumenda ad ut nesciuntlore
@@ -109,7 +107,6 @@ function Task() {
         delectus?Fuga, hic pariatur asperiores at laboriosam error soluta reiciendis sapiente reprehenderit nesciunt!"
           taskCase="To Do"
           timeRequired="6"
-
         />
       </div>
     </>

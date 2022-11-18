@@ -1,18 +1,16 @@
-import { Link } from 'react-router-dom';
-import './project.css';
+import { Link } from "react-router-dom";
+import "./project.css";
 function AddProject() {
-    return ( 
-        <>
-     <Link to="/projects" class="btn btn-primary my-3 employee-list">Project List</Link>
+  return (
+    <>
+      <Link to="/projects" class="btn btn-primary mb-3 employee-list">
+        Project List
+      </Link>
       <h3>Add New Project</h3>
-      <form action="" class="d-flex flex-column gap-4 my-5 addproject-form">
+      <form action="" class="d-grid gap-4 my-5 addproject-form">
         <div class="data d-flex flex-column gap-2">
           <label for="project-Name">Project Name</label>
           <input type="text" id="project-Name" autocomplete="off" />
-        </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="description">Description</label>
-          <textarea name="description" id="" rows="4"></textarea>
         </div>
         <div class="data d-flex flex-column gap-2">
           <label for="status">Status</label>
@@ -37,14 +35,17 @@ function AddProject() {
           <label for="end-date">End Date</label>
           <input type="date" id="end-date" name="enddate" />
         </div>
-
+        <div class="data d-flex flex-column gap-2">
+          <label for="description">Description</label>
+          <textarea name="description" id="" rows="4"></textarea>
+        </div>
         <div class="btns">
           <input class="btn btn-success me-3" type="submit" value="Save" />
           <input class="btn btn-danger" type="reset" value="Cancel" />
         </div>
       </form>
-  </>
-     );
+    </>
+  );
 }
 
 export default AddProject;

@@ -15,11 +15,10 @@ import { setCurrentUser, logout } from "./redux/auth/authActions.action";
 import Task from "./pages/tasks/task";
 import AddTask from "./pages/tasks/addtask";
 
-import Project from './pages/projects/project'
-import AddProject from './pages/projects/addproject'
+import Project from "./pages/projects/project";
+import AddProject from "./pages/projects/addproject";
 import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
-
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -52,7 +51,7 @@ function App() {
           {!auth.isAuthenticated && <Login />}
           {auth.isAuthenticated && (
             <div className="container-fluid main">
-              <div class="parent d-flex">
+              <div class="parent d-flex gap-lg-3 gap-2 justify-content-between">
                 <div className="child-1">
                   <Navbar />
                 </div>
@@ -82,7 +81,6 @@ function App() {
                       <Route path="/designation/" element={<Desgination />} />
                       <Route path="/tasks/" element={<Task />} />
                       <Route path="/tasks/addtask" element={<AddTask />} />
-
 
                       <Route path="/projects/" element={<Project />} />
                       <Route
