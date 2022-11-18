@@ -31,7 +31,9 @@ function Employees() {
   //   });
   // }, []);
   const deleteEmp = (event) => {
-    deleteEmployee(event.currentTarget.id);
+    deleteEmployee(event.currentTarget.id).then(() => {
+      alert("Successfully Deleted");
+    });
     getEmployees().then((response) => {
       setEmployees(response.data.data.data);
     });

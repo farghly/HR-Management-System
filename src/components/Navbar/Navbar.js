@@ -28,12 +28,6 @@ function Navbar() {
           {/* <img src={logo} alt="" className="logo-img " /> */}
         </div>
         <div className="data">
-          <img
-            src="https://via.placeholder.com/150"
-            alt=""
-            className="profile-img mb-3"
-          />
-
           <h4 class="mb-3">
             {user.firstName} {user.lastName}
           </h4>

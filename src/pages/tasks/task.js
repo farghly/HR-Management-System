@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
 import { Link } from "react-router-dom";
-import "./Task.css";
+import "./task.css";
 import TasksCard from "./TasksCard";
 function Task() {
   const auth = useSelector((state) => state.auth);

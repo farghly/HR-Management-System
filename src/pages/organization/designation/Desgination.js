@@ -3,22 +3,55 @@ import {
   deleteDesignation,
   getDesignations,
 } from "../../../api/designationAPI";
-import axios from "axios";
 import "./../department/Department.css";
-function Desgination() {
+import FormInput from "../../../components/form-input/FormInput.component";
+import { createDesignation } from "./../../../api/designationAPI";
+
+const defaultFormData = {
+  name: "",
+};
+
+function Designation() {
+  const [formData, setFormData] = useState(defaultFormData);
+  const { name } = formData;
   const [apiData, setApiData] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
+  const changeHandler = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+    console.log(formData);
   };
 
+  const resetFormData = () => {
+    setFormData(defaultFormData);
+  };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    createDesignation(formData);
+    getDesignations().then((getData) => {
+      console.log(getData.data.data.data);
+      setApiData(getData.data.data.data);
+    });
+    resetFormData();
+  };
   useEffect(() => {
     getDesignations().then((getData) => {
       console.log(getData.data.data.data);
       setApiData(getData.data.data.data);
     });
   }, []);
+
+  const deleteDesign = (event) => {
+    deleteDesignation(event.currentTarget.id).then(() => {
+      alert("Successfully Deleted");
+    });
+    getDesignations().then((getData) => {
+      console.log(getData.data.data.data);
+      setApiData(getData.data.data.data);
+    });
+    // console.log(event.currentTarget.id);
+  };
 
   return (
     <>
@@ -40,7 +73,7 @@ function Desgination() {
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
-                  <th scope="col">Desgination Name</th>
+                  <th scope="col">Designation Name</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -67,10 +100,9 @@ function Desgination() {
             </table>
           </div>
         </div>
-        <div></div>
       </div>
     </>
   );
 }
 
-export default Desgination;
+export default Designation;
