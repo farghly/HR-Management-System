@@ -113,7 +113,7 @@
 
 .goToSignUpPage {
   transition: 0.3s all ease-in;
-  background-color: white;
+  background-color: var(--wit-clr);
   color: var(--main-clr);
   border: 1px solid var(--main-clr);
   display: inline-block;
@@ -123,7 +123,7 @@
 }
 
 .goToSignUpPage:hover {
-  color: white;
+  color: var(--wit-clr);
   background-color: var(--main-clr);
   scale: 0.98;
 }

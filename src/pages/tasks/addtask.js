@@ -69,7 +69,6 @@ function AddTask() {
         <div className="data d-flex flex-column gap-2">
           <label for="description">Description</label>
           <textarea
-            className="border border-0 form-control"
             name="description"
             id="description"
             rows="4"
@@ -80,7 +79,6 @@ function AddTask() {
         <div className="data d-flex flex-column gap-2">
           <label for="summary">Summary</label>
           <textarea
-            className="border border-0 form-control"
             name="summary"
             id="summary"
             rows="4"

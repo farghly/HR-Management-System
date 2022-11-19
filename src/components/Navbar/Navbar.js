@@ -5,7 +5,7 @@ import { logout } from "../../redux/auth/authActions.action";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
-import logo from './../../imgs/01.png'
+import logo from "./../.././imgs/HRMS-LOGO-NEW-768x214.png";
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +25,6 @@ function Navbar() {
   return (
     <aside>
       <div className="up text-center pb-5">
-
         <h1 className="logo mb-4 d-flex">
           <img src={logo} alt="" className="logo-img" />
         </h1>
@@ -59,7 +58,6 @@ function Navbar() {
           )}
           {(user.role === "admin" || user.role === "hr") && (
             <>
-
               <li className="d-flex gap-3 align-items-center">
                 <Link
                   className="nav-text"
@@ -76,7 +74,7 @@ function Navbar() {
                   <span>Department</span>
                 </Link>
               </li>
-{/* =======
+              {/* =======
               <li className="d-flex d-lg-none gap-3 align-items-center">
                 <Link className="nav-text" title="Designation" to="/designation">
                   <i className="fa-solid fa-gauge"></i>
