@@ -81,6 +81,7 @@ function AddEmployee() {
             name="firstName"
             value={firstName}
             onChange={changeHandler}
+            placeholder='Enter your first name'
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -93,6 +94,7 @@ function AddEmployee() {
             name="lastName"
             value={lastName}
             onChange={changeHandler}
+            placeholder='Enter your last name'
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -105,6 +107,7 @@ function AddEmployee() {
             required
             value={email}
             onChange={changeHandler}
+            placeholder='Enter your email adress'
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -117,6 +120,7 @@ function AddEmployee() {
             required
             value={password}
             onChange={changeHandler}
+            placeholder='Enter your password'
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -129,6 +133,7 @@ function AddEmployee() {
             required
             value={confirmPassword}
             onChange={changeHandler}
+            placeholder='Re-enter your password'
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -141,6 +146,7 @@ function AddEmployee() {
             required
             value={NID}
             onChange={changeHandler}
+            placeholder='Enter your nationality ID'
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -151,6 +157,7 @@ function AddEmployee() {
             name="contactNumber"
             value={contactNumber}
             onChange={changeHandler}
+            placeholder='Enter your phone number'
           />
         </div>
         <div className="data d-flex flex-column gap-2">

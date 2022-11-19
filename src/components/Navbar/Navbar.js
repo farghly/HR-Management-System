@@ -76,7 +76,7 @@ function Navbar() {
                   <span>Department</span>
                 </Link>
               </li>
-{/* =======
+              {/* =======
               <li className="d-flex d-lg-none gap-3 align-items-center">
                 <Link className="nav-text" title="Designation" to="/designation">
                   <i className="fa-solid fa-gauge"></i>
