@@ -19,6 +19,15 @@ function Task() {
       setTasks(res.data.data.data);
     });
   }, []);
+  const currentUserTasks = [];
+  tasks.map((task) =>
+    task.employee.map(
+      (employee) => employee._id === user._id && currentUserTasks.push(task)
+    )
+  );
+  // console.log(tasks);
+  console.log(currentUserTasks);
+
   const userTasks = user.tasks; // console.log(tasks);
   console.log(userTasks);
   return (
