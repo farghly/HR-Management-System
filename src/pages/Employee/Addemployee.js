@@ -165,6 +165,8 @@ function AddEmployee() {
             {/* <option name="one" value="one"  disabled>
               select a dep
             </option> */}
+            <option selected>Please Select a department</option>
+
             {departments.map((department) => (
               <option id={department._id} value={department._id}>
                 {department.name}
@@ -181,6 +183,7 @@ function AddEmployee() {
             onChange={changeHandler}
             value={designation}
           >
+            <option selected>Please Select a designation</option>
             {designations.map((designation) => (
               <option id={designation._id} value={designation._id}>
                 {designation.name}
@@ -197,6 +200,7 @@ function AddEmployee() {
             onChange={changeHandler}
             value={role}
           >
+            <option selected>Please Select a role</option>
             <option value="admin" name="admin">
               Admin
             </option>
@@ -217,6 +221,8 @@ function AddEmployee() {
             onChange={changeHandler}
             value={gender}
           >
+            <option selected>Please Select a gender</option>
+
             <option name="male" value="male">
               Male
             </option>
@@ -258,10 +264,7 @@ function AddEmployee() {
           />
         </div>
 
-        <div className="data d-flex flex-column gap-2">
-          <FormInput label="Image" type="file" id="myimage" name="" />
-        </div>
-        <button type="submit" className="save">
+        <button type="submit" style={{ color: "black" }}>
           Save
         </button>
         {/* <div className="btns"></div> */}
