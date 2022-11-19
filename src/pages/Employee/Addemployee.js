@@ -263,10 +263,12 @@ function AddEmployee() {
             onChange={changeHandler}
           />
         </div>
+        <div className="data d-flex align-items-end gap-2 ">
+          <button type="submit" className="save" style={{ color: "black" }}>
+            Save
+          </button>
+        </div>
 
-        <button type="submit" style={{ color: "black" }}>
-          Save
-        </button>
         {/* <div className="btns"></div> */}
       </form>
     </>
