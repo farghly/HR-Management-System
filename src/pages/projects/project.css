@@ -49,7 +49,7 @@ button {
 }
 
 svg {
-    color: white;
+    color: var(--wit-clr);
 }
 
 tr td:not(:last-child) {
@@ -63,36 +63,17 @@ tr {
 }
 
 .btns .btn {
-    color: white;
+    color: var(--wit-clr);
     padding: 8px 15px;
     width: 46%;
 }
 
-form input {
-    padding: 10px 15px;
-}
-
 table {
     border: 1px solid rgb(123, 123, 123);
-}
-
-/* * Add project style
-*/
-form input:not([type="file"]) {
-    padding: 10px 15px;
-}
-
-form input[type="file"] {
-    padding: 8px 10px;
-    background-color: white;
 }
 
 form select {
     padding: 14px 20px;
-}
-
-table {
-    border: 1px solid rgb(123, 123, 123);
 }
 
 .addproject-form {
@@ -103,19 +84,6 @@ table {
     .addproject-form {
         width: 100%;
     }
-}
-
-input {
-    border: none;
-    outline: none;
-    transition: 0.3s all;
-
-}
-
-input:focus {
-    box-shadow: 0 0 7px rgba(0 0 0 / 40%);
-    border: none;
-    outline: none;
 }
 
 textarea {

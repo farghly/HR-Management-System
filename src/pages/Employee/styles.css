@@ -15,20 +15,6 @@ h3::before {
     left: 0;
 }
 
-form input:not([type="file"]) {
-    padding: 10px 15px;
-}
-
-form input[type="file"] {
-    padding: 8px 10px;
-    background-color: white;
-}
-
-form select {
-    padding: 14px 20px;
-    border: none;
-}
-
 .add-employee .group {
     display: flex;
     gap: 10px;
@@ -36,10 +22,9 @@ form select {
 }
 
 .add-employee button {
-    width: 40%;
+    width: 100%;
     padding: 10px;
-    margin: auto auto 0;
-    color: white !important;
+    color: var(--wit-clr) !important;
 }
 
 table {
@@ -55,33 +40,8 @@ table {
     min-width: 1072px;
 }
 
-.for-btns {}
-
 form {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-input {
-    border: none;
-    outline: none;
-    transition: 0.3s all;
-
-}
-
-input:focus {
-    box-shadow: 0 0 7px rgba(0 0 0 / 40%);
-    border: none;
-    outline: none;
 }
 
 .addemployee .btns .btn {
@@ -94,18 +54,7 @@ input:focus {
     padding: 12px 20px;
 }
 
-
 .addemployee {
     max-width: 1550px;
     padding: 10px;
-}
-
-.ser {
-    justify-content: end;
-    padding: 10px;
-    align-items: center;
-}
-
-.ser [type="search"] {
-    padding: 8px 12px;
 }

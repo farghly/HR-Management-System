@@ -48,7 +48,7 @@ button {
 }
 
 svg {
-    color: white;
+    color: var(--wit-clr);
 }
 
 .department-list tr td:first-child {
@@ -60,7 +60,7 @@ tr {
 }
 
 .btns.depart button {
-    color: white;
+    color: var(--wit-clr);
     padding: 8px 15px;
     width: 20%;
 }
@@ -69,31 +69,6 @@ tr {
     .btns.depart button {
         width: 50%;
     }
-}
-
-form input {
-    padding: 10px 15px;
-}
-
-.save {
-    background-color: #0099ff;
-}
-
-.save,
-.cancel {
-    transition: 0.2s all;
-}
-
-.save:hover {
-    background-color: #017acb;
-}
-
-.cancel {
-    background-color: #ef5350;
-}
-
-.cancel:hover {
-    background-color: #c23e3c;
 }
 
 table {

@@ -1,36 +1,11 @@
-form input:not([type="file"]) {
-    padding: 10px 15px;
-}
-
-form input[type="file"] {
-    padding: 8px 10px;
-    background-color: white;
-}
-
-form select {
-    padding: 14px 20px;
-}
-
 form.task {
-    grid-template-columns: repeat(auto-fit, minmax(301px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 form.task .group {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-input {
-    border: none;
-    outline: none;
-    transition: 0.3s all;
-}
-
-input:focus {
-    box-shadow: 0 0 7px rgba(0 0 0 / 40%);
-    border: none;
-    outline: none;
 }
 
 .task-list {
@@ -40,7 +15,7 @@ input:focus {
 }
 
 .tasks {
-    grid-template-columns: repeat(auto-fit, minmax(273px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .task-content {
@@ -61,8 +36,4 @@ input:focus {
     background-color: rgba(128, 0, 128, 0.32);
     color: purple;
     border-radius: 10px;
-}
-
-.task-btns {
-    justify-content: space-evenly;
 }

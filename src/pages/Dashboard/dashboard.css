@@ -18,13 +18,14 @@
 svg {
   padding: 15px;
   border-radius: 50%;
-  color: white;
+  color: var(--wit-clr);
   font-size: 18px;
   width: 15px;
 }
 
 .one h5 {
   margin: 0;
+  font-size: 1.2rem !important;
 }
 
 .second-card {

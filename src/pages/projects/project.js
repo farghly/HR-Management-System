@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
+import moment from 'moment'
 import ProjecstCard from "./../../components/Cards/ProjecstCard";
 import { getEmployeeById } from "../../api/employeeAPI";
+import { getProjects } from "../../api/projectsAPI";
 function Project() {
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
@@ -12,6 +14,12 @@ function Project() {
   useEffect(() => {
     getEmployeeById(auth.user.id).then((res) => {
       setUser(res.data.data.data);
+    });
+  }, []);
+  const [apiProjectData, setProjectData] = useState([]);
+  useEffect(() => {
+    getProjects().then((getData) => {
+      setProjectData(getData.data.data.data);
     });
   }, []);
 
@@ -37,61 +45,26 @@ function Project() {
             <tr>
               <th scope="col">Project Name</th>
               <th scope="col">Status</th>
-              <th scope="col">Employee</th>
+              {/* <th scope="col">Employee</th> */}
               <th scope="col">Start Date</th>
               <th scope="col">End Date</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            <ProjecstCard
-              name="Final Project"
-              status="Doing"
-              employee="Students"
-              startDate="01-11-2022"
-              endDate="19-11-2022"
+            {apiProjectData.map((data)=>{
+              return(
+                <ProjecstCard
+              name={data.name}
+              status={data.status}
+          
+              startDate={moment(data.startDate).format('LL')}
+              endDate={moment(data.endDate).format('LL')}
             />
-            <ProjecstCard
-              name="Final Project"
-              status="Doing"
-              employee="Students"
-              startDate="01-11-2022"
-              endDate="19-11-2022"
-            />
-            <ProjecstCard
-              name="Final Project"
-              status="Doing"
-              employee="Students"
-              startDate="01-11-2022"
-              endDate="19-11-2022"
-            />
-            <ProjecstCard
-              name="Final Project"
-              status="Doing"
-              employee="Students"
-              startDate="01-11-2022"
-              endDate="19-11-2022"
-            />
-            <ProjecstCard
-              name="Final Project"
-              status="Doing"
-              employee="Students"
-              startDate="01-11-2022"
-              endDate="19-11-2022"
-            />
-
-            <tr>
-              <td class="project-name">Final Project</td>
-              <td class="project-status">Doing</td>
-              <td class="project-employee">Students</td>
-              <td class="project-start-date">1/11/2022</td>
-              <td class="project-end-date">19/11/2022</td>
-              <td>
-                <button class="edit">
-                  <i class="fa-regular fa-pen-to-square"></i>
-                </button>
-              </td>
-            </tr>
+              )
+            })}
+           
+       
           </tbody>
         </table>
       </div>

@@ -15,7 +15,6 @@
   --child-d-clr: #0000007a;
   --card-d-clr: var(--wit-clr);
   --card-d-bgclr: var(--blk-clr);
-
 }
 
 
@@ -25,6 +24,39 @@ body {
   height: fit-content;
   background-attachment: fixed;
   /* color: white !important; */
+}
+
+::selection {
+  background-color: var(--selection-1-clr);
+  color: var(--selection-2-clr);
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  /* background-color: darkgrey; */
+}
+
+body::-webkit-scrollbar-thumb {
+  /* background-color: darkgrey; */
+  background-color: #ffe1bc;
+  ;
+  /* outline: 1px solid slategrey; */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #fed39e;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* a,
@@ -45,31 +77,69 @@ table button {
   padding: 0;
 }
 
-input {
+input,
+select,
+textarea {
   border: 1px solid #ddd !important;
   border-radius: 5px;
+  transition: 0.3s all;
 }
 
-::selection {
-  background-color: var(--selection-1-clr);
-  color: var(--selection-2-clr);
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 7px rgb(0 0 0 / 40%);
+  outline: none
 }
 
-body::-webkit-scrollbar {
-  width: 10px;
+form input {
+  padding: 10px 15px;
+  transition: 0.3s all;
 }
 
-body::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+form input[type="file"] {
+  padding: 8px 10px;
+  background-color: var(--wit-clr);
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-ul {
-  list-style: none;
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.ser {
+  justify-content: end;
+  padding: 10px;
+  align-items: center;
+}
+
+.ser [type="search"] {
+  padding: 8px 12px;
+}
+
+.save {
+  background-color: #0099ff;
+}
+
+.save,
+.cancel {
+  transition: 0.2s all;
+}
+
+.save:hover {
+  background-color: #017acb;
+}
+
+.cancel {
+  background-color: #ef5350;
+}
+
+.cancel:hover {
+  background-color: #c23e3c;
 }
 
 .main {
@@ -81,8 +151,6 @@ ul {
   background-color: var(--parent-clr);
 }
 
-/* height: 380px;
-for dash height: height: 410px desig height: 550px; employee & proj */
 .table-scrl {
   overflow: auto;
 }
@@ -131,7 +199,7 @@ for dash height: height: 410px desig height: 550px; employee & proj */
   }
 
   .child-2 {
-    padding: 3px 8px;
+    padding: 10px 5px;
   }
 
   .child-2>a {
