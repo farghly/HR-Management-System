@@ -9,12 +9,9 @@ const defaultFormData = {
   createdAt: "",
   summary: "",
   description: "",
-  project: "",
   employee: "",
   startDate: "",
   endDate: "",
-  status: "",
-  importance: "",
 };
 
 function AddTask() {
@@ -22,18 +19,7 @@ function AddTask() {
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState([]);
 
-  const {
-    name,
-    summary,
-    description,
-    project,
-    employee,
-    startDate,
-    endDate,
-    status,
-    createdAt,
-    importance,
-  } = formData;
+  const { name, summary, description, employee, startDate, endDate } = formData;
 
   useEffect(() => {
     getEmployees().then((res) => {
@@ -53,9 +39,7 @@ function AddTask() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-
     createTask(formData);
-
     resetFormData();
     console.log(formData);
   };
@@ -75,10 +59,9 @@ function AddTask() {
           <label for="tName">Task Name</label>
           <FormInput
             type="text"
-            id="tName"
+            id="name"
             autocomplete="off"
             name={name}
-
             value={name}
             onChange={changeHandler}
           />
@@ -117,7 +100,7 @@ function AddTask() {
           >
             {/* <option value="one">One</option>
             <option value="two">Two</option> */}
-
+            <option selected>Please select an employee</option>
             {employees &&
               employees.map((employee) => (
                 <option value={employee._id} id={employee._id}>
@@ -131,9 +114,10 @@ function AddTask() {
             label="start Date"
             type="date"
             id="startDay"
-            name="startDay"
+            name="startDate"
             value={startDate}
             required
+            onChange={changeHandler}
           />
         </div>
 
@@ -145,6 +129,7 @@ function AddTask() {
             name="endDate"
             value={endDate}
             required
+            onChange={changeHandler}
           />
         </div>
 

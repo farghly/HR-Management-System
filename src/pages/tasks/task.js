@@ -19,11 +19,20 @@ function Task() {
       setTasks(res.data.data.data);
     });
   }, []);
-  const userTasks = user.tasks; // console.log(tasks);
-  console.log(userTasks);
+  const currentUserTasks = [];
+  tasks.map((task) =>
+    task.employee.map(
+      (employee) => employee._id === user._id && currentUserTasks.push(task)
+    )
+  );
+  // console.log(tasks);
+  console.log(currentUserTasks);
+
+  // console.log(tasks);
+
   return (
     <>
-      {(tasks || userTasks) && (
+      {(tasks || currentUserTasks) && (
         <>
           {user.role === "admin" && (
             <Link to="addtask" class="btn btn-primary mb-3 task-list">
@@ -47,8 +56,8 @@ function Task() {
                 />
               ))}
             {(user.role === "hr" || user.role === "employee") &&
-              userTasks &&
-              userTasks.map((userTask) => (
+              currentUserTasks &&
+              currentUserTasks.map((userTask) => (
                 <TasksCard
                   taskName={userTask.name}
                   taskDetails={userTask.summery}
