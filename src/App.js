@@ -20,7 +20,6 @@ import AddProject from "./pages/projects/addproject";
 import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
 
-
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
   setAuthToken(token);
@@ -59,35 +58,80 @@ function App() {
                 <div class="child-2">
                   {auth.isAuthenticated && (
                     <Routes>
-                      <Route path="/" element={<Dashboard />} />
+                      {user.role === "admin" || user.role === "hr" ? (
+                        <Route path="/" element={<Dashboard />} />
+                      ) : (
+                        <Route
+                          path="/"
+                          element={<Navigate replace to="/tasks" />}
+                        />
+                      )}
 
-                      {user.role === "admin" ? (
-                        <Route path="/department" element={<Department />} />
+                      {user.role === "admin" || user.role === "hr" ? (
+                        <Route
+                          path="/department"
+                          element={<Department user={user} />}
+                        />
                       ) : (
                         <Route
                           path="/department"
-                          element={<Navigate replace to="/" />}
+                          element={<Navigate replace to="/tasks" />}
                         />
                       )}
 
                       <Route path="/employees" element={<Employees />} />
-                      <Route
-                        path="/employees/addemployee"
-                        element={<AddEmployee />}
-                      />
-                      <Route
-                        path="/employees/editEmployee/:id"
-                        element={<EditEmployee />}
-                      />
-                      <Route path="/designation/" element={<Desgination />} />
+                      {user.role === "admin" || user.role === "hr" ? (
+                        <Route
+                          path="/employees/addemployee"
+                          element={<AddEmployee />}
+                        />
+                      ) : (
+                        <Route
+                          path="/employees/addemployee"
+                          element={<Navigate replace to="/tasks" />}
+                        />
+                      )}
+                      {user.role === "admin" || user.role === "hr" ? (
+                        <Route
+                          path="/employees/editEmployee/:id"
+                          element={<EditEmployee />}
+                        />
+                      ) : (
+                        <Route
+                          path="//employees/editEmployee/:id"
+                          element={<Navigate replace to="/tasks" />}
+                        />
+                      )}
+                      {user.role === "admin" || user.role === "hr" ? (
+                        <Route path="/designation/" element={<Desgination />} />
+                      ) : (
+                        <Route
+                          path="/designation"
+                          element={<Navigate replace to="/tasks" />}
+                        />
+                      )}
                       <Route path="/tasks/" element={<Task />} />
-                      <Route path="/tasks/addtask" element={<AddTask />} />
+                      {user.role === "admin" ? (
+                        <Route path="/tasks/addtask" element={<AddTask />} />
+                      ) : (
+                        <Route
+                          path="/tasks/addtask"
+                          element={<Navigate replace to="/tasks" />}
+                        />
+                      )}
 
                       <Route path="/projects/" element={<Project />} />
-                      <Route
-                        path="/projects/addproject"
-                        element={<AddProject />}
-                      />
+                      {user.role === "admin" ? (
+                        <Route
+                          path="/projects/addproject"
+                          element={<AddProject />}
+                        />
+                      ) : (
+                        <Route
+                          path="/projects/addproject"
+                          element={<Navigate replace to="/tasks" />}
+                        />
+                      )}
                     </Routes>
                   )}
                 </div>

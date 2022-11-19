@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const defaultFormData = {
   name: "",
 };
-function Department() {
+function Department({ user }) {
   const [formData, setFormData] = useState(defaultFormData);
   // const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
@@ -87,29 +87,31 @@ function Department() {
             <thead>
               <tr>
                 <th scope="col">Department Name</th>
-                <th scope="col">Action</th>
+                {user.role === "admin" && <th scope="col">Action</th>}
               </tr>
             </thead>
             <tbody>
               {departments.map((department) => (
                 <tr>
                   <td>{department.name}</td>
-                  <td class="d-flex gap-2">
-                    <button
-                      class="edit"
-                      id={department._id}
-                      onClick={navigateToEditDepart}
-                    >
-                      <i class="fa-regular fa-pen-to-square"></i>
-                    </button>
-                    <button
-                      class="delete"
-                      id={department._id}
-                      onClick={deleteDepart}
-                    >
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
-                  </td>
+                  {user.role === "admin" && (
+                    <td class="d-flex gap-2">
+                      <button
+                        class="edit"
+                        id={department._id}
+                        onClick={navigateToEditDepart}
+                      >
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        class="delete"
+                        id={department._id}
+                        onClick={deleteDepart}
+                      >
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
