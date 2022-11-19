@@ -70,11 +70,11 @@ function Department() {
             onChange={changeHandler}
           />
           <div class="btns depart d-flex justify-content-between justify-content-md-start">
-            <button type="submit" class="save bg-success me-2">
+            <button type="submit" class="save me-2">
               Save
             </button>
-            <button class="cancel bg-danger" onClick={resetFormData}>
-              Cancel
+            <button class="cancel " onClick={resetFormData}>
+              Reset
             </button>
           </div>
         </form>
@@ -82,7 +82,7 @@ function Department() {
 
       <div class="right-side department-list">
         <h3 class="p-3 ps-4">Department List</h3>
-        <div class="tab table-scrl">
+        <div class="tab tab-des-dep table-scrl">
           <table class="table table-striped table-hover">
             <thead>
               <tr>

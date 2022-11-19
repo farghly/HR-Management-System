@@ -47,12 +47,14 @@ svg {
   background-color: rebeccapurple;
 }
 
-.details-table table {
-  min-width: 700px;
-}
-
 .details-table table tr td {
   font-size: 20px;
+
+  line-height: 2;
+}
+
+.running-table {
+  max-height: 380px;
 }
 
 table th {

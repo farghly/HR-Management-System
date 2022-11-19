@@ -1,3 +1,7 @@
+.tab-des-dep {
+    max-height: 415px;
+}
+
 .department h3 {
     border-bottom: 1px solid rgb(0, 153, 255);
     position: relative;
@@ -27,14 +31,8 @@
 }
 
 .department .left-side {
-    /* flex-basis: 40%; */
     height: fit-content;
 }
-
-/* 
-.department .right-side {
-    flex-basis: 60%; 
-} */
 
 button {
     border: none;
@@ -75,6 +73,27 @@ tr {
 
 form input {
     padding: 10px 15px;
+}
+
+.save {
+    background-color: #0099ff;
+}
+
+.save,
+.cancel {
+    transition: 0.2s all;
+}
+
+.save:hover {
+    background-color: #017acb;
+}
+
+.cancel {
+    background-color: #ef5350;
+}
+
+.cancel:hover {
+    background-color: #c23e3c;
 }
 
 table {

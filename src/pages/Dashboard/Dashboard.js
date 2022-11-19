@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import { getDepartments } from "../../api/departmentAPI";
 import { getDesignations } from "../../api/designationAPI";
 import { getEmployees } from "../../api/employeeAPI";
+import { getProjects } from "../../api/projectsAPI";
+import moment from 'moment';
+
 // import Card from "../../components/Card/Card";
 import "./dashboard.css";
 function Dashboard() {
   const [getCountDepartment, setCountDepartment] = useState();
   const [getCountEmployee, setCountEmployee] = useState();
   const [getCountDesgination, setCountDesignation] = useState();
+  const [apiProjectData, setProjectData] = useState([]);
   useEffect(() => {
     getDepartments().then((getcount) => {
       setCountDepartment(getcount.data.data.data.length);
@@ -18,6 +22,13 @@ function Dashboard() {
     });
     getDesignations().then((getcount) => {
       setCountDesignation(getcount.data.data.data.length);
+    });
+  }, []);
+  
+  useEffect(() => {
+    getProjects().then((getData) => {
+      console.log(getData.data.data.data);
+      setProjectData(getData.data.data.data);
     });
   }, []);
   return (
@@ -79,7 +90,7 @@ function Dashboard() {
 
       {/* start of table */}
       <h3>Running Project/s</h3>
-      <div className="details-table table-scrl">
+      <div className="details-table running-table table-scrl">
         <table className="table">
           <thead>
             <tr>
@@ -89,97 +100,19 @@ function Dashboard() {
             </tr>
           </thead>
           <tbody>
+        {apiProjectData.map((data)=>{
+          return(
             <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
-            <tr>
-              <td className="title">
-                <a to="/">Mo</a>
-              </td>
-              <td className="start-date">Jan 2, 2022</td>
-              <td className="end-date">Jan 10, 2022</td>
-            </tr>
+            <td className="title">
+              <a to="/">{data.name}</a>
+            </td>
+            <td className="start-date">{moment(data.startDate).format('LL')}</td>
+            {/* <td className="start-date">{data.startDate}</td> */}
+            <td className="end-date">{moment(data.endDate).format('LL')}</td>
+          </tr>
+          )
+        })}
+          
           </tbody>
         </table>
       </div>
