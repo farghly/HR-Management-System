@@ -53,6 +53,10 @@ aside .main-btn .logOut svg:hover {
   padding: 0;
 }
 
+.active {
+  background-color: #f799a354;
+}
+
 .nav-text {
   color: var(--blk-clr);
   font-size: 20px;
