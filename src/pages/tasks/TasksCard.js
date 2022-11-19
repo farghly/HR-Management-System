@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -13,19 +14,30 @@ const TasksCard = (props) => {
   //     setUser(res.data.data.data);
   //   });
   // }, []);
+  const requiredTime =
+    (new Date(props.taskStartDate) - new Date(props.taskEndDate)) /
+    (1000 * 3600 * 24);
   console.log(props);
   return (
     <>
       <div class="task-content p-3 d-flex gap-3 flex-column">
-        <h2 class="task-name">{props.taskName}</h2>
-        <div class="task-summary">{props.taskDetails}</div>
-        <div class="task-description">{props.taskNotes}</div>
+        <h2 class="task-name">Name : {props.taskName}</h2>
+        <div class="task-summary"> {props.taskDetails}</div>
+        <div class="task-description">D {props.taskNotes}</div>
         <div class="task-info d-flex gap-3 align-items-center justify-content-between">
           <div class="task-status p-2">{props.taskCase}</div>
-          <div class="task-member">{props.timeRequired} Hr</div>
+          <div class="task-member">
+            {" "}
+            Required Days :{requiredTime}
+            day
+          </div>
         </div>
-        {/* <div class="task-member">{props.taskStartDate} </div>
-        <div class="task-member">{props.taskEndDate} </div> */}
+        <div class="task-member">
+          Start Date : {moment(props.taskStartDate).format("LL")}
+        </div>
+        <div class="task-member">
+          End Date : {moment(props.taskEndDate).format("LL")}
+        </div>
         <div class="task-btns gap-2 d-flex justify-content-evenly">
           {props.user.role === "admin" && (
             <div class="delete-task btn btn-danger">Delete</div>
