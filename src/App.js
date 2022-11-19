@@ -79,7 +79,14 @@ function App() {
                         />
                       )}
 
-                      <Route path="/employees" element={<Employees />} />
+                      {user.role === "admin" ? (
+                        <Route path="/employees" element={<Employees />} />
+                      ) : (
+                        <Route
+                          path="/employees"
+                          element={<Navigate replace to="/tasks" />}
+                        />
+                      )}
                       {user.role === "admin" || user.role === "hr" ? (
                         <Route
                           path="/employees/addemployee"
