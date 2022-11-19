@@ -79,7 +79,7 @@ function App() {
                         />
                       )}
 
-                      {user.role === "admin" ? (
+                      {user.role === "admin" || user.role === "hr" ? (
                         <Route path="/employees" element={<Employees />} />
                       ) : (
                         <Route
