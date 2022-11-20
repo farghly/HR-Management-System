@@ -53,7 +53,7 @@ function Employees() {
         <input type="search" /> */}
       </div>
       <div class="tab table-scrl employee-tab">
-        <table class="table table-striped table-hover">
+        <table class="table ">
           <thead>
             <tr>
               <th scope="col">Employee Name</th>
@@ -70,7 +70,7 @@ function Employees() {
               employees.map((employee) => (
                 <>
                   <tr>
-                    <td class="employee-name">{`${employee.firstName} ${employee.lastName} `}</td>
+                    <td class="employee-name">{`${employee.name} `}</td>
                     {employee.department && (
                       <td class="employee-email">{employee.department.name}</td>
                     )}

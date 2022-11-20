@@ -83,7 +83,7 @@ function Department({ user }) {
       <div class="right-side department-list">
         <h3 class="p-3 ps-4">Department List</h3>
         <div class="tab tab-des-dep table-scrl">
-          <table class="table table-striped table-hover">
+          <table class="table ">
             <thead>
               <tr>
                 <th scope="col">Department Name</th>

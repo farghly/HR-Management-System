@@ -85,7 +85,7 @@ function Designation() {
           <h3 class="p-3 ps-4">Desgination List</h3>
 
           <div class="tab tab-des-dep table-scrl">
-            <table class="table table-striped table-hover">
+            <table class="table ">
               <thead>
                 <tr>
                   <th scope="col">Designation Name</th>

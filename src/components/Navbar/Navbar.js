@@ -1,5 +1,5 @@
 import "./navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/auth/authActions.action";
 import { useState } from "react";
@@ -22,6 +22,8 @@ function Navbar() {
       setUser(res.data.data.data);
     });
   }, []);
+  const activeLink = "active-link-nav";
+  const normalLink = "";
   return (
     <aside>
       <div className="up text-center pb-5">
@@ -33,7 +35,7 @@ function Navbar() {
             {user.firstName} {user.lastName}
           </h4>
           <div class="main-btn d-flex gap-lg-3 gap-2 justify-content-center">
-            <Link to="#" class="setting">
+            <Link to="#" className="setting">
               <button>
                 <i class="fa-solid fa-gear sett"></i>
               </button>
@@ -50,29 +52,45 @@ function Navbar() {
         <ul class="links d-flex flex-column gap-lg-2 gap-1">
           {(user.role === "admin" || user.role === "hr") && (
             <li class="d-flex gap-3 align-items-center">
-              <Link to="/" class="nav-text">
+              <NavLink
+                to="/"
+                id="nav-text"
+                className={({ isActive }) =>
+                  isActive ? activeLink : normalLink
+                }
+              >
                 <i class="fa-solid fa-gauge"></i>
                 <span>Dashboard</span>
-              </Link>
+              </NavLink>
             </li>
           )}
           {(user.role === "admin" || user.role === "hr") && (
             <>
               <li className="d-flex gap-3 align-items-center">
-                <Link
-                  className="nav-text"
+                <NavLink
+                  id="nav-text"
+                  className={({ isActive }) =>
+                    isActive ? activeLink : normalLink
+                  }
                   title="Designation"
                   to="/designation"
                 >
                   <i class="fa-brands fa-creative-commons-nd"></i>
                   <span>Desgination</span>
-                </Link>
+                </NavLink>
               </li>
               <li className="d-flex  gap-3 align-items-center">
-                <Link className="nav-text" title="Department" to="/department">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? activeLink : normalLink
+                  }
+                  id="nav-text"
+                  title="Department"
+                  to="/department"
+                >
                   <i className="fa-solid fa-building"></i>
                   <span>Department</span>
-                </Link>
+                </NavLink>
               </li>
               {/* =======
               <li className="d-flex d-lg-none gap-3 align-items-center">
@@ -150,10 +168,16 @@ function Navbar() {
 
           {(user.role === "admin" || user.role === "hr") && (
             <li class="d-flex gap-3 align-items-center">
-              <Link to="/employees" class="nav-text">
+              <NavLink
+                to="/employees"
+                className={({ isActive }) =>
+                  isActive ? activeLink : normalLink
+                }
+                id="nav-text"
+              >
                 <i class="fa-solid fa-user-group"></i>
                 <span>Employees</span>
-              </Link>
+              </NavLink>
             </li>
           )}
 
@@ -164,14 +188,24 @@ function Navbar() {
           </li> */}
 
           <li className="d-flex gap-3 align-items-center">
-            <Link to="/projects" className="nav-text" title="Projects">
+            <NavLink
+              to="/projects"
+              className={({ isActive }) => (isActive ? activeLink : normalLink)}
+              id="nav-text"
+              title="Projects"
+            >
               <i className="fa-solid fa-briefcase"></i> <span>Projects</span>
-            </Link>
+            </NavLink>
           </li>
           <li className="d-flex gap-3 align-items-center">
-            <Link to="/tasks" className="nav-text" title="Tasks">
+            <NavLink
+              to="/tasks"
+              className={({ isActive }) => (isActive ? activeLink : normalLink)}
+              id="nav-text"
+              title="Tasks"
+            >
               <i className="fa-solid fa-briefcase"></i> <span>Tasks</span>
-            </Link>
+            </NavLink>
           </li>
 
           {/* <li className="d-flex gap-3 align-items-center">

@@ -14,11 +14,14 @@ import jwtDecode from "jwt-decode";
 import { setCurrentUser, logout } from "./redux/auth/authActions.action";
 import Task from "./pages/tasks/task";
 import AddTask from "./pages/tasks/addtask";
-
 import Project from "./pages/projects/project";
 import AddProject from "./pages/projects/addproject";
 import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
+// for dark mode
+import Switch from "react-switch";
+import { createContext } from "react";
+export const ThemeContext = createContext("light");
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -43,42 +46,46 @@ function App() {
     });
   }, []);
   console.log(user);
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
 
   return (
     <>
-      <BrowserRouter>
-        <Provider store={store}>
-          {!auth.isAuthenticated && <Login />}
-          {auth.isAuthenticated && (
-            <div className="container-fluid main">
-              <div class="parent d-flex gap-lg-3 gap-2 justify-content-between">
-                <div className="child-1">
-                  <Navbar />
-                </div>
-                <div class="child-2">
-                  {auth.isAuthenticated && (
-                    <Routes>
-                      {user.role === "admin" || user.role === "hr" ? (
-                        <Route path="/" element={<Dashboard />} />
-                      ) : (
-                        <Route
-                          path="/"
-                          element={<Navigate replace to="/tasks" />}
-                        />
-                      )}
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <BrowserRouter>
+          <Provider store={store}>
+            {!auth.isAuthenticated && <Login />}
+            {auth.isAuthenticated && (
+              <div className="container-fluid main" id={theme}>
+                <div class="parent d-flex gap-lg-3 gap-2 justify-content-between">
+                  <div className="child-1">
+                    <div className="switch">
+                      <label>
+                        {theme === "light" ? "Light Mode" : "Dark Mode"}
+                      </label>
 
-                      {user.role === "admin" || user.role === "hr" ? (
-                        <Route
-                          path="/department"
-                          element={<Department user={user} />}
-                        />
-                      ) : (
-                        <Route
-                          path="/department"
-                          element={<Navigate replace to="/tasks" />}
-                        />
-                      )}
+                      <Switch
+                        onChange={toggleTheme}
+                        checked={theme === "dark"}
+                      />
+                    </div>
+                    <Navbar />
+                  </div>
+                  <div class="child-2">
+                    {auth.isAuthenticated && (
+                      <Routes>
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route path="/" element={<Dashboard />} />
+                        ) : (
+                          <Route
+                            path="/"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
 
+{/* <<<<<<< HEAD */}
                       {user.role === "admin" || user.role === "hr" ? (
                         <Route path="/employees" element={<Employees />} />
                       ) : (
@@ -127,26 +134,85 @@ function App() {
                         />
                       )}
 
-                      <Route path="/projects/" element={<Project />} />
-                      {user.role === "admin" ? (
-                        <Route
-                          path="/projects/addproject"
-                          element={<AddProject />}
-                        />
-                      ) : (
-                        <Route
-                          path="/projects/addproject"
-                          element={<Navigate replace to="/tasks" />}
-                        />
-                      )}
-                    </Routes>
-                  )}
+
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route
+                            path="/department"
+                            element={<Department user={user} />}
+                          />
+                        ) : (
+                          <Route
+                            path="/department"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+
+
+                        <Route path="/employees" element={<Employees />} />
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route
+                            path="/employees/addemployee"
+                            element={<AddEmployee />}
+                          />
+                        ) : (
+                          <Route
+                            path="/employees/addemployee"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route
+                            path="/employees/editEmployee/:id"
+                            element={<EditEmployee />}
+                          />
+                        ) : (
+                          <Route
+                            path="//employees/editEmployee/:id"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route
+                            path="/designation/"
+                            element={<Desgination />}
+                          />
+                        ) : (
+                          <Route
+                            path="/designation"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        <Route path="/tasks/" element={<Task />} />
+                        {user.role === "admin" ? (
+                          <Route path="/tasks/addtask" element={<AddTask />} />
+                        ) : (
+                          <Route
+                            path="/tasks/addtask"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+
+                        <Route path="/projects/" element={<Project />} />
+                        {user.role === "admin" ? (
+                          <Route
+                            path="/projects/addproject"
+                            element={<AddProject />}
+                          />
+                        ) : (
+                          <Route
+                            path="/projects/addproject"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                      </Routes>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </Provider>
-      </BrowserRouter>
+            )}
+          </Provider>
+        </BrowserRouter>
+      </ThemeContext.Provider>
     </>
   );
 }

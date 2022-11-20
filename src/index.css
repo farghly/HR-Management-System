@@ -19,11 +19,10 @@
 
 
 body {
-  background: linear-gradient(106.37deg, var(--grad-1-clr) 29.63%, var(--grad-2-clr) 51.55%, var(--grad-3-clr) 90.85%);
   font-family: "poppins", sans-serif;
   height: fit-content;
   background-attachment: fixed;
-  /* color: white !important; */
+
 }
 
 ::selection {
@@ -37,14 +36,12 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  /* background-color: darkgrey; */
 }
 
 body::-webkit-scrollbar-thumb {
-  /* background-color: darkgrey; */
+
   background-color: #ffe1bc;
-  ;
-  /* outline: 1px solid slategrey; */
+
 }
 
 body::-webkit-scrollbar-thumb:hover {
@@ -59,18 +56,10 @@ a {
   text-decoration: none;
 }
 
-/* a,
 button,
-.task-content {
-  color: white !important;
-}
-
-table>* {
-  color: white !important;
-} */
-
-button {
+.btn {
   border-radius: 10px;
+  border: none !important;
 }
 
 table button {
@@ -142,6 +131,106 @@ input[type=number] {
   background-color: #c23e3c;
 }
 
+/* for dark theme */
+
+/* .react-switch-bg {
+  background-color: gray !important;
+} */
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-inline: auto;
+  padding: 10px;
+  gap: 10px;
+}
+
+@media (max-width: 990px) {
+  .switch {
+    flex-direction: column;
+    font-size: 13px;
+    padding: 10px 1px;
+  }
+}
+
+body:has(#light) {
+  background: linear-gradient(106.37deg, var(--grad-1-clr) 29.63%, var(--grad-2-clr) 51.55%, var(--grad-3-clr) 90.85%);
+}
+
+body:has(#dark) {
+  background: linear-gradient(106.37deg, #191919 29.63%, #151515 51.55%, #000000 90.85%);
+  color: white !important;
+}
+
+#dark :is(a, button, .task-content, table>*, svg) {
+  color: white !important;
+}
+
+#dark input:focus {
+  box-shadow: 0 0 8px rgb(255 255 255 / 60%);
+}
+
+#dark {
+  background-color: #0000008a;
+}
+
+#dark .down li:hover {
+  background-color: #f799a3b0;
+}
+
+#dark :is(.first-card, .task-content) {
+  background-color: black !important;
+}
+
+#dark .task-status {
+  color: magenta;
+}
+
+body:has(#dark) .parent>div {
+  background-color: #5151517a;
+}
+
+:is(a, button, .task-content):is(body:has(#dark)) {
+  color: white !important;
+}
+
+body:has(#dark)::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(131, 131, 131, 0.3);
+}
+
+body:has(#dark)::-webkit-scrollbar-thumb {
+  background-color: #292929;
+  background-color: #515151b9;
+}
+
+body:has(#dark)::-webkit-scrollbar-thumb:hover {
+  background-color: #1e1e1e;
+}
+
+body:has(#dark) :is(div, h2, h3, h4, h5, a, label, span, th, td, tr)::selection {
+  background-color: whitesmoke;
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .main {
   max-width: 1550px;
   padding: 10px;
@@ -170,15 +259,24 @@ input[type=number] {
 .child-2 {
   width: 80%;
   padding: 25px;
+
 }
 
 .child-2>a {
   margin-top: 0;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 9999px;
 }
 
 @media (max-width:600px) {
   .child-2 {
     padding: 15px;
+  }
+
+  .child-2>a {
+
+    font-size: 18px;
   }
 }
 
