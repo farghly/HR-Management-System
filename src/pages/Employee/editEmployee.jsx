@@ -79,6 +79,7 @@ function AddEmployee() {
             name="firstName"
             value={firstName}
             onChange={changeHandler}
+            placeholder='Enter your first name'
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -90,6 +91,7 @@ function AddEmployee() {
             name="lastName"
             value={lastName}
             onChange={changeHandler}
+            placeholder='Enter your last name'
           />
         </div>
 
@@ -100,6 +102,7 @@ function AddEmployee() {
             name="contactNumber"
             value={contactNumber}
             onChange={changeHandler}
+            placeholder='Enter your phone number'
           />
         </div>
         <div className="data d-flex flex-column gap-2">

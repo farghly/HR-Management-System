@@ -10,7 +10,7 @@ function AddProject() {
       <form action="" class="d-grid gap-4 my-5 addproject-form">
         <div class="data d-flex flex-column gap-2">
           <label for="project-Name">Project Name</label>
-          <input type="text" id="project-Name" autocomplete="off" />
+          <input type="text" id="project-Name" autocomplete="off" placeholder='Enter project name' />
         </div>
         <div class="data d-flex flex-column gap-2">
           <label for="status">Status</label>
@@ -37,7 +37,7 @@ function AddProject() {
         </div>
         <div class="data d-flex flex-column gap-2">
           <label for="description">Description</label>
-          <textarea name="description" id="" rows="4"></textarea>
+          <textarea name="description" id="" rows="4" placeholder='Enter project description' className="border"></textarea>
         </div>
         <div class="btns">
           <input class="btn save me-3" type="submit" value="Save" />

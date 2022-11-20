@@ -70,6 +70,7 @@ function Designation() {
               id="dName"
               value={name}
               onChange={changeHandler}
+              placeholder='Enter job title'
             />
 
             <div class="btns depart d-flex justify-content-between justify-content-md-start ">

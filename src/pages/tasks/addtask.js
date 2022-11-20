@@ -64,26 +64,32 @@ function AddTask() {
             name={name}
             value={name}
             onChange={changeHandler}
+            placeholder='Enter task name'
           />
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="description">Description</label>
           <textarea
+            className="border"
             name="description"
             id="description"
             rows="4"
             value={description}
             onChange={changeHandler}
+            placeholder='Enter description task'
           ></textarea>
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="summary">Summary</label>
           <textarea
+            className="border"
+
             name="summary"
             id="summary"
             rows="4"
             value={summary}
             onChange={changeHandler}
+            placeholder='Enter task summary'
           ></textarea>
         </div>
 
