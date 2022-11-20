@@ -49,8 +49,8 @@ function Employees() {
       </Link>
       <h3 class="p-3 ps-4">Employee List</h3>
       <div class="ser d-flex gap-2">
-        <h5>Search:</h5>
-        <input type="search" />
+        {/* <h5>Search:</h5>
+        <input type="search" /> */}
       </div>
       <div class="tab table-scrl employee-tab">
         <table class="table table-striped table-hover">
