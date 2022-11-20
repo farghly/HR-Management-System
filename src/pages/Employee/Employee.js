@@ -53,7 +53,7 @@ function Employees() {
         <input type="search" />
       </div>
       <div class="tab table-scrl employee-tab">
-        <table class="table table-striped table-hover">
+        <table class="table ">
           <thead>
             <tr>
               <th scope="col">Employee Name</th>

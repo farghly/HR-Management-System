@@ -93,9 +93,3 @@ textarea {
 .task-content .btn {
     width: 46%;
 }
-
-.employee-list {
-    font-size: 20px;
-    width: fit-content;
-    padding: 12px 30px;
-}

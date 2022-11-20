@@ -53,11 +53,7 @@ aside .main-btn .logOut svg:hover {
   padding: 0;
 }
 
-.active {
-  background-color: #f799a354;
-}
-
-.nav-text {
+#nav-text {
   color: var(--blk-clr);
   font-size: 20px;
   display: flex;
@@ -65,10 +61,20 @@ aside .main-btn .logOut svg:hover {
   width: 100%;
   gap: 15px;
   justify-content: center;
+  border-radius: 6px;
+  padding: 5px;
 }
 
-.nav-text svg,
-.drpdwn svg {
+#dark .active-link-nav {
+  background-color: #f799a3b0;
+}
+
+.active-link-nav {
+  background-color: #f799a354;
+
+}
+
+#nav-text svg {
   height: 28px;
   width: 28px;
   background: linear-gradient(106.37deg,
@@ -78,7 +84,7 @@ aside .main-btn .logOut svg:hover {
   color: var(--blk-clr);
 }
 
-.nav-text span {
+#nav-text span {
   flex-basis: 60%;
   font-size: 17px;
   font-weight: bold;
@@ -99,36 +105,35 @@ aside .main-btn .logOut svg:hover {
     width: 15px;
   }
 
-  .nav-text svg,
-  .drpdwn svg {
+  #nav-text svg {
     height: 15px;
     width: 15px;
   }
 }
 
-li {
+.down li {
   transition: 0.3s all;
-  padding: 10px;
+  /* padding: 10px; */
   cursor: pointer;
   border-radius: 6px;
 }
 
-li:hover {
+.down li:hover {
   background-color: #f799a354;
   color: var(--blk-clr);
 }
 
-li:hover .nav-text {
+.down li:hover #nav-text {
   color: var(--blk-clr);
 }
 
 @media (max-width: 990px) {
-  .nav-text {
+  #nav-text {
     flex-direction: column;
     gap: 5px;
   }
 
-  .nav-text span {
+  #nav-text span {
     font-size: 13px;
   }
 }

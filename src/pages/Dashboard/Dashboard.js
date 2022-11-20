@@ -4,7 +4,7 @@ import { getDepartments } from "../../api/departmentAPI";
 import { getDesignations } from "../../api/designationAPI";
 import { getEmployees } from "../../api/employeeAPI";
 import { getProjects } from "../../api/projectsAPI";
-import moment from 'moment';
+import moment from "moment";
 
 // import Card from "../../components/Card/Card";
 import "./dashboard.css";
@@ -24,7 +24,7 @@ function Dashboard() {
       setCountDesignation(getcount.data.data.data.length);
     });
   }, []);
-  
+
   useEffect(() => {
     getProjects().then((getData) => {
       console.log(getData.data.data.data);
@@ -35,7 +35,7 @@ function Dashboard() {
     <>
       <div className="details-cards d-grid gap-4 pb-5">
         <div className="one d-flex gap-3 flex-column details-card">
-          <div className="first-card gap-3 bg-white d-flex align-items-center p-3">
+          <div className="first-card gap-3 d-flex align-items-center p-3">
             <i className="fa-regular fa-user bgrebeccapurple"></i>
             <div className="card-text ms-2">
               <h5>{getCountEmployee} Employes</h5>
@@ -48,7 +48,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="one d-flex gap-3 flex-column details-card">
-          <div className="first-card gap-3 bg-white d-flex align-items-center p-3">
+          <div className="first-card gap-3 d-flex align-items-center p-3">
             <i className="fa-regular fa-file bglightblue"></i>
             <div className="card-text ms-2">
               <h5>{getCountDepartment} Departments</h5>
@@ -61,7 +61,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="one d-flex gap-3 flex-column details-card">
-          <div className="first-card gap-3 bg-white d-flex align-items-center p-3">
+          <div className="first-card gap-3 d-flex align-items-center p-3">
             <i className="fa-regular fa-calendar bglightcoral"></i>
             <div className="card-text ms-2">
               <h5>{getCountDesgination} designations</h5>
@@ -100,19 +100,22 @@ function Dashboard() {
             </tr>
           </thead>
           <tbody>
-        {apiProjectData.map((data)=>{
-          return(
-            <tr>
-            <td className="title">
-              <a to="/">{data.name}</a>
-            </td>
-            <td className="start-date">{moment(data.startDate).format('LL')}</td>
-            {/* <td className="start-date">{data.startDate}</td> */}
-            <td className="end-date">{moment(data.endDate).format('LL')}</td>
-          </tr>
-          )
-        })}
-          
+            {apiProjectData.map((data) => {
+              return (
+                <tr>
+                  <td className="title">
+                    <a to="/">{data.name}</a>
+                  </td>
+                  <td className="start-date">
+                    {moment(data.startDate).format("LL")}
+                  </td>
+                  {/* <td className="start-date">{data.startDate}</td> */}
+                  <td className="end-date">
+                    {moment(data.endDate).format("LL")}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

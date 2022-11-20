@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import moment from 'moment'
+import moment from "moment";
 import ProjecstCard from "./../../components/Cards/ProjecstCard";
 import { getEmployeeById } from "../../api/employeeAPI";
 import { getProjects } from "../../api/projectsAPI";
@@ -40,7 +40,7 @@ function Project() {
         <input type="search" />
       </div>
       <div class="tab table-scrl project-tab">
-        <table class="table table-striped table-hover">
+        <table class="table ">
           <thead>
             <tr>
               <th scope="col">Project Name</th>
@@ -52,19 +52,16 @@ function Project() {
             </tr>
           </thead>
           <tbody>
-            {apiProjectData.map((data)=>{
-              return(
+            {apiProjectData.map((data) => {
+              return (
                 <ProjecstCard
-              name={data.name}
-              status={data.status}
-          
-              startDate={moment(data.startDate).format('LL')}
-              endDate={moment(data.endDate).format('LL')}
-            />
-              )
+                  name={data.name}
+                  status={data.status}
+                  startDate={moment(data.startDate).format("LL")}
+                  endDate={moment(data.endDate).format("LL")}
+                />
+              );
             })}
-           
-       
           </tbody>
         </table>
       </div>
