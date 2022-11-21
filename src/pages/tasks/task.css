@@ -49,3 +49,8 @@ form.task .group {
     color: rgb(121, 121, 121);
     font-weight: normal;
 }
+
+.task-details-btns .btn {
+    width: fit-content !important;
+    padding: 8px 12px;
+}
