@@ -25,6 +25,7 @@ import EmployeeDetails from "./pages/Employee/EmployeeDetails";
 import Switch from "react-switch";
 import { createContext } from "react";
 import ProjectDetails from "./pages/projects/ProjectDetails";
+import DepartmentsDetails from "./pages/organization/department/DepartmentsDetails";
 
 
 
@@ -94,57 +95,57 @@ function App() {
                           />
                         )}
 
-{/* <<<<<<< HEAD */}
-                      {user.role === "admin" || user.role === "hr" ? (
-                        <Route path="/employees" element={<Employees />} />
-                      ) : (
-                        <Route
-                          path="/employees"
-                          element={<Navigate replace to="/tasks" />}
-                        />
-                      )}
-                      {user.role === "admin" || user.role === "hr" ? (
-                        <Route
-                          path="/employees/addemployee"
-                          element={<AddEmployee />}
-                        />
-                      ) : (
-                        <Route
-                          path="/employees/addemployee"
-                          element={<Navigate replace to="/tasks" />}
-                        />
-                      )}
-                      {user.role === "admin" || user.role === "hr" ? (
-                        <Route
-                          path="/employees/editEmployee/:id"
-                          element={<EditEmployee />}
-                        />
-                      ) : (
-                        <Route
-                          path="//employees/editEmployee/:id"
-                          element={<Navigate replace to="/tasks" />}
-                        />
-                      )}
-                      {user.role === "admin" || user.role === "hr" ? (
-                        <Route path="/designation/" element={<Desgination />} />
-                      ) : (
-                        <Route
-                          path="/designation"
-                          element={<Navigate replace to="/tasks" />}
-                        />
-                      )}
-                      <Route path="/tasks/" element={<Task />} />
-                      {user.role === "admin" ? (
-                        <Route path="/tasks/addtask" element={<AddTask />} />
-                      ) : (
-                        <Route
-                          path="/tasks/addtask"
-                          element={<Navigate replace to="/tasks" />}
-                        />
-                      )}
+                        {/* <<<<<<< HEAD */}
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route path="/employees" element={<Employees />} />
+                        ) : (
+                          <Route
+                            path="/employees"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route
+                            path="/employees/addemployee"
+                            element={<AddEmployee />}
+                          />
+                        ) : (
+                          <Route
+                            path="/employees/addemployee"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route
+                            path="/employees/editEmployee/:id"
+                            element={<EditEmployee />}
+                          />
+                        ) : (
+                          <Route
+                            path="//employees/editEmployee/:id"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route path="/designation/" element={<Desgination />} />
+                        ) : (
+                          <Route
+                            path="/designation"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        <Route path="/tasks/" element={<Task />} />
+                        {user.role === "admin" ? (
+                          <Route path="/tasks/addtask" element={<AddTask />} />
+                        ) : (
+                          <Route
+                            path="/tasks/addtask"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
 
 
-{/* <<<<<<< HEAD */}
+                        {/* <<<<<<< HEAD */}
 
                         {user.role === "admin" || user.role === "hr" ? (
                           <Route
@@ -214,10 +215,11 @@ function App() {
                         )}
                         <Route path='/tasks/task-details' element={<TaskDetails />} />
                         <Route path='/employee-details' element={<EmployeeDetails />} />
+                        <Route path='/department-details' element={<DepartmentsDetails />} />
                         <Route path="/project-details/" element={<ProjectDetails />} />
                       </Routes>
                     )}
-              
+
                   </div>
                 </div>
               </div>

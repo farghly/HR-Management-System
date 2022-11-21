@@ -7,7 +7,7 @@ import { deleteDepartment } from "../../../api/departmentAPI";
 import AddDepartment from "./AddDepartment";
 import "./Department.css";
 // import { deleteDepartment } from "./../../../api/departmentAPI";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const defaultFormData = {
   name: "",
@@ -62,13 +62,13 @@ function Department({ user }) {
           onSubmit={submitHandler}
         >
           <label for="">Department Name</label>
-          <FormInput
+           <FormInput
             type="text"
             name="name"
             id="dName"
             value={name}
             onChange={changeHandler}
-          />
+          /> 
           <div class="btns depart d-flex justify-content-between justify-content-md-start">
             <button type="submit" class="save me-2">
               Save
@@ -93,7 +93,7 @@ function Department({ user }) {
             <tbody>
               {departments.map((department) => (
                 <tr>
-                  <td>{department.name}</td>
+                  <td><Link to={'/department-details'}>{department.name}</Link></td>
                   {user.role === "admin" && (
                     <td class="d-flex gap-2">
                       <button
