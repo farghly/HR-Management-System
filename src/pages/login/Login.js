@@ -1,57 +1,8 @@
-// import "./login.css";
-// function Login() {
-//   return (
-//     <div className="parent-log">
-//       <div className="container login px-4 px-md-5">
-//         <form className="my-4 w-100 m-auto">
-//           <p className="heading">Sign in</p>
-//           <div className="box">
-//             <p>Email</p>
-//             <div>
-//               <input
-//                 type="text"
-//                 autocomplete="off"
-//                 placeholder="Enter your email"
-//               />
-//             </div>
-//           </div>
-//           <div className="box">
-//             <p>Password</p>
-//             <div>
-//               <input
-//                 type="Password"
-//                 autocomplete="off"
-//                 placeholder="Enter your password"
-//               />
-//             </div>
-//           </div>
-//           <button className="signInBtn p-3 my-4 w-100">Sign in</button>
-//           <p className="text">
-//             <a href="#" className="me-auto forgotPass">
-//               Forgot Password
-//             </a>
-//           </p>
-//           <p className="signUp">
-//             <span>
-//               Don't have an account?
-//               <button href="#" class="goToSignUpPage">
-//                 Sign Up
-//               </button>
-//             </span>
-//           </p>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Login;
 import FormInput from "../../components/form-input/FormInput.component";
 import "./login.css";
 import { useState } from "react";
 import Button from "../../components/button/Button.component";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "./../../redux/auth/authActions.action";
 
@@ -64,10 +15,6 @@ function Login() {
   console.log(auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [user, setUser] = useState(auth.user);
-  // console.log(log);
-
-  // console.log(auth);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const changeHandler = (event) => {
@@ -99,13 +46,8 @@ function Login() {
               <div className="box">
                 <p>Email</p>
                 <div>
-                  {/* <input
-                type="text"
-                autocomplete="off"
-                placeholder="Enter your email"
-              /> */}
+          
                   <FormInput
-                    // label="Email"
                     type="email"
                     autoComplete="off"
                     name="email"
@@ -158,14 +100,6 @@ export default Button;
                   Forgot Password
                 </a>
               </p>
-              {/* <p className="signUp">
-            <span>
-              Don't have an account?
-              <Button href="#" class="goToSignUpPage">
-                Sign Up
-              </Button>
-            </span>
-          </p> */}
             </form>
           </div>
         </div>
@@ -173,15 +107,4 @@ export default Button;
     </>
   );
 }
-// const mapStateToProps = (state) => {
-//   return {
-//     auth: state.auth,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch, userData) => {
-//   return {
-//     log: () => dispatch(login(userData)),
-//   };
-// };
 export default Login;
