@@ -5,6 +5,7 @@ const authController = require("./../controller/authController");
 const router = express.Router();
 
 router.route("/login").post(authController.login);
+router.route("/search/:key").get(employeeController.searchInEmployees);
 
 router
   .route("/")
@@ -15,5 +16,4 @@ router
   .get(employeeController.getEmployeeById)
   .patch(employeeController.updateEmployee)
   .delete(employeeController.deleteEmployee);
-
 module.exports = router;

@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createTask } from "../../api/tasksAPI";
 import FormInput from "../../components/form-input/FormInput.component";
-import { getEmployeeById, getEmployees } from "./../../api/employeeAPI";
+import {
+  getEmployeeById,
+  getEmployees,
+  getEmployeesBySearch,
+} from "./../../api/employeeAPI";
 
 const defaultFormData = {
   name: "",
@@ -17,20 +21,38 @@ const defaultFormData = {
 function AddTask() {
   const [formData, setFormData] = useState(defaultFormData);
   const [employees, setEmployees] = useState([]);
-  const [selectedEmployee, setSelectedEmployee] = useState([]);
+  const [q, setQ] = useState([]);
+  const [searchValue, setSearchValue] = useState();
 
-  const { name, summary, description, employee, startDate, endDate } = formData;
+  let { name, summary, description, employee, startDate, endDate } = formData;
+
+  // useEffect(() => {
+  //   getEmployees().then((res) => {
+  //     setEmployees(res.data.data.data);
+  //   });
+  // }, []);
 
   useEffect(() => {
-    getEmployees().then((res) => {
-      setEmployees(res.data.data.data);
-    });
-  }, []);
+    if (q) {
+      (async () => {
+        const {
+          data: {
+            data: { data },
+          },
+        } = await getEmployeesBySearch(q);
+
+        setEmployees(data);
+      })();
+    }
+  }, [q]);
   // console.log(employees);
   const changeHandler = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    const test = { ...formData, [name]: value };
+    setFormData(() => test);
     console.log(formData);
+    // console.log(event.target);
+    console.log(event.target.value);
   };
 
   const resetFormData = () => {
@@ -42,6 +64,23 @@ function AddTask() {
     createTask(formData);
     resetFormData();
     console.log(formData);
+  };
+
+  const setEmployee = (event) => {
+    const test = { ...formData, employee: event.currentTarget.id };
+    const employeeName = event.currentTarget.employeename;
+    setFormData(() => test);
+    console.log(employeeName);
+    setSearchValue(employeeName);
+
+    console.log(formData);
+
+    console.log(event.currentTarget);
+  };
+  const searchHandler = (e) => {
+    console.log(e.currentTarget.value);
+    setQ(e.currentTarget.value);
+    console.log(employees);
   };
 
   return (
@@ -61,7 +100,7 @@ function AddTask() {
             type="text"
             id="name"
             autocomplete="off"
-            name={name}
+            name="name"
             value={name}
             onChange={changeHandler}
             placeholder='Enter task name'
@@ -94,7 +133,7 @@ function AddTask() {
         </div>
 
         <div className="data d-flex flex-column gap-2">
-          <label for="employee">Employee</label>
+          {/* <label for="employee">Employee</label>
           <select
             id="employee"
             name="employee"
@@ -102,16 +141,35 @@ function AddTask() {
             value={employee}
             onChange={changeHandler}
           >
-            {/* <option value="one">One</option>
-            <option value="two">Two</option> */}
+            <option value="one">One</option>
+            <option value="two">Two</option>
             <option selected>Please select an employee</option>
             {employees &&
               employees.map((employee) => (
                 <option value={employee._id} id={employee._id}>
-                  {employee.firstName} {employee.lastName}
+                  {employee.name}
                 </option>
               ))}
-          </select>
+          </select> */}
+          <input
+            type="search"
+            onChange={searchHandler}
+            placeholder="Enter an Employee"
+            value={searchValue}
+          />
+          <div>
+            {employees.map((employee) => (
+              <li
+                onClick={setEmployee}
+                id={employee._id}
+                name="employee"
+                value={employee._id}
+                employeename={employee.name}
+              >
+                {employee.name}
+              </li>
+            ))}
+          </div>
         </div>
         <div className="d-flex flex-column gap-2">
           <FormInput

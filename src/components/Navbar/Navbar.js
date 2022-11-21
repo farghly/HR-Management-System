@@ -16,7 +16,7 @@ function Navbar() {
 
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
-  console.log(auth);
+  // console.log(auth);
   useEffect(() => {
     getEmployeeById(auth.user.id).then((res) => {
       setUser(res.data.data.data);
@@ -31,9 +31,7 @@ function Navbar() {
           <img src={logo} alt="" className="logo-img" />
         </h1>
         <div className="data">
-          <h4 class="mb-3">
-            {user.firstName} {user.lastName}
-          </h4>
+          <h4 class="mb-3">{user.name}</h4>
           <div class="main-btn d-flex gap-lg-3 gap-2 justify-content-center">
             <Link to="#" className="setting">
               <button>

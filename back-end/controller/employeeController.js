@@ -25,6 +25,11 @@ exports.getEmployees = catchAsync(async (req, res, next) => {
   response("success", 200, employees, res);
 });
 
+exports.searchInEmployees = catchAsync(async (req, res, next) => {
+  const employees = await Employee.find({ name: { $regex: req.params.key } });
+  response("success", 200, employees, res);
+});
+
 exports.createEmployee = catchAsync(async (req, res, next) => {
   const newEmployee = await Employee.create(req.body);
   response("success", 201, newEmployee, res);
