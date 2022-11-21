@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ProjecstCard = (props) => {
    return (
       <>
          <tr>
-            <td class="project-name">{props.name}</td>
+            <td class="project-name"><Link to={'/project-details'}>{props.name}</Link></td>
             <td class="project-status">{props.status}</td>
             {/* <td class="project-employee">{props.employee}</td> */}
             <td class="project-start-date">{props.startDate}</td>

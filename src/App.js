@@ -21,6 +21,7 @@ import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
 import TaskDetails from "./pages/tasks/TaskDetails";
 import EmployeeDetails from "./pages/Employee/EmployeeDetails";
+import ProjectDetails from "./pages/projects/ProjectDetails";
 
 
 if (localStorage.jwtToken) {
@@ -87,6 +88,7 @@ function App() {
 
                       <Route path="/projects/" element={<Project />} />
                       <Route path="/task-details/" element={<TaskDetails />} />
+                      <Route path="/project-details/" element={<ProjectDetails />} />
                       <Route path="/employee-details/" element={<EmployeeDetails />} />
                       <Route path="/projects/addproject" element={<AddProject />}
                       />

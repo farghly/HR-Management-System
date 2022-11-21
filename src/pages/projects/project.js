@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import moment from 'moment'
-import ProjecstCard from "./../../components/Cards/ProjecstCard";
+import ProjectsCard from "../../components/Cards/ProjectsCard";
 import { getEmployeeById } from "../../api/employeeAPI";
 import { getProjects } from "../../api/projectsAPI";
 function Project() {
@@ -54,7 +54,7 @@ function Project() {
           <tbody>
             {apiProjectData.map((data)=>{
               return(
-                <ProjecstCard
+                <ProjectsCard
               name={data.name}
               status={data.status}
           
