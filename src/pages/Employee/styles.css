@@ -52,3 +52,21 @@ form {
     max-width: 1550px;
     padding: 10px;
 }
+
+.employee-content-details {
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    background-color: #ffffff54 !important;
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, 20%);
+}
+
+.employee-content-details>div {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.employee-content-details>div span {
+    font-size: 18px;
+    color: rgb(121, 121, 121);
+    font-weight: normal;
+}

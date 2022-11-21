@@ -36,4 +36,16 @@ form.task .group {
     background-color: rgba(128, 0, 128, 0.32);
     color: purple;
     border-radius: 10px;
+    width: fit-content;
+}
+
+.task-content>div {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.task-content>div span {
+    font-size: 18px;
+    color: rgb(121, 121, 121);
+    font-weight: normal;
 }

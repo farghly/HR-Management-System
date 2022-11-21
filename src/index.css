@@ -1,7 +1,10 @@
 :root {
-  --grad-1-clr: #ffe1bc;
-  --grad-2-clr: #ffcfd1;
-  --grad-3-clr: #f3c6f1;
+  --grad-1-clr-d: #191919;
+  --grad-2-clr-d: #151515;
+  --grad-3-clr-d: #000000;
+  --grad-1-clr-l: #ffe1bc;
+  --grad-2-clr-l: #ffcfd1;
+  --grad-3-clr-l: #f3c6f1;
   --selection-1-clr: #2c2a32;
   --selection-2-clr: #f7f7f7;
   --parent-clr: #ffffff8a;
@@ -131,106 +134,6 @@ input[type=number] {
   background-color: #c23e3c;
 }
 
-/* for dark theme */
-
-/* .react-switch-bg {
-  background-color: gray !important;
-} */
-
-.switch {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-inline: auto;
-  padding: 10px;
-  gap: 10px;
-}
-
-@media (max-width: 990px) {
-  .switch {
-    flex-direction: column;
-    font-size: 13px;
-    padding: 10px 1px;
-  }
-}
-
-body:has(#light) {
-  background: linear-gradient(106.37deg, var(--grad-1-clr) 29.63%, var(--grad-2-clr) 51.55%, var(--grad-3-clr) 90.85%);
-}
-
-body:has(#dark) {
-  background: linear-gradient(106.37deg, #191919 29.63%, #151515 51.55%, #000000 90.85%);
-  color: white !important;
-}
-
-#dark :is(a, button, .task-content, table>*, svg) {
-  color: white !important;
-}
-
-#dark input:focus {
-  box-shadow: 0 0 8px rgb(255 255 255 / 60%);
-}
-
-#dark {
-  background-color: #0000008a;
-}
-
-#dark .down li:hover {
-  background-color: #f799a3b0;
-}
-
-#dark :is(.first-card, .task-content) {
-  background-color: black !important;
-}
-
-#dark .task-status {
-  color: magenta;
-}
-
-body:has(#dark) .parent>div {
-  background-color: #5151517a;
-}
-
-:is(a, button, .task-content):is(body:has(#dark)) {
-  color: white !important;
-}
-
-body:has(#dark)::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(131, 131, 131, 0.3);
-}
-
-body:has(#dark)::-webkit-scrollbar-thumb {
-  background-color: #292929;
-  background-color: #515151b9;
-}
-
-body:has(#dark)::-webkit-scrollbar-thumb:hover {
-  background-color: #1e1e1e;
-}
-
-body:has(#dark) :is(div, h2, h3, h4, h5, a, label, span, th, td, tr)::selection {
-  background-color: whitesmoke;
-  color: black;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .main {
   max-width: 1550px;
   padding: 10px;
@@ -266,7 +169,7 @@ body:has(#dark) :is(div, h2, h3, h4, h5, a, label, span, th, td, tr)::selection 
   margin-top: 0;
   font-size: 20px;
   padding: 10px 20px;
-  border-radius: 9999px;
+  border-radius: 80px;
 }
 
 @media (max-width:600px) {
@@ -330,4 +233,102 @@ body:has(#dark) :is(div, h2, h3, h4, h5, a, label, span, th, td, tr)::selection 
 
 table {
   min-width: 700px;
+}
+
+/* for dark theme */
+/* start switch */
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-inline: auto;
+  padding: 10px;
+  gap: 10px;
+}
+
+.react-switch-bg {
+  background-color: rgb(195, 195, 195) !important;
+}
+
+#dark .react-switch-bg {
+  background-color: var(--blk-clr) !important;
+}
+
+.react-switch-handle {
+  background-color: rgb(101, 101, 101) !important;
+  border: 2px solid var(--blk-clr) !important;
+}
+
+#dark .react-switch-handle {
+  background-color: #fcb045 !important;
+  border: 2px solid var(--wit-clr) !important;
+}
+
+@media (max-width: 990px) {
+  .switch {
+    flex-direction: column;
+    font-size: 13px;
+    padding: 10px 1px;
+  }
+}
+
+/* end switch */
+
+body:has(#light) {
+  background: linear-gradient(106.37deg, var(--grad-1-clr-l) 29.63%, var(--grad-2-clr-l) 51.55%, var(--grad-3-clr-l) 90.85%);
+}
+
+body:has(#dark) {
+  background: linear-gradient(106.37deg, var(--grad-1-clr-d) 29.63%, var(--grad-2-clr-d) 51.55%, var(--grad-3-clr-d) 90.85%);
+  color: var(--wit-clr) !important;
+}
+
+#dark :is(a, button, .task-content, table>*, svg) {
+  color: var(--wit-clr) !important;
+}
+
+#dark input:focus {
+  box-shadow: 0 0 8px rgb(255 255 255 / 60%);
+}
+
+#dark {
+  background-color: #0000008a;
+}
+
+#dark .down li:hover {
+  background-color: #f799a3b0;
+}
+
+#dark :is(.first-card, .task-content) {
+  background-color: var(--blk-clr) !important;
+}
+
+#dark .task-status {
+  color: magenta;
+}
+
+body:has(#dark) .parent>div {
+  background-color: #5151517a;
+}
+
+:is(a, button, .task-content):is(body:has(#dark)) {
+  color: white !important;
+}
+
+body:has(#dark)::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(131, 131, 131, 0.3);
+}
+
+body:has(#dark)::-webkit-scrollbar-thumb {
+  background-color: #292929;
+  background-color: #515151b9;
+}
+
+body:has(#dark)::-webkit-scrollbar-thumb:hover {
+  background-color: #1e1e1e;
+}
+
+body:has(#dark) :is(div, h2, h3, h4, h5, a, label, span, th, td, tr)::selection {
+  background-color: whitesmoke;
+  color: black;
 }
