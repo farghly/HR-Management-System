@@ -14,7 +14,7 @@ import jwtDecode from "jwt-decode";
 import { setCurrentUser, logout } from "./redux/auth/authActions.action";
 import Task from "./pages/tasks/task";
 import AddTask from "./pages/tasks/addtask";
-
+import "./react-select.css";
 import Project from "./pages/projects/project";
 import AddProject from "./pages/projects/addproject";
 import { getEmployeeById } from "./api/employeeAPI";
@@ -36,13 +36,13 @@ if (localStorage.jwtToken) {
 function App() {
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
-  console.log(auth);
+  // console.log(auth);
   useEffect(() => {
     getEmployeeById(auth.user.id).then((res) => {
       setUser(res.data.data.data);
     });
   }, []);
-  console.log(user);
+  // console.log(user);
 
   return (
     <>

@@ -3,25 +3,52 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import moment from 'moment'
+import moment from "moment";
 import ProjecstCard from "./../../components/Cards/ProjecstCard";
-import { getEmployeeById } from "../../api/employeeAPI";
+import { getEmployeeById, getEmployeesBySearch } from "../../api/employeeAPI";
 import { getProjects } from "../../api/projectsAPI";
+import SelectSearch from "react-select-search";
+// import { getEmployees } from "./../../api/employeeAPI";
+
 function Project() {
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
-  console.log(auth);
+  const [employees, setEmployees] = useState([]);
+  const [q, setQ] = useState([]);
+  // console.log(auth);
+
   useEffect(() => {
     getEmployeeById(auth.user.id).then((res) => {
       setUser(res.data.data.data);
     });
   }, []);
   const [apiProjectData, setProjectData] = useState([]);
+
   useEffect(() => {
     getProjects().then((getData) => {
       setProjectData(getData.data.data.data);
     });
   }, []);
+
+  useEffect(() => {
+    if (q) {
+      (async () => {
+        const {
+          data: {
+            data: { data },
+          },
+        } = await getEmployeesBySearch(q);
+
+        setEmployees(data);
+      })();
+    }
+  }, [q]);
+
+  const searchHandler = (e) => {
+    console.log(e.currentTarget.value);
+    setQ(e.currentTarget.value);
+    console.log(employees);
+  };
 
   return (
     <>
@@ -37,7 +64,12 @@ function Project() {
       <h3 class="p-3 ps-4">Project List</h3>
       <div class="ser d-flex gap-2">
         <h5>Search:</h5>
-        <input type="search" />
+        <input type="search" onChange={searchHandler} />
+        <div>
+          {employees.map((employee) => (
+            <li>{employee.name}</li>
+          ))}
+        </div>
       </div>
       <div class="tab table-scrl project-tab">
         <table class="table table-striped table-hover">
@@ -52,19 +84,16 @@ function Project() {
             </tr>
           </thead>
           <tbody>
-            {apiProjectData.map((data)=>{
-              return(
+            {apiProjectData.map((data) => {
+              return (
                 <ProjecstCard
-              name={data.name}
-              status={data.status}
-          
-              startDate={moment(data.startDate).format('LL')}
-              endDate={moment(data.endDate).format('LL')}
-            />
-              )
+                  name={data.name}
+                  status={data.status}
+                  startDate={moment(data.startDate).format("LL")}
+                  endDate={moment(data.endDate).format("LL")}
+                />
+              );
             })}
-           
-       
           </tbody>
         </table>
       </div>
