@@ -74,3 +74,21 @@ tr {
 table {
     border: 1px solid rgb(123, 123, 123);
 }
+
+.department-details-card {
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    background-color: #ffffff54 !important;
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, 20%);
+}
+
+.department-details-card>div {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.department-details-card>div span {
+    font-size: 18px;
+    color: rgb(121, 121, 121);
+    font-weight: normal;
+}
