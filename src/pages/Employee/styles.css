@@ -68,4 +68,5 @@ form {
 .employee-content-details>div span {
     font-size: 18px;
     color: rgb(121, 121, 121);
+    font-weight: normal;
 }

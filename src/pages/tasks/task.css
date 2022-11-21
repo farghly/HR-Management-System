@@ -47,4 +47,5 @@ form.task .group {
 .task-content>div span {
     font-size: 18px;
     color: rgb(121, 121, 121);
+    font-weight: normal;
 }
