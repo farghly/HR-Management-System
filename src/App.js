@@ -205,9 +205,8 @@ function App() {
                             element={<Navigate replace to="/tasks" />}
                           />
                         )}
-                        <Route path='/task-details' element={<TaskDetails />} />
+                        <Route path='/tasks/task-details' element={<TaskDetails />} />
                         <Route path='/employee-details' element={<EmployeeDetails />} />
-                        <Route path='/projects/addproject' element={<AddProject />} />
                       </Routes>
                     )}
               
