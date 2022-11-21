@@ -26,6 +26,11 @@ form.task .group {
     color: var(--blk-clr);
 }
 
+.task-content a {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .task-list {
     font-size: 20px;
     width: fit-content;
@@ -39,18 +44,43 @@ form.task .group {
     width: fit-content;
 }
 
-.task-content>div {
+.task-content-details>div {
     font-size: 20px;
     font-weight: bold;
 }
 
-.task-content>div span {
+.task-content-details>div span {
     font-size: 18px;
     color: rgb(121, 121, 121);
     font-weight: normal;
 }
 
+.task-status-details {
+    color: #2e2e2e !important;
+}
+
 .task-details-btns .btn {
     width: fit-content !important;
     padding: 8px 12px;
+}
+
+#dark .task-content-details>div span {
+    color: rgb(224, 224, 224) !important;
+}
+
+#dark :is(.task-name span, a.task-name, .employee-name a, .project-name-details, .employee-name-details, .project-name a) {
+    color: rgb(0, 102, 255) !important;
+}
+
+#dark :is(.employee-content-details, .task-content-details, .project-content-details) {
+    background-color: #5151517a !important;
+    border-radius: 15px;
+}
+
+#dark .employee-content-details>div span {
+    color: rgb(224, 224, 224) !important;
+}
+
+#dark .project-content-details>div span {
+    color: rgb(224, 224, 224) !important;
 }

@@ -22,7 +22,9 @@ const TasksCard = (props) => {
   return (
     <>
       <div class="task-content p-3 d-flex gap-3 flex-column">
-        <Link to='/tasks/task-details' class="task-name">Name : {props.taskName}</Link>
+        <Link to="/tasks/task-details" class="task-name">
+          {props.taskName}
+        </Link>
         <div class="task-summary"> {props.taskDetails}</div>
         <div class="task-description">D {props.taskNotes}</div>
         <div class="task-info d-flex gap-3 align-items-center justify-content-between">

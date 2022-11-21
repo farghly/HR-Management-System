@@ -8,12 +8,12 @@ const TaskDetails = () => {
         Back to Tasks List
       </Link>
       <h3>Task Details</h3>
-      <div class="task-content p-3 d-flex gap-3 flex-column">
+      <div class="task-content-details p-3 d-flex gap-3 flex-column">
         <h2 class="task-name">
           Task Name: <span>Final Project</span>
         </h2>
         <div class="task-summary">
-          Task Summary:
+          Task Summary:{" "}
           <span class="task-summary-details">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque,
             doloribus debitis minima adipisci assumenda ad ut nesciunt Lorem
@@ -22,7 +22,7 @@ const TaskDetails = () => {
           </span>
         </div>
         <div class="task-description">
-          Task Summary:
+          Task Summary:{" "}
           <span class="task-description-details">
             delectus? Fuga, hic pariatur asperiores at laboriosam error soluta
             reiciendis sapiente reprehenderit nesciunt! delectus? Fuga, hic
