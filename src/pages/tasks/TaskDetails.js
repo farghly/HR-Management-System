@@ -28,12 +28,12 @@ const TaskDetails = () => {
             <div class="task-member">
                Task Member: <span class="task-member-details">Hr</span>
             </div>
-            <div class="task-status p-2 w-50">
+            <div class="task-status p-2">
                Task Status: <span class="task-status-details">To Do</span>
             </div>
             <div class="task-btns gap-2 d-flex">
-               <div class="delete-task btn btn-danger w-25">Delete</div>
-               <div class="update-task btn btn-success w-25">Update</div>
+               <div class="delete-task btn btn-danger">Delete</div>
+               <div class="update-task btn btn-success">Update</div>
             </div>
          </div>
 

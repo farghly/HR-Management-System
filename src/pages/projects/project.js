@@ -61,6 +61,7 @@ function Project() {
                   endDate={moment(data.endDate).format("LL")}
                 />
               );
+
             })}
           </tbody>
         </table>

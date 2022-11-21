@@ -20,8 +20,11 @@ import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
 import TaskDetails from "./pages/tasks/TaskDetails";
 import EmployeeDetails from "./pages/Employee/EmployeeDetails";
+
 import Switch from "react-switch";
 import { createContext } from "react";
+import ProjectDetails from "./pages/projects/ProjectDetails";
+
 
 
 export const ThemeContext = createContext("light");
@@ -138,6 +141,7 @@ function App() {
                       )}
 
 
+{/* <<<<<<< HEAD */}
 
                         {user.role === "admin" || user.role === "hr" ? (
                           <Route
@@ -207,11 +211,11 @@ function App() {
                         )}
                         <Route path='/tasks/task-details' element={<TaskDetails />} />
                         <Route path='/employee-details' element={<EmployeeDetails />} />
+                        <Route path="/project-details/" element={<ProjectDetails />} />
                       </Routes>
                     )}
               
                   </div>
-
                 </div>
               </div>
             )}
