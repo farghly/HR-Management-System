@@ -11,8 +11,8 @@ const defaultFormFields = {
   email: "",
   password: "",
   confirmPassword: "",
-  firstName: "",
-  lastName: "",
+  name: "",
+
   contactNumber: "",
   department: "web development",
   designation: "senior",
@@ -38,8 +38,8 @@ function AddEmployee() {
     email,
     password,
     confirmPassword,
-    firstName,
-    lastName,
+    name,
+
     contactNumber,
     department,
     designation,
@@ -72,31 +72,22 @@ function AddEmployee() {
       <h3>Add New Employee</h3>
       <form onSubmit={submitHandler} className="d-grid gap-4 my-5 add-employee">
         <div className="data d-flex flex-column gap-2">
-          <FormInput
-            label="First Name"
-            type="text"
-            id="fName"
-            autocomplete="off"
-            required
-            name="firstName"
-            value={firstName}
-            onChange={changeHandler}
-            placeholder='Enter your first name'
-          />
+
         </div>
         <div className="data d-flex flex-column gap-2">
           <FormInput
-            label="Last Name"
+            label="Full Name"
             type="text"
-            id="lName"
+            id="name"
             autocomplete="off"
             required
-            name="lastName"
-            value={lastName}
+            name="name"
+            value={name}
             onChange={changeHandler}
             placeholder='Enter your last name'
           />
         </div>
+
         <div className="data d-flex flex-column gap-2">
           <FormInput
             label="Email"
@@ -173,7 +164,6 @@ function AddEmployee() {
               select a dep
             </option> */}
             <option selected>Please Select a department</option>
-
             {departments.map((department) => (
               <option id={department._id} value={department._id}>
                 {department.name}

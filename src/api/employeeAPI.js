@@ -9,7 +9,10 @@ const employeeAPI = axios.create({
   },
 });
 
-export const getEmployees = () => employeeAPI.get("employees");
+export const getEmployees = () => employeeAPI.get(`employees`);
+
+export const getEmployeesBySearch = (key) =>
+  employeeAPI.get(`employees/search/${key}`);
 
 export const getEmployeeById = (id) => employeeAPI.get(`employees/${id}`);
 
