@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
+import { Link } from "react-router-dom";
 
 const TasksCard = (props) => {
   // const auth = useSelector((state) => state.auth);
@@ -21,7 +22,7 @@ const TasksCard = (props) => {
   return (
     <>
       <div class="task-content p-3 d-flex gap-3 flex-column">
-        <h2 class="task-name">Name : {props.taskName}</h2>
+        <Link to='/task-details' class="task-name">Name : {props.taskName}</Link>
         <div class="task-summary"> {props.taskDetails}</div>
         <div class="task-description">D {props.taskNotes}</div>
         <div class="task-info d-flex gap-3 align-items-center justify-content-between">

@@ -18,9 +18,12 @@ import Project from "./pages/projects/project";
 import AddProject from "./pages/projects/addproject";
 import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
-// for dark mode
+import TaskDetails from "./pages/tasks/TaskDetails";
+import EmployeeDetails from "./pages/Employee/EmployeeDetails";
 import Switch from "react-switch";
 import { createContext } from "react";
+
+
 export const ThemeContext = createContext("light");
 
 if (localStorage.jwtToken) {
@@ -135,6 +138,7 @@ function App() {
                       )}
 
 
+
                         {user.role === "admin" || user.role === "hr" ? (
                           <Route
                             path="/department"
@@ -146,9 +150,6 @@ function App() {
                             element={<Navigate replace to="/tasks" />}
                           />
                         )}
-
-
-                        <Route path="/employees" element={<Employees />} />
                         {user.role === "admin" || user.role === "hr" ? (
                           <Route
                             path="/employees/addemployee"
@@ -204,9 +205,14 @@ function App() {
                             element={<Navigate replace to="/tasks" />}
                           />
                         )}
+                        <Route path='/task-details' element={<TaskDetails />} />
+                        <Route path='/employee-details' element={<EmployeeDetails />} />
+                        <Route path='/projects/addproject' element={<AddProject />} />
                       </Routes>
                     )}
+              
                   </div>
+
                 </div>
               </div>
             )}

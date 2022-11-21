@@ -70,7 +70,8 @@ function Employees() {
               employees.map((employee) => (
                 <>
                   <tr>
-                    <td class="employee-name">{`${employee.name} `}</td>
+                    <td class="employee-name"><Link to='/employee-details'>{`${employee.name} `}</Link> </td>
+
                     {employee.department && (
                       <td class="employee-email">{employee.department.name}</td>
                     )}

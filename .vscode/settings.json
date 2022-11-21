@@ -1,3 +1,4 @@
 {
-  "workbench.editor.labelFormat": "short"
+  "workbench.editor.labelFormat": "short",
+  "cSpell.words": ["addproject", "addtask", "btns"]
 }
