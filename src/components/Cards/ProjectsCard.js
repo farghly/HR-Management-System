@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ProjecstCard = (props) => {
+const ProjectCard = (props) => {
    return (
       <>
          <tr>
@@ -20,4 +20,4 @@ const ProjecstCard = (props) => {
    )
 }
 
-export default ProjecstCard
+export default ProjectCard
