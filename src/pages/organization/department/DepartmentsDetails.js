@@ -104,4 +104,6 @@ const DepartmentsDetails = () => {
   );
 };
 
+
+
 export default DepartmentsDetails;

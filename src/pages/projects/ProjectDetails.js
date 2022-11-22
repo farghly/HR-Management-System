@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProjectDetails = () => {
+
    return (
       <>
          <Link to={'/projects'} class="btn btn-primary mb-3 project-list"
@@ -44,6 +45,8 @@ const ProjectDetails = () => {
       </>
    )
 }
+
+
 
 
 export default ProjectDetails;

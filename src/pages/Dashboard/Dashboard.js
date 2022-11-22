@@ -104,7 +104,7 @@ function Dashboard() {
               return (
                 <tr>
                   <td className="title">
-                    <a to="/">{data.name}</a>
+                    <Link to={'/project-details'}>{data.name}</Link>
                   </td>
                   <td className="start-date">
                     {moment(data.startDate).format("LL")}
