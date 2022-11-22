@@ -46,7 +46,6 @@ function Login() {
               <div className="box">
                 <p>Email</p>
                 <div>
-          
                   <FormInput
                     type="email"
                     autoComplete="off"
