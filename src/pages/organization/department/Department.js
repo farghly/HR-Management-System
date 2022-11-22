@@ -117,7 +117,7 @@ function Department({ user }) {
               {departments.map((department) => (
                 <tr>
                   <td className="department-name">
-                    <Link to={"/department-details"}>{department.name}</Link>
+                    <Link to={"/department/department-details"}>{department.name}</Link>
                   </td>
                   {user.role === "admin" && (
                     <td class="d-flex gap-2">
