@@ -11,6 +11,9 @@ const projectAPI = axios.create({
 
 export const getProjects = () => projectAPI.get("projects");
 
+export const getProjectsBySearch = (key) =>
+  projectAPI.get(`projects/search/${key}`);
+
 export const getProjectById = (id) => projectAPI.get(`projects/${id}`);
 
 export const createProject = (newProject) =>

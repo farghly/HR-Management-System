@@ -15,10 +15,13 @@ const TasksCard = (props) => {
   //     setUser(res.data.data.data);
   //   });
   // }, []);
+  
   const requiredTime =
     (new Date(props.taskStartDate) - new Date(props.taskEndDate)) /
     (1000 * 3600 * 24);
   console.log(props);
+
+
   return (
     <>
       <div class="task-content p-3 d-flex gap-3 flex-column">

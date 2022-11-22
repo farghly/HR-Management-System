@@ -25,6 +25,11 @@ exports.getProjects = catchAsync(async (req, res, next) => {
   response("success", 200, projects, res);
 });
 
+exports.searchInProject = catchAsync(async (req, res, next) => {
+  const projects = await Project.find({ name: { $regex: req.params.key } });
+  response("success", 200, projects, res);
+});
+
 exports.createProject = catchAsync(async (req, res, next) => {
   const newProject = await Project.create(req.body);
   response("success", 201, newProject, res);
