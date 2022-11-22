@@ -5,10 +5,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import moment from "moment";
 
-import ProjectCard from "../../components/Cards/ProjectsCard";
+import ProjectCard from "../../components/Cards/ProjectRow";
 
 import { getEmployeeById, getEmployeesBySearch } from "../../api/employeeAPI";
 import { getProjects, getProjectsBySearch } from "../../api/projectsAPI";
+import ProjectRow from "../../components/Cards/ProjectRow";
 
 // import { getEmployees } from "./../../api/employeeAPI";
 
@@ -83,13 +84,14 @@ function Project() {
           </thead>
           {!q && (
             <tbody>
-              {apiProjectData.map((data) => {
+              {apiProjectData.map((project) => {
                 return (
-                  <ProjectCard
-                    name={data.name}
-                    status={data.status}
-                    startDate={moment(data.startDate).format("LL")}
-                    endDate={moment(data.endDate).format("LL")}
+                  <ProjectRow
+                    project={project}
+                    name={project.name}
+                    status={project.status}
+                    startDate={moment(project.startDate).format("LL")}
+                    endDate={moment(project.endDate).format("LL")}
                   />
                 );
               })}
@@ -97,13 +99,14 @@ function Project() {
           )}
           {q && (
             <tbody>
-              {projects.map((data) => {
+              {projects.map((project) => {
                 return (
-                  <ProjectCard
-                    name={data.name}
-                    status={data.status}
-                    startDate={moment(data.startDate).format("LL")}
-                    endDate={moment(data.endDate).format("LL")}
+                  <ProjectRow
+                    project={project}
+                    name={project.name}
+                    status={project.status}
+                    startDate={moment(project.startDate).format("LL")}
+                    endDate={moment(project.endDate).format("LL")}
                   />
                 );
               })}
