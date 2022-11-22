@@ -60,7 +60,7 @@ function Employees() {
             <tr>
               <th scope="col">Employee Name</th>
               <th scope="col"> Department</th>
-              <th scope="col"> Designation</th>
+              {/* <th scope="col"> Designation</th> */}
               <th scope="col">Email</th>
               <th scope="col">Contact</th>
               <th scope="col">User Type</th>
@@ -77,11 +77,11 @@ function Employees() {
                     {employee.department && (
                       <td class="employee-email">{employee.department.name}</td>
                     )}
-                    {employee.designation && (
+                    {/* {employee.designation && (
                       <td class="employee-email">
                         {employee.designation.name}
                       </td>
-                    )}
+                    )} */}
                     <td class="employee-email">{employee.email}</td>
                     <td class="employee-contact">{`${employee.contactNumber[0]} `}</td>
                     <td class="employee-type">{employee.role}</td>
