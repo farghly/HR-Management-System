@@ -122,6 +122,9 @@ input[type=number] {
   transition: 0.2s all;
 }
 
+.error{
+  color:red
+}
 .save:hover {
   background-color: #017acb;
 }
