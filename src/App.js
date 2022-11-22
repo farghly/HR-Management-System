@@ -26,8 +26,7 @@ import Switch from "react-switch";
 import { createContext } from "react";
 import ProjectDetails from "./pages/projects/ProjectDetails";
 import DepartmentsDetails from "./pages/organization/department/DepartmentsDetails";
-
-
+import EditProject from "./pages/projects/EditProject";
 
 export const ThemeContext = createContext("light");
 
@@ -60,7 +59,6 @@ function App() {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
 
-
   return (
     <>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -75,7 +73,6 @@ function App() {
                       <label>
                         {theme === "light" ? "Light Mode" : "Dark Mode"}
                       </label>
-
                       <Switch
                         onChange={toggleTheme}
                         checked={theme === "dark"}
@@ -95,7 +92,6 @@ function App() {
                           />
                         )}
 
-                        {/* <<<<<<< HEAD */}
                         {user.role === "admin" || user.role === "hr" ? (
                           <Route path="/employees" element={<Employees />} />
                         ) : (
@@ -127,7 +123,10 @@ function App() {
                           />
                         )}
                         {user.role === "admin" || user.role === "hr" ? (
-                          <Route path="/designation/" element={<Desgination />} />
+                          <Route
+                            path="/designation/"
+                            element={<Desgination />}
+                          />
                         ) : (
                           <Route
                             path="/designation"
@@ -143,9 +142,6 @@ function App() {
                             element={<Navigate replace to="/tasks" />}
                           />
                         )}
-
-
-                        {/* <<<<<<< HEAD */}
 
                         {user.role === "admin" || user.role === "hr" ? (
                           <Route
@@ -213,13 +209,28 @@ function App() {
                             element={<Navigate replace to="/tasks" />}
                           />
                         )}
-                        <Route path='/tasks/task-details' element={<TaskDetails />} />
-                        <Route path='/employee-details' element={<EmployeeDetails />} />
-                        <Route path='/department-details' element={<DepartmentsDetails />} />
-                        <Route path="/project-details/" element={<ProjectDetails />} />
+                        <Route
+                          path="/tasks/task-details"
+                          element={<TaskDetails />}
+                        />
+                        <Route
+                          path="/employees/employee-details"
+                          element={<EmployeeDetails />}
+                        />
+                        <Route
+                          path="/department/department-details"
+                          element={<DepartmentsDetails />}
+                        />
+                        <Route
+                          path="/projects/project-details/:id"
+                          element={<ProjectDetails />}
+                        />
+                        <Route
+                          path="/projects/editProject/:id"
+                          element={<EditProject />}
+                        />
                       </Routes>
                     )}
-
                   </div>
                 </div>
               </div>

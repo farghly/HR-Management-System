@@ -38,7 +38,7 @@ const ProjectDetails = () => {
             </div>
             <div class="project-btns gap-2 d-flex">
                <div class="delete-project btn btn-danger">Delete</div>
-               <div class="update-project btn btn-success">Update</div>
+               <div class="update-project btn btn-success" on>Update</div>
             </div>
          </div>
       </>
