@@ -7,7 +7,7 @@ const DepartmentsDetails = () => {
          <Link to={'/department'} class="btn btn-primary mb-3">Back to Department List</Link>
          <h3 class="p-3 ps-4">Department Details</h3>
          <div class="department-details-card p-3 d-flex gap-3 flex-column">
-            <h2 class="department-name">Department Name: <span>Web</span></h2>
+            <h2 class="department-name"><span>Web</span></h2>
             <div class="department-created-at">
                Created at:
                <span class="department-created-at-details">1/11/2022</span>

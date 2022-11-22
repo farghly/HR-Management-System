@@ -72,9 +72,6 @@ function AddEmployee() {
       <h3>Add New Employee</h3>
       <form onSubmit={submitHandler} className="d-grid gap-4 my-5 add-employee">
         <div className="data d-flex flex-column gap-2">
-
-        </div>
-        <div className="data d-flex flex-column gap-2">
           <FormInput
             label="Full Name"
             type="text"

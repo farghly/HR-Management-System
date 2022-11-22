@@ -10,7 +10,7 @@ const TaskDetails = () => {
       <h3>Task Details</h3>
       <div class="task-content-details p-3 d-flex gap-3 flex-column">
         <h2 class="task-name">
-          Task Name: <span>Final Project</span>
+         <span>Final Project</span>
         </h2>
         <div class="task-summary">
           Task Summary:{" "}

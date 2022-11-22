@@ -10,7 +10,7 @@ const ProjectDetails = () => {
       <h3>Project Details</h3>
       <div class="project-content-details p-3 d-flex gap-3 flex-column">
         <h2 class="employee-name">
-          Project Name: <span class="project-name-details">Final Project</span>
+         <span class="project-name-details">Final Project</span>
         </h2>
         <div class="created-at">
           Created at: <span class="created-at-details">1/11/2022</span>
