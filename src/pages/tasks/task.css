@@ -64,6 +64,14 @@ form.task .group {
     padding: 8px 12px;
 }
 
+.task-name span,
+.project-name-details,
+.employee-name-details,
+.department-name span {
+    color: rgb(0, 102, 255) !important;
+}
+
+
 #dark .task-content-details>div span {
     color: rgb(224, 224, 224) !important;
 }
@@ -72,7 +80,7 @@ form.task .group {
     color: rgb(0, 102, 255) !important;
 }
 
-#dark :is(.employee-content-details, .task-content-details, .project-content-details) {
+#dark :is(.employee-content-details, .task-content-details, .project-content-details, .department-details-card) {
     background-color: #5151517a !important;
     border-radius: 15px;
 }
@@ -83,4 +91,12 @@ form.task .group {
 
 #dark .project-content-details>div span {
     color: rgb(224, 224, 224) !important;
+}
+
+#dark .department-details-card>div span {
+    color: rgb(224, 224, 224) !important;
+}
+
+#dark .department-name a {
+    color: rgb(0, 102, 255) !important;
 }
