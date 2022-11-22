@@ -78,16 +78,20 @@ function Department({ user }) {
           class="d-flex flex-column p-3 gap-3"
           onSubmit={submitHandler}
         >
+
           <label htmlFor="">Department Name</label>
            <FormInput
+
             type="text"
             name="name"
             id="dName"
             value={values.name}
             onChange={changeHandler}
+
           /> 
 
           {errors.name && <p className="error">{errors.name}</p>}
+
           <div class="btns depart d-flex justify-content-between justify-content-md-start">
             <button type="submit" class="save me-2">
               Save
@@ -112,7 +116,9 @@ function Department({ user }) {
             <tbody>
               {departments.map((department) => (
                 <tr>
-                  <td><Link to={'/department-details'}>{department.name}</Link></td>
+                  <td className="department-name">
+                    <Link to={"/department-details"}>{department.name}</Link>
+                  </td>
                   {user.role === "admin" && (
                     <td class="d-flex gap-2">
                       <button

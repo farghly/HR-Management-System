@@ -2,6 +2,12 @@
     max-height: 415px;
 }
 
+@media (max-width:990px) {
+    .tab-des-dep {
+        max-height: 600px;
+    }
+}
+
 .department h3 {
     border-bottom: 1px solid rgb(0, 153, 255);
     position: relative;
@@ -91,4 +97,19 @@ table {
     font-size: 18px;
     color: rgb(121, 121, 121);
     font-weight: normal;
+}
+
+.tab-details-dep {
+    max-height: 350px;
+    margin-top: 20px;
+}
+
+@media (max-width:990px) {
+    .tab-details-dep {
+        max-height: 500px;
+    }
+}
+
+#dark .tab-details-dep {
+    background-color: #5151517a !important;
 }

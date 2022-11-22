@@ -109,6 +109,10 @@ aside .main-btn .logOut svg:hover {
     height: 15px;
     width: 15px;
   }
+
+  #nav-text span {
+    font-size: 12px !important;
+  }
 }
 
 .down li {
@@ -134,6 +138,6 @@ aside .main-btn .logOut svg:hover {
   }
 
   #nav-text span {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
