@@ -241,8 +241,13 @@ function AddTask() {
             onChange={changeHandler}
           />
         </div>
-
-        <input className="btn btn-success save" type="submit" value="Save" />
+        <div className="data d-flex align-items-end gap-2 ">
+          <input
+            className="btn btn-success save w-100"
+            type="submit"
+            value="Save"
+          />
+        </div>
       </form>
     </>
   );
