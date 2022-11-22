@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { createDepartment, getDepartments } from "../../../api/departmentAPI";
 import FormInput from "../../../components/form-input/FormInput.component";
 
-// import { useEffect,useState } from "react";
+
 import { deleteDepartment } from "../../../api/departmentAPI";
-import AddDepartment from "./AddDepartment";
 import "./Department.css";
-// import { deleteDepartment } from "./../../../api/departmentAPI";
 import { Link, useNavigate } from "react-router-dom";
+import Validation from "./validation";
 
 const defaultFormData = {
   name: "",
@@ -22,11 +21,7 @@ function Department({ user }) {
       setDepartments(res.data.data.data);
     });
   }, []);
-  const changeHandler = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-    console.log(formData);
-  };
+
 
   const resetFormData = () => {
     setFormData(defaultFormData);
@@ -34,24 +29,46 @@ function Department({ user }) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    createDepartment(formData);
-    getDepartments().then((res) => {
-      setDepartments(res.data.data.data);
-    });
-    resetFormData();
+    if(setError(Validation(values))){
+      return setError(Validation(values))
+    }
+      createDepartment(formData);
+      getDepartments().then((res) => {
+        setDepartments(res.data.data.data);
+      });
+      resetFormData();
   };
 
   const deleteDepart = (event) => {
-    deleteDepartment(event.currentTarget.id).then((res) => {
-      alert("Successfully Deleted");
-    });
-    getDepartments().then((res) => {
-      setDepartments(res.data.data.data);
-    });
+    //let answer = window.confirm("Delete?");
+    if (window.confirm("Are you Sure to delete?"))
+    { 
+      deleteDepartment(event.currentTarget.id).then((res) => {
+        getDepartments().then((res) => {
+          setDepartments(res.data.data.data);
+        });
+      });
+      
+       // Here you can put your logic or function that needs to be executed as per the use case.
+    }
+    
   };
 
   const navigateToEditDepart = (event) => {};
 
+  /* Validation */
+  const [values,setValues]=useState({
+    name:'',
+  })
+  const [errors,setError]=useState({
+
+  })
+  const changeHandler = (e) => {
+  const { name, value } = e.target;
+  setValues({...values,[e.target.name]:e.target.value})
+  setFormData({ ...formData, [name]: value });
+   // console.log(formData);
+  };
   return (
     <div class="gap-4 d-flex flex-column department ">
       <div class="left-side add-department ">
@@ -66,9 +83,11 @@ function Department({ user }) {
             type="text"
             name="name"
             id="dName"
-            value={name}
+            value={values.name}
             onChange={changeHandler}
           /> 
+
+          {errors.name && <p className="error">{errors.name}</p>}
           <div class="btns depart d-flex justify-content-between justify-content-md-start">
             <button type="submit" class="save me-2">
               Save
