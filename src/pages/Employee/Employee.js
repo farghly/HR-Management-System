@@ -31,12 +31,14 @@ function Employees() {
   //   });
   // }, []);
   const deleteEmp = (event) => {
-    deleteEmployee(event.currentTarget.id).then(() => {
-      alert("Successfully Deleted");
-    });
-    getEmployees().then((response) => {
-      setEmployees(response.data.data.data);
-    });
+    if(window.confirm("Are you sure to delete employee")){
+      deleteEmployee(event.currentTarget.id).then(() => {
+        getEmployees().then((response) => {
+          setEmployees(response.data.data.data);
+        });
+      });
+    }
+    
   };
 
   return (
