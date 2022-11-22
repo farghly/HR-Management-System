@@ -1,47 +1,132 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { createProject } from "../../api/projectsAPI";
 import "./project.css";
+
+const defaultFormData = {
+  name: "",
+  summary: "",
+  description: "",
+  startDate: "",
+  endDate: "",
+  importance: "",
+};
+
 function AddProject() {
+  const [formData, setFormData] = useState(defaultFormData);
+
+  let { name, summary, description, startDate, endDate, importance } = formData;
+
+  const changeHandler = (event) => {
+    const { name, value } = event.target;
+    const test = { ...formData, [name]: value };
+    setFormData(() => test);
+    console.log(formData);
+    // console.log(event.target);
+    console.log(event.target.value);
+  };
+
+  const resetFormData = () => {
+    setFormData(defaultFormData);
+  };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    createProject(formData);
+    resetFormData();
+    console.log(formData);
+  };
+
   return (
     <>
-      <Link to="/projects" class="btn btn-primary mb-3 employee-list">
+      <Link to="/projects" className="btn btn-primary mb-3 employee-list">
         Project List
       </Link>
       <h3>Add New Project</h3>
-      <form action="" class="d-grid gap-4 my-5 addproject-form">
-        <div class="data d-flex flex-column gap-2">
+      <form
+        action=""
+        className="d-grid gap-4 my-5 addproject-form"
+        onSubmit={submitHandler}
+      >
+        <div className="data d-flex flex-column gap-2">
           <label for="project-Name">Project Name</label>
-          <input type="text" id="project-Name" autocomplete="off" placeholder='Enter project name' />
+          <input
+            type="text"
+            id="project-Name"
+            autocomplete="off"
+            placeholder="Enter project name"
+            name="name"
+            value={name}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="status">Status</label>
-          <select id="status" name="status" class="select">
-            <option value="to-do">To Do</option>
-            <option value="doing">Doing</option>
-            <option value="done">Done</option>
+
+        <div className="data d-flex flex-column gap-2">
+          <label for="Importance">Importance</label>
+          <select
+            id="Importance"
+            value={importance}
+            name="importance"
+            className="select"
+            onChange={changeHandler}
+          >
+            <option selected>Select Project Importance</option>
+            <option value="Normal">Normal</option>
+            <option value="Very Important"> Very Important</option>
+            <option value="Urgent">Urgent</option>
+            <option value="Can be done later">Can be done later</option>
           </select>
         </div>
-        <div class="data d-flex flex-column gap-2">
-          <label for="employee">Employee</label>
-          <select id="employee" name="employee" class="select">
-            <option value="one">One</option>
-            <option value="two">Two</option>
-          </select>
-        </div>
-        <div class="data d-flex flex-column gap-2">
+
+        <div className="data d-flex flex-column gap-2">
           <label for="start-date">Start Date</label>
-          <input type="date" id="start-date" name="startdate" />
+          <input
+            type="date"
+            id="start-date"
+            name="startDate"
+            value={startDate}
+            onChange={changeHandler}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
+        <div className="data d-flex flex-column gap-2">
           <label for="end-date">End Date</label>
-          <input type="date" id="end-date" name="enddate" />
+          <input
+            type="date"
+            id="end-date"
+            name="endDate"
+            onChange={changeHandler}
+            value={endDate}
+          />
         </div>
-        <div class="data d-flex flex-column gap-2">
+        <div className="data d-flex flex-column gap-2">
           <label for="description">Description</label>
-          <textarea name="description" id="" rows="4" placeholder='Enter project description' className="border"></textarea>
+          <textarea
+            name="description"
+            id=""
+            rows="4"
+            placeholder="Enter project description"
+            className="border"
+            onChange={changeHandler}
+            value={description}
+          ></textarea>
         </div>
-        <div class="btns">
-          <input class="btn save me-3" type="submit" value="Save" />
-          <input class="btn cancel" type="reset" value="Cancel" />
+        <div className="data d-flex flex-column gap-2">
+          <label for="summary">Summary</label>
+          <textarea
+            name="summary"
+            id=""
+            rows="4"
+            placeholder="Enter project description"
+            className="border"
+            onChange={changeHandler}
+            value={summary}
+          ></textarea>
+        </div>
+        <div className="btns">
+          <button className="btn save me-3" type="submit">
+            Save{" "}
+          </button>
+          <input className="btn cancel" type="reset" onClick={resetFormData} />
         </div>
       </form>
     </>

@@ -17,10 +17,15 @@ const projectSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Done", "Is Going", "Delayed"],
-    required: [true, "The task must have a status"],
+    default: "To Do",
+    enum: ["Done", "To Do", "Delayed", "Doing"],
+    // required: [true, "The task must have a status"],
   },
   description: {
+    type: String,
+    required: [true, "The task must have a description"],
+  },
+  summary: {
     type: String,
     required: [true, "The task must have a description"],
   },
@@ -28,32 +33,11 @@ const projectSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
-  employee: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Employee",
-    },
-  ],
-  tasks: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Task",
-    },
-  ],
   importance: {
     type: String,
     default: "Normal",
-    enum: ["Normal ", "Very Important", "Urgent", "Can be done later"],
+    enum: ["Normal", "Very Important", "Urgent", "Can be done later"],
   },
-});
-projectSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: "employee",
-  }).populate({
-    path: "tasks",
-  });
-
-  next();
 });
 const Project = mongoose.model("Project", projectSchema);
 

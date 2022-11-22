@@ -5,19 +5,18 @@ import { useState } from "react";
 import { useEffect } from "react";
 import moment from "moment";
 
-
 import ProjectCard from "../../components/Cards/ProjectsCard";
 
 import { getEmployeeById, getEmployeesBySearch } from "../../api/employeeAPI";
-import { getProjects } from "../../api/projectsAPI";
+import { getProjects, getProjectsBySearch } from "../../api/projectsAPI";
 
 // import { getEmployees } from "./../../api/employeeAPI";
 
 function Project() {
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
-  const [employees, setEmployees] = useState([]);
-  const [q, setQ] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [q, setQ] = useState();
   // console.log(auth);
 
   useEffect(() => {
@@ -25,6 +24,7 @@ function Project() {
       setUser(res.data.data.data);
     });
   }, []);
+
   const [apiProjectData, setProjectData] = useState([]);
 
   useEffect(() => {
@@ -40,9 +40,9 @@ function Project() {
           data: {
             data: { data },
           },
-        } = await getEmployeesBySearch(q);
+        } = await getProjectsBySearch(q);
 
-        setEmployees(data);
+        setProjects(data);
       })();
     }
   }, [q]);
@@ -50,7 +50,7 @@ function Project() {
   const searchHandler = (e) => {
     console.log(e.currentTarget.value);
     setQ(e.currentTarget.value);
-    console.log(employees);
+    console.log(projects);
   };
 
   return (
@@ -66,15 +66,8 @@ function Project() {
 
       <h3 class="p-3 ps-4">Project List</h3>
       <div class="ser d-flex gap-2">
-
         <h5>Search:</h5>
         <input type="search" onChange={searchHandler} />
-        <div>
-          {employees.map((employee) => (
-            <li>{employee.name}</li>
-          ))}
-        </div>
-
       </div>
       <div class="tab table-scrl project-tab">
         <table class="table ">
@@ -88,20 +81,34 @@ function Project() {
               <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
-            {apiProjectData.map((data) => {
-              return (
-
-                <ProjectCard
-                  name={data.name}
-                  status={data.status}
-                  startDate={moment(data.startDate).format("LL")}
-                  endDate={moment(data.endDate).format("LL")}
-                />
-              );
-
-            })}
-          </tbody>
+          {!q && (
+            <tbody>
+              {apiProjectData.map((data) => {
+                return (
+                  <ProjectCard
+                    name={data.name}
+                    status={data.status}
+                    startDate={moment(data.startDate).format("LL")}
+                    endDate={moment(data.endDate).format("LL")}
+                  />
+                );
+              })}
+            </tbody>
+          )}
+          {q && (
+            <tbody>
+              {projects.map((data) => {
+                return (
+                  <ProjectCard
+                    name={data.name}
+                    status={data.status}
+                    startDate={moment(data.startDate).format("LL")}
+                    endDate={moment(data.endDate).format("LL")}
+                  />
+                );
+              })}
+            </tbody>
+          )}
         </table>
       </div>
     </>
