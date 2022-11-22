@@ -106,7 +106,7 @@ function AddEmployee() {
           />
         </div>
         <div className="data d-flex flex-column gap-2">
-          <label for="department">Department </label>
+          <label htmlFor="department">Department </label>
           <select
             id="department"
             name="department"
@@ -127,7 +127,7 @@ function AddEmployee() {
           </select>
         </div>
         <div className="data d-flex flex-column gap-2">
-          <label for="designation">Designation </label>
+          <label htmlFor="designation">Designation </label>
           <select
             id="designation"
             name="designation"
@@ -145,7 +145,7 @@ function AddEmployee() {
           </select>
         </div>
         <div className="data d-flex flex-column gap-2">
-          <label for="role">Role</label>
+          <label htmlFor="role">Role</label>
           <select
             id="role"
             name="role"

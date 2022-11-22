@@ -9,11 +9,11 @@ function AddProject() {
       <h3>Add New Project</h3>
       <form action="" class="d-grid gap-4 my-5 addproject-form">
         <div class="data d-flex flex-column gap-2">
-          <label for="project-Name">Project Name</label>
+          <label htmlFor="project-Name">Project Name</label>
           <input type="text" id="project-Name" autocomplete="off" placeholder='Enter project name' />
         </div>
         <div class="data d-flex flex-column gap-2">
-          <label for="status">Status</label>
+          <label htmlFor="status">Status</label>
           <select id="status" name="status" class="select">
             <option value="to-do">To Do</option>
             <option value="doing">Doing</option>
@@ -21,22 +21,22 @@ function AddProject() {
           </select>
         </div>
         <div class="data d-flex flex-column gap-2">
-          <label for="employee">Employee</label>
+          <label htmlFor="employee">Employee</label>
           <select id="employee" name="employee" class="select">
             <option value="one">One</option>
             <option value="two">Two</option>
           </select>
         </div>
         <div class="data d-flex flex-column gap-2">
-          <label for="start-date">Start Date</label>
+          <label htmlFor="start-date">Start Date</label>
           <input type="date" id="start-date" name="startdate" />
         </div>
         <div class="data d-flex flex-column gap-2">
-          <label for="end-date">End Date</label>
+          <label htmlFor="end-date">End Date</label>
           <input type="date" id="end-date" name="enddate" />
         </div>
         <div class="data d-flex flex-column gap-2">
-          <label for="description">Description</label>
+          <label htmlFor="description">Description</label>
           <textarea name="description" id="" rows="4" placeholder='Enter project description' className="border"></textarea>
         </div>
         <div class="btns">

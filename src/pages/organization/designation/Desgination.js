@@ -63,7 +63,7 @@ function Designation() {
             class="d-flex flex-column p-3 gap-3"
             onSubmit={submitHandler}
           >
-            <label for="">Designation Name</label>
+            <label htmlFor="">Designation Name</label>
             <FormInput
               type="text"
               name="name"

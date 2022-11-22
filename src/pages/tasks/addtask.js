@@ -95,7 +95,7 @@ function AddTask() {
         onSubmit={submitHandler}
       >
         <div className="data d-flex flex-column gap-2">
-          <label for="tName">Task Name</label>
+          <label htmlFor="tName">Task Name</label>
           <FormInput
             type="text"
             id="name"
@@ -107,7 +107,7 @@ function AddTask() {
           />
         </div>
         <div className="data d-flex flex-column gap-2">
-          <label for="description">Description</label>
+          <label htmlFor="description">Description</label>
           <textarea
             className="border"
             name="description"
@@ -119,7 +119,7 @@ function AddTask() {
           ></textarea>
         </div>
         <div className="data d-flex flex-column gap-2">
-          <label for="summary">Summary</label>
+          <label htmlFor="summary">Summary</label>
           <textarea
             className="border"
 
