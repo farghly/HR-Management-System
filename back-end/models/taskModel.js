@@ -18,11 +18,11 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: [true, "The task must have a description"],
   },
-  // project: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Project",
-  //   // required :[true , "The Task must belongs to a project "]
-  // },
+  project: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Project",
+    required: [true, "The Task must belongs to a project "],
+  },
   employee: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -52,6 +52,8 @@ const taskSchema = new mongoose.Schema({
 taskSchema.pre(/^find/, function (next) {
   this.populate({
     path: "employee",
+  }).populate({
+    path: "project",
   });
 
   next();

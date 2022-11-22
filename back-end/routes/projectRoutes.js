@@ -4,6 +4,8 @@ const router = express.Router();
 
 const projectController = require("../controller/projectController");
 
+router.route("/search/:key").get(projectController.searchInProject);
+
 router
   .route("/")
   .get(projectController.getProjects)
