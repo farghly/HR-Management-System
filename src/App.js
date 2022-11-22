@@ -21,7 +21,6 @@ import { getEmployeeById } from "./api/employeeAPI";
 import { useState, useEffect } from "react";
 import TaskDetails from "./pages/tasks/TaskDetails";
 import EmployeeDetails from "./pages/Employee/EmployeeDetails";
-
 import Switch from "react-switch";
 import { createContext } from "react";
 import ProjectDetails from "./pages/projects/ProjectDetails";
