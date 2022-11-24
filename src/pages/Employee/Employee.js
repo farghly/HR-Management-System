@@ -31,14 +31,13 @@ function Employees() {
   //   });
   // }, []);
   const deleteEmp = (event) => {
-    if(window.confirm("Are you sure to delete employee")){
+    if (window.confirm("Are you sure to delete employee")) {
       deleteEmployee(event.currentTarget.id).then(() => {
         getEmployees().then((response) => {
           setEmployees(response.data.data.data);
         });
       });
     }
-    
   };
 
   return (
@@ -72,7 +71,9 @@ function Employees() {
               employees.map((employee) => (
                 <>
                   <tr>
-                    <td class="employee-name"><Link to='/employees/employee-details'>{`${employee.name} `}</Link> </td>
+                    <td class="employee-name">
+                      <Link to="/employees/employee-details">{`${employee.name} `}</Link>{" "}
+                    </td>
 
                     {employee.department && (
                       <td class="employee-email">{employee.department.name}</td>
