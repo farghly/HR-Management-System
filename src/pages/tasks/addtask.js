@@ -8,6 +8,8 @@ import {
 } from "../../api/projectsAPI";
 import { createTask } from "../../api/tasksAPI";
 import FormInput from "../../components/form-input/FormInput.component";
+import { ValidationTask } from "../organization/department/validation";
+
 import {
   editEmployee,
   getEmployeeById,
@@ -36,6 +38,11 @@ function AddTask() {
   const [taskCreated, setTaskCreated] = useState({});
   const [employeeOfTask, setEmployeeOfTask] = useState({});
   const [projectOfTask, setProjectOfTask] = useState({});
+
+  const [values,setValues]=useState({
+    name:'',
+  })
+  const [errors,setError]=useState({})
 
   let { name, summary, description, employee, startDate, endDate, importance } =
     formData;
@@ -78,6 +85,7 @@ function AddTask() {
   const changeHandler = (event) => {
     const { name, value } = event.target;
     const test = { ...formData, [name]: value };
+    setValues({...values,[event.target.name]:event.target.value})
     setFormData(() => test);
     console.log(formData);
     // console.log(event.target);
@@ -90,6 +98,7 @@ function AddTask() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+
     // const taskRes = await createTask(formData);
     // const newTask = { ...taskRes.data.data.data };
     // setTaskCreated(newTask);
@@ -110,8 +119,13 @@ function AddTask() {
     //   tasks: projectTasks,
     // });
     // console.log(updateProject.data.data.data);
+    if((!values.name || values.name.length < 5) ){
+      return setError(ValidationTask(values));
+    }else{
+    createTask(formData);
     resetFormData();
     console.log(formData);
+    }
   };
 
   const setProject = (event) => {
@@ -174,6 +188,7 @@ function AddTask() {
             onChange={changeHandler}
             placeholder="Enter task name"
           />
+          {errors.name && <p className="error">{errors.name}</p>}
         </div>
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="description">Description</label>
@@ -187,6 +202,7 @@ function AddTask() {
             placeholder="Enter description task"
           ></textarea>
         </div>
+        {errors.description && <p className="error">{errors.description}</p>}
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="summary">Summary</label>
           <textarea
