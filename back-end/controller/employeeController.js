@@ -13,7 +13,7 @@ const response = (status, statusCode, data, res) => {
   });
 };
 
-exports.getEmployees = catchAsync(async (req, res, next) => {
+exports.getEmployees = async (req, res, next) => {
   const features = new APIFeatures(Employee.find(), req.query)
     .filter()
     .sort()
@@ -23,7 +23,12 @@ exports.getEmployees = catchAsync(async (req, res, next) => {
   const employees = await features.query;
 
   response("success", 200, employees, res);
-});
+};
+// exports.getEmployees = async (req, res) => {
+//   const employees = await Employee.find({});
+//   console.log(employees);
+//   response("success", 200, employees, res);
+// };
 
 exports.searchInEmployees = catchAsync(async (req, res, next) => {
   const employees = await Employee.find({ name: { $regex: req.params.key } });
