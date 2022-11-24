@@ -1,7 +1,7 @@
 // import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 // import { fetchEmployees } from "./../../redux";
-import { getEmployees } from "../../api/employeeAPI";
+import { getEmployees, getEmployeesBySearch } from "../../api/employeeAPI";
 
 import "./styles.css";
 import { Link } from "react-router-dom";
@@ -9,16 +9,26 @@ import { Link } from "react-router-dom";
 // import { response } from "express";
 import { useNavigate } from "react-router-dom";
 import { deleteEmployee } from "./../../api/employeeAPI";
+import { deleteTask, getTasks } from "./../../api/tasksAPI";
 
 function Employees() {
-  const [employees, setEmployees] = useState([]);
+  const [employees, setEmployees] = useState();
+  const [q, setQ] = useState();
+  const [employeeSearchResult, setEmployeeSearchResult] = useState([]);
 
   const navigate = useNavigate();
-  useEffect(() => {
+  // useEffect(() => {
+  //   getEmployees().then((response) => {
+  //     setEmployees(response.data.data.data);
+  //   });
+  // }, []);
+  useEffect(()=>{
     getEmployees().then((response) => {
-      setEmployees(response.data.data.data);
-    });
-  }, []);
+          setEmployees(response.data.data.data);
+        });
+  },[])
+  const [tasks, setTasks] = useState([]);
+
   // employees.map((employee) => employee && console.log(employee));
   const navigateToEditEmployee = (event) => {
     // console.log(event.currentTarget.id);
@@ -30,15 +40,35 @@ function Employees() {
   //     setEmployees(response.data.data.data);
   //   });
   // }, []);
+  useEffect(() => {
+    getTasks().then((res) => {
+      setTasks(res.data.data.data);
+    });
+  }, []);
+  console.log(tasks);
   const deleteEmp = (event) => {
-    if(window.confirm("Are you sure to delete employee")){
-      deleteEmployee(event.currentTarget.id).then(() => {
-        getEmployees().then((response) => {
-          setEmployees(response.data.data.data);
-        });
+    if (window.confirm("Are you sure to delete employee")) {
+      let userTasks = tasks.filter((task) => {
+        return task.employee._id === event.currentTarget.id;
+      });
+      console.log(userTasks);
+
+      deleteEmployee(event.currentTarget.id);
+      getEmployees().then((response) => {
+        setEmployees(response.data.data.data);
       });
     }
-    
+  };
+
+  useEffect(() => {
+    getEmployeesBySearch(q).then((res) => {
+      setEmployeeSearchResult(res.data.data.data);
+    });
+  }, [q]);
+
+  const searchHandler = (e) => {
+    console.log(e.currentTarget.value);
+    setQ(e.currentTarget.value);
   };
 
   return (
@@ -51,8 +81,8 @@ function Employees() {
       </Link>
       <h3 class="p-3 ps-4">Employee List</h3>
       <div class="ser d-flex gap-2">
-        {/* <h5>Search:</h5>
-        <input type="search" /> */}
+        <h5>Search:</h5>
+        <input type="search" onChange={searchHandler} />
       </div>
       <div class="tab table-scrl employee-tab">
         <table class="table ">
@@ -68,11 +98,54 @@ function Employees() {
             </tr>
           </thead>
           <tbody>
-            {employees &&
+            {q &&
+              employeeSearchResult &&
+              employeeSearchResult.map((employee) => (
+                <>
+                  <tr>
+                    <td class="employee-name">
+                      <Link to="/employee-details">{`${employee.name} `}</Link>{" "}
+                    </td>
+
+                    {employee.department && (
+                      <td class="employee-email">{employee.department.name}</td>
+                    )}
+                    {employee.designation && (
+                      <td class="employee-email">
+                        {employee.designation.name}
+                      </td>
+                    )}
+                    <td class="employee-email">{employee.email}</td>
+                    <td class="employee-contact">{`${employee.contactNumber[0]} `}</td>
+                    <td class="employee-type">{employee.role}</td>
+                    <td class="for-btns gap-2">
+                      <button
+                        class="edit me-2"
+                        id={employee._id}
+                        onClick={navigateToEditEmployee}
+                      >
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        class="delete"
+                        id={employee._id}
+                        onClick={deleteEmp}
+                      >
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </>
+              ))}
+            {!q &&
+              employees &&
               employees.map((employee) => (
                 <>
                   <tr>
-                    <td class="employee-name"><Link to='/employees/employee-details'>{`${employee.name} `}</Link> </td>
+
+                    <td class="employee-name">
+                      <Link to="/employee-details">{`${employee.name} `}</Link>{" "}
+                    </td>
 
                     {employee.department && (
                       <td class="employee-email">{employee.department.name}</td>

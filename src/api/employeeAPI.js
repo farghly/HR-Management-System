@@ -21,7 +21,5 @@ export const createEmployee = (newEmployee) =>
 
 export const deleteEmployee = (id) => employeeAPI.delete(`employees/${id}`);
 
-export const editEmployee = (id, employee) => {
-  console.log(id, employee);
+export const editEmployee = (id, employee) =>
   employeeAPI.patch(`employees/${id}`, employee);
-};

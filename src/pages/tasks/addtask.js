@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getProjectsBySearch } from "../../api/projectsAPI";
+// import { getTaskIdAfterSave } from "../../../back-end/controller/taskController";
+import {
+  getProjectsBySearch,
+  getProjectById,
+  editProject,
+} from "../../api/projectsAPI";
 import { createTask } from "../../api/tasksAPI";
 import FormInput from "../../components/form-input/FormInput.component";
 import {
+  editEmployee,
   getEmployeeById,
   getEmployees,
   getEmployeesBySearch,
@@ -11,7 +17,6 @@ import {
 
 const defaultFormData = {
   name: "",
-  createdAt: "",
   summary: "",
   description: "",
   employee: "",
@@ -28,6 +33,9 @@ function AddTask() {
   const [projectSearchQ, setProjectSearchQ] = useState("");
   const [employeeSearchValue, setEmployeeSearchValue] = useState();
   const [projectSearchValue, setProjectSearchValue] = useState();
+  const [taskCreated, setTaskCreated] = useState({});
+  const [employeeOfTask, setEmployeeOfTask] = useState({});
+  const [projectOfTask, setProjectOfTask] = useState({});
 
   let { name, summary, description, employee, startDate, endDate, importance } =
     formData;
@@ -82,7 +90,26 @@ function AddTask() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    createTask(formData);
+    // const taskRes = await createTask(formData);
+    // const newTask = { ...taskRes.data.data.data };
+    // setTaskCreated(newTask);
+    // const employeeRes = await getEmployeeById(newTask.employee[0]);
+    // const employee = { ...employeeRes.data.data.data };
+    // const employeeTasks = employee.tasks;
+    // console.log(employeeTasks);
+    // employeeTasks.push(newTask._id);
+    // const updateEmployee = await editEmployee(newTask.employee[0], {
+    //   tasks: employeeTasks,
+    // });
+    // console.log(updateEmployee.data.data.data);
+    // const projectRes = await getProjectById(newTask.project);
+    // const project = { ...projectRes.data.data.data };
+    // const projectTasks = project.tasks;
+    // projectTasks.push(newTask._id);
+    // const updateProject = await editProject(newTask.project, {
+    //   tasks: projectTasks,
+    // });
+    // console.log(updateProject.data.data.data);
     resetFormData();
     console.log(formData);
   };
@@ -194,6 +221,23 @@ function AddTask() {
               </li>
             ))}
           </div>
+        </div>
+
+        <div className="data d-flex flex-column gap-2">
+          <label for="Importance">Importance</label>
+          <select
+            id="Importance"
+            value={importance}
+            name="importance"
+            className="select"
+            onChange={changeHandler}
+          >
+            <option selected>Select Project Importance</option>
+            <option value="Normal">Normal</option>
+            <option value="Very Important"> Very Important</option>
+            <option value="Urgent">Urgent</option>
+            <option value="Can be done later">Can be done later</option>
+          </select>
         </div>
 
         <div className="data d-flex flex-column gap-2">

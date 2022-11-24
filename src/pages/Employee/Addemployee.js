@@ -12,7 +12,6 @@ const defaultFormFields = {
   password: "",
   confirmPassword: "",
   name: "",
-
   contactNumber: "",
   department: "web development",
   designation: "senior",
@@ -71,6 +70,7 @@ function AddEmployee() {
       </Link>
       <h3>Add New Employee</h3>
       <form onSubmit={submitHandler} className="d-grid gap-4 my-5 add-employee">
+
         <div className="data d-flex flex-column gap-2">
           <FormInput
             label="Full Name"
@@ -81,7 +81,7 @@ function AddEmployee() {
             name="name"
             value={name}
             onChange={changeHandler}
-            placeholder='Enter your last name'
+            placeholder="Enter your last name"
           />
         </div>
 
@@ -95,7 +95,7 @@ function AddEmployee() {
             required
             value={email}
             onChange={changeHandler}
-            placeholder='Enter your email adress'
+            placeholder="Enter your email adress"
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -108,7 +108,7 @@ function AddEmployee() {
             required
             value={password}
             onChange={changeHandler}
-            placeholder='Enter your password'
+            placeholder="Enter your password"
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -121,7 +121,7 @@ function AddEmployee() {
             required
             value={confirmPassword}
             onChange={changeHandler}
-            placeholder='Re-enter your password'
+            placeholder="Re-enter your password"
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -134,7 +134,7 @@ function AddEmployee() {
             required
             value={NID}
             onChange={changeHandler}
-            placeholder='Enter your nationality ID'
+            placeholder="Enter your nationality ID"
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -145,7 +145,7 @@ function AddEmployee() {
             name="contactNumber"
             value={contactNumber}
             onChange={changeHandler}
-            placeholder='Enter your phone number'
+            placeholder="Enter your phone number"
           />
         </div>
         <div className="data d-flex flex-column gap-2">
