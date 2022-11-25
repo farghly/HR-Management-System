@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {useForm} from 'react-hook-form';
 import { Link } from "react-router-dom";
 import { createProject } from "../../api/projectsAPI";
 import "./project.css";
@@ -13,6 +14,7 @@ const defaultFormData = {
 };
 
 function AddProject() {
+  const {register,handleSubmit,errors}=useForm();
   const [formData, setFormData] = useState(defaultFormData);
 
   let { name, summary, description, startDate, endDate, importance } = formData;
@@ -36,6 +38,7 @@ function AddProject() {
     resetFormData();
     console.log(formData);
   };
+  console.log(errors)
 
   return (
     <>
@@ -43,43 +46,10 @@ function AddProject() {
         Project List
       </Link>
       <h3>Add New Project</h3>
-{/* <<<<<<< HEAD
-      <form action="" class="d-grid gap-4 my-5 addproject-form">
-        <div class="data d-flex flex-column gap-2">
-          <label htmlFor="project-Name">Project Name</label>
-          <input type="text" id="project-Name" autocomplete="off" placeholder='Enter project name' />
-        </div>
-        <div class="data d-flex flex-column gap-2">
-          <label htmlFor="status">Status</label>
-          <select id="status" name="status" class="select">
-            <option value="to-do">To Do</option>
-            <option value="doing">Doing</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-        <div class="data d-flex flex-column gap-2">
-          <label htmlFor="employee">Employee</label>
-          <select id="employee" name="employee" class="select">
-            <option value="one">One</option>
-            <option value="two">Two</option>
-          </select>
-        </div>
-        <div class="data d-flex flex-column gap-2">
-          <label htmlFor="start-date">Start Date</label>
-          <input type="date" id="start-date" name="startdate" />
-        </div>
-        <div class="data d-flex flex-column gap-2">
-          <label htmlFor="end-date">End Date</label>
-          <input type="date" id="end-date" name="enddate" />
-        </div>
-        <div class="data d-flex flex-column gap-2">
-          <label htmlFor="description">Description</label>
-          <textarea name="description" id="" rows="4" placeholder='Enter project description' className="border"></textarea>
-======= */}
       <form
         action=""
         className="d-grid gap-4 my-5 addproject-form"
-        onSubmit={submitHandler}
+        onSubmit={handleSubmit(submitHandler)}
       >
         <div className="data d-flex flex-column gap-2">
           <label for="project-Name">Project Name</label>
@@ -91,6 +61,7 @@ function AddProject() {
             name="name"
             value={name}
             onChange={changeHandler}
+            ref={register({required:"project Name is required"})}
           />
         </div>
 
@@ -142,7 +113,7 @@ function AddProject() {
             onChange={changeHandler}
             value={description}
           ></textarea>
-{/* >>>>>>> Dev-Branch */}
+
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="summary">Summary</label>
