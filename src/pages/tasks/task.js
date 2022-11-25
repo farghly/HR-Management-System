@@ -41,7 +41,7 @@ function Task() {
           )}
 
           <h3>Tasks List</h3>
-          
+
           <div class="tasks d-grid my-5 gap-3">
             {user.role === "admin" &&
               tasks &&
@@ -53,6 +53,7 @@ function Task() {
                   taskCase={task.status}
                   taskStartDate={task.startDate}
                   taskEndDate={task.endDate}
+                  taskId={task._id}
                   timeRequired="6"
                   user={user}
                 />

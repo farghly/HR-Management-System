@@ -209,7 +209,7 @@ function App() {
                           />
                         )}
                         <Route
-                          path="/tasks/task-details"
+                          path="/tasks/task-details/:id"
                           element={<TaskDetails />}
                         />
                         <Route

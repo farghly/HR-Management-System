@@ -15,17 +15,16 @@ const TasksCard = (props) => {
   //     setUser(res.data.data.data);
   //   });
   // }, []);
-  
+
   const requiredTime =
     (new Date(props.taskStartDate) - new Date(props.taskEndDate)) /
     (1000 * 3600 * 24);
   console.log(props);
 
-
   return (
     <>
       <div class="task-content p-3 d-flex gap-3 flex-column">
-        <Link to="/tasks/task-details" class="task-name">
+        <Link to={`/tasks/task-details/${props.taskId}`} class="task-name">
           {props.taskName}
         </Link>
         <div class="task-summary"> {props.taskDetails}</div>
