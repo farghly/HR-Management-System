@@ -1,6 +1,8 @@
 import "./styles.css";
 import { Link, Form } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 import FormInput from "./../../components/form-input/FormInput.component";
 // import Button from "../../components/button/Button.component";
 import { createEmployee } from "./../../api/employeeAPI";
@@ -22,6 +24,7 @@ const defaultFormFields = {
   leavingday: "",
 };
 function AddEmployee() {
+  const{register,handleSubmit,formState:{errors},watch}=useForm()
   const [departments, setDepartments] = useState([]);
   const [designations, setDesignations] = useState([]);
   useEffect(() => {
@@ -58,8 +61,7 @@ function AddEmployee() {
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-  const submitHandler = async (event) => {
-    event.preventDefault();
+  const onSubmit = async () => {
     createEmployee(formFields);
     resetFormFields();
   };
@@ -69,10 +71,11 @@ function AddEmployee() {
         Employee List
       </Link>
       <h3>Add New Employee</h3>
-      <form onSubmit={submitHandler} className="d-grid gap-4 my-5 add-employee">
+      <form onSubmit={handleSubmit(onSubmit)} className="d-grid gap-4 my-5 add-employee">
 
         <div className="data d-flex flex-column gap-2">
-          <FormInput
+          <input
+          {...register('name',{required:'This field required',minLength:{value:3,message:'min length is 3 characters'}})}
             label="Full Name"
             type="text"
             id="name"
@@ -81,12 +84,18 @@ function AddEmployee() {
             name="name"
             value={name}
             onChange={changeHandler}
-            placeholder="Enter your last name"
+            placeholder="Enter your  name"
           />
+          <ErrorMessage 
+           errors={errors}
+           name="name"
+           render={({message})=><p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
 
         <div className="data d-flex flex-column gap-2">
           <FormInput
+          {...register('email',{required:'Email is required',minLength:{value:3,message:'email is required'}})}
             label="Email"
             type="email"
             id="email"
@@ -97,9 +106,15 @@ function AddEmployee() {
             onChange={changeHandler}
             placeholder="Enter your email adress"
           />
+          <ErrorMessage 
+           errors={errors}
+           name="email"
+           render={({message})=><p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
           <FormInput
+          {...register('password',{required:'password is required',minLength:{value:3,message:'min length for password is 8 characters'}})}
             label="Password"
             type="password"
             id="password"
@@ -110,9 +125,20 @@ function AddEmployee() {
             onChange={changeHandler}
             placeholder="Enter your password"
           />
+          <ErrorMessage 
+           errors={errors}
+           name="password"
+           render={({message})=><p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
           <FormInput
+          {...register('password',{required:true,validate:(val)=>{
+            if (watch('password') !== val) {
+              return "Your passwords do no match";
+            }
+          },
+        })}
             label="confirm Password"
             type="password"
             id="password"
@@ -123,6 +149,11 @@ function AddEmployee() {
             onChange={changeHandler}
             placeholder="Re-enter your password"
           />
+          <ErrorMessage 
+           errors={errors}
+           name="confirmPassword"
+           render={({message})=><p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
           <FormInput

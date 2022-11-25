@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 import { createDepartment, getDepartments } from "../../../api/departmentAPI";
 import FormInput from "../../../components/form-input/FormInput.component";
-
 
 import { deleteDepartment } from "../../../api/departmentAPI";
 import "./Department.css";
 import { Link, useNavigate } from "react-router-dom";
-import {ValidationDepartment} from "./validation";
 
 const defaultFormData = {
   name: "",
 };
+const showHide = {
+  show: "d-block",
+  hide: "d-none",
+};
 function Department({ user }) {
+  const {register,formState:{errors},handleSubmit}=useForm()
   const [formData, setFormData] = useState(defaultFormData);
   // const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
+  const [editState, setEditState] = useState(showHide.hide);
+  const [saveState, setSaveState] = useState(showHide.show);
   const { name } = formData;
   useEffect(() => {
     getDepartments().then((res) => {
@@ -22,51 +29,49 @@ function Department({ user }) {
     });
   }, []);
 
-
   const resetFormData = () => {
     setFormData(defaultFormData);
   };
 
-  const submitHandler = async (event) => {
-    event.preventDefault();
-    if(!values.name || values.name.length <5){
-      return setError(ValidationDepartment(values));
-    }else{
+
+  const onSubmit = async () => {
       createDepartment(formData);
-      setError(ValidationDepartment(values));
+      // setError(ValidationDepartment(values));
       getDepartments().then((res) => {
         setDepartments(res.data.data.data);
       });
       resetFormData();
-    }
+    //}
   };
 
   const deleteDepart = (event) => {
-    if (window.confirm("Are you Sure to delete?"))
-    { 
+    if (window.confirm("Are you Sure to delete?")) {
       deleteDepartment(event.currentTarget.id).then((res) => {
         getDepartments().then((res) => {
           setDepartments(res.data.data.data);
         });
       });
     }
-    
   };
 
-  const navigateToEditDepart = (event) => {};
+  const editDepartName = (event) => {
+    setEditState(showHide.show);
+    setSaveState(showHide.hide);
+  };
+  const saveDepartName = (event) => {
+    setEditState(showHide.hide);
+    setSaveState(showHide.show);
+  };
 
   /* Validation */
-  const [values,setValues]=useState({
-    name:'',
-  })
-  const [errors,setError]=useState({
-
-  })
+  const [values, setValues] = useState({
+    name: "",
+  });
   const changeHandler = (e) => {
-  const { name, value } = e.target;
-  setValues({...values,[e.target.name]:e.target.value})
-  setFormData({ ...formData, [name]: value });
-   // console.log(formData);
+    const { name, value } = e.target;
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [name]: value });
+    // console.log(formData);
   };
   return (
     <div class="gap-4 d-flex flex-column department ">
@@ -75,21 +80,26 @@ function Department({ user }) {
         <form
           action=""
           class="d-flex flex-column p-3 gap-3"
-          onSubmit={submitHandler}
+          onSubmit={handleSubmit(onSubmit)}
         >
-
           <label htmlFor="">Department Name</label>
-           <FormInput
-
+           <input
+           {...register('name',{required:'field is requird',minLength:{value:4,message:'min lenght is 4'}})}
             type="text"
             name="name"
             id="dName"
             value={values.name}
             onChange={changeHandler}
-
           /> 
+          <ErrorMessage 
+           errors={errors}
+           name="name"
+           render={({message})=><p className="error">{message}</p>}
+          ></ErrorMessage>
+         {/* {errors.name && <p className="error">{errors.name}</p>} */}
 
-          {errors.name && <p className="error">{errors.name}</p>}
+
+
 
           <div class="btns depart d-flex justify-content-between justify-content-md-start">
             <button type="submit" class="save me-2">
@@ -115,24 +125,44 @@ function Department({ user }) {
             <tbody>
               {departments.map((department) => (
                 <tr>
-                  <td className="department-name">
-                    <Link to={"/department/department-details"}>{department.name}</Link>
+                  <td className={`department-name`}>
+                    <Link
+                      to={"department-details"}
+                      className={`department-name ${saveState}`}
+                    >
+                      {department.name}
+                    </Link>
+                    <input
+                      className={`${editState}`}
+                      type="text"
+                      name="name"
+                      id="dName"
+                      value={values.name}
+                      onChange={changeHandler}
+                    />
                   </td>
                   {user.role === "admin" && (
-                    <td class="d-flex gap-2">
+                    <td className="d-flex gap-2">
                       <button
-                        class="edit"
+                        className={`edit ${editState}`}
                         id={department._id}
-                        onClick={navigateToEditDepart}
+                        onClick={saveDepartName}
                       >
-                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-check"></i>
                       </button>
                       <button
-                        class="delete"
+                        className={`edit ${saveState}`}
+                        id={department._id}
+                        onClick={editDepartName}
+                      >
+                        <i className="fa-regular fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        className="delete"
                         id={department._id}
                         onClick={deleteDepart}
                       >
-                        <i class="fa-solid fa-trash"></i>
+                        <i className="fa-solid fa-trash"></i>
                       </button>
                     </td>
                   )}
