@@ -12,7 +12,7 @@ const defaultFormFields = {
 };
 function Login() {
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
+  const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
@@ -28,8 +28,10 @@ function Login() {
   };
   const submitHandler = (event) => {
     event.preventDefault();
+
     dispatch(login(formFields));
-    resetFormFields();
+
+    // resetFormFields();
   };
   return (
     <>
