@@ -127,7 +127,7 @@ function Department({ user }) {
                 <tr>
                   <td className={`department-name`}>
                     <Link
-                      to={"/department-details"}
+                      to={"department-details"}
                       className={`department-name ${saveState}`}
                     >
                       {department.name}

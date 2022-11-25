@@ -144,7 +144,7 @@ function Employees() {
                   <tr>
 
                     <td class="employee-name">
-                      <Link to="/employee-details">{`${employee.name} `}</Link>{" "}
+                      <Link to="employee-details">{`${employee.name} `}</Link>{" "}
                     </td>
 
                     {employee.department && (
