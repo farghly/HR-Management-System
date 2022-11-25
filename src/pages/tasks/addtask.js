@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
 import { Link } from "react-router-dom";
 // import { getTaskIdAfterSave } from "../../../back-end/controller/taskController";
 import {
@@ -28,6 +30,7 @@ const defaultFormData = {
 };
 
 function AddTask() {
+  const { register, formState: { errors }, handleSubmit } = useForm();
   const [formData, setFormData] = useState(defaultFormData);
   const [employees, setEmployees] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -42,7 +45,6 @@ function AddTask() {
   const [values,setValues]=useState({
     name:'',
   })
-  const [errors,setError]=useState({})
 
   let { name, summary, description, employee, startDate, endDate, importance } =
     formData;
@@ -119,13 +121,13 @@ function AddTask() {
     //   tasks: projectTasks,
     // });
     // console.log(updateProject.data.data.data);
-    if((!values.name || values.name.length < 5) ){
-      return setError(ValidationTask(values));
-    }else{
+    // if((!values.name || values.name.length < 5) ){
+    //   return setError(ValidationTask(values));
+    // }else{
     createTask(formData);
     resetFormData();
     console.log(formData);
-    }
+    //}
   };
 
   const setProject = (event) => {
@@ -165,7 +167,7 @@ function AddTask() {
     setProjectSearchQ(e.currentTarget.value);
     console.log(employees);
   };
-
+console.log(errors)
   return (
     <>
       <Link to="/tasks" className="btn btn-primary mb-3 task-list">
@@ -175,11 +177,12 @@ function AddTask() {
       <form
         action=""
         className="d-grid gap-4 my-5 task"
-        onSubmit={submitHandler}
+        onSubmit={handleSubmit(submitHandler)}
       >
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="tName">Task Name</label>
-          <FormInput
+          <input
+          {...register('name', { required: "This is requird" ,minLength:{value:5,message:'min length is 5'}})}
             type="text"
             id="name"
             autocomplete="off"
@@ -188,11 +191,18 @@ function AddTask() {
             onChange={changeHandler}
             placeholder="Enter task name"
           />
-          {errors.name && <p className="error">{errors.name}</p>}
+           <ErrorMessage
+            errors={errors}
+            name="name"
+            render={({ message }) => <p className="error">{message}</p>}
+          />
+          {/* {<p>{errors.name}</p>} */}
+          {/* {errors.name && <p className="error">{errors.name}</p>} */}
         </div>
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="description">Description</label>
           <textarea
+            {...register('description', { required: "This is requird",minLength:{value:10,message:"min length is 10"} })}
             className="border"
             name="description"
             id="description"
@@ -201,11 +211,17 @@ function AddTask() {
             onChange={changeHandler}
             placeholder="Enter description task"
           ></textarea>
+          <ErrorMessage
+            errors={errors}
+            name="description"
+            render={({ message }) => <p className="error">{message}</p>}
+          />
         </div>
-        {errors.description && <p className="error">{errors.description}</p>}
+        {/* {errors.description && <p className="error">{errors.description}</p>} */}
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="summary">Summary</label>
           <textarea
+          {...register('summary', { required: "This is requird",minLength:{value:10,message:"min length is 10"} })}
             className="border"
             name="summary"
             id="summary"
@@ -214,12 +230,18 @@ function AddTask() {
             onChange={changeHandler}
             placeholder="Enter task summary"
           ></textarea>
+          <ErrorMessage
+            errors={errors}
+            name="summary"
+            render={({ message }) => <p className="error">{message}</p>}
+          />
         </div>
 
         <div className="data d-flex flex-column gap-2">
           <label for="project">Project</label>
 
           <input
+            {...register('projectSearch', { required: "This is requird"})}
             type="search"
             onChange={projectSearchHandler}
             placeholder="Enter an project"
@@ -238,10 +260,15 @@ function AddTask() {
             ))}
           </div>
         </div>
-
+        <ErrorMessage
+            errors={errors}
+            name="projectSearch"
+            render={({ message }) => <p className="error">{message}</p>}
+          />
         <div className="data d-flex flex-column gap-2">
           <label for="Importance">Importance</label>
           <select
+          {...register('importance',{required:'This is requird'})}
             id="Importance"
             value={importance}
             name="importance"
@@ -255,11 +282,16 @@ function AddTask() {
             <option value="Can be done later">Can be done later</option>
           </select>
         </div>
-
+        <ErrorMessage
+            errors={errors}
+            name="importance"
+            render={({ message }) => <p className="error">{message}</p>}
+          />
         <div className="data d-flex flex-column gap-2">
           <label for="employee">Employee</label>
 
           <input
+            {...register('employee',{required:'This is required'})}
             type="search"
             onChange={employeeSearchHandler}
             placeholder="Enter an Employee"
@@ -278,6 +310,12 @@ function AddTask() {
             ))}
           </div>
         </div>
+        <ErrorMessage
+            errors={errors}
+            name="employee"
+            render={({ message }) => <span className="error">{message}</span>}
+          />
+
         <div className="d-flex flex-column gap-2">
           <FormInput
             label="start Date"
