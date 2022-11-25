@@ -11,7 +11,7 @@ import "./dashboard.css";
 function Dashboard() {
   const [getCountDepartment, setCountDepartment] = useState();
   const [getCountEmployee, setCountEmployee] = useState();
-  const [getCountDesgination, setCountDesignation] = useState();
+  const [getCountProjects, setCountProjects] = useState();
   const [apiProjectData, setProjectData] = useState([]);
   useEffect(() => {
     getDepartments().then((getcount) => {
@@ -20,14 +20,13 @@ function Dashboard() {
     getEmployees().then((getcount) => {
       setCountEmployee(getcount.data.data.data.length);
     });
-    getDesignations().then((getcount) => {
-      setCountDesignation(getcount.data.data.data.length);
+    getProjects().then((getcount) => {
+      setCountProjects(getcount.data.data.data.length);
     });
   }, []);
 
   useEffect(() => {
     getProjects().then((getData) => {
-      console.log(getData.data.data.data);
       setProjectData(getData.data.data.data);
     });
   }, []);
@@ -64,32 +63,19 @@ function Dashboard() {
           <div className="first-card gap-3 d-flex align-items-center p-3">
             <i className="fa-regular fa-calendar bglightcoral"></i>
             <div className="card-text ms-2">
-              <h5>{getCountDesgination} projects</h5>
+              <h5>{getCountProjects} projects</h5>
               <Link to="/projects">View Details</Link>
             </div>
           </div>
           <div className="second-card bglightcoral text-center p-3 text-light">
-            <div className="num">{getCountDesgination}</div>
+            <div className="num">{getCountProjects}</div>
             <div className="second-card-text">Former projects</div>
           </div>
         </div>
-        {/* <div className="one d-flex gap-4 flex-column details-card">
-          <div className="first-card bg-white d-flex align-items-center p-3">
-            <i className="fa-solid fa-dollar-sign bglimegreen"></i>
-            <div className="card-text ms-2">
-              <h4>10 Employees</h4>
-              <a to="/">View Details</a>
-            </div>
-          </div>
-          <div className="second-card bglimegreen text-center p-3 text-light">
-            <div className="num">0</div>
-            <div className="second-card-text">Former Employees</div>
-          </div>
-        </div> */}
       </div>
 
       {/* start of table */}
-      <h3>Running Project/s</h3>
+      <h3> Project/s</h3>
       <div className="details-table running-table table-scrl">
         <table className="table">
           <thead>
