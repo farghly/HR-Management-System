@@ -228,6 +228,7 @@ function App() {
                           path="/projects/editProject/:id"
                           element={<EditProject />}
                         />
+                        {/* <Route path="*" element={<NotFound />} /> */}
                       </Routes>
                     )}
                   </div>

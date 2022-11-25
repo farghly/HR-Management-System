@@ -10,7 +10,7 @@ const EmployeeDetails = () => {
       <h3>Employee Details</h3>
       <div class="employee-content-details p-3 d-flex gap-3 flex-column">
         <h2 class="employee-name">
-          Employee Name:{" "}
+          {" "}
           <span class="employee-name-details">Final Project</span>
         </h2>
         <div class="date-of-joining">

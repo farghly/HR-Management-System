@@ -122,6 +122,10 @@ input[type=number] {
   transition: 0.2s all;
 }
 
+.error {
+  color: red
+}
+
 .save:hover {
   background-color: #017acb;
 }
@@ -274,7 +278,7 @@ table {
 
 /* end switch */
 
-body:has(#light) {
+body {
   background: linear-gradient(106.37deg, var(--grad-1-clr-l) 29.63%, var(--grad-2-clr-l) 51.55%, var(--grad-3-clr-l) 90.85%);
 }
 

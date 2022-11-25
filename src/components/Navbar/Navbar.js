@@ -64,7 +64,7 @@ function Navbar() {
           )}
           {(user.role === "admin" || user.role === "hr") && (
             <>
-              <li className="d-flex gap-3 align-items-center">
+              {/* <li className="d-flex gap-3 align-items-center">
                 <NavLink
                   id="nav-text"
                   className={({ isActive }) =>
@@ -76,7 +76,7 @@ function Navbar() {
                   <i class="fa-brands fa-creative-commons-nd"></i>
                   <span>Desgination</span>
                 </NavLink>
-              </li>
+              </li> */}
               <li className="d-flex  gap-3 align-items-center">
                 <NavLink
                   className={({ isActive }) =>

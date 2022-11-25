@@ -24,7 +24,7 @@ const DepartmentsDetails = () => {
           <div class="update-department btn btn-success">Update</div>
         </div>
       </div>
-      <div class="tab p-3 tab-details-dep table-scrl">
+      <div class="tab tab-details-dep table-scrl">
         <table class="table department-details-table">
           <thead>
             <tr>

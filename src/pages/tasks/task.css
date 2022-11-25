@@ -68,7 +68,8 @@ form.task .group {
 .project-name-details,
 .employee-name-details,
 .department-name span {
-    color: rgb(0, 102, 255) !important;
+    /* color: rgb(0, 102, 255) !important; */
+    color: #77adff !important;
 }
 
 
@@ -77,7 +78,8 @@ form.task .group {
 }
 
 #dark :is(.task-name span, a.task-name, .employee-name a, .project-name-details, .employee-name-details, .project-name a) {
-    color: rgb(0, 102, 255) !important;
+    /* color: rgb(0, 102, 255) !important; */
+    color: #77adff !important;
 }
 
 #dark :is(.employee-content-details, .task-content-details, .project-content-details, .department-details-card) {
@@ -98,5 +100,14 @@ form.task .group {
 }
 
 #dark .department-name a {
-    color: rgb(0, 102, 255) !important;
+    /* color: rgb(0, 102, 255) !important; */
+    color: #77adff !important;
+}
+
+#dark .card-text a {
+    color: #77adff !important;
+}
+
+#dark .running-table a {
+    color: #77adff !important;
 }

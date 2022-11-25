@@ -36,6 +36,15 @@ aside .main-btn .logOut svg:hover {
   color: var(--blk-clr);
 }
 
+#dark .sett {
+  border: 1px solid var(--wit-clr);
+}
+
+#dark .sett:hover {
+  border: 1px solid var(--blk-clr);
+}
+
+
 .log-out {
   border: 1px solid rgb(220, 53, 69);
   color: rgb(220, 53, 69);
@@ -117,7 +126,6 @@ aside .main-btn .logOut svg:hover {
 
 .down li {
   transition: 0.3s all;
-  /* padding: 10px; */
   cursor: pointer;
   border-radius: 6px;
 }

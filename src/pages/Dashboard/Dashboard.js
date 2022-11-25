@@ -64,13 +64,13 @@ function Dashboard() {
           <div className="first-card gap-3 d-flex align-items-center p-3">
             <i className="fa-regular fa-calendar bglightcoral"></i>
             <div className="card-text ms-2">
-              <h5>{getCountDesgination} designations</h5>
-              <Link to="/designation">View Details</Link>
+              <h5>{getCountDesgination} projects</h5>
+              <Link to="/projects">View Details</Link>
             </div>
           </div>
           <div className="second-card bglightcoral text-center p-3 text-light">
             <div className="num">{getCountDesgination}</div>
-            <div className="second-card-text">Former designations</div>
+            <div className="second-card-text">Former projects</div>
           </div>
         </div>
         {/* <div className="one d-flex gap-4 flex-column details-card">
@@ -104,7 +104,7 @@ function Dashboard() {
               return (
                 <tr>
                   <td className="title">
-                    <a to="/">{data.name}</a>
+                    <Link to={'/projects/project-details'}>{data.name}</Link>
                   </td>
                   <td className="start-date">
                     {moment(data.startDate).format("LL")}
