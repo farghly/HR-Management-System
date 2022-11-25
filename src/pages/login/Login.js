@@ -15,6 +15,7 @@ function Login() {
   console.log(auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const error = useSelector((state)=>state.error)
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const changeHandler = (event) => {
@@ -26,11 +27,16 @@ function Login() {
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
+  const [errorMessage, setErrorMessage] = useState('');
   const submitHandler = (event) => {
-    event.preventDefault();
-    dispatch(login(formFields));
-    resetFormFields();
+      event.preventDefault();
+      dispatch(login(formFields));
+      if(error){
+        setErrorMessage('invalid email or password')
+      }     
+
   };
+console.log(error)
   return (
     <>
       {auth.isAuthenticated && navigate("/")}
@@ -42,6 +48,9 @@ function Login() {
               method="post"
               onSubmit={submitHandler}
             >
+              {errorMessage && (
+                <p className="error"> {errorMessage} </p>
+              )}
               <p className="heading">Sign in</p>
               <div className="box">
                 <p>Email</p>
@@ -60,11 +69,6 @@ function Login() {
               <div className="box">
                 <p>Password</p>
                 <div>
-                  {/* <input
-                type="Password"
-                autocomplete="off"
-                placeholder="Enter your password"
-              /> */}
                   <FormInput
                     // label="Password"
                     type="password"
@@ -77,20 +81,6 @@ function Login() {
                   />
                 </div>
               </div>
-              {/* 
-          
-          const Button = ({ children, buttonType, ...otherProps }) => {
-  return (
-    <button
-      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
-      {...otherProps}
-    >
-      {children}
-    </button>
-  );
-};
-export default Button;
-           */}
               <Button className="signInBtn p-3 my-4 w-100" type="submit">
                 Sign in
               </Button>
