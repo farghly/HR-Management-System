@@ -16,7 +16,11 @@ const showHide = {
   hide: "d-none",
 };
 function Department({ user }) {
-  const {register,formState:{errors},handleSubmit}=useForm()
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const [formData, setFormData] = useState(defaultFormData);
   // const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
@@ -33,14 +37,13 @@ function Department({ user }) {
     setFormData(defaultFormData);
   };
 
-
   const onSubmit = async () => {
-      createDepartment(formData);
-      // setError(ValidationDepartment(values));
-      getDepartments().then((res) => {
-        setDepartments(res.data.data.data);
-      });
-      resetFormData();
+    createDepartment(formData);
+    // setError(ValidationDepartment(values));
+    getDepartments().then((res) => {
+      setDepartments(res.data.data.data);
+    });
+    resetFormData();
     //}
   };
 
@@ -83,23 +86,23 @@ function Department({ user }) {
           onSubmit={handleSubmit(onSubmit)}
         >
           <label htmlFor="">Department Name</label>
-           <input
-           {...register('name',{required:'field is requird',minLength:{value:4,message:'min lenght is 4'}})}
+          <input
+            {...register("name", {
+              required: "field is requird",
+              minLength: { value: 4, message: "min lenght is 4" },
+            })}
             type="text"
             name="name"
             id="dName"
             value={values.name}
             onChange={changeHandler}
-          /> 
-          <ErrorMessage 
-           errors={errors}
-           name="name"
-           render={({message})=><p className="error">{message}</p>}
+          />
+          <ErrorMessage
+            errors={errors}
+            name="name"
+            render={({ message }) => <p className="error">{message}</p>}
           ></ErrorMessage>
-         {/* {errors.name && <p className="error">{errors.name}</p>} */}
-
-
-
+          {/* {errors.name && <p className="error">{errors.name}</p>} */}
 
           <div class="btns depart d-flex justify-content-between justify-content-md-start">
             <button type="submit" class="save me-2">
@@ -127,8 +130,9 @@ function Department({ user }) {
                 <tr>
                   <td className={`department-name`}>
                     <Link
-                      to={"department-details"}
+                      to={`department-details/${department._id}`}
                       className={`department-name ${saveState}`}
+                      id={department._id}
                     >
                       {department.name}
                     </Link>

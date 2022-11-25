@@ -217,7 +217,7 @@ function App() {
                           element={<EmployeeDetails />}
                         />
                         <Route
-                          path="/department/department-details"
+                          path="/department/department-details/:id"
                           element={<DepartmentsDetails />}
                         />
                         <Route
