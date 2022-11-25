@@ -10,7 +10,6 @@ import {
 } from "../../api/projectsAPI";
 import { createTask } from "../../api/tasksAPI";
 import FormInput from "../../components/form-input/FormInput.component";
-import { ValidationTask } from "../organization/department/validation";
 
 import {
   editEmployee,

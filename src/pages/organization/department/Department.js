@@ -7,7 +7,6 @@ import FormInput from "../../../components/form-input/FormInput.component";
 import { deleteDepartment } from "../../../api/departmentAPI";
 import "./Department.css";
 import { Link, useNavigate } from "react-router-dom";
-import { ValidationDepartment } from "./validation";
 
 const defaultFormData = {
   name: "",
@@ -65,9 +64,9 @@ function Department({ user }) {
   };
 
   /* Validation */
-  // const [values, setValues] = useState({
-  //   name: "",
-  // });
+  const [values, setValues] = useState({
+    name: "",
+  });
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -98,6 +97,9 @@ function Department({ user }) {
            render={({message})=><p className="error">{message}</p>}
           ></ErrorMessage>
          {/* {errors.name && <p className="error">{errors.name}</p>} */}
+
+
+
 
           <div class="btns depart d-flex justify-content-between justify-content-md-start">
             <button type="submit" class="save me-2">
