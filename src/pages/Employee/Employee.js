@@ -66,7 +66,7 @@ function Employees() {
     console.log(e.currentTarget.value);
     setQ(e.currentTarget.value);
   };
-  
+
   return (
     <>
       <Link
@@ -100,7 +100,9 @@ function Employees() {
                 <>
                   <tr>
                     <td class="employee-name">
-                      <Link to="/employees/employee-details">{`${employee.name} `}</Link>{" "}
+                      <Link
+                        to={`/employees/employee-details/${employee._id}`}
+                      >{`${employee.name} `}</Link>{" "}
                     </td>
 
                     {employee.department && (
@@ -139,7 +141,9 @@ function Employees() {
                 <>
                   <tr>
                     <td class="employee-name">
-                      <Link to="employee-details">{`${employee.name} `}</Link>{" "}
+                      <Link
+                        to={`/employees/employee-details/${employee._id}`}
+                      >{`${employee.name} `}</Link>{" "}
                     </td>
 
                     {employee.department && (

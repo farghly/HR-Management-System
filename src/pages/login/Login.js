@@ -12,7 +12,6 @@ const defaultFormFields = {
 };
 function Login() {
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const error = useSelector((state)=>state.error)

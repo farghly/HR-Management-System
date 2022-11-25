@@ -14,13 +14,13 @@ const projectRouter = require("./back-end/routes/projectRoutes");
 const departmentRouter = require("./back-end/routes/departmentRoute");
 const designationRouter = require("./back-end/routes/designationRoute");
 const taskRouter = require("./back-end/routes/tasksRoutes");
-const limiter = rateLimiter({
-  max: 100,
-  windowsMS: 60 * 60 * 1000,
-  message: "Too many requests , please try again after an hour",
-});
-app.use(helmet());
-app.use("/api", limiter);
+// const limiter = rateLimiter({
+//   max: 100,
+//   windowsMS: 60 * 60 * 1000,
+//   message: "Too many requests , please try again after an hour",
+// });
+// app.use(helmet());
+// app.use("/api", limiter);
 app.use(mongoSanitize());
 app.use(xssClean());
 app.use((req, res, next) => {

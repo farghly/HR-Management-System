@@ -102,7 +102,7 @@ function AddTask() {
   };
 
   const submitHandler = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     // const taskRes = await createTask(formData);
     // const newTask = { ...taskRes.data.data.data };
@@ -271,6 +271,7 @@ function AddTask() {
               </li>
             ))}
           </div>
+
           <ErrorMessage
             errors={errors}
             name="projectSearch"
@@ -293,12 +294,14 @@ function AddTask() {
             <option value="Urgent">Urgent</option>
             <option value="Can be done later">Can be done later</option>
           </select>
+
           <ErrorMessage
             errors={errors}
             name="importance"
             render={({ message }) => <p className="error">{message}</p>}
           />
         </div>
+
         <div className="data d-flex flex-column gap-2">
           <label for="employee">Employee</label>
           <input
@@ -320,6 +323,7 @@ function AddTask() {
               </li>
             ))}
           </div>
+
           <ErrorMessage
             errors={errors}
             name="employee"
