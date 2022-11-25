@@ -80,7 +80,6 @@ function AddEmployee() {
             type="text"
             id="name"
             autocomplete="off"
-            required
             name="name"
             value={name}
             onChange={changeHandler}
@@ -113,14 +112,13 @@ function AddEmployee() {
           ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
-          <FormInput
+          <label htmlFor="password">password</label>
+          <input
           {...register('password',{required:'password is required',minLength:{value:8,message:'minimum length for password is 8 characters'}})}
-            label="Password"
             type="password"
             id="password"
             name="password"
             autocomplete="off"
-            required
             value={password}
             onChange={changeHandler}
             placeholder="Enter your password"
@@ -131,20 +129,19 @@ function AddEmployee() {
            render={({message})=><p className="error">{message}</p>}
           ></ErrorMessage>
         </div>
-        <div className="data d-flex flex-column gap-2">
-          <FormInput
+        {/* <div className="data d-flex flex-column gap-2">
+          <label htmlFor="confirmpassword">confirm password</label>
+          <input
           {...register('password',{required:true,validate:(val)=>{
             if (watch('password') !== val) {
               return "Your passwords do no match";
             }
           },
         })}
-            label="confirm Password"
             type="password"
-            id="password"
+            id="confirmpassword"
             name="confirmPassword"
             autocomplete="off"
-            required
             value={confirmPassword}
             onChange={changeHandler}
             placeholder="Re-enter your password"
@@ -154,30 +151,40 @@ function AddEmployee() {
            name="confirmPassword"
            render={({message})=><p className="error">{message}</p>}
           ></ErrorMessage>
-        </div>
+        </div> */}
         <div className="data d-flex flex-column gap-2">
-          <FormInput
-            label="NID"
-            type="text"
+          <label htmlFor="NID">NID</label>
+          <input
+          {...register('NID',{  required:'This field is require',minLength:{value:14,message:'NID is 14 number'},maxLength:{value:14,message:'NID is 14 number'}})}
+            type="number"
             id="NID"
             name="NID"
             autocomplete="off"
-            required
             value={NID}
             onChange={changeHandler}
             placeholder="Enter your nationality ID"
           />
+             <ErrorMessage 
+           errors={errors}
+           name="NID"
+           render={({message})=><p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
-          <FormInput
-            label="Contact Number"
+        <label htmlFor="NID">Contact Number</label>
+          <input
+          {...register('contactNumber',{required:'This Field is required',maxLength:{value:11,message:'phone number is 11 number'}})}
             type="number"
-            required
             name="contactNumber"
             value={contactNumber}
             onChange={changeHandler}
             placeholder="Enter your phone number"
           />
+             <ErrorMessage 
+              errors={errors}
+              name="contactNumber"
+              render={({message})=><p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="department">Department </label>
