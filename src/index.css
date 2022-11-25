@@ -123,7 +123,13 @@ input[type=number] {
 }
 
 .error {
-  color: red
+  color: red;
+  font-size: 14px;
+  font-style: italic;
+}
+
+#dark .error {
+  color: gold;
 }
 
 .save:hover {

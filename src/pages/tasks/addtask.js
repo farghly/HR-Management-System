@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from '@hookform/error-message';
+import { ErrorMessage } from "@hookform/error-message";
 import { Link } from "react-router-dom";
 // import { getTaskIdAfterSave } from "../../../back-end/controller/taskController";
 import {
@@ -29,7 +29,11 @@ const defaultFormData = {
 };
 
 function AddTask() {
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const [formData, setFormData] = useState(defaultFormData);
   const [employees, setEmployees] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -41,9 +45,9 @@ function AddTask() {
   const [employeeOfTask, setEmployeeOfTask] = useState({});
   const [projectOfTask, setProjectOfTask] = useState({});
 
-  const [values,setValues]=useState({
-    name:'',
-  })
+  const [values, setValues] = useState({
+    name: "",
+  });
 
   let { name, summary, description, employee, startDate, endDate, importance } =
     formData;
@@ -86,7 +90,7 @@ function AddTask() {
   const changeHandler = (event) => {
     const { name, value } = event.target;
     const test = { ...formData, [name]: value };
-    setValues({...values,[event.target.name]:event.target.value})
+    setValues({ ...values, [event.target.name]: event.target.value });
     setFormData(() => test);
     console.log(formData);
     // console.log(event.target);
@@ -166,7 +170,7 @@ function AddTask() {
     setProjectSearchQ(e.currentTarget.value);
     console.log(employees);
   };
-console.log(errors)
+  console.log(errors);
   return (
     <>
       <Link to="/tasks" className="btn btn-primary mb-3 task-list">
@@ -181,7 +185,10 @@ console.log(errors)
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="tName">Task Name</label>
           <input
-          {...register('name', { required: "This is requird" ,minLength:{value:5,message:'min length is 5'}})}
+            {...register("name", {
+              required: "This is requird",
+              minLength: { value: 5, message: "min length is 5" },
+            })}
             type="text"
             id="name"
             autocomplete="off"
@@ -190,7 +197,7 @@ console.log(errors)
             onChange={changeHandler}
             placeholder="Enter task name"
           />
-           <ErrorMessage
+          <ErrorMessage
             errors={errors}
             name="name"
             render={({ message }) => <p className="error">{message}</p>}
@@ -201,7 +208,10 @@ console.log(errors)
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="description">Description</label>
           <textarea
-            {...register('description', { required: "This is requird",minLength:{value:10,message:"min length is 10"} })}
+            {...register("description", {
+              required: "This is requird",
+              minLength: { value: 10, message: "min length is 10" },
+            })}
             className="border"
             name="description"
             id="description"
@@ -220,7 +230,10 @@ console.log(errors)
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="summary">Summary</label>
           <textarea
-          {...register('summary', { required: "This is requird",minLength:{value:10,message:"min length is 10"} })}
+            {...register("summary", {
+              required: "This is requird",
+              minLength: { value: 10, message: "min length is 10" },
+            })}
             className="border"
             name="summary"
             id="summary"
@@ -240,7 +253,7 @@ console.log(errors)
           <label for="project">Project</label>
 
           <input
-            {...register('projectSearch', { required: "This is requird"})}
+            {...register("projectSearch", { required: "This is requird" })}
             type="search"
             onChange={projectSearchHandler}
             placeholder="Enter an project"
@@ -258,16 +271,16 @@ console.log(errors)
               </li>
             ))}
           </div>
-        </div>
-        <ErrorMessage
+          <ErrorMessage
             errors={errors}
             name="projectSearch"
             render={({ message }) => <p className="error">{message}</p>}
           />
+        </div>
         <div className="data d-flex flex-column gap-2">
           <label for="Importance">Importance</label>
           <select
-          {...register('importance',{required:'This is requird'})}
+            {...register("importance", { required: "This is requird" })}
             id="Importance"
             value={importance}
             name="importance"
@@ -280,17 +293,16 @@ console.log(errors)
             <option value="Urgent">Urgent</option>
             <option value="Can be done later">Can be done later</option>
           </select>
-        </div>
-        <ErrorMessage
+          <ErrorMessage
             errors={errors}
             name="importance"
             render={({ message }) => <p className="error">{message}</p>}
           />
+        </div>
         <div className="data d-flex flex-column gap-2">
           <label for="employee">Employee</label>
-
           <input
-            {...register('employee',{required:'This is required'})}
+            {...register("employee", { required: "This is required" })}
             type="search"
             onChange={employeeSearchHandler}
             placeholder="Enter an Employee"
@@ -308,12 +320,12 @@ console.log(errors)
               </li>
             ))}
           </div>
-        </div>
-        <ErrorMessage
+          <ErrorMessage
             errors={errors}
             name="employee"
             render={({ message }) => <span className="error">{message}</span>}
           />
+        </div>
 
         <div className="d-flex flex-column gap-2">
           <FormInput
