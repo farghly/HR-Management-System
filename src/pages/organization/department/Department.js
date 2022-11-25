@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { createDepartment, getDepartments } from "../../../api/departmentAPI";
 import FormInput from "../../../components/form-input/FormInput.component";
 
-
 import { deleteDepartment } from "../../../api/departmentAPI";
 import "./Department.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,10 +10,16 @@ import Validation from "./validation";
 const defaultFormData = {
   name: "",
 };
+const showHide = {
+  show: "d-block",
+  hide: "d-none",
+};
 function Department({ user }) {
   const [formData, setFormData] = useState(defaultFormData);
   // const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
+  const [editState, setEditState] = useState(showHide.hide);
+  const [saveState, setSaveState] = useState(showHide.show);
   const { name } = formData;
   useEffect(() => {
     getDepartments().then((res) => {
@@ -22,52 +27,54 @@ function Department({ user }) {
     });
   }, []);
 
-
   const resetFormData = () => {
     setFormData(defaultFormData);
   };
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if(setError(Validation(values))){
-      return setError(Validation(values))
+    if (setError(Validation(values))) {
+      return setError(Validation(values));
     }
-      createDepartment(formData);
-      getDepartments().then((res) => {
-        setDepartments(res.data.data.data);
-      });
-      resetFormData();
+    createDepartment(formData);
+    getDepartments().then((res) => {
+      setDepartments(res.data.data.data);
+    });
+    resetFormData();
   };
 
   const deleteDepart = (event) => {
     //let answer = window.confirm("Delete?");
-    if (window.confirm("Are you Sure to delete?"))
-    { 
+    if (window.confirm("Are you Sure to delete?")) {
       deleteDepartment(event.currentTarget.id).then((res) => {
         getDepartments().then((res) => {
           setDepartments(res.data.data.data);
         });
       });
-      
-       // Here you can put your logic or function that needs to be executed as per the use case.
+
+      // Here you can put your logic or function that needs to be executed as per the use case.
     }
-    
   };
 
-  const navigateToEditDepart = (event) => {};
+  const editDepartName = (event) => {
+    setEditState(showHide.show);
+    setSaveState(showHide.hide);
+  };
+  const saveDepartName = (event) => {
+    setEditState(showHide.hide);
+    setSaveState(showHide.show);
+  };
 
   /* Validation */
-  const [values,setValues]=useState({
-    name:'',
-  })
-  const [errors,setError]=useState({
-
-  })
+  const [values, setValues] = useState({
+    name: "",
+  });
+  const [errors, setError] = useState({});
   const changeHandler = (e) => {
-  const { name, value } = e.target;
-  setValues({...values,[e.target.name]:e.target.value})
-  setFormData({ ...formData, [name]: value });
-   // console.log(formData);
+    const { name, value } = e.target;
+    setValues({ ...values, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [name]: value });
+    // console.log(formData);
   };
   return (
     <div class="gap-4 d-flex flex-column department ">
@@ -78,17 +85,14 @@ function Department({ user }) {
           class="d-flex flex-column p-3 gap-3"
           onSubmit={submitHandler}
         >
-
           <label htmlFor="">Department Name</label>
-           <FormInput
-
+          <FormInput
             type="text"
             name="name"
             id="dName"
             value={values.name}
             onChange={changeHandler}
-
-          /> 
+          />
 
           {errors.name && <p className="error">{errors.name}</p>}
 
@@ -116,24 +120,45 @@ function Department({ user }) {
             <tbody>
               {departments.map((department) => (
                 <tr>
-                  <td className="department-name">
-                    <Link to={"/department-details"}>{department.name}</Link>
+                  <td className={`department-name`}>
+                    <Link
+                      to={"/department-details"}
+                      className={`department-name ${saveState}`}
+                    >
+                      {department.name}
+                    </Link>
+                    <input
+                      className={`${editState}`}
+                      type="text"
+                      name="name"
+                      id="dName"
+                      value={values.name}
+                      onChange={changeHandler}
+                    />
                   </td>
                   {user.role === "admin" && (
-                    <td class="d-flex gap-2">
+                    <td className="d-flex gap-2">
                       <button
-                        class="edit"
+                        className={`edit ${editState}`}
                         id={department._id}
-                        onClick={navigateToEditDepart}
+                        onClick={saveDepartName}
                       >
-                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-check"></i>
                       </button>
                       <button
-                        class="delete"
+                      
+                        className={`edit ${saveState}`}
+                        id={department._id}
+                        onClick={editDepartName}
+                      >
+                        <i className="fa-regular fa-pen-to-square"></i>
+                      </button>
+                      <button
+                        className="delete"
                         id={department._id}
                         onClick={deleteDepart}
                       >
-                        <i class="fa-solid fa-trash"></i>
+                        <i className="fa-solid fa-trash"></i>
                       </button>
                     </td>
                   )}

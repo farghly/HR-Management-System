@@ -50,9 +50,7 @@ function ProjectCard() {
             Project Tasks:
             <span class="project-employee-details">
               {projectTasks.map((task) => (
-                <li>
-                  Task : {task.name} / Employee : {task.employee[0].name}
-                </li>
+                <li>Task : {task.name} / Employee :</li>
               ))}
             </span>
           </div>
