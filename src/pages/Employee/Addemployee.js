@@ -129,7 +129,7 @@ function AddEmployee() {
            render={({message})=><p className="error">{message}</p>}
           ></ErrorMessage>
         </div>
-        {/* <div className="data d-flex flex-column gap-2">
+         <div className="data d-flex flex-column gap-2">
           <label htmlFor="confirmpassword">confirm password</label>
           <input
           {...register('password',{required:true,validate:(val)=>{
@@ -151,7 +151,7 @@ function AddEmployee() {
            name="confirmPassword"
            render={({message})=><p className="error">{message}</p>}
           ></ErrorMessage>
-        </div> */}
+        </div> 
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="NID">NID</label>
           <input
