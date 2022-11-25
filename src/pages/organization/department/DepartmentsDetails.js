@@ -22,7 +22,7 @@ const DepartmentsDetails = () => {
     });
   }, []);
   departEmployees = employees.filter(
-    (employee) => (employee.department._id = departmentId)
+    (employee) => employee.department._id === departmentId
   );
   // console.log(department);
   // console.log(employees);
