@@ -47,10 +47,10 @@ const DepartmentsDetails = () => {
           Department Employees:{" "}
           <span class="department-employee-num">{departEmployees.length}</span>
         </div>
-        <div class="department-btns gap-2 d-flex">
+        {/* <div class="department-btns gap-2 d-flex">
           <div class="delete-department btn btn-danger">Delete</div>
           <div class="update-department btn btn-success">Update</div>
-        </div>
+        </div> */}
       </div>
       <div class="tab tab-details-dep table-scrl">
         <table class="table department-details-table">

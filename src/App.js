@@ -26,7 +26,7 @@ import { createContext } from "react";
 import ProjectDetails from "./pages/projects/ProjectDetails";
 import DepartmentsDetails from "./pages/organization/department/DepartmentsDetails";
 import EditProject from "./pages/projects/EditProject";
-
+// import { NotFoundPage } from "./pages/not-found/NotFoundPage";
 export const ThemeContext = createContext("light");
 
 if (localStorage.jwtToken) {
@@ -228,7 +228,7 @@ function App() {
                           path="/projects/editProject/:id"
                           element={<EditProject />}
                         />
-                        {/* <Route path="*" element={<NotFound />} /> */}
+                        {/* <Route path="*" element={<NotFoundPage />} /> */}
                       </Routes>
                     )}
                   </div>

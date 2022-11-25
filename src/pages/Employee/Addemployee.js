@@ -74,7 +74,7 @@ function AddEmployee() {
       <form onSubmit={handleSubmit(onSubmit)} className="d-grid gap-4 my-5 add-employee">
 
         <div className="data d-flex flex-column gap-2">
-          <input
+          <FormInput
           {...register('name',{required:'This field required',minLength:{value:3,message:'min length is 3 characters'}})}
             label="Full Name"
             type="text"

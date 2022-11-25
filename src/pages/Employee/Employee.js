@@ -22,11 +22,11 @@ function Employees() {
   //     setEmployees(response.data.data.data);
   //   });
   // }, []);
-  useEffect(()=>{
+  useEffect(() => {
     getEmployees().then((response) => {
-          setEmployees(response.data.data.data);
-        });
-  },[])
+      setEmployees(response.data.data.data);
+    });
+  }, []);
   const [tasks, setTasks] = useState([]);
 
   // employees.map((employee) => employee && console.log(employee));
@@ -48,14 +48,10 @@ function Employees() {
   console.log(tasks);
   const deleteEmp = (event) => {
     if (window.confirm("Are you sure to delete employee")) {
-      let userTasks = tasks.filter((task) => {
-        return task.employee._id === event.currentTarget.id;
-      });
-      console.log(userTasks);
-
-      deleteEmployee(event.currentTarget.id);
-      getEmployees().then((response) => {
-        setEmployees(response.data.data.data);
+      deleteEmployee(event.currentTarget.id).then(() => {
+        getEmployees().then((response) => {
+          setEmployees(response.data.data.data);
+        });
       });
     }
   };
@@ -70,7 +66,7 @@ function Employees() {
     console.log(e.currentTarget.value);
     setQ(e.currentTarget.value);
   };
-
+  
   return (
     <>
       <Link
@@ -104,7 +100,7 @@ function Employees() {
                 <>
                   <tr>
                     <td class="employee-name">
-                      <Link to="/employee-details">{`${employee.name} `}</Link>{" "}
+                      <Link to="/employees/employee-details">{`${employee.name} `}</Link>{" "}
                     </td>
 
                     {employee.department && (
@@ -142,7 +138,6 @@ function Employees() {
               employees.map((employee) => (
                 <>
                   <tr>
-
                     <td class="employee-name">
                       <Link to="employee-details">{`${employee.name} `}</Link>{" "}
                     </td>
