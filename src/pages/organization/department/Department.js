@@ -89,7 +89,7 @@ function Department({ user }) {
           <input
             {...register("name", {
               required: "field is requird",
-              minLength: { value: 4, message: "min lenght is 4" },
+              minLength: { value: 4, message: "minimum length is 4 characters" },
             })}
             type="text"
             name="name"

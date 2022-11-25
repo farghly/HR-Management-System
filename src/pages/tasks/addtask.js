@@ -187,7 +187,7 @@ function AddTask() {
           <input
             {...register("name", {
               required: "This is requird",
-              minLength: { value: 5, message: "min length is 5" },
+              minLength: { value: 5, message: "minimum length is 5 characters" },
             })}
             type="text"
             id="name"
@@ -210,7 +210,7 @@ function AddTask() {
           <textarea
             {...register("description", {
               required: "This is requird",
-              minLength: { value: 10, message: "min length is 10" },
+              minLength: { value: 10, message: "minimum length is 10 characters" },
             })}
             className="border"
             name="description"
@@ -232,7 +232,7 @@ function AddTask() {
           <textarea
             {...register("summary", {
               required: "This is requird",
-              minLength: { value: 10, message: "min length is 10" },
+              minLength: { value: 10, message: "minimum length is 10 characters" },
             })}
             className="border"
             name="summary"
@@ -286,6 +286,7 @@ function AddTask() {
             value={importance}
             name="importance"
             className="select"
+            required
             onChange={changeHandler}
           >
             <option selected>Select Project Importance</option>

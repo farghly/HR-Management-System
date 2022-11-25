@@ -75,7 +75,7 @@ function AddEmployee() {
 
         <div className="data d-flex flex-column gap-2">
           <FormInput
-          {...register('name',{required:'This field required',minLength:{value:3,message:'min length is 3 characters'}})}
+          {...register('name',{required:'This field required',minLength:{value:3,message:'minimum length is 3 characters'}})}
             label="Full Name"
             type="text"
             id="name"
@@ -114,7 +114,7 @@ function AddEmployee() {
         </div>
         <div className="data d-flex flex-column gap-2">
           <FormInput
-          {...register('password',{required:'password is required',minLength:{value:3,message:'min length for password is 8 characters'}})}
+          {...register('password',{required:'password is required',minLength:{value:8,message:'minimum length for password is 8 characters'}})}
             label="Password"
             type="password"
             id="password"
