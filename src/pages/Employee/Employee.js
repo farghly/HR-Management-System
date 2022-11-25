@@ -56,6 +56,17 @@ function Employees() {
     }
   };
 
+  useEffect(() => {
+    getEmployeesBySearch(q).then((res) => {
+      setEmployeeSearchResult(res.data.data.data);
+    });
+  }, [q]);
+
+  const searchHandler = (e) => {
+    console.log(e.currentTarget.value);
+    setQ(e.currentTarget.value);
+  };
+  
   return (
     <>
       <Link
