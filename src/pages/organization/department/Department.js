@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 import { createDepartment, getDepartments } from "../../../api/departmentAPI";
 import FormInput from "../../../components/form-input/FormInput.component";
 
@@ -12,6 +14,7 @@ const defaultFormData = {
   name: "",
 };
 function Department({ user }) {
+  const {register,formState:{errors},handleSubmit}=useForm()
   const [formData, setFormData] = useState(defaultFormData);
   // const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
@@ -27,18 +30,17 @@ function Department({ user }) {
     setFormData(defaultFormData);
   };
 
-  const submitHandler = async (event) => {
-    event.preventDefault();
-    if(!values.name || values.name.length <5){
-      return setError(ValidationDepartment(values));
-    }else{
+  const onSubmit = async () => {
+    // if(!values.name || values.name.length <5){
+    //   return setError(ValidationDepartment(values));
+    // }else{
       createDepartment(formData);
-      setError(ValidationDepartment(values));
+      // setError(ValidationDepartment(values));
       getDepartments().then((res) => {
         setDepartments(res.data.data.data);
       });
       resetFormData();
-    }
+    //}
   };
 
   const deleteDepart = (event) => {
@@ -59,9 +61,9 @@ function Department({ user }) {
   const [values,setValues]=useState({
     name:'',
   })
-  const [errors,setError]=useState({
+  // const [errors,setError]=useState({
 
-  })
+  // })
   const changeHandler = (e) => {
   const { name, value } = e.target;
   setValues({...values,[e.target.name]:e.target.value})
@@ -75,21 +77,24 @@ function Department({ user }) {
         <form
           action=""
           class="d-flex flex-column p-3 gap-3"
-          onSubmit={submitHandler}
+          onSubmit={handleSubmit(onSubmit)}
         >
 
           <label htmlFor="">Department Name</label>
-           <FormInput
-
+           <input
+           {...register('name',{required:'field is requird',minLength:{value:4,message:'min lenght is 4'}})}
             type="text"
             name="name"
             id="dName"
             value={values.name}
             onChange={changeHandler}
-
           /> 
-
-          {errors.name && <p className="error">{errors.name}</p>}
+          <ErrorMessage 
+           errors={errors}
+           name="name"
+           render={({message})=><p className="error">{message}</p>}
+          ></ErrorMessage>
+         {/* {errors.name && <p className="error">{errors.name}</p>} */}
 
           <div class="btns depart d-flex justify-content-between justify-content-md-start">
             <button type="submit" class="save me-2">
