@@ -68,8 +68,8 @@ form.task .group {
 .project-name-details,
 .employee-name-details,
 .department-name span {
-    /* color: rgb(0, 102, 255) !important; */
-    color: #77adff !important;
+    color: rgb(0, 102, 255) !important;
+    /* color: #77adff !important; */
 }
 
 

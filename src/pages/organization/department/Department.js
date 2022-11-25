@@ -6,7 +6,7 @@ import FormInput from "../../../components/form-input/FormInput.component";
 import { deleteDepartment } from "../../../api/departmentAPI";
 import "./Department.css";
 import { Link, useNavigate } from "react-router-dom";
-import Validation from "./validation";
+import {ValidationDepartment} from "./validation";
 
 const defaultFormData = {
   name: "",
@@ -29,18 +29,19 @@ function Department({ user }) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if(setError(Validation(values))){
-      return setError(Validation(values))
-    }
+    if(!values.name || values.name.length <5){
+      return setError(ValidationDepartment(values));
+    }else{
       createDepartment(formData);
+      setError(ValidationDepartment(values));
       getDepartments().then((res) => {
         setDepartments(res.data.data.data);
       });
       resetFormData();
+    }
   };
 
   const deleteDepart = (event) => {
-    //let answer = window.confirm("Delete?");
     if (window.confirm("Are you Sure to delete?"))
     { 
       deleteDepartment(event.currentTarget.id).then((res) => {
@@ -48,8 +49,6 @@ function Department({ user }) {
           setDepartments(res.data.data.data);
         });
       });
-      
-       // Here you can put your logic or function that needs to be executed as per the use case.
     }
     
   };

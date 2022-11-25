@@ -58,6 +58,13 @@ taskSchema.pre(/^find/, function (next) {
 
   next();
 });
+
+// taskSchema.methods.getTaskIdAfterSave = async function (docId) {
+//   return {
+//     id: docId,
+//   };
+// };
+
 const Task = mongoose.model("Task", taskSchema);
 
 module.exports = Task;
