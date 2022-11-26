@@ -27,8 +27,7 @@ function AddEmployee() {
     });
   }, {});
   const defaultFormFields = {
-    firstName: employee.firstName,
-    lastName: employee.lastName,
+    name: employee.name,
     contactNumber: employee.contactNumber,
     department: employee.department,
     designation: employee.designation,
@@ -38,8 +37,7 @@ function AddEmployee() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const navigate = useNavigate();
   const {
-    firstName,
-    lastName,
+    name,
     contactNumber,
     department,
     designation,
@@ -72,26 +70,14 @@ function AddEmployee() {
       <form onSubmit={submitHandler} className="d-grid gap-4 my-5">
         <div className="data d-flex flex-column gap-2">
           <FormInput
-            label="First Name"
+            label="Full Name"
             type="text"
             id="fName"
             autocomplete="off"
-            name="firstName"
-            value={firstName}
+            name="name"
+            value={name}
             onChange={changeHandler}
-            placeholder='Enter your first name'
-          />
-        </div>
-        <div className="data d-flex flex-column gap-2">
-          <FormInput
-            label="Last Name"
-            type="text"
-            id="lName"
-            autocomplete="off"
-            name="lastName"
-            value={lastName}
-            onChange={changeHandler}
-            placeholder='Enter your last name'
+            placeholder="Enter your name"
           />
         </div>
 
@@ -102,7 +88,7 @@ function AddEmployee() {
             name="contactNumber"
             value={contactNumber}
             onChange={changeHandler}
-            placeholder='Enter your phone number'
+            placeholder="Enter your phone number"
           />
         </div>
         <div className="data d-flex flex-column gap-2">

@@ -89,7 +89,10 @@ function Department({ user }) {
           <input
             {...register("name", {
               required: "field is requird",
-              minLength: { value: 4, message: "minimum length is 4 characters" },
+              minLength: {
+                value: 4,
+                message: "minimum length is 4 characters",
+              },
             })}
             type="text"
             name="name"
@@ -147,20 +150,6 @@ function Department({ user }) {
                   </td>
                   {user.role === "admin" && (
                     <td className="d-flex gap-2">
-                      <button
-                        className={`edit ${editState}`}
-                        id={department._id}
-                        onClick={saveDepartName}
-                      >
-                        <i class="fa-solid fa-check"></i>
-                      </button>
-                      <button
-                        className={`edit ${saveState}`}
-                        id={department._id}
-                        onClick={editDepartName}
-                      >
-                        <i className="fa-regular fa-pen-to-square"></i>
-                      </button>
                       <button
                         className="delete"
                         id={department._id}

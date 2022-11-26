@@ -1,13 +1,14 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getEmployeeById } from "./../../api/employeeAPI";
+import { deleteEmployee, getEmployeeById } from "./../../api/employeeAPI";
 import { useState } from "react";
 import moment from "moment";
-import { getTasks } from "../../api/tasksAPI";
+import { deleteTask, getTasks } from "../../api/tasksAPI";
 import { getProjects } from "./../../api/projectsAPI";
 
 const EmployeeDetails = () => {
   const params = useParams();
+  const navigate = useNavigate();
 
   const employeeId = params.id;
   console.log(employeeId);
@@ -55,6 +56,26 @@ const EmployeeDetails = () => {
   //   if (task.employee._id === employeeId) employeeTasks.push(task);
   // });
 
+  const navigateToEditEmployee = (event) => {
+    // console.log(event.currentTarget.id);
+
+    navigate(`/employees/editEmployee/${employeeId}`);
+  };
+
+  const deleteEmp = async (event) => {
+    const employeeTasks = tasks.filter(
+      (task) => task.employee[0]._id === employeeId
+    );
+    if (window.confirm("Are you sure to delete employee")) {
+      employeeTasks.forEach((task) => {
+        deleteTask(task._id);
+      });
+      await deleteEmployee(employeeId);
+      navigate("/employees");
+      // console.log(event.currentTarget.id);
+    }
+  };
+
   return (
     <>
       {employee && (
@@ -83,7 +104,7 @@ const EmployeeDetails = () => {
             <div class="employee-project">
               Employee Project:{" "}
               {projectsSet.length === 0 && (
-                <span class="employee-task-details">No Tasks</span>
+                <span class="employee-task-details">No Projects</span>
               )}
               {projectsSet.length !== 0 && (
                 <span class="employee-task-details">
@@ -107,8 +128,15 @@ const EmployeeDetails = () => {
               )}
             </div>
             <div class="employee-btns gap-2 d-flex">
-              <div class="delete-employee btn btn-danger">Delete</div>
-              <div class="update-employee btn btn-success">Update</div>
+              <div class="delete-employee btn btn-danger" onClick={deleteEmp}>
+                Delete
+              </div>
+              <div
+                class="update-employee btn btn-success"
+                onClick={navigateToEditEmployee}
+              >
+                Edit
+              </div>
             </div>
           </div>
         </div>

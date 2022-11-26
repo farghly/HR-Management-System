@@ -64,7 +64,7 @@ function App() {
         <BrowserRouter>
           <Provider store={store}>
             {!auth.isAuthenticated && <Login />}
-            {auth.isAuthenticated && (
+            {auth.isAuthenticated && user.role && (
               <div className="container-fluid main" id={theme}>
                 <div class="parent d-flex gap-lg-3 gap-2 justify-content-between">
                   <div className="child-1">
@@ -80,10 +80,10 @@ function App() {
                     <Navbar />
                   </div>
                   <div class="child-2">
-                    {auth.isAuthenticated && (
+                    {auth.isAuthenticated && user.role && (
                       <Routes>
                         {user.role === "admin" || user.role === "hr" ? (
-                          <Route path="/" element={<Dashboard />} />
+                          <Route index path="/" element={<Dashboard />} />
                         ) : (
                           <Route
                             path="/"
