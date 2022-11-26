@@ -7,7 +7,7 @@ import { getEmployeeById } from "../../api/employeeAPI";
 import { Link } from "react-router-dom";
 import { editTask } from "../../api/tasksAPI";
 
-const TasksCard = ({ updateTaskByDone, ...props }) => {
+const TasksCard = ({ updateTaskByDone, deleteCurrentTask, ...props }) => {
   // const auth = useSelector((state) => state.auth);
   // const [user, setUser] = useState({});
   // console.log(auth);
@@ -52,7 +52,13 @@ const TasksCard = ({ updateTaskByDone, ...props }) => {
         </div>
         <div class="task-btns gap-2 d-flex justify-content-evenly">
           {props.user.role === "admin" && (
-            <div class="delete-task btn btn-danger">Delete</div>
+            <div
+              class="delete-task btn btn-danger"
+              id={props.taskId}
+              onClick={(event) => deleteCurrentTask(event.currentTarget.id)}
+            >
+              Delete
+            </div>
           )}
           {/* {(props.user.role === "hr" || props.user.role === "employee") && (
             <div

@@ -5,13 +5,14 @@ import { getEmployeeById } from "../../api/employeeAPI";
 import { Link } from "react-router-dom";
 import "./task.css";
 import TasksCard from "./TasksCard";
-import { editTask, getTasks } from "../../api/tasksAPI";
+import { deleteTask, editTask, getTasks } from "../../api/tasksAPI";
 function Task() {
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
   let [doneTasks, setDoneTasks] = useState([]);
   let [isGoingTasks, setIsGoingTasks] = useState([]);
+  let [allDoneTasks, setAllDoneTasks] = useState([]);
   const [taskState, setTaskState] = useState();
 
   // console.log(auth);
@@ -31,6 +32,7 @@ function Task() {
     )
   );
 
+  allDoneTasks = tasks.filter((task) => task.status === "Done");
   doneTasks = currentUserTasks.filter((task) => task.status === "Done");
   isGoingTasks = currentUserTasks.filter((task) => task.status === "Is Going");
 
@@ -50,7 +52,29 @@ function Task() {
     editTask(event.currentTarget.id, { status: "Done" }).then(() => {
       setTaskState("Done");
     });
-    
+  };
+
+  const deleteCurrentTask = async (event) => {
+    if (window.confirm("Are you sure to delete employee")) {
+      deleteTask(event);
+      await getTasks().then((res) => {
+        setTasks(res.data.data.data);
+      });
+      const currentUserTasks = [];
+      tasks.map((task) =>
+        task.employee.map(
+          (employee) => employee._id === user._id && currentUserTasks.push(task)
+        )
+      );
+      allDoneTasks = tasks.filter((task) => task.status === "Done");
+      doneTasks = currentUserTasks.filter((task) => task.status === "Done");
+      isGoingTasks = currentUserTasks.filter(
+        (task) => task.status === "Is Going"
+      );
+      setAllDoneTasks(allDoneTasks);
+      setDoneTasks(doneTasks);
+      setIsGoingTasks(isGoingTasks);
+    }
   };
 
   return (
@@ -80,6 +104,7 @@ function Task() {
                   timeRequired="6"
                   user={user}
                   updateTaskByDone={updateTaskByDone}
+                  deleteCurrentTask={deleteCurrentTask}
                 />
               ))}
             {(user.role === "hr" || user.role === "employee") &&
@@ -103,8 +128,8 @@ function Task() {
 
           <div class="tasks d-grid my-5 gap-3">
             {user.role === "admin" &&
-              tasks &&
-              tasks.map((task) => (
+              allDoneTasks &&
+              allDoneTasks.map((task) => (
                 <TasksCard
                   taskName={task.name}
                   taskDetails={task.summary}
@@ -116,6 +141,7 @@ function Task() {
                   timeRequired="6"
                   user={user}
                   updateTaskByDone={updateTaskByDone}
+                  deleteCurrentTask={deleteCurrentTask}
                 />
               ))}
             {(user.role === "hr" || user.role === "employee") &&

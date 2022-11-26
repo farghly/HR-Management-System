@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {useForm} from 'react-hook-form';
 import { ErrorMessage } from "@hookform/error-message";
+
 import { Link } from "react-router-dom";
 import { createProject } from "../../api/projectsAPI";
 import "./project.css";
@@ -33,12 +34,13 @@ function AddProject() {
     setFormData(defaultFormData);
   };
 
+
   const onSubmit = async () => {
     createProject(formData);
     resetFormData();
     console.log(formData);
   };
-  console.log(errors)
+  console.log(errors);
 
   return (
     <>
@@ -78,6 +80,7 @@ function AddProject() {
             name="importance"
             className="select"
             onChange={changeHandler}
+            required
           >
             <option selected>Select Project Importance</option>
             <option value="Normal">Normal</option>
@@ -120,6 +123,7 @@ function AddProject() {
             className="border"
             onChange={changeHandler}
             value={description}
+            required
           ></textarea>
           <ErrorMessage
             errors={errors}
@@ -138,6 +142,7 @@ function AddProject() {
             className="border"
             onChange={changeHandler}
             value={summary}
+            required
           ></textarea>
           <ErrorMessage
             errors={errors}
@@ -147,7 +152,7 @@ function AddProject() {
         </div>
         <div className="btns">
           <button className="btn save me-3" type="submit">
-            Save{" "}
+            Save
           </button>
           <input className="btn cancel" type="reset" onClick={resetFormData} />
         </div>
