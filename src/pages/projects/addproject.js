@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {useForm} from 'react-hook-form';
+import { ErrorMessage } from "@hookform/error-message";
 import { Link } from "react-router-dom";
 import { createProject } from "../../api/projectsAPI";
 import "./project.css";
@@ -14,7 +15,7 @@ const defaultFormData = {
 };
 
 function AddProject() {
-  const {register,handleSubmit,errors}=useForm();
+  const {register,handleSubmit,formState:{errors}}=useForm();
   const [formData, setFormData] = useState(defaultFormData);
 
   let { name, summary, description, startDate, endDate, importance } = formData;
@@ -32,8 +33,7 @@ function AddProject() {
     setFormData(defaultFormData);
   };
 
-  const submitHandler = async (event) => {
-    event.preventDefault();
+  const onSubmit = async () => {
     createProject(formData);
     resetFormData();
     console.log(formData);
@@ -49,11 +49,12 @@ function AddProject() {
       <form
         action=""
         className="d-grid gap-4 my-5 addproject-form"
-        onSubmit={handleSubmit(submitHandler)}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <div className="data d-flex flex-column gap-2">
           <label for="project-Name">Project Name</label>
           <input
+           {...register('name',{required:'This field is required',minLength:{value:5,message:'minimum length is 5 characters'}})}
             type="text"
             id="project-Name"
             autocomplete="off"
@@ -61,8 +62,12 @@ function AddProject() {
             name="name"
             value={name}
             onChange={changeHandler}
-            ref={register({required:"project Name is required"})}
           />
+          <ErrorMessage
+            errors={errors}
+            name="name"
+            render={({ message }) => <p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
 
         <div className="data d-flex flex-column gap-2">
@@ -88,6 +93,7 @@ function AddProject() {
             type="date"
             id="start-date"
             name="startDate"
+            required
             value={startDate}
             onChange={changeHandler}
           />
@@ -98,6 +104,7 @@ function AddProject() {
             type="date"
             id="end-date"
             name="endDate"
+            required
             onChange={changeHandler}
             value={endDate}
           />
@@ -105,6 +112,7 @@ function AddProject() {
         <div className="data d-flex flex-column gap-2">
           <label for="description">Description</label>
           <textarea
+          {...register('description',{required:'This field is required',minLength:{value:5,message:'minimum length is 5 characters'}})}
             name="description"
             id=""
             rows="4"
@@ -113,19 +121,29 @@ function AddProject() {
             onChange={changeHandler}
             value={description}
           ></textarea>
-
+          <ErrorMessage
+            errors={errors}
+            name="description"
+            render={({ message }) => <p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="summary">Summary</label>
           <textarea
+          {...register('summary',{required:'This field is required',minLength:{value:5,message:'minimum length is 5 characters'}})}
             name="summary"
             id=""
             rows="4"
-            placeholder="Enter project description"
+            placeholder="Enter project summary"
             className="border"
             onChange={changeHandler}
             value={summary}
           ></textarea>
+          <ErrorMessage
+            errors={errors}
+            name="summary"
+            render={({ message }) => <p className="error">{message}</p>}
+          ></ErrorMessage>
         </div>
         <div className="btns">
           <button className="btn save me-3" type="submit">
