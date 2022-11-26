@@ -5,28 +5,32 @@ import { useState } from "react";
 import { useEffect } from "react";
 import moment from "moment";
 
-import ProjectCard from "../../components/Cards/ProjectRow";
+import ProjectCard from "./ProjectRow";
 
 import { getEmployeeById, getEmployeesBySearch } from "../../api/employeeAPI";
 import { getProjects, getProjectsBySearch } from "../../api/projectsAPI";
-import ProjectRow from "../../components/Cards/ProjectRow";
+import ProjectRow from "./ProjectRow";
 
 // import { getEmployees } from "./../../api/employeeAPI";
+import { getTasks } from "./../../api/tasksAPI";
 
 function Project() {
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
   const [projects, setProjects] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [q, setQ] = useState();
+  const [apiProjectData, setProjectData] = useState([]);
   // console.log(auth);
 
   useEffect(() => {
     getEmployeeById(auth.user.id).then((res) => {
       setUser(res.data.data.data);
     });
+    getTasks().then((res) => {
+      setTasks(res.data.data.data);
+    });
   }, []);
-
-  const [apiProjectData, setProjectData] = useState([]);
 
   useEffect(() => {
     getProjects().then((getData) => {
@@ -48,6 +52,36 @@ function Project() {
     }
   }, [q]);
 
+  const currentUserTasks = [];
+  tasks.map((task) =>
+    task.employee.map(
+      (employee) => employee._id === user._id && currentUserTasks.push(task)
+    )
+  );
+  const currentUserProjectsArray = [];
+  currentUserTasks.forEach((task) => {
+    currentUserProjectsArray.push(task.project);
+  });
+
+
+
+  const uniqueIds = [];
+
+  console.log(currentUserProjectsArray);
+  const currentUserProjects = currentUserProjectsArray.filter((project) => {
+    const isDuplicate = uniqueIds.includes(project._id);
+
+    if (!isDuplicate) {
+      uniqueIds.push(project._id);
+
+      return true;
+    }
+
+    return false;
+  });
+
+  console.log(currentUserProjects);
+
   const searchHandler = (e) => {
     console.log(e.currentTarget.value);
     setQ(e.currentTarget.value);
@@ -56,7 +90,7 @@ function Project() {
 
   return (
     <>
-      {(user.role === "admin" || user.role === "hr") && (
+      {user.role === "admin" && (
         <Link
           to="/projects/addproject"
           class="btn btn-primary mb-3 add-new-project"
@@ -66,10 +100,12 @@ function Project() {
       )}
 
       <h3 class="p-3 ps-4">Project List</h3>
-      <div class="ser d-flex gap-2">
-        <h5>Search:</h5>
-        <input type="search" onChange={searchHandler} />
-      </div>
+      {user.role === "admin" && (
+        <div class="ser d-flex gap-2">
+          <h5>Search:</h5>
+          <input type="search" onChange={searchHandler} />
+        </div>
+      )}
       <div class="tab table-scrl project-tab">
         <table class="table ">
           <thead>
@@ -79,10 +115,10 @@ function Project() {
               {/* <th scope="col">Employee</th> */}
               <th scope="col">Start Date</th>
               <th scope="col">End Date</th>
-              <th scope="col">Action</th>
+              {user.role === "admin" && <th scope="col">Action</th>}
             </tr>
           </thead>
-          {!q && (
+          {!q && user.role === "admin" && (
             <tbody>
               {apiProjectData.map((project) => {
                 return (
@@ -97,7 +133,7 @@ function Project() {
               })}
             </tbody>
           )}
-          {q && (
+          {q && user.role === "admin" && (
             <tbody>
               {projects.map((project) => {
                 return (
@@ -107,6 +143,22 @@ function Project() {
                     status={project.status}
                     startDate={moment(project.startDate).format("LL")}
                     endDate={moment(project.endDate).format("LL")}
+                  />
+                );
+              })}
+            </tbody>
+          )}
+          {(user.role === "hr" || user.role === "employee") && (
+            <tbody>
+              {currentUserProjects.map((project) => {
+                return (
+                  <ProjectRow
+                    project={project}
+                    name={project.name}
+                    status={project.status}
+                    startDate={moment(project.startDate).format("LL")}
+                    endDate={moment(project.endDate).format("LL")}
+                    user={user}
                   />
                 );
               })}

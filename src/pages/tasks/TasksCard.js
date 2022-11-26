@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getEmployeeById } from "../../api/employeeAPI";
 import { Link } from "react-router-dom";
+import { editTask } from "../../api/tasksAPI";
 
-const TasksCard = (props) => {
+const TasksCard = ({ updateTaskByDone, ...props }) => {
   // const auth = useSelector((state) => state.auth);
   // const [user, setUser] = useState({});
   // console.log(auth);
@@ -15,6 +16,7 @@ const TasksCard = (props) => {
   //     setUser(res.data.data.data);
   //   });
   // }, []);
+  const [taskState, setTaskState] = useState(props.taskCase);
 
   const requiredTime =
     (new Date(props.taskStartDate) - new Date(props.taskEndDate)) /
@@ -28,9 +30,9 @@ const TasksCard = (props) => {
           {props.taskName}
         </Link>
         <div class="task-summary"> {props.taskDetails}</div>
-        <div class="task-description">D {props.taskNotes}</div>
+        <div class="task-description"> {props.taskNotes}</div>
         <div class="task-info d-flex gap-3 align-items-center justify-content-between">
-          <div class="task-status p-2">{props.taskCase}</div>
+          <div class="task-status p-2">{taskState}</div>
           <div class="task-member">
             {" "}
             Required Days :{requiredTime}
@@ -48,9 +50,15 @@ const TasksCard = (props) => {
             <div class="delete-task btn btn-danger">Delete</div>
           )}
           {(props.user.role === "hr" || props.user.role === "employee") && (
-            <div class="delete-task btn btn-danger">Done</div>
+            <div
+              id={props.taskId}
+              class="delete-task btn btn-danger"
+              onClick={(event) => updateTaskByDone(event)}
+            >
+              Done
+            </div>
           )}
-          <div class="update-task btn btn-success">Update</div>
+          {/* <div class="update-task btn btn-success">Update</div> */}
         </div>
       </div>
     </>

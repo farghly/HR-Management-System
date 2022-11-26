@@ -5,11 +5,15 @@ import { getEmployeeById } from "../../api/employeeAPI";
 import { Link } from "react-router-dom";
 import "./task.css";
 import TasksCard from "./TasksCard";
-import { getTasks } from "../../api/tasksAPI";
+import { editTask, getTasks } from "../../api/tasksAPI";
 function Task() {
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
+  let [doneTasks, setDoneTasks] = useState([]);
+  let [isGoingTasks, setIsGoingTasks] = useState([]);
+  const [taskState, setTaskState] = useState();
+
   // console.log(auth);
   useEffect(() => {
     getEmployeeById(auth.user.id).then((res) => {
@@ -19,16 +23,34 @@ function Task() {
       setTasks(res.data.data.data);
     });
   }, []);
+
   const currentUserTasks = [];
   tasks.map((task) =>
     task.employee.map(
       (employee) => employee._id === user._id && currentUserTasks.push(task)
     )
   );
+
+  doneTasks = currentUserTasks.filter((task) => task.status === "Done");
+  isGoingTasks = currentUserTasks.filter((task) => task.status === "IsGoing");
+
+  // setDoneTasks(
+  //   currentUserTasks.filter((task) =>
+  //     task.status = "Done"
+  //   )
+  // );
+  console.log(doneTasks);
   // console.log(tasks);
-  console.log(currentUserTasks);
+  // console.log(currentUserTasks);
 
   // console.log(tasks);
+
+  const updateTaskByDone = (event) => {
+    console.log(event.currentTarget.id);
+    editTask(event.currentTarget.id, { status: "Done" }).then(() => {
+      setTaskState("Done");
+    });
+  };
 
   return (
     <>
@@ -48,28 +70,67 @@ function Task() {
               tasks.map((task) => (
                 <TasksCard
                   taskName={task.name}
-                  taskDetails={task.summery}
-                  taskNotes={task.description}
+                  taskDetails={task.summary}
+                  // taskNotes={task.description}
                   taskCase={task.status}
                   taskStartDate={task.startDate}
                   taskEndDate={task.endDate}
                   taskId={task._id}
                   timeRequired="6"
                   user={user}
+                  updateTaskByDone={updateTaskByDone}
                 />
               ))}
             {(user.role === "hr" || user.role === "employee") &&
-              currentUserTasks &&
-              currentUserTasks.map((userTask) => (
+              isGoingTasks &&
+              isGoingTasks.map((userTask) => (
                 <TasksCard
                   taskName={userTask.name}
-                  taskDetails={userTask.summery}
-                  taskNotes={userTask.description}
+                  taskDetails={userTask.summary}
+                  // taskNotes={userTask.description}
                   taskCase={userTask.status}
                   taskStartDate={userTask.startDate}
                   taskEndDate={userTask.endDate}
+                  taskId={userTask._id}
                   timeRequired="6"
                   user={user}
+                  updateTaskByDone={updateTaskByDone}
+                />
+              ))}
+          </div>
+          <h3>Done Tasks</h3>
+
+          <div class="tasks d-grid my-5 gap-3">
+            {user.role === "admin" &&
+              tasks &&
+              tasks.map((task) => (
+                <TasksCard
+                  taskName={task.name}
+                  taskDetails={task.summary}
+                  // taskNotes={task.description}
+                  taskCase={task.status}
+                  taskStartDate={task.startDate}
+                  taskEndDate={task.endDate}
+                  taskId={task._id}
+                  timeRequired="6"
+                  user={user}
+                  updateTaskByDone={updateTaskByDone}
+                />
+              ))}
+            {(user.role === "hr" || user.role === "employee") &&
+              doneTasks &&
+              doneTasks.map((userTask) => (
+                <TasksCard
+                  taskName={userTask.name}
+                  taskDetails={userTask.summary}
+                  // taskNotes={userTask.description}
+                  taskCase={userTask.status}
+                  taskStartDate={userTask.startDate}
+                  taskEndDate={userTask.endDate}
+                  taskId={userTask._id}
+                  timeRequired="6"
+                  user={user}
+                  updateTaskByDone={updateTaskByDone}
                 />
               ))}
           </div>

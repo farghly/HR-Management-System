@@ -24,7 +24,12 @@ const defaultFormFields = {
   leavingday: "",
 };
 function AddEmployee() {
-  const{register,handleSubmit,formState:{errors},watch}=useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm();
   const [departments, setDepartments] = useState([]);
   const [designations, setDesignations] = useState([]);
   useEffect(() => {
@@ -71,11 +76,20 @@ function AddEmployee() {
         Employee List
       </Link>
       <h3>Add New Employee</h3>
-      <form onSubmit={handleSubmit(onSubmit)} className="d-grid gap-4 my-5 add-employee">
-
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="d-grid gap-4 my-5 add-employee"
+      >
         <div className="data d-flex flex-column gap-2">
-          <FormInput
-          {...register('name',{required:'This field required',minLength:{value:3,message:'minimum length is 3 characters'}})}
+          <label>Full Name</label>
+          <input
+            {...register("name", {
+              required: "This field required",
+              minLength: {
+                value: 3,
+                message: "minimum length is 3 characters",
+              },
+            })}
             label="Full Name"
             type="text"
             id="name"
@@ -85,16 +99,20 @@ function AddEmployee() {
             onChange={changeHandler}
             placeholder="Enter your  name"
           />
-          <ErrorMessage 
-           errors={errors}
-           name="name"
-           render={({message})=><p className="error">{message}</p>}
+          <ErrorMessage
+            errors={errors}
+            name="name"
+            render={({ message }) => <p className="error">{message}</p>}
           ></ErrorMessage>
         </div>
 
         <div className="data d-flex flex-column gap-2">
-          <FormInput
-          {...register('email',{required:'Email is required',minLength:{value:3,message:'email is required'}})}
+          <label>Email</label>
+          <input
+            {...register("email", {
+              required: "Email is required",
+              minLength: { value: 3, message: "email is required" },
+            })}
             label="Email"
             type="email"
             id="email"
@@ -105,16 +123,22 @@ function AddEmployee() {
             onChange={changeHandler}
             placeholder="Enter your email adress"
           />
-          <ErrorMessage 
-           errors={errors}
-           name="email"
-           render={({message})=><p className="error">{message}</p>}
+          <ErrorMessage
+            errors={errors}
+            name="email"
+            render={({ message }) => <p className="error">{message}</p>}
           ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="password">password</label>
           <input
-          {...register('password',{required:'password is required',minLength:{value:8,message:'minimum length for password is 8 characters'}})}
+            {...register("password", {
+              required: "password is required",
+              minLength: {
+                value: 8,
+                message: "minimum length for password is 8 characters",
+              },
+            })}
             type="password"
             id="password"
             name="password"
@@ -123,21 +147,23 @@ function AddEmployee() {
             onChange={changeHandler}
             placeholder="Enter your password"
           />
-          <ErrorMessage 
-           errors={errors}
-           name="password"
-           render={({message})=><p className="error">{message}</p>}
+          <ErrorMessage
+            errors={errors}
+            name="password"
+            render={({ message }) => <p className="error">{message}</p>}
           ></ErrorMessage>
         </div>
-         <div className="data d-flex flex-column gap-2">
+        <div className="data d-flex flex-column gap-2">
           <label htmlFor="confirmpassword">confirm password</label>
           <input
-          {...register('password',{required:true,validate:(val)=>{
-            if (watch('password') !== val) {
-              return "Your passwords do no match";
-            }
-          },
-        })}
+            // {...register("password", {
+            //   required: true,
+            //   validate: (val) => {
+            //     if (watch("password") !== val) {
+            //       return "Your passwords do no match";
+            //     }
+            //   },
+            // })}
             type="password"
             id="confirmpassword"
             name="confirmPassword"
@@ -146,16 +172,20 @@ function AddEmployee() {
             onChange={changeHandler}
             placeholder="Re-enter your password"
           />
-          <ErrorMessage 
-           errors={errors}
-           name="confirmPassword"
-           render={({message})=><p className="error">{message}</p>}
+          <ErrorMessage
+            errors={errors}
+            name="confirmPassword"
+            render={({ message }) => <p className="error">{message}</p>}
           ></ErrorMessage>
-        </div> 
+        </div>
         <div className="data d-flex flex-column gap-2">
           <label htmlFor="NID">NID</label>
           <input
-          {...register('NID',{  required:'This field is require',minLength:{value:14,message:'NID is 14 number'},maxLength:{value:14,message:'NID is 14 number'}})}
+            {...register("NID", {
+              required: "This field is require",
+              minLength: { value: 14, message: "NID is 14 number" },
+              maxLength: { value: 14, message: "NID is 14 number" },
+            })}
             type="number"
             id="NID"
             name="NID"
@@ -164,26 +194,29 @@ function AddEmployee() {
             onChange={changeHandler}
             placeholder="Enter your nationality ID"
           />
-             <ErrorMessage 
-           errors={errors}
-           name="NID"
-           render={({message})=><p className="error">{message}</p>}
+          <ErrorMessage
+            errors={errors}
+            name="NID"
+            render={({ message }) => <p className="error">{message}</p>}
           ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">
-        <label htmlFor="NID">Contact Number</label>
+          <label htmlFor="NID">Contact Number</label>
           <input
-          {...register('contactNumber',{required:'This Field is required',maxLength:{value:11,message:'phone number is 11 number'}})}
+            {...register("contactNumber", {
+              required: "This Field is required",
+              maxLength: { value: 11, message: "phone number is 11 number" },
+            })}
             type="number"
             name="contactNumber"
             value={contactNumber}
             onChange={changeHandler}
             placeholder="Enter your phone number"
           />
-             <ErrorMessage 
-              errors={errors}
-              name="contactNumber"
-              render={({message})=><p className="error">{message}</p>}
+          <ErrorMessage
+            errors={errors}
+            name="contactNumber"
+            render={({ message }) => <p className="error">{message}</p>}
           ></ErrorMessage>
         </div>
         <div className="data d-flex flex-column gap-2">

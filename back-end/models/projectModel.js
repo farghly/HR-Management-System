@@ -17,8 +17,8 @@ const projectSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: "To Do",
-    enum: ["Done", "To Do", "Delayed", "Doing"],
+    default: "Is Going",
+    enum: ["Done", "Delayed", "Is Going"],
     // required: [true, "The task must have a status"],
   },
   description: {
