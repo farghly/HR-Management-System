@@ -97,7 +97,6 @@ function ProjectCard() {
               >
                 Delete
               </div>
-              <div class="update-project btn btn-success">Update</div>
             </div>
           )}
         </div>

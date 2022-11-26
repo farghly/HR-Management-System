@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useForm} from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { createProject } from "../../api/projectsAPI";
 import "./project.css";
@@ -14,7 +14,7 @@ const defaultFormData = {
 };
 
 function AddProject() {
-  const {register,handleSubmit,errors}=useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [formData, setFormData] = useState(defaultFormData);
 
   let { name, summary, description, startDate, endDate, importance } = formData;
@@ -32,13 +32,13 @@ function AddProject() {
     setFormData(defaultFormData);
   };
 
-  const submitHandler = async (event) => {
-    event.preventDefault();
+  const submitHandler = (event) => {
+    // event.preventDefault();
     createProject(formData);
     resetFormData();
     console.log(formData);
   };
-  console.log(errors)
+  console.log(errors);
 
   return (
     <>
@@ -49,7 +49,7 @@ function AddProject() {
       <form
         action=""
         className="d-grid gap-4 my-5 addproject-form"
-        onSubmit={handleSubmit(submitHandler)}
+        onSubmit={submitHandler}
       >
         <div className="data d-flex flex-column gap-2">
           <label for="project-Name">Project Name</label>
@@ -61,7 +61,8 @@ function AddProject() {
             name="name"
             value={name}
             onChange={changeHandler}
-            ref={register({required:"project Name is required"})}
+            required
+            // ref={register({ required: "project Name is required" })}
           />
         </div>
 
@@ -73,6 +74,7 @@ function AddProject() {
             name="importance"
             className="select"
             onChange={changeHandler}
+            required
           >
             <option selected>Select Project Importance</option>
             <option value="Normal">Normal</option>
@@ -90,6 +92,7 @@ function AddProject() {
             name="startDate"
             value={startDate}
             onChange={changeHandler}
+            required
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -100,6 +103,7 @@ function AddProject() {
             name="endDate"
             onChange={changeHandler}
             value={endDate}
+            required
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -112,8 +116,8 @@ function AddProject() {
             className="border"
             onChange={changeHandler}
             value={description}
+            required
           ></textarea>
-
         </div>
         <div className="data d-flex flex-column gap-2">
           <label for="summary">Summary</label>
@@ -125,11 +129,12 @@ function AddProject() {
             className="border"
             onChange={changeHandler}
             value={summary}
+            required
           ></textarea>
         </div>
         <div className="btns">
           <button className="btn save me-3" type="submit">
-            Save{" "}
+            Save
           </button>
           <input className="btn cancel" type="reset" onClick={resetFormData} />
         </div>
