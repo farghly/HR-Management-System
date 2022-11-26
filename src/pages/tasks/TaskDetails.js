@@ -2,13 +2,14 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getEmployeeById } from "../../api/employeeAPI";
 import { editTask, getTaskById } from "../../api/tasksAPI";
 
 const TaskDetails = () => {
   const params = useParams();
   const TaskId = params.id;
+  const navigate = useNavigate();
   const [task, setTask] = useState({});
   const auth = useSelector((state) => state.auth);
   const [user, setUser] = useState({});
@@ -39,6 +40,11 @@ const TaskDetails = () => {
       });
     }
   };
+
+  const navigateToEditTask = () => {
+    navigate(`/tasks/editTask/${TaskId}`);
+  };
+
   return (
     <>
       <Link to="/tasks" class="btn btn-primary mb-3 task-list">
@@ -67,7 +73,13 @@ const TaskDetails = () => {
         </div>
         <div class="task-details-btns gap-2 d-flex">
           {user.role === "admin" && (
-            <div class="delete-task btn btn-danger">Delete</div>
+            <div
+              class="delete-task btn btn-info"
+              id={task._id}
+              onClick={navigateToEditTask}
+            >
+              Edit
+            </div>
           )}
           <div
             class="update-task btn btn-success"
