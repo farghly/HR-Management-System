@@ -57,14 +57,14 @@ function Department({ user }) {
     }
   };
 
-  const editDepartName = (event) => {
-    setEditState(showHide.show);
-    setSaveState(showHide.hide);
-  };
-  const saveDepartName = (event) => {
-    setEditState(showHide.hide);
-    setSaveState(showHide.show);
-  };
+  // const editDepartName = (event) => {
+  //   setEditState(showHide.show);
+  //   setSaveState(showHide.hide);
+  // };
+  // const saveDepartName = (event) => {
+  //   setEditState(showHide.hide);
+  //   setSaveState(showHide.show);
+  // };
 
   /* Validation */
   const [values, setValues] = useState({
@@ -111,9 +111,7 @@ function Department({ user }) {
             <button type="submit" class="save me-2">
               Save
             </button>
-            <button class="cancel " onClick={resetFormData}>
-              Reset
-            </button>
+           
           </div>
         </form>
       </div>

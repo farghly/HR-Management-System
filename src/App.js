@@ -172,7 +172,7 @@ function App() {
                           />
                         ) : (
                           <Route
-                            path="//employees/editEmployee/:id"
+                            path="/employees/editEmployee/:id"
                             element={<Navigate replace to="/tasks" />}
                           />
                         )}
@@ -213,26 +213,47 @@ function App() {
                           path="/tasks/task-details/:id"
                           element={<TaskDetails />}
                         />
+                        {user.role === "admin" ? (
+                          <Route
+                            path="/tasks/editTask/:id"
+                            element={<EditTask />}
+                          />
+                        ) : (
+                          <Route
+                            path="/tasks/editTask/*"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route
+                            path="/employees/employee-details/:id"
+                            element={<EmployeeDetails />}
+                          />
+                        ) : (
+                          <Route
+                            path="/employees/employee-details/*"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
+                        {user.role === "admin" || user.role === "hr" ? (
+                          <Route
+                            path="/department/department-details/:id"
+                            element={<DepartmentsDetails />}
+                          />
+                        ) : (
+                          <Route
+                            path="/tasks/editTask/*"
+                            element={<Navigate replace to="/tasks" />}
+                          />
+                        )}
                         <Route
-                          path="/tasks/editTask/:id"
-                          element={<EditTask />}
-                        />
-                        <Route
-                          path="/employees/employee-details/:id"
-                          element={<EmployeeDetails />}
-                        />
-                        <Route
-                          path="/department/department-details/:id"
-                          element={<DepartmentsDetails />}
-                        />
-                        <Route
-                          path="/projects/project-details/:id"
+                          path="/department/department-details/*"
                           element={<ProjectDetails />}
                         />
-                        <Route
+                        {/* <Route
                           path="/projects/editProject/:id"
                           element={<EditProject />}
-                        />
+                        /> */}
                         {/* <Route path="*" element={<NotFoundPage />} /> */}
                       </Routes>
                     )}
