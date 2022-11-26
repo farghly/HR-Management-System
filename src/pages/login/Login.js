@@ -14,7 +14,7 @@ function Login() {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector((state)=>state.error)
+  const error = useSelector((state) => state.error);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const changeHandler = (event) => {
@@ -26,16 +26,15 @@ function Login() {
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const submitHandler = (event) => {
-      event.preventDefault();
-      dispatch(login(formFields));
-      if(error){
-        setErrorMessage('invalid email or password')
-      }     
-
+    event.preventDefault();
+    dispatch(login(formFields));
+    if (error) {
+      setErrorMessage("invalid email or password");
+    }
   };
-console.log(error)
+  console.log(error);
   return (
     <>
       {auth.isAuthenticated && navigate("/")}
@@ -47,9 +46,7 @@ console.log(error)
               method="post"
               onSubmit={submitHandler}
             >
-              {errorMessage && (
-                <p className="error"> {errorMessage} </p>
-              )}
+              {errorMessage && <p className="error"> {errorMessage} </p>}
               <p className="heading">Sign in</p>
               <div className="box">
                 <p>Email</p>
@@ -83,11 +80,11 @@ console.log(error)
               <Button className="signInBtn p-3 my-4 w-100" type="submit">
                 Sign in
               </Button>
-              <p className="text">
+              {/* <p className="text">
                 <a href="#" className="me-auto forgotPass">
                   Forgot Password
                 </a>
-              </p>
+              </p> */}
             </form>
           </div>
         </div>

@@ -98,7 +98,7 @@ function Project() {
       )}
 
       <h3 class="p-3 ps-4">Project List</h3>
-      {user.role === "admin" && (
+      {(user.role === "admin" || user.role === "hr") && (
         <div class="ser d-flex gap-2">
           <h5>Search:</h5>
           <input type="search" onChange={searchHandler} />
@@ -116,7 +116,7 @@ function Project() {
               {user.role === "admin" && <th scope="col">Action</th>}
             </tr>
           </thead>
-          {!q && user.role === "admin" && (
+          {!q && (user.role === "admin" || user.role === "hr") && (
             <tbody>
               {apiProjectData.map((project) => {
                 return (
@@ -132,7 +132,7 @@ function Project() {
               })}
             </tbody>
           )}
-          {q && user.role === "admin" && (
+          {q && (user.role === "admin" || user.role === "hr") && (
             <tbody>
               {projects.map((project) => {
                 return (
@@ -148,7 +148,7 @@ function Project() {
               })}
             </tbody>
           )}
-          {(user.role === "hr" || user.role === "employee") && (
+          {user.role === "employee" && (
             <tbody>
               {currentUserProjects.map((project) => {
                 return (

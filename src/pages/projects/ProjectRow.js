@@ -9,7 +9,7 @@ const ProjectRow = ({ project, user, ...props }) => {
       <tr>
         <td class="project-name">
           <Link to={`/projects/project-details/${project._id}`}>
-            {props.name}
+            {props.name}{" "}
           </Link>
         </td>
         <td class="project-status">{props.status}</td>

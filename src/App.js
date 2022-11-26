@@ -172,7 +172,7 @@ function App() {
                           />
                         ) : (
                           <Route
-                            path="/employees/editEmployee/:id"
+                            path="//employees/editEmployee/:id"
                             element={<Navigate replace to="/tasks" />}
                           />
                         )}
@@ -247,7 +247,7 @@ function App() {
                           />
                         )}
                         <Route
-                          path="/department/department-details/*"
+                          path="/projects/project-details/:id"
                           element={<ProjectDetails />}
                         />
                         {/* <Route

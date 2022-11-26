@@ -7,6 +7,8 @@ import FormInput from "../../../components/form-input/FormInput.component";
 import { deleteDepartment } from "../../../api/departmentAPI";
 import "./Department.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getEmployeeById } from "../../../api/employeeAPI";
 
 const defaultFormData = {
   name: "",
@@ -15,19 +17,24 @@ const showHide = {
   show: "d-block",
   hide: "d-none",
 };
-function Department({ user }) {
+function Department() {
+  const auth = useSelector((state) => state.auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
   const [formData, setFormData] = useState(defaultFormData);
+  const [user, setUser] = useState({});
   // const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
   const [editState, setEditState] = useState(showHide.hide);
   const [saveState, setSaveState] = useState(showHide.show);
   const { name } = formData;
   useEffect(() => {
+    getEmployeeById(auth.user.id).then((res) => {
+      setUser(res.data.data.data);
+    });
     getDepartments().then((res) => {
       setDepartments(res.data.data.data);
     });
@@ -111,7 +118,6 @@ function Department({ user }) {
             <button type="submit" class="save me-2">
               Save
             </button>
-           
           </div>
         </form>
       </div>
@@ -137,14 +143,6 @@ function Department({ user }) {
                     >
                       {department.name}
                     </Link>
-                    <input
-                      className={`${editState}`}
-                      type="text"
-                      name="name"
-                      id="dName"
-                      value={values.name}
-                      onChange={changeHandler}
-                    />
                   </td>
                   {user.role === "admin" && (
                     <td className="d-flex gap-2">
