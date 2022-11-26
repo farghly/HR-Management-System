@@ -12,7 +12,7 @@ import { deleteEmployee } from "./../../api/employeeAPI";
 import { deleteTask, getTasks } from "./../../api/tasksAPI";
 
 function Employees() {
-  const [employees, setEmployees] = useState();
+  const [employees, setEmployees] = useState([]);
   const [q, setQ] = useState();
   const [employeeSearchResult, setEmployeeSearchResult] = useState([]);
 
@@ -45,14 +45,20 @@ function Employees() {
       setTasks(res.data.data.data);
     });
   }, []);
-  console.log(tasks);
-  const deleteEmp = (event) => {
+
+  const deleteEmp = async (event) => {
+    const employeeTasks = tasks.filter(
+      (task) => task.employee[0]._id === event.currentTarget.id
+    );
     if (window.confirm("Are you sure to delete employee")) {
-      deleteEmployee(event.currentTarget.id).then(() => {
-        getEmployees().then((response) => {
-          setEmployees(response.data.data.data);
-        });
+      employeeTasks.forEach((task) => {
+        deleteTask(task._id);
       });
+      await deleteEmployee(event.currentTarget.id);
+      getEmployees().then((response) => {
+        setEmployees(response.data.data.data);
+      });
+      // console.log(event.currentTarget.id);
     }
   };
 
