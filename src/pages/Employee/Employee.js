@@ -114,11 +114,11 @@ function Employees() {
                     {employee.department && (
                       <td class="employee-email">{employee.department.name}</td>
                     )}
-                    {employee.designation && (
+                    {/* {employee.designation && (
                       <td class="employee-email">
                         {employee.designation.name}
                       </td>
-                    )}
+                    )} */}
                     <td class="employee-email">{employee.email}</td>
                     <td class="employee-contact">{`${employee.contactNumber[0]} `}</td>
                     <td class="employee-type">{employee.role}</td>
