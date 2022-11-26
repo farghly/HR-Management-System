@@ -77,7 +77,7 @@ function AddEmployee() {
             name="name"
             value={name}
             onChange={changeHandler}
-            placeholder="Enter your name"
+            placeholder={defaultFormFields.name}
           />
         </div>
 
@@ -88,7 +88,7 @@ function AddEmployee() {
             name="contactNumber"
             value={contactNumber}
             onChange={changeHandler}
-            placeholder="Enter your phone number"
+            placeholder={defaultFormFields.contactNumber}
           />
         </div>
         <div className="data d-flex flex-column gap-2">
@@ -141,11 +141,15 @@ function AddEmployee() {
           >
             <option selected>Please Select a role</option>
 
+            <option selected>Please Select a role</option>
             <option value="admin" name="admin">
               Admin
             </option>
-            <option value="user" name="user">
-              User
+            <option value="hr" name="hr">
+              HR
+            </option>
+            <option value="employee" name="employee">
+              Employee
             </option>
           </select>
         </div>
@@ -180,9 +184,7 @@ function AddEmployee() {
             onChange={changeHandler}
           />
         </div>
-        <div className="data d-flex flex-column gap-2">
-          <FormInput label="Image" type="file" id="myimage" name="" />
-        </div>
+
         <button type="submit" style={{ color: "black" }}>
           Save
         </button>

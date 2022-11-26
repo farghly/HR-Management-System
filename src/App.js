@@ -26,6 +26,7 @@ import { createContext } from "react";
 import ProjectDetails from "./pages/projects/ProjectDetails";
 import DepartmentsDetails from "./pages/organization/department/DepartmentsDetails";
 import EditProject from "./pages/projects/EditProject";
+import EditTask from "./pages/tasks/edittask";
 // import { NotFoundPage } from "./pages/not-found/NotFoundPage";
 export const ThemeContext = createContext("light");
 
@@ -211,6 +212,10 @@ function App() {
                         <Route
                           path="/tasks/task-details/:id"
                           element={<TaskDetails />}
+                        />
+                        <Route
+                          path="/tasks/editTask/:id"
+                          element={<EditTask />}
                         />
                         <Route
                           path="/employees/employee-details/:id"

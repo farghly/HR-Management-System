@@ -20,7 +20,7 @@ const TasksCard = ({ updateTaskByDone, deleteCurrentTask, ...props }) => {
   const [taskStateBGC, setTaskStateBGC] = useState("");
 
   const requiredTime =
-    (new Date(props.taskStartDate) - new Date(props.taskEndDate)) /
+    (new Date(props.taskEndDate) - new Date(props.taskStartDate)) /
     (1000 * 3600 * 24);
   console.log(props);
 

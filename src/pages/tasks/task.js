@@ -12,6 +12,7 @@ function Task() {
   const [tasks, setTasks] = useState([]);
   let [doneTasks, setDoneTasks] = useState([]);
   let [isGoingTasks, setIsGoingTasks] = useState([]);
+  let [allIsGoingTasks, setAllIsGoingTasks] = useState([]);
   let [allDoneTasks, setAllDoneTasks] = useState([]);
   const [taskState, setTaskState] = useState();
 
@@ -33,6 +34,7 @@ function Task() {
   );
 
   allDoneTasks = tasks.filter((task) => task.status === "Done");
+  allIsGoingTasks = tasks.filter((task) => task.status === "Is Going");
   doneTasks = currentUserTasks.filter((task) => task.status === "Done");
   isGoingTasks = currentUserTasks.filter((task) => task.status === "Is Going");
 
@@ -91,8 +93,8 @@ function Task() {
 
           <div class="tasks d-grid my-5 gap-3">
             {user.role === "admin" &&
-              tasks &&
-              tasks.map((task) => (
+              allIsGoingTasks &&
+              allIsGoingTasks.map((task) => (
                 <TasksCard
                   taskName={task.name}
                   taskDetails={task.summary}
