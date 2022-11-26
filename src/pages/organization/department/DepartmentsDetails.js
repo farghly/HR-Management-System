@@ -45,13 +45,16 @@ const DepartmentsDetails = () => {
         </div>
         <div class="department-employee">
           Department Employees:{" "}
-          <span class="department-employee-num">{departEmployees.length}</span>
+          {departEmployees.length>0 ? 
+          <span class="department-employee-num">{departEmployees.length}</span>:
+          <span class="department-employee-num">No Employees in this department</span>}
         </div>
         {/* <div class="department-btns gap-2 d-flex">
           <div class="delete-department btn btn-danger">Delete</div>
           <div class="update-department btn btn-success">Update</div>
         </div> */}
       </div>
+      {departEmployees.length>0 &&
       <div class="tab tab-details-dep table-scrl">
         <table class="table department-details-table">
           <thead>
@@ -72,65 +75,10 @@ const DepartmentsDetails = () => {
               </tr>
             ))}
 
-            {/* <tr>
-              <td class="employee-name">Mo</td>
-              <td>
-                <button class="delete">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="employee-name">Mo</td>
-              <td>
-                <button class="delete">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="employee-name">Mo</td>
-              <td>
-                <button class="delete">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="employee-name">Mo</td>
-              <td>
-                <button class="delete">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="employee-name">Mo</td>
-              <td>
-                <button class="delete">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="employee-name">Mo</td>
-              <td>
-                <button class="delete">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="employee-name">Mo</td>
-              <td>
-                <button class="delete">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </td>
-            </tr> */}
           </tbody>
         </table>
       </div>
+      }
     </>
   );
 };
