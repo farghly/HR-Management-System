@@ -1,19 +1,44 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getTaskById } from "../../api/tasksAPI";
+import { getEmployeeById } from "../../api/employeeAPI";
+import { editTask, getTaskById } from "../../api/tasksAPI";
 
 const TaskDetails = () => {
   const params = useParams();
   const TaskId = params.id;
   const [task, setTask] = useState({});
+  const auth = useSelector((state) => state.auth);
+  const [user, setUser] = useState({});
+  const [taskState, setTaskState] = useState(task.status);
 
+  // console.log(auth);
+  useEffect(() => {
+    getEmployeeById(auth.user.id).then((res) => {
+      setUser(res.data.data.data);
+    });
+  }, []);
   useEffect(() => {
     getTaskById(TaskId).then((res) => {
       setTask(res.data.data.data);
+      setTaskState(res.data.data.data.status);
     });
-  });
+  }, []);
+  // console.log(task.status);
+  const updateTaskStatus = (event) => {
+    // console.log(event.currentTarget.id);
+    if (task.status === "Done") {
+      editTask(event.currentTarget.id, { status: "Is Going" }).then(() => {
+        setTaskState("Is Going");
+      });
+    } else if (task.status === "Is Going") {
+      editTask(event.currentTarget.id, { status: "Done" }).then(() => {
+        setTaskState("Done");
+      });
+    }
+  };
   return (
     <>
       <Link to="/tasks" class="btn btn-primary mb-3 task-list">
@@ -38,11 +63,19 @@ const TaskDetails = () => {
           </span>
         </div>
         <div class="task-status p-2">
-          Task Status: <span class="task-status-details">{task.status}</span>
+          Task Status: <span class="task-status-details">{taskState}</span>
         </div>
         <div class="task-details-btns gap-2 d-flex">
-          <div class="delete-task btn btn-danger">Delete</div>
-          <div class="update-task btn btn-success">Update</div>
+          {user.role === "admin" && (
+            <div class="delete-task btn btn-danger">Delete</div>
+          )}
+          <div
+            class="update-task btn btn-success"
+            id={task._id}
+            onClick={updateTaskStatus}
+          >
+            Update
+          </div>
         </div>
       </div>
     </>

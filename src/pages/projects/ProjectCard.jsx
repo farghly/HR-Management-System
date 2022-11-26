@@ -1,14 +1,15 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getProjectById } from "./../../api/projectsAPI";
-import { getTasks } from "./../../api/tasksAPI";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteProject, getProjectById } from "./../../api/projectsAPI";
+import { deleteTask, getTasks } from "./../../api/tasksAPI";
 import { getEmployeeById } from "./../../api/employeeAPI";
 
 function ProjectCard() {
   const auth = useSelector((state) => state.auth);
   const params = useParams();
+  const navigate = useNavigate();
   const [currentProject, setCurrentProject] = useState({});
   const [tasks, setTasks] = useState([]);
   const [user, setUser] = useState({});
@@ -35,6 +36,17 @@ function ProjectCard() {
   });
   console.log(projectTasks);
 
+  const deleteCurrentTask = async (event) => {
+    console.log(event.currentTarget.id);
+    if (window.confirm("Are you sure to delete employee")) {
+      await projectTasks.forEach((task) => {
+        deleteTask(task._id);
+      });
+      deleteProject(params.id);
+      navigate("/projects");
+    }
+  };
+
   return (
     <>
       {currentProject && tasks && projectTasks && (
@@ -57,7 +69,10 @@ function ProjectCard() {
             Project Tasks:
             <span class="project-employee-details">
               {projectTasks.map((task) => (
-                <li>Task : {task.name} / Employee :</li>
+                <li>
+                  Task : {task.name} / Employee :
+                  {task.employee && task.employee[0].name}
+                </li>
               ))}
             </span>
           </div>
@@ -75,7 +90,13 @@ function ProjectCard() {
           </div>
           {user.role === "admin" && (
             <div class="project-btns gap-2 d-flex">
-              <div class="delete-project btn btn-danger">Delete</div>
+              <div
+                class="delete-project btn btn-danger"
+                id={params.id}
+                onClick={deleteCurrentTask}
+              >
+                Delete
+              </div>
               <div class="update-project btn btn-success">Update</div>
             </div>
           )}

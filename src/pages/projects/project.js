@@ -63,8 +63,6 @@ function Project() {
     currentUserProjectsArray.push(task.project);
   });
 
-
-
   const uniqueIds = [];
 
   console.log(currentUserProjectsArray);
@@ -128,6 +126,7 @@ function Project() {
                     status={project.status}
                     startDate={moment(project.startDate).format("LL")}
                     endDate={moment(project.endDate).format("LL")}
+                    user={user}
                   />
                 );
               })}
@@ -143,6 +142,7 @@ function Project() {
                     status={project.status}
                     startDate={moment(project.startDate).format("LL")}
                     endDate={moment(project.endDate).format("LL")}
+                    user={user}
                   />
                 );
               })}

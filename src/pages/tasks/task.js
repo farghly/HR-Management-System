@@ -32,7 +32,7 @@ function Task() {
   );
 
   doneTasks = currentUserTasks.filter((task) => task.status === "Done");
-  isGoingTasks = currentUserTasks.filter((task) => task.status === "IsGoing");
+  isGoingTasks = currentUserTasks.filter((task) => task.status === "Is Going");
 
   // setDoneTasks(
   //   currentUserTasks.filter((task) =>
@@ -50,6 +50,7 @@ function Task() {
     editTask(event.currentTarget.id, { status: "Done" }).then(() => {
       setTaskState("Done");
     });
+    
   };
 
   return (

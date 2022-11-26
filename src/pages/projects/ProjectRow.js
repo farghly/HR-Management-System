@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const ProjectRow = ({ project, user, ...props }) => {
   console.log(props);
+  console.log(user);
   return (
     <>
       <tr>
